@@ -1,6 +1,19 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
+===What's inside?
+====Business Context
+In the business context of Radarin we can distinguish three parts. 
+These are:
+* Application server
+* User's POD
+* User
 
+The basic interactions of these parts can be observed in the following diagram
+[plantuml,"Component diagram",png]
+----
+:User: --> [User's Pod]: interacts
+[User's Pod] - [Main App]: exchange information
+----
 
 [role="arc42help"]
 ****
