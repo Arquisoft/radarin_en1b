@@ -10,6 +10,14 @@ Describes the relevant requirements and the driving forces that software archite
 * relevant stakeholders and their expectations
 ****
 
+Radarin will be a system to facilitate meetings between friends using new technologies. The application can get access to the mobile phone localization of the users who voluntarily activate it and will allow other users who are their friends to know when they are near them.
+
+The application will allow to notify a user when there is some friend nearby so they can get in contact.
+
+The system will be compatible with the SOLID project and it will not store personal information about the users in a centralized way, but will ask permission to get access to that information to the corresponding users' pods.
+
+The system only can store locations and timestamps in which those locations happens, but it will avoid to store any other type of personal information about the users.
+
 === Requirements Overview
 
 [role="arc42help"]
@@ -29,6 +37,31 @@ If requirements documents exist this overview should refer to these documents.
 
 Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 ****
+
+https://arquisoft.github.io/course2021/labAssignmentDescription.html[The requirements for this project where given to us]. A short review of them would be:
+
+.High level requirements
+|===
+|Functional requirements |Implementation requirements
+
+|To store, manage and visualize locations among other administration options.
+|A Web application that will run in a server.
+
+|Send locations and receive notifications from nearby users.
+|An application that will run in user's mobile phone.
+
+|Store the minimum needed information of a user.
+|The application that acts as a server will store this information as a user's pod.
+
+|The system will be deployed.
+|The deployment will work from docker containers and from a cloud service like heroku
+
+|Monitoring system for the app.
+|-
+
+|Unit tests, acceptance tests and load tests.
+|These tests must be run automatically in a continuous integration server.
+|===
 
 === Quality Goals
 
@@ -67,9 +100,19 @@ These stakeholders determine the extent and the level of detail of your work and
 Table with role names, person names, and their expectations with respect to the architecture and its documentation.
 ****
 
-[options="header",cols="1,2,2"]
+.Roles within the system.
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Role |Contact |Expectations
+
+|Teachers.
+|Both the people that assigned the task to the developers and the ones that will evaluate both the procedure and result of such assignment.
+|A functional system that will be compatible with the SOLID project, storing information in pods (evaulating the security), which corresponds to the assignement given and that is easy to use, responsive and original.
+
+|Users
+|The posible users the system may have in a future.
+|A system that will provide the functionality that it offers, with the security that it is promised and which is easy to use and a good option for a long-term use.
+
+|Developers.
+|The people who will work on the system.
+|A complete system who fulfills all the requirements given to them.
 |===
