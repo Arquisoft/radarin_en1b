@@ -1,6 +1,15 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
+Radarin is a system that facilitates meetings between friends using new technologies. The application can get access to the mobile phone location of users who voluntarily activate it, and allow other users who are their friends to know when they are near them.
+
+The application allows the user to be notified when there is a friend nearby, so they can get in contact.
+
+The system is compatible with <a href="https://solidproject.org/">Solid Project</a>, and it securely stores data in decentralized data stores called Pods. Moreover, the system will ask for permission to access the information of the corresponding user's pods.
+
+The system can only store locations and timestamps in which these events take place. It will avoid storing any other type of personal information about the users.
+
+
 [role="arc42help"]
 ****
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
