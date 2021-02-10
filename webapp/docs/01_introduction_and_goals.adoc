@@ -41,14 +41,19 @@ The requirements where provided to us https://arquisoft.github.io/course2021/lab
 
 Two Software components have to be taken into account:
 
-    - A Web application running on a server that stores all data received from the application.
-        Allows us to manage and visualize locations as well as include admin options to manage users and monitor the status of the server.
+    . A Web application running on a server.
 
-    - An application running on the user's phone sending the location to the server and receiving the location of nearby friends.
+    Stores all data received from the application (stored in Pods). 
+    Minimum amount of information has to be stored.
+    Is the one charge of storing, managing and visualizing locations among other administration options (such as monitor the status of the server). 
 
-The system is deployed using the tools https://www.docker.com/[docker] and https://heroku.com/[heroku].
+    . An application running on the user's phone.
+    
+    Sending the location to the server and receiving the location of nearby friends (only with the user's consent).
 
+Tools used for system deployment are https://www.docker.com/[docker] (containers) and https://heroku.com/[heroku] (cloud service).
 
+Unit, acceptance and load tests have to be designed and written to be run automatically in a continuous integration server.
 
 [role="arc42help"]
 ****
