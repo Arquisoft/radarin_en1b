@@ -68,6 +68,24 @@ If you as an architect do not know how the quality of your work will be judged â
 A table with quality goals and concrete scenarios, ordered by priorities
 ****
 === Quality Goals
+Top 3 Quality goals for the application:
+
+.Security
+Having completely safe and confidential relation between the server and the phone application, where minimum information is asked for.
+
+.Performance/Efficiency
+Fast and responsive times when accessing information and features.
+
+.Usability
+Having an easy to learn, easy to use application which anyone can install and run with close to no doubts or problems.
+
+Other important quality goals are:
+
+.Reliability
+Having an application that is reliable, available at all times, being tolerant with possible errors occuring and being able to recover from these errors.
+
+.Compatibility
+Different versions for different operating systems, so user with all types of phones can experience the application. 
 
 [role="arc42help"]
 ****
@@ -95,6 +113,8 @@ Table with role names, person names, and their expectations with respect to the 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| _Providers_ | _Suppliers and Vendors_ | _A working, secure, efficient architecture and design for the application_
+| _Influencers_ | _Trade unions / Lobby groups_ | _A product which is attractive and modern_
+| _Governance_ | _Auditors, regulators, and health and safety executives_ | _Final safe and good quality project_
+| _End users_ | _People that will use the application on a daily basis_ | _Efficient, reliable and secure application_
 |===
