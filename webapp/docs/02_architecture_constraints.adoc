@@ -17,3 +17,43 @@ If needed you can subdivide them into
 technical constraints, organizational and political constraints and
 conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
 ****
+=== Technical Constraints
+[options="header",cols="1,4"]
+|===
+|Constraint|Description
+
+|SOLID|<To_be_added>
+
+|React|<To_be_added>
+
+|Version Control|Git using github.com
+
+|MongoDB|<To_be_added>
+|===
+
+=== Organizational & Political Constraints
+[options="header",cols="2,3"]
+|===
+|Constraint|Description
+
+|Lack of experience|<To_be_added>
+
+|Limited Time|<To_be_added>
+
+|Other projects & Subjects|Git using github.com
+
+|Team Size| Group of 6 members
+|===
+
+=== Conventions
+[options="header",cols="2,3"]
+|===
+|Constraint|Description
+
+|Documentation|Ascii-doctor + Ruby + ARC42
+
+|W3C Conventions|Specially for Javascript
+
+|React|
+No specific conventions given, but we can use the Airbnb Style Guide at: https://github.com/airbnb/javascript/tree/master/react
+|===
