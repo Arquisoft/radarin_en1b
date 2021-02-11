@@ -1,6 +1,4 @@
 [[section-introduction-and-goals]]
-== Introduction and Goals
-
 [role="arc42help"]
 ****
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
@@ -9,8 +7,16 @@ Describes the relevant requirements and the driving forces that software archite
 * quality goals for the architecture
 * relevant stakeholders and their expectations
 ****
+== Introduction and Goals
 
-=== Requirements Overview
+Radarin is a system that facilitates meetings between friends using new technologies. The application can get access to the mobile phone location of users who voluntarily activate it, and allow other users who are their friends to know when they are near them.
+
+The application allows the user to be notified when there is a friend nearby, so they can get in contact.
+
+The system is compatible with https://solidproject.org/[Solid Project], and it securely stores data in decentralized data stores called Pods. Moreover, the system will ask for permission to access the information of the corresponding user's pods.
+
+The system can only store locations and timestamps in which these events take place. It will avoid storing any other type of personal information about the users.
+
 
 [role="arc42help"]
 ****
@@ -30,7 +36,24 @@ If requirements documents exist this overview should refer to these documents.
 Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 ****
 
-=== Quality Goals
+=== Requirements Overview
+The requirements where provided to us https://arquisoft.github.io/course2021/labAssignmentDescription.html#requirements[here].
+
+Two Software components have to be taken into account:
+
+    . A Web application running on a server.
+
+    Stores all data received from the application (stored in Pods). 
+    Minimum amount of information has to be stored.
+    Is the one charge of storing, managing and visualizing locations among other administration options (such as monitor the status of the server). 
+
+    . An application running on the user's phone.
+    
+    Sending the location to the server and receiving the location of nearby friends (only with the user's consent).
+
+Tools used for system deployment are https://www.docker.com/[docker] (containers) and https://heroku.com/[heroku] (cloud service).
+
+Unit, acceptance and load tests have to be designed and written to be run automatically in a continuous integration server.
 
 [role="arc42help"]
 ****
@@ -44,8 +67,25 @@ If you as an architect do not know how the quality of your work will be judged â
 .Form
 A table with quality goals and concrete scenarios, ordered by priorities
 ****
+=== Quality Goals
+Top 3 Quality goals for the application:
 
-=== Stakeholders
+.Security
+Having completely safe and confidential relation between the server and the phone application, where minimum information is asked for.
+
+.Performance/Efficiency
+Fast and responsive times when accessing information and features.
+
+.Usability
+Having an easy to learn, easy to use application which anyone can install and run with close to no doubts or problems.
+
+Other important quality goals are:
+
+.Reliability
+Having an application that is reliable, available at all times, being tolerant with possible errors occuring and being able to recover from these errors.
+
+.Compatibility
+Different versions for different operating systems, so user with all types of phones can experience the application. 
 
 [role="arc42help"]
 ****
@@ -66,10 +106,15 @@ These stakeholders determine the extent and the level of detail of your work and
 .Form
 Table with role names, person names, and their expectations with respect to the architecture and its documentation.
 ****
+=== Stakeholders
+
+
 
 [options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+| _Providers_ | _Suppliers and Vendors_ | _A working, secure, efficient architecture and design for the application_
+| _Influencers_ | _Trade unions / Lobby groups_ | _A product which is attractive and modern_
+| _Governance_ | _Auditors, regulators, and health and safety executives_ | _Final safe and good quality project_
+| _End users_ | _People that will use the application on a daily basis_ | _Efficient, reliable and secure application_
 |===
