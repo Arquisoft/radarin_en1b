@@ -1,23 +1,28 @@
 [[section-system-scope-and-context]]
 == System Scope and Context 
-This chapter describes the environment and context of _radarin_: Who uses the system and on which other system does _radarin_ depend
-===Business Context
+This chapter describes the environment and context of _radarin_: Who uses the system and on which other system does _radarin_ depend +
+
+=== Business Context
 In the business context of Radarin we can distinguish three parts. 
 These are:
-.Diferent roles of the application
-* Application server
-* User's POD
-* User
+
+* Application server 
+* User's POD 
+* User 
 
 The basic interactions of these parts can be observed in the following diagram
 [plantuml,"Component diagram",png]
 ----
-:User: --> [User's Pod]: interacts
-[User's Pod] - [Main App]: exchange information
+:User1: --> [User1's Pod]: interacts
+[User1's Pod] --> [Main App]: Send location
+[Main App] --> [User1's Pod]: Manages
+:User2: --> [User2's Pod]: interacts
+[User2's Pod] - [User1's Pod]: send notifications
+[User2's Pod] --> [Main App]: Send location
+[Main App] --> [User2's Pod]: Manages
 ----
-====Users
-[role="arc42help"]
 ****
+[role="arc42help"]
 .Contents
 System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
 (neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
