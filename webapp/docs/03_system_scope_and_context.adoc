@@ -1,9 +1,10 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
-===What's inside?
-====Business Context
+== System Scope and Context 
+This chapter describes the environment and context of _radarin_: Who uses the system and on which other system does _radarin_ depend
+===Business Context
 In the business context of Radarin we can distinguish three parts. 
 These are:
+.Diferent roles of the application
 * Application server
 * User's POD
 * User
@@ -14,7 +15,7 @@ The basic interactions of these parts can be observed in the following diagram
 :User: --> [User's Pod]: interacts
 [User's Pod] - [Main App]: exchange information
 ----
-
+====Users
 [role="arc42help"]
 ****
 .Contents
@@ -77,3 +78,4 @@ together with a mapping table showing the relationships between channels and inp
 **<optionally: Explanation of technical interfaces>**
 
 **<Mapping Input/Output to Channels>**
+
