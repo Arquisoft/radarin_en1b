@@ -21,66 +21,15 @@ The basic interactions of these parts can be observed in the following diagram
 [User2's Pod] --> [Main App]: Send location
 [Main App] --> [User2's Pod]: Manages
 ----
-****
-[role="arc42help"]
-.Contents
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
 
-If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
+In the following table, we will explain the roles, and the actions they perform, explained in the
+previous diagram.
 
-.Motivation
-The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
-
-.Form
-Various options:
-
-* Context diagrams
-* Lists of communication partners and their interfaces.
-****
-
-
-=== Business Context
-
-[role="arc42help"]
-****
-.Contents
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces.
-Optionally you can add domain specific formats or communication protocols.
-
-.Motivation
-All stakeholders should understand which data are exchanged with the environment of the system.
-
-.Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
-
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
-
-=== Technical Context
-
-[role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
-
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
+[options="header",cols="1,2"]
+|===
+|Role/Name|Description
+| Main App | Main app manages every user's pod, it doesn't access user data until it gets the permission to do that, such that information of the friends of the user, its location... It helps user to interact between them 
+| Users | Users will use the application to share and interact with another users, by interacting with their respective pods.
+| User pods | Bridge between the Main App and the users. Users interact with them, and after permission by the user, it exchanges information with the Main App, for instance, the location of the user. It is managed by the Main App.
+|===
 
