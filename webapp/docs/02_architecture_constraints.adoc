@@ -22,13 +22,15 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 |===
 |Constraint|Description
 
-|SOLID|<To_be_added>
+|SOLID| The team decided to follow the principles and specifications of the https://github.com/solid/solid-spec[Solid Project, window="_blank"]. 
+The Solid project is an initiative developed by Tim Berners-Lee and the Massachusetts Institute of Technology focused on a new approach to the web centrated 
+on the decentralized exchange of public and private data by means of the pods.
 
-|React|<To_be_added>
+|React| To create the Radarin application, the team has decided to use https://es.reactjs.org/docs/getting-started.html[React, window="_blank"] as a framework for the web Application development. React is a Javascript Libary created and maintained by Facebook. It's main objective is to facilitate the creation of  Single-Page-applications (SPA) by means of Copmponent-Oriented Programming (COP).
 
-|Version Control|Git using github.com
+|Version Control| GIT will be used as the Version Control technology for this project and https://github.com/Arquisoft/radarin_en1b[Github ,window="_blank"] will be the plataform used for the team no only to develop the application, but also as a place to colaborate and discuss about the implementation.
 
-|MongoDB|<To_be_added>
+|MongoDB| MongoDB is the document-oriented Database used in the system. It's NoSQL managment system and its JSON-like documents allows the DB to be easier to use.
 |===
 
 === Organizational & Political Constraints
@@ -36,13 +38,14 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 |===
 |Constraint|Description
 
-|Lack of experience|<To_be_added>
+|Lack of experience|
+The team members had little experience with most of the technologies used. None of us have used React Framework before nor Solid projects, so the level of the team would be low specially at first.
 
-|Limited Time|<To_be_added>
+|Limited Time| The implementation of the project has to be done in a limited time of about 3 months, so the features of the project have to be be constrained to this time span.
 
-|Other projects & Subjects|Git using github.com
+|Other projects & Subjects| All of the members of the team has other quite time-demanding subjects, so the time and effort invested in the project will not be as high as we desire.
 
-|Team Size| Group of 6 members
+|Team Size| The team only has 6 members, so the amount of work should be constrained to this size.
 |===
 
 === Conventions
@@ -50,10 +53,10 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 |===
 |Constraint|Description
 
-|Documentation|Ascii-doctor + Ruby + ARC42
+|Documentation| The documentation of the project uses AsciiDoc to be written and Ascii-doctor as processor and toolchain to be converted to HTML5. The Documentation will follow the arc42 templete for its developing.
 
-|W3C Conventions|Specially for Javascript
 
-|React|
-No specific conventions given, but we can use the Airbnb Style Guide at: https://github.com/airbnb/javascript/tree/master/react
+|W3C Conventions| The project has to follow the W3C conventions and standards for its imlementation. Taking special attention to the Javascript rules and constraints.
+
+|React| No specific conventions given, but we can use the Airbnb Style Guide at: https://github.com/airbnb/javascript/tree/master/react
 |===
