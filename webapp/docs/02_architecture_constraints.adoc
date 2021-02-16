@@ -30,7 +30,7 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 |Docker
 |The system will be deployed from https://www.docker.com/[docker, window="_blank"] containers.
 
-|Heroku
+|Cloud Service
 |It will also be deployed in a cloud service like https://www.heroku.com/[heroku, window="_blank"].
 
 |GitHub
