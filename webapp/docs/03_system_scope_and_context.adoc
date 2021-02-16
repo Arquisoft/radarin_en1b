@@ -33,3 +33,23 @@ previous diagram.
 | User pods | Bridge between the Main App and the users. Users interact with them, and after permission by the user, it exchanges information with the Main App, for instance, the location of the user. It is managed by the Main App.
 |===
 
+=== Technical Context
+[plantuml, "Deployment diagram", png]
+----
+package "Deployment diagram" {
+  database "User's POD"{
+      component [User's Information] as UInfo
+  }
+  node "Cloud Platform <i>(Heroku)" {
+      component [Main App] as MApp
+      MApp --> UInfo
+  }
+}
+----
+==== Technical components
+[options="header",cols="1,2"]
+|===
+|Component|Description
+| Heroku | Heroku is the Cloud Platform where we are going to deploy Radarin's main app, so it will be available to manage the different decentralized transactions between the users, accessing their PODs.
+| User PODs | User Pod's act as decentralized databases. They use SOLID technology, so that users control which applications can access their data, meaning that the Main Web App will store only the minimal information, and the rest will be queried to the POD.
+|===
