@@ -39,3 +39,8 @@ You should be able to access the application in [http://localhost:3000](http://l
 
 ## Collaborators
  - Alexander López Méndez
+ - Alberto Díez Bajo
+ - Daniel Barrientas Iglesias
+ - Héctor Fernández Maillo
+ - Javier Carrilo Gónzalez
+ - Luis Antonio Fernández Suarez
