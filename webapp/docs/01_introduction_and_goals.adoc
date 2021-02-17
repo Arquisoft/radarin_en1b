@@ -108,7 +108,7 @@ Table with role names, person names, and their expectations with respect to the 
 ****
 === Stakeholders
 
-
+==== Enterprise view
 
 [options="header",cols="1,2,2"]
 |===
@@ -117,4 +117,14 @@ Table with role names, person names, and their expectations with respect to the 
 | _Influencers_ | _Trade unions / Lobby groups_ | _A product which is attractive and modern_
 | _Governance_ | _Auditors, regulators, and health and safety executives_ | _Final safe and good quality project_
 | _End users_ | _People that will use the application on a daily basis_ | _Efficient, reliable and secure application_
+|===
+
+==== Educational view
+
+[options="header",cols="1,2,2"]
+|===
+|Role/Name|Contact|Expectations
+| _Teachers_ | _Both the people that assigned the task to the developers and the ones that will evaluate both the procedure and result of such assignment_ | _A functional system that will be compatible with the SOLID project, storing information in pods (evaulating the security), which corresponds to the assignement given and that is easy to use, responsive and original_
+| _Developers_ | _The people who will work on the systems and make decisions to determine the design and architecture of the application_ | _A complete system who fulfills all the requirements given to them_
+| _Users_ | _The posible users the system may have in a future_ | _A system that will provide the functionality that it offers, with the security that it is promised and which is easy to use and a good option for a long-term use_
 |===
