@@ -37,11 +37,20 @@ In any case the tree should include links to the scenarios of the following sect
 ****
 
 Qualities (esto hay que pasarlo a forma de dibujo):
-_Efficiency_ - Fast comunications between the mobile and the web applications 
-_Privacy_ - Information stored in pods
-_Testability_ - Integrated server dedicated for tests
-_Usability_ - Easy and simple to use user interface
-_Connectivity?_ - Integration to receive notifications between the different users' device 
+@startmindmap
+* Efficiency
+    * One of the highest priority qualities
+    * Fast comunications between the mobile and the web applications 
+* Security
+    * #1 Quality
+    * Information stored in pods
+* Testability
+    * Integrated server dedicated for tests
+* Usability
+    * Easy and simple to use user interface
+* Reliability 
+    * Integration to receive notifications between the different users' device 
+@endmindmap
 
 === Quality Scenarios
 
