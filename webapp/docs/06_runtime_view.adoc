@@ -38,6 +38,8 @@ There are many notations for describing scenarios, e.g.
 building block instances depicted in this diagram.>_
 
 It is possible to use a sequence diagram:
+
+[plantuml,"Sequence diagram",png]
 ----
 actor Alice
 actor Bob

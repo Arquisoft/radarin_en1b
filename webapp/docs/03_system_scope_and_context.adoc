@@ -11,6 +11,7 @@ These are:
 * User 
 
 The basic interactions of these parts can be observed in the following diagram
+[plantuml,"Component diagram",png]
 ----
 :User1: --> [User1's Pod]: interacts
 [User1's Pod] --> [Main App]: Send location
