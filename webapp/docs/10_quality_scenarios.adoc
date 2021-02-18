@@ -37,19 +37,19 @@ In any case the tree should include links to the scenarios of the following sect
 ****
 
 @startmindmap
-
-+ Qualities
-++ Efficiency
-+++ Fast comunications between the mobile and the web applications (less than 5 seconds to register ubications)
-++ Privacy
-+++ Information stored in pods
-++ Testability
-+++ Integrated server dedicated for tests
-++ Usability
-+++ Easy and simple to use user interface
-++ Connectivity?
-+++ Integration to receive notifications between the different users' device 
-
+* Efficiency
+    * One of the highest priority qualities
+    * Fast comunications between the mobile and the web applications 
+* Security
+    * #1 Quality
+    * Information stored in pods
+* Testability
+    * Integrated server dedicated for tests
+* Usability
+    * Easy and simple to use user interface
+* Reliability 
+    * Integration to receive notifications between the different users' device 
+>>>>>>> 5815b528103d343d972d54cf36bdc89c6507304e
 @endmindmap
 
 === Quality Scenarios
@@ -86,7 +86,7 @@ Tabular or free form text.
 
 ==== Change Scenarios
 The application is open to receive possible optional extensions that will increment the already existing funcionality or that will make the application offer different services.
-Some of these optional features are:
+Some of them were provided by the teachers of the subject:
 
 * The application can offer other services to the users like notifications to users that are nearby, friend suggestions, geolocalized pictures or multimedia content published by friends, etc.
 * It is possible to enrich the locations with comments, pictures, videos, etc.
@@ -96,6 +96,16 @@ Some of these optional features are:
 * It may be possible to tag locations to facilitate their search
 * The application could send messages between nearby users so they get in touch
 * It may be possible to notify positive COVID cases to facilitate tracking of people known with whom someone could have interacted
+
+While we, as a team, thought about some other different extensions that could happen:
+
+* The application can create a route from a set of different locations. This route may have a description stablishing what is its main appeal and the locations that should be visited.
+* A planification feature, where you can stablish that you're going to visit a location today, so your friends can see that you are going and decide that they are going too and meet there.
+* Ratings on each location, all the users can vote whether they like the location or not when they are nearby (one vote per person) so if the location is popular, it will be suggested more.
+* A history feature for each profile (may be private or can be public to friends) in which all the visited locations are stored in a diary kind of way.
+* A recommended feature for each profile, in which users may recommend specific locations to the users of the application
+* An achievement system for the users to obtain. Visiting locations or using the application, the user may gain different titles or options to display in their profile.
+
 
 Thus, the design of the application should be open to these changes while it is still completely functional without them.
 
