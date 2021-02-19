@@ -50,18 +50,68 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== Domain model
+=== _Domain model_
 
-image:UmlDiagram.png["Example UML Diagram"]
+image:UmlDiagram.jpg["Domain of the application"]
 
 
 
-=== _<Concept 2>_
+=== _Domain Concepts_
 
-_<explanation>_
+|===
+| Name        | Description
+| User    | Represents the user of the application. It is identified by the username, that must be unique to each user. Since the application provides the option for users to be notified by nearby user friends, the current location of the user and a reference to a list of all of the friends of the user must be also used.
+| Location     | Represents a location that the user might want to store in the server. This location will have a name, and the current coordinates of the location will also be stored.
+| Coordinate     | Represents the coordinates of a user or of a location. It will store in its attributes the specific height, width... of the concrete coordinate. 
+|===
 
-...
 
-=== _<Concept n>_
+=== _Architecture and Design Patterns_
 
-_<explanation>_
+The architecture of the application will be built around the MVC philosophy, dividing the different sections of the application in different areas to assure everything works fine and to ease the work that might take to implement quality changes.
+
+=== _User Experience_
+
+==== _User Interface_
+
+The user interface will be made using React.
+
+==== _Ergonomics_
+
+The application will not have a high learning curve since the functionality will be very clear because of the usage of maps, thus guaranteeing that users of all ages may be able to use the application.
+
+==== _Internationalization_
+
+Due to the nature of the course (being a bilingual subject, taught in English), English must be supported, although Spanish might be supported too.
+
+=== _Security & Safety_
+
+==== _Security_
+
+
+==== _Safety_
+
+No part of the application has life endangering aspect since all the information is stored in pods.
+
+
+=== _Development Concepts_
+
+==== _Build, Test, Deploy_
+
+The system will be deployed from docker containers and also deployed in a cloud service like heroku. The application will be tested in a run automatically continuous integration server.
+
+==== _Code generation_
+
+==== _Migration_
+
+==== _Configurability_
+
+=== _Under-the-hood_
+
+The persistence of the data is supported in the system, since the web application will store the information the users work with; hence, as long as the user keeps connected, the data will be correctly stored in the server. 
+A transaction will be made when the user wants to store a location in the server, if somehow the transaction fails due to a network issue, such location will be stored to later be stored when the network is restored.
+The communication between the application and the web application will only be noticed by the user when they want to store the location, since it may take a little delay to connect to the server.
+
+=== _Operation Concepts_
+
+
