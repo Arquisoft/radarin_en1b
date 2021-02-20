@@ -97,12 +97,12 @@ Some of them were provided by the teachers of the subject:
 * The application could send messages between nearby users so they get in touch
 * It may be possible to notify positive COVID cases to facilitate tracking of people known with whom someone could have interacted
 
-While we, as a team, thought about some other different extensions that could happen:
+While we, as a team, thought about some other different extensions that could be added to the final product:
 
 * The application can create a route from a set of different locations. This route may have a description stablishing what is its main appeal and the locations that should be visited.
-* A planification feature, where you can stablish that you're going to visit a location today, so your friends can see that you are going and decide that they are going too and meet there.
+* A planification feature, where you can publish that you're going to visit a location, so your friends are able to see where you are going and decide if they would like to do the same and meet you there.
 * Ratings on each location, all the users can vote whether they like the location or not when they are nearby (one vote per person) so if the location is popular, it will be suggested more.
-* A history feature for each profile (may be private or can be public to friends) in which all the visited locations are stored in a diary kind of way.
+* A history feature for each profile (may be private or can be public to friends) in which all the visited locations are stored in a diary, with the possibility to add pictures and/or a review posted that day.
 * A recommended feature for each profile, in which users may recommend specific locations to the users of the application
 * An achievement system for the users to obtain. Visiting locations or using the application, the user may gain different titles or options to display in their profile.
 
