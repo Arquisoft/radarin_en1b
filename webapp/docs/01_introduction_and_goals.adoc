@@ -78,7 +78,7 @@ Where only the users can access that data, or if allowed, friends can also see i
 Fast and responsive times when accessing information and features.\
 With timming close to the following:
 - Under 4 seconds for logging in.
-- Sending the current location and receiving other friends locations every 15-20 seconds (more or less time can maybe be setup using the app, so users can choose, and thus adding more flexibility)
+- Sending the current location and receiving other friends locations every 15-20 seconds (more or less time can maybe be setup using the app, so users can choose between using a more or less resource consuming approach, and thus adding more flexibility)
 - Sending information such as reviews / pictures in 10 seconds or less.
 
 .Usability
@@ -90,7 +90,7 @@ Other important quality goals are:
 Having an application that is reliable, available at all times, being tolerant with possible errors occuring and being able to recover from these errors.
 
 .Compatibility
-Different versions for different operating systems, so user with all types of phones can experience the application. 
+Different versions for different operating systems, so users with all types of phones can experience the application. 
 
 [role="arc42help"]
 ****
