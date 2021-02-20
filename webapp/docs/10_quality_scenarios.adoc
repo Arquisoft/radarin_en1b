@@ -36,6 +36,21 @@ The quality tree is a high-level overview of the quality goals and requirements:
 In any case the tree should include links to the scenarios of the following section.
 ****
 
+@startmindmap
+* Efficiency
+    * One of the highest priority qualities
+    * Fast comunications between the mobile and the web applications 
+* Security
+    * #1 Quality
+    * Information stored in pods
+* Testability
+    * Integrated server dedicated for tests
+* Usability
+    * Easy and simple to use user interface
+* Reliability 
+    * Integration to receive notifications between the different users' device 
+@endmindmap
+
 === Quality Scenarios
 
 [role="arc42help"]
@@ -61,3 +76,36 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 .Form
 Tabular or free form text.
 ****
+
+==== Usage Scenarios
+* The aplication will be testeable since using the React framework allowa us to find bugs and possible errors easily, as tests will be run in a continuos integration server.
+* The application is responsive: The Web application will record the locations as the user will register them, and the mobile application will receive notifications from nearby users as soon as the devices can (for example, the mobile application will send the location every 
+15 seconds, so that it is reponsive and at the same time it doesnt consume as many resources as if it was done continuosly).
+* All the information that is exchanged between the application and the user will be securely stored in pods, thus increasing the privacy of the user.
+
+
+==== Change Scenarios
+The application is open to receive possible optional extensions that will increment the already existing funcionality or that will make the application offer different services.
+Some of them were provided by the teachers of the subject:
+
+* The application can offer other services to the users like notifications to users that are nearby, friend suggestions, geolocalized pictures or multimedia content published by friends, etc.
+* It is possible to enrich the locations with comments, pictures, videos, etc.
+* The system could get access to mobile information using bluetooth
+* The web application can visualize maps with the locations made by one or more users
+* It may be possible to offer other types of visualization about users' locations and their friends.
+* It may be possible to tag locations to facilitate their search
+* The application could send messages between nearby users so they get in touch
+* It may be possible to notify positive COVID cases to facilitate tracking of people known with whom someone could have interacted
+
+While we, as a team, thought about some other different extensions that could be added to the final product:
+
+* The application can create a route from a set of different locations. This route may have a description stablishing what is its main appeal and the locations that should be visited.
+* A planification feature, where you can publish that you're going to visit a location, so your friends are able to see where you are going and decide if they would like to do the same and meet you there.
+* Ratings on each location, all the users can vote whether they like the location or not when they are nearby (one vote per person) so if the location is popular, it will be suggested more.
+* A history feature for each profile (may be private or can be public to friends) in which all the visited locations are stored in a diary, with the possibility to add pictures and/or a review posted that day.
+* A recommended feature for each profile, in which users may recommend specific locations to the users of the application
+* An achievement system for the users to obtain. Visiting locations or using the application, the user may gain different titles or options to display in their profile.
+
+
+Thus, the design of the application should be open to these changes while it is still completely functional without them.
+
