@@ -78,9 +78,10 @@ Tabular or free form text.
 ****
 
 ==== Usage Scenarios
-* The aplication will be testeable since using the React framework will allow us to find bugs and possible errors easily, since tests will be run in a continuos integration server. 
-* The application is also responsive: The Web application will record the locations just as the user will register them, and the mobile application will receive the notifications from nearby users as soon as the devices can.
-* All the information that is exchanged between the application and the user will be stored in pods, increasing the privacy of the user.
+* The aplication will be testeable since using the React framework allowa us to find bugs and possible errors easily, as tests will be run in a continuos integration server.
+* The application is responsive: The Web application will record the locations as the user will register them, and the mobile application will receive notifications from nearby users as soon as the devices can (for example, the mobile application will send the location every 
+15 seconds, so that it is reponsive and at the same time it doesnt consume as many resources as if it was done continuosly).
+* All the information that is exchanged between the application and the user will be securely stored in pods, thus increasing the privacy of the user.
 
 
 ==== Change Scenarios
