@@ -29,7 +29,7 @@ There are many notations for describing scenarios, e.g.
 * ...
 
 ****
-This section will have a contrast with the last, as we will cover here the dynamic behaviour and how users interact between them.
+This section will be in contrast with the last, as we will cover here the dynamic behaviour and how users interact between them.
 
 === Alice wants to know if Bob is near here, and Bob allows Alice to see him in the radar
 
@@ -41,7 +41,7 @@ This section will have a contrast with the last, as we will cover here the dynam
     Then, her pod shares the location with the App, that will compute the distance to the mutuals that have previously allowed the App to do so. In this case, Alice wants to see in the radar Bob's location, that hasn't previously allowed the App to share the location.
     As a consequence, the App sends a request to Bob's pod, and the pod, to Bob respectively.
     Once Bob accepts wether he wants to share his location (or not, in this case, he wants to),
-    the response is sent to the pod, and from the pod is sent to the App, that manages Alice's and Bob's locations,and if they are near enough (in this case, they are), Bob appears in Alice's radar._
+    the response is sent to the pod, and from the pod to the App, that manages Alice's and Bob's locations,and if they are near enough (in this case, they are), Bob appears in Alice's radar._
 
 [plantuml,"Sequence diagram 1",png]
 ----
@@ -59,10 +59,10 @@ App <-- Pod2: Sends the response
 Pod1 <-- App: Manages the response, and shows Bob in the radar
 Alice <-- Pod1: Radar with Bob's location
 ----
-=== Alice wants to know if Bob is near here, and Bob doesn't want Alice to see him in the radar
-* _For this case, we have the same exact context as in the previous use case, but this time, Bob is at home
-    watching some sitcoms, and is not allowing nothing to disturb him, so it refuses to connect with Alice in the App_
-* _As you can see in the diagram below, at first Alice has to authenticate and allow sharing his location in order to find his mutuals between a proximity radius.
+=== Alice wants to know if Bob is near her, and Bob doesn't want Alice to see him in the radar
+* _In this case, we have the same exact context as in the previous use case, but this time, Bob is at home
+    watching some sitcoms, and he is not allowing anything to disturb him, so it refuses to connect with Alice in the App_
+* _As you can see in the diagram below, at first Alice has to authenticate and allow sharing her location in order to find her mutuals between a proximity radius.
     Then, her pod shares the location with the App, that will compute the distance to the mutuals that have previously allowed the App to do so. In this case, Alice wants to see in the radar Bob's location, that hasn't previously allowed the App to share the location.
     As a consequence, the App sends a request to Bob's pod, and the pod, to Bob respectively.
     The difference, is that this time, Bob refuses the petition, as he doesn't want to leave the sofa today.
@@ -87,14 +87,14 @@ Pod1 <-- App: Manages the response, and doesn't show Bob in the radar
 Alice <-- Pod1: Radar without Bob's location
 ----
 
-=== Alice wants to know if Bob is near here, and Bob allows Alice to see him in the radar, but they are not near enough
-* _Now, Bob has changed his mind, and is bored from laying on the coach, and wants to share his location with Alice, just in case she is online allowing them to meet. But Alice, breaking COVID-19 restrictions by the gobernment, has gone to take a walk with her dog, and without realizing, she left the town.
+=== Alice wants to know if Bob is near her, and Bob allows Alice to see him in the radar, but they are not near enough
+* _Now, Bob has changed his mind, and is bored from laying on the coach, and wants to share his location with Alice, just in case she is online allowing them to meet. But Alice, breaking COVID-19 restrictions by the government, has gone on a walk with her dog, and without realizing, she left town.
 However, she remains online in the app, but it is not able to see Bob there._
-* _As you can see in the diagram below, at first Alice has to authenticate and allow sharing his location in order to find his mutuals between a proximity radius.
+* _As you can see in the diagram below, at first Alice has to authenticate and allow sharing her location in order to find her mutuals in a proximity radius.
     Then, her pod shares the location with the App, that will compute the distance to the mutuals that have previously allowed the App to do so. In this case, Alice wants to see in the radar Bob's location, that hasn't previously allowed the App to share the location.
     As a consequence, the App sends a request to Bob's pod, and the pod, to Bob respectively.
     Bob is bored, so he accepts the petition, and then the response is sent to the pod, and then to the App
-    But this time, the App is trying to match both Alice and Bob locations, but they escape from the proximity range established, so it has to manage this not showing Bob in Alice's radar._
+    But this time, the App is trying to match both Alice and Bob locations, but they are outside the proximity range established, so it has to manage this by not showing Bob in Alice's radar._
 
 [plantuml,"Sequence diagram 3",png]
 ----
