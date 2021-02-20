@@ -79,7 +79,7 @@ Fast and responsive times when accessing information and features.
 With timming close to the following:
 - Under 4 seconds for logging in.
 - Sending the current location and receiving other friends locations every 15-20 seconds (more or less time can maybe be setup using the app, so users can choose between using a more or less resource consuming approach, and thus adding more flexibility)
-- Sending information such as reviews / pictures in 10 seconds or less.
+- Sending information such as reviews / pictures in 5 seconds or less.
 
 .Usability
 Having an easy to learn, easy to use application which anyone can install and run with close to no doubts or problems.
