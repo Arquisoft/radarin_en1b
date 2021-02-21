@@ -98,7 +98,8 @@ The system will be deployed from docker containers and also deployed in a cloud 
 
 ==== _Code generation_
 
-The application will be made using React 
+The application will be made using React framework, a framework based around the use of components, which allows for the posibility to design complex UIs with the composition of different components. It is written using Javascript, which also allows for the use of 
+external plugins to further improve flexibility and increment the application.
 
 ==== _Migration_
 
