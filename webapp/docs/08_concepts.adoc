@@ -81,7 +81,8 @@ The user interface will be made using https://reactjs.org/[React framework], a c
 
 ==== _Ergonomics_
 
-The application will not have a high learning curve since the functionality will be very clear because of the usage of maps, thus guaranteeing that users of all ages will be able to understand the application.
+The application will not have a high learning curve since the functionality will be very clear because of the usage of familiarization, thus guaranteeing that users of all ages will be able to understand and use the application.
+As the UI is simple to learn and use, the amount of rejection by the user is reduced, and so, a happy user.
 
 ==== _Internationalization_
 
