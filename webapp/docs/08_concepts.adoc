@@ -77,7 +77,7 @@ used it before, such as a map, or a very simple UI). With this, a lot of prototy
 
 ==== _User Interface_
 
-The user interface will be made using https://reactjs.org/[React].
+The user interface will be made using https://reactjs.org/[React framework], a component based framework capable of complex UIs. The idea for the UI is to be simple, but at the same time be able to have all the features necessary for the development of the final product.
 
 ==== _Ergonomics_
 
