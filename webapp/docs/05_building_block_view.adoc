@@ -56,8 +56,11 @@ Since there are so many ways to specify interfaces why do not provide a specific
 In the best case you will get away with examples or simple signatures.
 
 ****
+// _**<Overview Diagram>**_ //
 
-_**<Overview Diagram>**_
+
+
+image:Doc5-BuildingBlockView.png["Hierarchy of building blocks"]
 
 Motivation::
 
