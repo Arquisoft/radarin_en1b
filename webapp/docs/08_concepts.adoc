@@ -107,11 +107,11 @@ external plugins to further improve flexibility and increment the application.
 
 === _Under-the-hood_
 
-The persistence of the data is supported in the system, since the web application will store the information the users work with; hence, as long as the user keeps connected, the data will be correctly stored in the server. 
-A transaction will be made when the user wants to store a location in the server, if somehow the transaction fails due to a network issue, such location will be stored to later be stored when the network is restored. Other possible errors should be also managed, closing the application safely and asking the user to report the error 
-The communication between the application and the web application will only be noticed by the user when they want to store the location, since it may take a little delay to connect to the server.
-The sessions will be managed using the tools Javascript provides to us.
-Validation of data is also provided within the app, checking that every data introduced by the user has the expected type.
+The persistence of data is supported in the system, since the web application will store the information the users work with; hence, as long as the user keeps connected, the data will be correctly stored in the server. 
+A transaction will be made when the user wants to store a location in the server, if somehow the transaction fails due to a network issue, such location will be saved to later be stored when the network is restored. Other possible errors should be managed, closing the application safely and asking the user to report the error 
+The communication between the application and the web application will only be noticed by the user when they want to store the location, since it may have some delay when connecting to the server.
+The sessions will be managed using the tools provided by Javascript.
+Validation of data is also provided within the app, checking that data introduced by the user has the expected type.
 
 
 
