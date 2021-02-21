@@ -72,6 +72,8 @@ The architecture of the application will be built around the MVC structure (Mode
 As such, data, models and controllers will be highly differentiated. The controllers will manage the user interface and models for data; and as such, the model will communicate with our server, in specific repositories where all the data is stored.
 
 === _User Experience_
+The experience of users when first using the application will be a simple to use and easy to learn process, with the help of techniques like familiarization (if we are used to something in the real world, modelling in an application will give the user the confidence and knowledge of having
+used it before, such as a map, or a very simple UI). With this, a lot of prototyping is involved, as developers will find it easy because they have developed it and know where everything is placed.
 
 ==== _User Interface_
 
