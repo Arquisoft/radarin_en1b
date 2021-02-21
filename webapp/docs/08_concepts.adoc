@@ -50,18 +50,93 @@ image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscuttin
 ****
 
 
-=== Domain model
+=== _Domain model_
 
-image:UmlDiagram.png["Example UML Diagram"]
+image:UmlDiagram.jpg["Domain of the application"]
 
 
 
-=== _<Concept 2>_
+=== _Domain Concepts_
 
-_<explanation>_
+|===
+| Name        | Description
+| User    | Represents the user of the application. It is identified by the username, that must be unique to each user. Since the application provides the option for users to be notified by nearby user friends, the current location of the user and a reference to a list of all of the friends of the user must be also used.
+| Location     | Represents a location that the user might want to store in the server. This location will have a name, and the current coordinates of the location will also be stored.
+| Coordinate     | Represents the coordinates of a user or of a location. It will store in its attributes the specific height, width... of the concrete coordinate. 
+|===
 
-...
 
-=== _<Concept n>_
+=== _Architecture and Design Patterns_
 
-_<explanation>_
+The architecture of the application will be built around the MVC structure (Model–view–controller), spliting the different sections of the application in different areas to assure everything works as expected and to ease the work of implementing quality changes.
+As such, data, models and controllers will be highly differentiated. The controllers will manage the user interface and models for data; and as such, the model will communicate with our server, in specific repositories where all the data is stored.
+
+=== _User Experience_
+The experience of users when first using the application will be a simple to use and easy to learn process, with the help of techniques like familiarization (if we are used to something in the real world, modelling in an application will give the user the confidence and knowledge of having
+used it before, such as a map, or a very simple UI). With this, a lot of prototyping is involved, as developers will find it easy because they have developed it and know where everything is placed.
+
+==== _User Interface_
+
+The user interface will be made using https://reactjs.org/[React framework], a component based framework capable of complex UIs. The idea for the UI is to be simple, but at the same time be able to have all the features necessary for the development of the final product.
+
+==== _Ergonomics_
+
+The application will not have a high learning curve since the functionality will be very clear because of the usage of familiarization, thus guaranteeing that users of all ages will be able to understand and use the application.
+As the UI is simple to learn and use, the amount of rejection by the user is reduced, and so, a happy user.
+
+==== _Internationalization_
+
+Due to the nature of the course (being a bilingual subject, taught in English), English must be supported, Spanish might be supported as well.
+
+=== _Security & Safety_
+
+No part of the application has life endangering aspects since all the applications asks for is the user's information, which will be securely stored using Pods. Resulting in the user specfying the information to be shown.
+Using HTTP protocols, we ensure the security and the integrity of all the data that the application may exchange with the server.
+
+=== _Development Concepts_
+The ability to:
+
+- Design complex but easy to learn/use UIs
+
+- Understand the functionality of Docker and Heroku
+
+- Have knowledge of Javascript
+
+- Work in teams
+
+- Properly use a online repository
+
+==== _Build, Test, Deploy_
+
+The system will be deployed from docker containers and also deployed in a cloud service called heroku. The application will be tested in a run automatically continuous integration server, which will allow us to make sure that everything is running and working in real time.
+
+==== _Code generation_
+
+The application will be made using React framework, a framework based around the use of components, which allows for the posibility to design complex UIs with the composition of different components. It is written using Javascript, which also allows for the use of 
+external plugins to further improve flexibility and increment the application.
+
+==== _Migration_
+
+When migrating as all information is stored in Pods for each user, all data is recovered when logging into the application, friends, reviews, pictures is all recovered from the cloud.
+
+==== _Configurability_
+The user should be able to configure:
+
+- The map radius.
+
+- The application sends the location to the server.
+
+- The information shown to friends.
+
+
+=== _Under-the-hood_
+
+The persistence of data is supported in the system, since the web application will store the information the users work with; hence, as long as the user keeps connected, the data will be correctly stored in the server. 
+A transaction will be made when the user wants to store a location in the server, if somehow the transaction fails due to a network issue, such location will be saved to later be stored when the network is restored. Other possible errors should be managed, closing the application safely and asking the user to report the error 
+The communication between the application and the web application will only be noticed by the user when they want to store the location, since it may have some delay when connecting to the server.
+The sessions will be managed using the tools provided by Javascript.
+Validation of data is also provided within the app, checking that data introduced by the user has the expected type.
+
+
+
+
