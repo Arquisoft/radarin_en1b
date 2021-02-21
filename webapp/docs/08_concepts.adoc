@@ -86,14 +86,25 @@ As the UI is simple to learn and use, the amount of rejection by the user is red
 
 ==== _Internationalization_
 
-Due to the nature of the course (being a bilingual subject, taught in English), English must be supported, although Spanish might be supported too.
+Due to the nature of the course (being a bilingual subject, taught in English), English must be supported, Spanish might be supported as well.
 
 === _Security & Safety_
 
-No part of the application has life endangering aspect since all the applications asks for is the users information, which will be securely stored using Pods. Resulting in the user specfying the information to be shown.
+No part of the application has life endangering aspects since all the applications asks for is the user's information, which will be securely stored using Pods. Resulting in the user specfying the information to be shown.
 Using HTTP protocols, we ensure the security and the integrity of all the data that the application may exchange with the server.
 
 === _Development Concepts_
+The ability to:
+
+- Design complex but easy to learn/use UIs
+
+- Understand the functionality of Docker and Heroku
+
+- Have knowledge of Javascript
+
+- Work in teams
+
+- Properly use a online repository
 
 ==== _Build, Test, Deploy_
 
