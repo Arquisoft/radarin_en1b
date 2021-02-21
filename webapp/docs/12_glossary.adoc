@@ -40,6 +40,9 @@ Potentially more columns in case you need translations.
 | Ergonomics     | Software ergonomics is a subcategory of ergonomics that concerns the software design, rather than the hardware design, of systems. Software ergonomics includes the determination of user needs, interface design, user support and usability testing.
 | MVC     | Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements.
 | React    | React is an open-source, front end, JavaScript library for building user interfaces or UI components. 
+| Controller    | A controller is a program component that serves as a mediator between a user and application and handles business-related tasks triggered in user interface field.
+| Repository    | A central location in which data is stored and managed.
+| HTTP protocol    | Stands for "Hypertext Transfer Protocol." HTTP is the protocol used to transfer data over the web. It is part of the Internet protocol suite and defines commands and services used for transmitting webpage data.
 | Migration    | Software migration is the practice of transferring data, accounts, and functionality from one operating environment to another.
 | Under-the-hood   | Used to introduce the underlying implementation of a software. Implies that the implementation is not intuitively obvious from the appearance, but the speaker is about to enable the listener to grok it.
 |===
