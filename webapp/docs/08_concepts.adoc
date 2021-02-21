@@ -68,18 +68,18 @@ image:UmlDiagram.jpg["Domain of the application"]
 
 === _Architecture and Design Patterns_
 
-The architecture of the application will be built around the MVC structure, spliting the different sections of the application in different areas to assure everything works fine and to ease the work that might take to implement quality changes.
-As such, data, models and controllers will be higly differentiated. The controllers will manage the user interface and will ask data to the models; and as such, the model will communicate with the data we have stored in our server, in specific repositories where all the data is stored.
+The architecture of the application will be built around the MVC structure (Model–view–controller), spliting the different sections of the application in different areas to assure everything works as expected and to ease the work of implementing quality changes.
+As such, data, models and controllers will be highly differentiated. The controllers will manage the user interface and models for data; and as such, the model will communicate with our server, in specific repositories where all the data is stored.
 
 === _User Experience_
 
 ==== _User Interface_
 
-The user interface will be made using React.
+The user interface will be made using https://reactjs.org/[React].
 
 ==== _Ergonomics_
 
-The application will not have a high learning curve since the functionality will be very clear because of the usage of maps, thus guaranteeing that users of all ages may be able to use the application.
+The application will not have a high learning curve since the functionality will be very clear because of the usage of maps, thus guaranteeing that users of all ages will be able to understand the application.
 
 ==== _Internationalization_
 
@@ -87,18 +87,18 @@ Due to the nature of the course (being a bilingual subject, taught in English), 
 
 === _Security & Safety_
 
-No part of the application has life endangering aspect since all the information is stored in Pods, resulting in only the user having their specific information.
-Using HTTP protocols, we ensure the security and the integrity of all the data the application may exchange between it and the server.
+No part of the application has life endangering aspect since all the applications asks for is the users information, which will be securely stored using Pods. Resulting in the user specfying the information to be shown.
+Using HTTP protocols, we ensure the security and the integrity of all the data that the application may exchange with the server.
 
 === _Development Concepts_
 
 ==== _Build, Test, Deploy_
 
-The system will be deployed from docker containers and also deployed in a cloud service like heroku. The application will be tested in a run automatically continuous integration server.
+The system will be deployed from docker containers and also deployed in a cloud service called heroku. The application will be tested in a run automatically continuous integration server, which will allow us to make sure that everything is running and working in real time.
 
 ==== _Code generation_
 
-The application will be made using React.
+The application will be made using React 
 
 ==== _Migration_
 
