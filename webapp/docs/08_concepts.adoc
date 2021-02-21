@@ -68,7 +68,8 @@ image:UmlDiagram.jpg["Domain of the application"]
 
 === _Architecture and Design Patterns_
 
-The architecture of the application will be built around the MVC philosophy, dividing the different sections of the application in different areas to assure everything works fine and to ease the work that might take to implement quality changes.
+The architecture of the application will be built around the MVC structure, spliting the different sections of the application in different areas to assure everything works fine and to ease the work that might take to implement quality changes.
+As such, data, models and controllers will be higly differentiated. The controllers will manage the user interface and will ask data to the models; and as such, the model will communicate with the data we have stored in our server, in specific repositories where all the data is stored.
 
 === _User Experience_
 
@@ -86,13 +87,8 @@ Due to the nature of the course (being a bilingual subject, taught in English), 
 
 === _Security & Safety_
 
-==== _Security_
-
-
-==== _Safety_
-
-No part of the application has life endangering aspect since all the information is stored in pods.
-
+No part of the application has life endangering aspect since all the information is stored in Pods, resulting in only the user having their specific information.
+Using HTTP protocols, we ensure the security and the integrity of all the data the application may exchange between it and the server.
 
 === _Development Concepts_
 
@@ -102,6 +98,8 @@ The system will be deployed from docker containers and also deployed in a cloud 
 
 ==== _Code generation_
 
+The application will be made using React.
+
 ==== _Migration_
 
 ==== _Configurability_
@@ -109,9 +107,11 @@ The system will be deployed from docker containers and also deployed in a cloud 
 === _Under-the-hood_
 
 The persistence of the data is supported in the system, since the web application will store the information the users work with; hence, as long as the user keeps connected, the data will be correctly stored in the server. 
-A transaction will be made when the user wants to store a location in the server, if somehow the transaction fails due to a network issue, such location will be stored to later be stored when the network is restored.
+A transaction will be made when the user wants to store a location in the server, if somehow the transaction fails due to a network issue, such location will be stored to later be stored when the network is restored. Other possible errors should be also managed, closing the application safely and asking the user to report the error 
 The communication between the application and the web application will only be noticed by the user when they want to store the location, since it may take a little delay to connect to the server.
+The sessions will be managed using the tools Javascript provides to us.
+Validation of data is also provided within the app, checking that every data introduced by the user has the expected type.
 
-=== _Operation Concepts_
+
 
 
