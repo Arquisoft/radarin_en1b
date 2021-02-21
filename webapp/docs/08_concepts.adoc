@@ -118,6 +118,14 @@ external plugins to further improve flexibility and increment the application.
 ==== _Migration_
 
 ==== _Configurability_
+The user should be able to configure:
+
+- The map radius.
+
+- The application sends the location to the server.
+
+- The information shown to friends.
+
 
 === _Under-the-hood_
 
