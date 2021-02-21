@@ -2,10 +2,10 @@
 == Solution Strategy
 
 === Technology decisions
-_radarin_ is an application built mainly in JavaScript that wants to be user friendly when managing the information, that's why it uses *SOLID*, which is basically a technology that allows the users to store their data on a Solid POD, where they have full control over it, managing which slices of the POD are shared with those who access it.
+_radarin_ is an application built mainly in JavaScript that strives to be user friendly when managing the information, that's why it uses *SOLID*, which is a web decentralization project that allows the users to store their data in a Solid POD, where they have full control over it, managing which slices of the POD are shared with those who access it.
 
 In terms of functionality, _radarin_ uses *Docker* and *React* as tools for working with the software.
-*Docker* is a software platform which packs software in standarized units called containers, which include everything necessary for the sofware to be executed. This means that Docker allows combining application source code with all the operating system libraries and dependencies required to run the code in any environment.
+*Docker* is a software platform which packs software in standarized units called containers, which includes everything necessary for the software to be executed. This means that Docker allows combining application source code with all the operating system libraries and dependencies required to run the code in any environment.
 *React* is a JavaScript library to build user interfaces. It is based on isolated components that manage their own state, allowing to build powerful and complex user interfaces in an easy way.
 
 The database that we manage within the application is a NoSQL database, specifically, a *MongoDB* database. This will ease communication with data since the transactions with the database will be via aggregates, which are organized in a JSON (JavaScript Object Notation) structure, simplifying a lot their management in JavaScript.
