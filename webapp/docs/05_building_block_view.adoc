@@ -203,7 +203,7 @@ _<white box template>_
 
 ////
 
-=== Level 3
+=== Level 2 
 
 [role="arc42help"]
 ****
@@ -213,24 +213,19 @@ When you need more detailed levels of your architecture please copy this
 part of arc42 for additional levels.
 ****
 
+Motivation::
 
-==== White Box <_building block x.1_>
+Show the decomposition of the Web Application to include relevant parts of the main part of the system, the web application.
 
-[role="arc42help"]
-****
-Specifies the internal structure of _building block x.1_.
-****
+Contained Building Blocks::
+[options="header",cols="1,3"]
+|===
+|**Name** | **Responsability**
+|Components | Javascript components created by React as a way of building blocks of code and ensure reusability and independence.
 
+|ComponentsTests | Tests included in the web application to ensure the proper functioning of the React components.
 
-_<white box template>_
-
-
-==== White Box <_building block x.2_>
-
-_<white box template>_
-
+|Services | Clases of the application in charge of interact with the Solid POD's and use the user data in a proper way. 
+|===
 
 
-==== White Box <_building block y.1_>
-
-_<white box template>_
