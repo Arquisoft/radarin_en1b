@@ -35,6 +35,7 @@ Potentially more columns in case you need translations.
 | Heroku     | Heroku is a cloud platform as a service (PaaS)that allows develoopers to build, run and scale applications supporting several programming languages such as Ruby, Java, Node.js, Python.
 | HTTP protocol    | Stands for "Hypertext Transfer Protocol." HTTP is the protocol used to transfer data over the web. It is part of the Internet protocol suite and defines commands and services used for transmitting webpage data.
 | Migration    | Software migration is the practice of transferring data, accounts, and functionality from one operating environment to another.
+| MongoDB   | Open-source document-oriented NoSQL database program. Instead of storing the data in tables, it saves BSON (similar to JSON) data structures.
 | MVC     | Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements.
 | Pod     | Pods are where you store your data. Any kind of data can be stored in a Pod. Once stored in a Pod, you control who can access your data.
 | React    | React is an open-source, front end, JavaScript library for building user interfaces or UI components. 
