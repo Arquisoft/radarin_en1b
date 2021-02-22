@@ -33,7 +33,7 @@ Potentially more columns in case you need translations.
 | Docker     | Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
 | Virtualization     | Virtualization is the act of creating a virtual (rather than actual) version of something, including virtual computer hardware platforms, storage devices, and computer network resources.
 | Container     | A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
-| Heroku     | Heroku is a cloud platform as a service (PaaS)that allows develoopers to build, run and scale applications supporting several programming languages such as Ruby, Java, Node.js, Python
+| Heroku     | Heroku is a cloud platform as a service (PaaS)that allows develoopers to build, run and scale applications supporting several programming languages such as Ruby, Java, Node.js, Python.
 | Cloud server     | A cloud server is a pooled, centralized server resource that is hosted and delivered over a network and accessed on demand by multiple users.
 | Continuous integration   | Continuous Integration is a development practice that requires developers to integrate code into a shared repository several times a day.
 | SOLID     | In object-oriented computer programming, SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.
