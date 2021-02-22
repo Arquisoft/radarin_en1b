@@ -24,3 +24,8 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+
+
+In this section of the documentation, each important decision will take place making use of a specific format related to
+the topic: *ADR* (_architecture decision record_), a document that captures a decision, but also including, inter alia,
+the context or the consequences.
