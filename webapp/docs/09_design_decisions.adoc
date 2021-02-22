@@ -74,3 +74,24 @@ Consequences::
 
 Nowadays, Heroku supports several databases such as MongoDB or PostgreSQL. As a consequence, we can take advantage of one of
 them and add it to the project to cover the persistence layer.
+
+=== MongoDB for Persistence Layer
+
+Context::
+
+In addition to the compatibility with the SOLID project and its associated user pods designed for storing personal data in a
+decentralized way, the system still needs to store locations and timestamps in which those locations happens.
+
+Decision::
+
+For being able to reach this point, a database like *MongoDB* is required to save this type of information. Moreover, in the last
+ADR it is written that Heroku is compatible with this kind of database. Then, we think it is a good decision.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+MongoDB is defined as "a document database with the scalability and flexibility that you want with the querying and
+indexing that you need". In our case, we will combine its use with JSON objects carrying the needed data.
