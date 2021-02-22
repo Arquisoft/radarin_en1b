@@ -34,7 +34,7 @@ Thus it contains the white box description of selected building blocks of level 
 *Level 3* zooms into selected building blocks of level 2, and so on.
 ****
 
-=== Whitebox Overall System
+=== Whitebox Overall System (Scope & Context)
 
 [role="arc42help"]
 ****
@@ -58,20 +58,28 @@ In the best case you will get away with examples or simple signatures.
 ****
 // _**<Overview Diagram>**_ //
 
-
-
 image:Doc5-BuildingBlockView.png["Hierarchy of building blocks"]
 
 Motivation::
 
-_<text explanation>_
+The Radarin System accessed by two types of actors (users & administrator) which conects to the Solid POD Provider to access the user personal data.
+The system will be subdived in two main software components to meet the project requirements.
 
 
 Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
+[options="header",cols="1,2"]
+|===
+|**Name** | **Responsability**
+|Radarin | Whole system designed to be used by users and administrators and able to conect to the user POD provider.
 
+|Solid POD Provider | Neighbour system that store the POD for each of the users.
+|===
+
+// Not yet implemented. 
+////
 Important Interfaces::
 _<Description of important interfaces>_
+////
 
 [role="arc42help"]
 ****
@@ -92,7 +100,7 @@ responsibility according to the following schema:
 If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
 Its headline is the name of the black box.
 ****
-
+////
 
 ==== <Name black box 1>
 
@@ -140,9 +148,9 @@ _<black box template>_
 
 ==== <Name interface m>
 
+////
 
-
-=== Level 2
+=== Level 1
 
 [role="arc42help"]
 ****
@@ -153,6 +161,25 @@ Please prefer relevance over completeness. Specify important, surprising, risky,
 Leave out normal, simple, boring or standardized parts of your system
 ****
 
+Motivation::
+
+Show the decomposition of the Radarin system in the two software components, how both of them relate with the different actors in the application and the way they interact with the User POD and other neighbour systems.
+
+
+Contained Building Blocks::
+[options="header",cols="1,3"]
+|===
+|**Name** | **Responsability**
+|Mobile Application | Used by users to recive notifications from nearby friends and sending locations to the server.
+
+|Web Application | Used by the users to manage and visualize locations and by the administrator to manage users and monitor server status. It access the user data by means of the POD.
+
+|User POD | Provided by the Solid POD Provider, stores the personal data of the user such as it friend list.
+
+|Server Monitoring Tool | Foreign System in charge of monitoring the server status. 
+|===
+
+////
 ==== White Box _<building block 1>_
 
 [role="arc42help"]
@@ -174,7 +201,7 @@ _<white box template>_
 
 _<white box template>_
 
-
+////
 
 === Level 3
 
