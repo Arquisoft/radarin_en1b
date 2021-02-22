@@ -29,3 +29,26 @@ Various options:
 In this section of the documentation, each important decision will take place making use of a specific format related to
 the topic: *ADR* (_architecture decision record_), a document that captures a decision, but also including, inter alia,
 the context or the consequences.
+
+=== React for User Interfaces
+
+Context::
+
+The basis of this project rests on two important foundations, two applications designed for both web and mobile.
+Then, as the MVC (model-view-controller) is the software design pattern used, something is needed for building user
+interfaces.
+
+Decision::
+
+In order to achieve this goal, we have decided to use *React*, which is a JavaScript library created by Facebook
+with that precise intention. It may be seen as a requirement at first, but it is only a given advice so we use it in the
+development of Radarin.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+React, as it has already been said, is a framework for creating complex UIs based on components. The main reasons for using
+it are its simplicity, its native aproach and its high testability.
