@@ -52,3 +52,25 @@ Consequences::
 
 React, as it has already been said, is a framework for creating complex UIs based on components. The main reasons for using
 it are its simplicity, its native aproach and its high testability.
+
+=== Deployment on Heroku
+
+Context::
+
+According to the high level requirements, we know that the system will have to be deployed from docker
+containers, but also in a cloud service.
+
+Decision::
+
+*Heroku* is a cloud Paas (platform as a service) that supports different programming languages, and it
+is the cloud service proposed as the unique example in the project assignment, so at first glance we opted for choosing
+it.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+Nowadays, Heroku supports several databases such as MongoDB or PostgreSQL. As a consequence, we can take advantage of one of
+them and add it to the project to cover the persistence layer.
