@@ -4,26 +4,24 @@
 === Technology decisions
 _radarin_ is an application built mainly in JavaScript that strives to be user friendly when managing the information, that's why it uses *SOLID*, which is a web decentralization project that allows the users to store their data in a Solid POD, where they have full control over it, managing which slices of the POD are shared with those who access it.
 
-In terms of functionality, _radarin_ uses *Docker* and *React* as tools for working with the software.
+In terms of functionality, _radarin_ uses *Docker* and *React* as tools for working with the software of the Main Web App.
 *Docker* is a software platform which packs software in standarized units called containers, which includes everything necessary for the software to be executed. This means that Docker allows combining application source code with all the operating system libraries and dependencies required to run the code in any environment.
-*React* is a JavaScript library to build user interfaces. It is based on isolated components that manage their own state, allowing to build powerful and complex user interfaces in an easy way.
-
-The database that we manage within the application is a NoSQL database, specifically, a *MongoDB* database. This will ease communication with data since the transactions with the database will be via aggregates, which are organized in a JSON (JavaScript Object Notation) structure, simplifying a lot their management in JavaScript.
-
+*React* is a JavaScript library to build user interfaces. It is based on isolated components that manage their own state, allowing to build powerful and complex user interfaces in an easy way. Some other options we took into account were Vue.js and Angular, which are other JavaScript frameworks, but as the proposed technology for us at the beggining was *React*, we decided to stick to it, since we all read the *React* tutorial after the first class and the sample program to manage POD's provided to us was also written using this library (so we can understand the aspects covered in the code sample better, and perhaps reuse features of this code in our actual implementation).
+The database that we manage within the application is a NoSQL database, specifically, a *MongoDB* database. This will ease communication with data since the transactions with the database will be via aggregates, which are organized in a JSON (JavaScript Object Notation) structure, simplifying a lot their management in JavaScript. The fact that these aggregates are organized in JSON structure made us choose this database type over other NoSQL databases such like Cassandra, and relational databases such like MariaDB. We are aware of the weaknesses of NoSQL databases, as they are not as developed as traditional relational databases which offer for example, immediate consistency of data and secure transactions, but the database is not a key aspect in our application. The key aspects are the communications between the main application, the mobile devices and the user POD's. The Database will be useful to save little amounts of information that are not supposed to be queried very often, so we decided to keep it simple in this aspect and focus on the other, more important things.
 Some of these technology decisions that we took make a huge impact on quality. For example, by working with *React* we can ensure complex and functional user interfaces, by using *Docker* we free the user from compatibility or dependency issues when running the app, and by using *SOLID* technology we allow the users to have control over their privacy.
+
+We also use *React* to develop the Mobile app. Concretely, we use *React Native* which is a framework based on the *React* JavaScript library that allows applications written using the *React* library to run natively on iOS an Android. We considered using Java/Kotlin on this, but since not all of us know about programming for Mobile devices, we decide it to keep it in a language that all of us would understand to avoid the creation of specialized sub-teams and for anybody to be able to help a teammate in case of trouble.
 
 === Decisions about the top-level decomposition of the system
 The architectural pattern that we will be using in our project is a slight modification of a *Client-Server* pattern. In this variation, we have a client which requests from many servers that are managed by different users (the User PODs). They are decentralized databases that the client is going to query and manage.
 
 === Quality goals
-We aim to obtain several quality goals in radarin:
 [options="header",cols="1,2"]
 |===
 |Quality goal|Description
-| User data-friendly | One of the main goals of the application is to be friendly in terms of user information management. That's why we use SOLID technology, allowing users to be the absolute owners of their own data.
-| Non-frustrating | As we are developing an application that bases on user interaction, one of our main goals is to lower as much as possible the latency
-or lag between operations to keep the users waiting as less as possible.
-| Tested | Our application must behave correctly under different scenarios. That's why we perform extensive testing to check that everything works fine.
+| Security | One way to protect our users is to use SOLID, since we only manage information that the users want to share in their PODs. In the meantime, we mantain the users in the database using ID's, so that their information is not compromised.
+| Performance | In our application, we try to keep databases simple. This way we can focus on improve the different communications between the devices, and query the databases the least number of times as possible to not introduce lag or waiting times in these expensive operations.
+| Usability | We try to make our application look familiar, that's why we use the Google Maps API to display the nearby users.
 |===
 
 === Organizational decisions
