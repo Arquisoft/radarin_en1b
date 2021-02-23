@@ -11,15 +11,20 @@ These are:
 * User 
 
 The basic interactions of these parts can be observed in the following diagram
-[plantuml,"Component diagram",png]
+[plantuml,"ComponentDiagramContextAndScope",png]
 ----
-:User1: --> [User1's Pod]: interacts
-[User1's Pod] --> [Main App]: Send location
-[Main App] --> [User1's Pod]: Manages
-:User2: --> [User2's Pod]: interacts
-[User2's Pod] - [User1's Pod]: send notifications
-[User2's Pod] --> [Main App]: Send location
-[Main App] --> [User2's Pod]: Manages
+database "User1's POD" as Pod1
+database "User2's POD" as Pod2
+component "Mobile App" as MAV1
+component "Mobile App" as MAV2
+:User1: --> [MAV1]: interacts
+:User2: --> [MAV2]: interacts
+[MAV1] --> [Pod1]: manages
+[MAV2] --> [Pod2]: manages
+[Web Main App] - [MAV1]: exchange information
+[Web Main App] - [MAV2]: exchange information
+[Web Main App] --> [Pod1]: accesses
+[Web Main App] --> [Pod2]: accesses
 ----
 
 In the following table, we will explain the roles, and the actions they perform, explained in the
@@ -34,22 +39,10 @@ previous diagram.
 |===
 
 === Technical Context
-[plantuml, "Deployment diagram", png]
-----
-package "Deployment diagram" {
-  database "User's POD"{
-      component [User's Information] as UInfo
-  }
-  node "Cloud Platform <i>(Heroku)" {
-      component [Main App] as MApp
-      MApp --> UInfo
-  }
-}
-----
-==== Technical components
+The technical context components are the following:
 [options="header",cols="1,2"]
 |===
 |Component|Description
-| Heroku | Heroku is the Cloud Platform where we are going to deploy Radarin's main app, so it will be available to manage the different decentralized transactions between the users, accessing their PODs.
-| User PODs | User Pod's act as decentralized databases. They use SOLID technology, so that users control which applications can access their data, meaning that the Main Web App will store only the minimal information, and the rest will be queried to the POD.
+| Heroku | Heroku is the Cloud Platform where we are going to deploy Radarin's main app, so it can be available to manage the different decentralized transactions between the users, accessing their PODs.
+| User PODs | User Pod's act as decentralized databases. They use SOLID technology, so that users control which and how applications can access their data, meaning that the Main Web App will store only the minimal information, and the rest will be queried to the POD.
 |===
