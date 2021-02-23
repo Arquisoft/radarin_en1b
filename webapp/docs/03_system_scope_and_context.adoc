@@ -3,10 +3,11 @@
 This chapter describes the environment and context of _radarin_: Who uses the system and on which other system does _radarin_ depend +
 
 === Business Context
-In the business context of Radarin we can distinguish three parts. 
+In the business context of Radarin we can distinguish four parts. 
 These are:
 
-* Application server 
+* Web Main App
+* Mobile App
 * User's POD 
 * User 
 
