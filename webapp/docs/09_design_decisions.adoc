@@ -24,3 +24,74 @@ Various options:
 * more detailed in form of separate sections per decision
 * ADR (architecture decision record) for every important decision
 ****
+
+
+In this section of the documentation, each important decision will take place making use of a specific format related to
+the topic: *ADR* (_architecture decision record_), a document that captures a decision, but also including, inter alia,
+the context or the consequences.
+
+=== React for User Interfaces
+
+Context::
+
+The basis of this project rests on two important foundations, two applications designed for both web and mobile.
+Then, as the MVC (model-view-controller) is the software design pattern used, something is needed for building user
+interfaces.
+
+Decision::
+
+In order to achieve this goal, we have decided to use *React*, which is a JavaScript library created by Facebook
+with that precise intention. It may be seen as a requirement at first, but it is only a given advice so we use it in the
+development of Radarin.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+React, as it has already been said, is a framework for creating complex UIs based on components. The main reasons for using
+it are its simplicity, its native aproach and its high testability.
+
+=== Deployment on Heroku
+
+Context::
+
+According to the high level requirements, we know that the system will have to be deployed from docker
+containers, but also in a cloud service.
+
+Decision::
+
+*Heroku* is a cloud Paas (platform as a service) that supports different programming languages, and it
+is the cloud service proposed as the unique example in the project assignment, so at first glance we opted for choosing
+it.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+Nowadays, Heroku supports several databases such as MongoDB or PostgreSQL. As a consequence, we can take advantage of one of
+them and add it to the project to cover the persistence layer.
+
+=== MongoDB for Persistence Layer
+
+Context::
+
+In addition to the compatibility with the SOLID project and its associated user pods designed for storing personal data in a
+decentralized way, the system still needs to store locations and timestamps in which those locations happens.
+
+Decision::
+
+For being able to reach this point, a database like *MongoDB* is required to save this type of information. Moreover, in the last
+ADR it is written that Heroku is compatible with this kind of database. Then, we think it is a good decision.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+MongoDB is defined as "a document database with the scalability and flexibility that you want with the querying and
+indexing that you need". In our case, we will combine its use with JSON objects carrying the needed data.
