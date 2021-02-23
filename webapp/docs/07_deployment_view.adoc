@@ -5,6 +5,39 @@
 
 [role="arc42help"]
 ****
+
+[plantuml,"Component diagram",png]
+----
+node "Windows-PC" {
+     
+    component [Browser] as Navegador
+    
+ }
+
+node "Heroku server" as MainPage{
+    component "Web App" as MainApp {
+       component [index.html] as MainIndex
+    }
+    
+}
+
+Navegador --> MainPage
+
+node "Mobile Phone" as Mobile{
+     component "MobileApp" as MobileApp {
+        component [index.html] as MobileIndex
+     }
+     
+}
+
+database "User POD" as UPOD
+
+database "MainApp.db" as MainDatabase
+
+MainApp --> MainDatabase
+MainApp --> UPOD
+Mobile --> UPOD
+----
 .Content
 The deployment view describes:
 
