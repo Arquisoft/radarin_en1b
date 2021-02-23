@@ -6,38 +6,7 @@
 [role="arc42help"]
 ****
 
-[plantuml,"Component diagram",png]
-----
-node "Windows-PC" {
-     
-    component [Browser] as Navegador
-    
- }
 
-node "Heroku server" as MainPage{
-    component "Web App" as MainApp {
-       component [index.html] as MainIndex
-    }
-    
-}
-
-Navegador --> MainPage
-
-node "Mobile Phone" as Mobile{
-     component "MobileApp" as MobileApp {
-        component [index.html] as MobileIndex
-     }
-     
-}
-
-database "User POD" as UPOD
-
-database "MainApp.db" as MainDatabase
-
-MainApp --> MainDatabase
-MainApp --> UPOD
-Mobile --> UPOD
-----
 .Content
 The deployment view describes:
 
@@ -81,18 +50,49 @@ Describe (usually in a combination of diagrams, tables, and text):
 For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.
 ****
 
-_**<Overview Diagram>**_
+[plantuml,"Component diagram",png]
+----
+node "Windows-PC" {
+     
+    component [Browser] as Navegador
+    
+ }
+
+node "Heroku server" as MainPage{
+    component "Web App" as MainApp {
+       component [index.html] as MainIndex
+    }
+    
+}
+
+Navegador --> MainPage
+
+node "Mobile Phone" as Mobile{
+     component "MobileApp" as MobileApp {
+        component [index.html] as MobileIndex
+     }
+     
+}
+
+database "User POD" as UPOD
+
+database "MainApp.db" as MainDatabase
+
+MainApp --> MainDatabase
+MainApp --> UPOD
+Mobile --> UPOD
+----
 
 Motivation::
 
-_<explanation in text form>_
+_The principal motivation for choosing this structure, was to make the application decentralized. We want to store the minimum data needed of the users in our databases. Of course we will ask users for information, but they decide what to share._
 
 Quality and/or Performance Features::
 
-_<explanation in text form>_
+_Regarding performance terms, our software will work very fluent, as the majority of the data will be stored in the user's devices, not needing to access the server database except for excepcional situations, where some information will be asked to the users to be shared, but that will not be stored in the database._
 
 Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
+_Mobile phone and Windows devices will be the user's devices that will access the Application, passing through our server, where the application is deployed. Then, some data will be read from our database, and some other will be asked to the user to be shared and processed by the app, but not stored in our registries._
 
 
 === Infrastructure Level 2
@@ -104,16 +104,4 @@ Here you can include the internal structure of (some) infrastructure elements fr
 Please copy the structure from level 1 for each selected element.
 ****
 
-==== _<Infrastructure Element 1>_
 
-_<diagram + explanation>_
-
-==== _<Infrastructure Element 2>_
-
-_<diagram + explanation>_
-
-...
-
-==== _<Infrastructure Element n>_
-
-_<diagram + explanation>_
