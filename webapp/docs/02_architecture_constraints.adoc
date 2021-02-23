@@ -54,6 +54,9 @@ conventions (e.g. programming or versioning guidelines, documentation or naming 
 
 |Other projects & Subjects
 |All of the members of the team have other quite time-demanding subjects, so the time and effort invested in the project will not be as high as we desire.
+
+|Remote work
+|Due to the current situation related to COVID 19 the work will have to be carried out remotely and there will be no face-to-face meetings with the team.
 |===
 
 === Conventions
