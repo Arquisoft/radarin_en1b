@@ -39,21 +39,25 @@ Keep these excerpts as short as possible. Balance readability of this document w
 === Requirements Overview
 The requirements where provided to us https://arquisoft.github.io/course2021/labAssignmentDescription.html#requirements[here].
 
-Two Software components have to be taken into account:
+|Functional requirements |Implementation requirements
 
-    . A Web application running on a server.
+|To store, manage and visualize locations among other administration options.
+|A Web application that will run in a server.
 
-    Stores all data received from the application (stored in Pods). 
-    Minimum amount of information has to be stored.
-    Is the one charge of storing, managing and visualizing locations among other administration options (such as monitor the status of the server). 
+|Send locations and receive notifications from nearby users.
+|An application that will run in user's mobile phone.
 
-    . An application running on the user's phone.
-    
-    Sending the location to the server and receiving the location of nearby friends (only with the user's consent).
+|Store the minimum needed information of a user.
+|The application that acts as a server will store locations and references to the users' pods.
 
-Tools used for system deployment are https://www.docker.com/[docker] (containers) and https://heroku.com/[heroku] (cloud service).
+|Deploy the system.
+|The deployment will work from docker containers and from a cloud service like heroku.
 
-Unit, acceptance and load tests have to be designed and written to be run automatically in a continuous integration server.
+|Monitor the system.
+|Option included in the Web application, allowing also to monitor the server status.
+
+|Test that the system works properly.
+|Unitary tests and load tests running in a continuous integration server.
 
 [role="arc42help"]
 ****
