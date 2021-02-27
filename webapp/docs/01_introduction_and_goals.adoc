@@ -38,7 +38,7 @@ Keep these excerpts as short as possible. Balance readability of this document w
 
 === Requirements Overview
 The requirements where provided to us https://arquisoft.github.io/course2021/labAssignmentDescription.html#requirements[here].
-
+|===
 |Functional requirements |Implementation requirements
 
 |To store, manage and visualize locations among other administration options.
@@ -58,7 +58,7 @@ The requirements where provided to us https://arquisoft.github.io/course2021/lab
 
 |Test that the system works properly.
 |Unitary tests and load tests running in a continuous integration server.
-
+|===
 [role="arc42help"]
 ****
 .Contents
