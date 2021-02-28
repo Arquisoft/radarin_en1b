@@ -3,23 +3,29 @@
 This chapter describes the environment and context of _radarin_: Who uses the system and on which other system does _radarin_ depend +
 
 === Business Context
-In the business context of Radarin we can distinguish three parts. 
+In the business context of Radarin we can distinguish five parts. 
 These are:
 
-* Application server 
+* Web Main App
+* Main App Database
+* Mobile App
 * User's POD 
 * User 
 
 The basic interactions of these parts can be observed in the following diagram
-[plantuml,"Component diagram",png]
+[plantuml,"ComponentDiagramContextAndScope",png]
 ----
-:User1: --> [User1's Pod]: interacts
-[User1's Pod] --> [Main App]: Send location
-[Main App] --> [User1's Pod]: Manages
-:User2: --> [User2's Pod]: interacts
-[User2's Pod] - [User1's Pod]: send notifications
-[User2's Pod] --> [Main App]: Send location
-[Main App] --> [User2's Pod]: Manages
+database "Main Database" as Mdb
+database "User1's POD" as Pod1
+component "Web App" as WApp
+component "Mobile App" as MApp
+[WApp] --> [Mdb]: query
+[MApp] --> [Mdb]: query
+[WApp] --> [Pod1]: query
+[MApp] --> [Pod1]: query
+:User1: --> [WApp]: interacts
+:User1: --> [MApp]: interacts
+:User1: --> [Pod1]: manages
 ----
 
 In the following table, we will explain the roles, and the actions they perform, explained in the
@@ -28,28 +34,18 @@ previous diagram.
 [options="header",cols="1,2"]
 |===
 |Role/Name|Description
-| Main App | Main app manages every user's pod, it doesn't access user data until it gets the permission to do that, such that information of the friends of the user, its location... It helps user to interact between them 
-| Users | Users will use the application to share and interact with another users, by interacting with their respective pods.
-| User pods | Bridge between the Main App and the users. Users interact with them, and after permission by the user, it exchanges information with the Main App, for instance, the location of the user. It is managed by the Main App.
+| Main Web App | Users access their different localizations and add friends through this app.
+| Mobile App | Users can see their friends on a map and choose to actually share their location with their friends on this version of the app.
+| Main Database | On this database we can store the last location and its timestamp for the different users.
+| Users | Users will interact with the mobile or the web app to access to certain functions of the system
+| User pods | User Pods will belong to a certain user, and therefore will store things such like the friends of a user as well or its saved locations. They must be managed by the user itself. Changes on them require special permission from the user.
 |===
 
 === Technical Context
-[plantuml, "Deployment diagram", png]
-----
-package "Deployment diagram" {
-  database "User's POD"{
-      component [User's Information] as UInfo
-  }
-  node "Cloud Platform <i>(Heroku)" {
-      component [Main App] as MApp
-      MApp --> UInfo
-  }
-}
-----
-==== Technical components
+The technical context components are the following:
 [options="header",cols="1,2"]
 |===
 |Component|Description
-| Heroku | Heroku is the Cloud Platform where we are going to deploy Radarin's main app, so it will be available to manage the different decentralized transactions between the users, accessing their PODs.
-| User PODs | User Pod's act as decentralized databases. They use SOLID technology, so that users control which applications can access their data, meaning that the Main Web App will store only the minimal information, and the rest will be queried to the POD.
+| Heroku | Heroku is the Cloud Platform where we are going to deploy Radarin's main app, so it can be available to manage the different decentralized transactions between the users, accessing their PODs.
+| User PODs | User Pod's act as decentralized databases. They use SOLID technology, so that users control which and how applications can access their data, meaning that the Main Web App will store only the minimal information, and the rest will be queried to the POD.
 |===
