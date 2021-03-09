@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
-import { Map, GoogleApiWrapper,Marker} from 'google-maps-react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
-export class MapComponent extends Component {
-        constructor(){
-            super();
-            navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this));
-        }
-    
-        getPosicion(posicion){
-            this.long= posicion.coords.longitude; 
-            this.lat= posicion.coords.latitude;  
-        }
+export default class MapComponent extends Component {
+    state = {
+        locationDisplayed: false
+    };
 
-    openinfo(marker) {
-        //display the marker information
+    constructor() {
+        super();
+        navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this));
     }
-    
+
+    getPosicion(position) {
+        this.latitude  = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+    }
+
     retrieveMarkers() {
         //TODO
         //In this function we are going to query the pods and retrieve a user's coordinates
         return [
-            { 
+            {
                 name: "Oviedo",
                 comment: "La capital de Asturias!",
                 lat: 43.364739393028024,
                 lng: -5.8507182415799575
             },
 
-            { 
+            {
                 name: "Gijón",
                 comment: "Una ciudad preciosa!",
                 lat: 43.545142258113735,
@@ -45,52 +45,29 @@ export class MapComponent extends Component {
 
     render() {
         var markers = this.retrieveMarkers();
+        const position = [parseFloat(43), parseFloat(3)];
 
-        
-        return (<div className="map-area">
+        return (
+            <div className="map-area">
 
-                <Map
-                    center={{
-
-                        lat: this.lat,
-
-                        lng: this.long
-
-                    }}
-                    centerAroundCurrentLocation={true}
+                <MapContainer center={JSON.parse(position)} zoom={11} scrollWheelZoom={true}>
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {markers.map((marker) => {
+                        const markerPosition = [parseFloat(marker.lat), parseFloat(marker.lng)];
+                        return <Marker position={markerPosition}>
+                        <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                        </Marker> })}
                     
-                    google={this.props.google}
-                    zoom={11}
                     
-                    >
+                </MapContainer>,
 
-                    {markers.map((marker)=>{
-                        return <Marker key={marker.name}
+            </div>
+        );
 
-                        position={{
-
-                            lat: marker.lat,
-
-                            lng: marker.lng
-
-                        }}
-
-                        title = {marker.comment}
-                        />
-                     })}
-                    
-                </Map>
-
-            </div>);
-            
     }
 }
-
-export default GoogleApiWrapper({
-
-    apiKey: ("AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU")
-    
-    //AIzaSyBSuJOh_jsU3BGuOip776L9RW-XZGU8Dsk
-
-})(MapComponent);
- 
