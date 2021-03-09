@@ -63,38 +63,21 @@ export class MapComponent extends Component {
                     zoom={11}
                     
                     >
-                    <Marker 
-                        position={{
-                    
-                            lat: 43.364739393028024,
-                            lng: -5.8507182415799575
-                    
-                        }}
-                        title={"La capital de Asturias!"}
-                        >
-                    </Marker>
 
-                    <Marker 
+                    {markers.map((marker)=>{
+                        return <Marker key={marker.name}
+
                         position={{
-                    
-                            lat: 43.545142258113735,
-                            lng: -5.662559315448055
-                    
+
+                            lat: marker.lat,
+
+                            lng: marker.lng
+
                         }}
-                        title={"Una ciudad preciosa!"}
-                        >
-                    </Marker>
-                    
-                    <Marker 
-                        position={{
-                    
-                            lat: 43.56040003876269,
-                            lng: -5.924200713062158
-                    
-                        }}
-                        title={"Una zona muy industrial!"}
-                        >
-                    </Marker>
+
+                        title = {marker.comment}
+                        />
+                     })}
                     
                 </Map>
 
