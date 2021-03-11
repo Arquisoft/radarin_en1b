@@ -3,11 +3,14 @@ import './App.css';
 
 import MapComponent from './Map'
 
+import LoginForm from './components/LoginForm'
+import MainView from './components/MainView'
+
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
-import {SessionProvider,  LoginButton} from '@inrupt/solid-ui-react';
-import {Button} from '@material-ui/core';
+import {SessionProvider} from '@inrupt/solid-ui-react';
+
 
 
 function App() {
@@ -24,28 +27,27 @@ function App() {
   session.onLogin( () => { setIsLoggedIn(true)})
   session.onLogout( () => { setIsLoggedIn(false)})
 
+  return (
+    <SessionProvider>
+      {(!isLoggedIn)? <LoginForm/> : <MainView/>}
+    </SessionProvider>
+  );
   
- 
+  /*
   return (
 
     <div className="App">
 
-      { /*For the session LogIn we use Session Provider and Log in: */}
+      
       <SessionProvider sessionId="log-in-exameple">      
-        <LoginButton
-            oidcIssuer={idp}
-            redirectUrl={currentUrl}
-        >
-        <Button variant="contained" color="primary" >
-              Log In
-          </Button>             
-        </LoginButton>       
+        {<LoginForm/>}      
       </SessionProvider>
 
       <h1>Radarin map preliminary version</h1>
       <MapComponent />
     </div>
   );
+  */
 }
 
 export default App;
