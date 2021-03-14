@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       <h1>Radarin map preliminary version</h1>
-      <MapComponent />
+      <div id="webMap">
+        <MapComponent />
+      </div>
     </div>
   );
 }
