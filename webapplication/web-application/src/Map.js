@@ -16,13 +16,17 @@ export default class MapComponent extends Component {
 
     constructor() {
         super();
-        this.latitude = "";
-        this.longitude = "";
+        this.lati = 0;
+        this.long = 0;
         window.navigator.geolocation.getCurrentPosition((position) => {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
+            this.lati = position.coords.latitude;
+            this.long = position.coords.longitude;
+            this.theComponentDidMount();
         }, console.log);
-        console.log(this.latitude);
+        this.state = {
+            render: false //Set render state to false
+        }
+        console.log(this.lati);
     }
 
     retrieveMarkers() {
@@ -52,14 +56,20 @@ export default class MapComponent extends Component {
         ];
     }
 
+    theComponentDidMount() {
+        setTimeout(function() { //Start the timer
+            this.setState({render: true}) //0.5 second, set render to true
+        }.bind(this), 500)
+    }
+
     render() {
+        if (this.state.render){
         var markers = this.retrieveMarkers();
-        const coordinates = [this.latitude, this.longitude];
-        console.log(coordinates);
+        const coordinates = [this.lati, this.long];
         return (
             <div className="map-area">
 
-                <MapContainer center={["43.545142258113735", "-5.924200713062158"]} zoom={11} scrollWheelZoom={true}>
+                <MapContainer center={coordinates} zoom={11} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -78,6 +88,11 @@ export default class MapComponent extends Component {
 
             </div>
         );
+        }else{
+            return null;
+        }
 
     }
+    
 }
+
