@@ -44,7 +44,9 @@ function App() {
       </SessionProvider>
 
       <h1>Radarin map preliminary version</h1>
-      <MapComponent />
+      <div id="webMap">
+        <MapComponent />
+      </div>
     </div>
   );
   */

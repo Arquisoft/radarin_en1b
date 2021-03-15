@@ -1,96 +1,98 @@
 import React, { Component } from 'react'
-import { Map, GoogleApiWrapper,Marker} from 'google-maps-react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import L from 'leaflet';
+import marker from './static/radar.svg';
+const myIcon = new L.Icon({
+    iconUrl: marker,
+    iconRetinaUrl: marker,
+    popupAnchor:  [-0, -0],
+    iconSize: [32,45],     
+});
 
-export class MapComponent extends Component {
-        constructor(){
-            super();
-            navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this));
-        }
-    
-        getPosicion(posicion){
-            this.long= posicion.coords.longitude; 
-            this.lat= posicion.coords.latitude;  
-        }
+export default class MapComponent extends Component {
+    state = {
+        locationDisplayed: false
+    };
 
-    openinfo(marker) {
-        //display the marker information
+    constructor() {
+        super();
+        this.lati = 0;
+        this.long = 0;
+        window.navigator.geolocation.getCurrentPosition((position) => {
+            this.lati = position.coords.latitude;
+            this.long = position.coords.longitude;
+            this.theComponentDidMount();
+        }, console.log);
+        this.state = {
+            render: false //Set render state to false
+        }
+        console.log(this.lati);
     }
-    
+
     retrieveMarkers() {
         //TODO
         //In this function we are going to query the pods and retrieve a user's coordinates
         return [
-            { 
+            {
                 name: "Oviedo",
                 comment: "La capital de Asturias!",
-                lat: 43.364739393028024,
-                lng: -5.8507182415799575
+                lat: "43.364739393028024",
+                lng: "-5.8507182415799575"
             },
 
-            { 
+            {
                 name: "Gijón",
                 comment: "Una ciudad preciosa!",
-                lat: 43.545142258113735,
-                lng: -5.662559315448055
+                lat: "43.545142258113735",
+                lng: "-5.662559315448055"
             },
 
             { //Avilés
                 name: "Avilés",
                 comment: "...",
-                lat: 43.56040003876269,
-                lng: -5.924200713062158
+                lat: "43.56040003876269",
+                lng: "-5.924200713062158"
             }
         ];
     }
 
-    render() {
-        var markers = this.retrieveMarkers();
-
-        
-        return (<div className="map-area">
-
-                <Map
-                    center={{
-
-                        lat: this.lat,
-
-                        lng: this.long
-
-                    }}
-                    centerAroundCurrentLocation={true}
-                    
-                    google={this.props.google}
-                    zoom={11}
-                    
-                    >
-
-                    {markers.map((marker)=>{
-                        return <Marker key={marker.name}
-
-                        position={{
-
-                            lat: marker.lat,
-
-                            lng: marker.lng
-
-                        }}
-
-                        title = {marker.comment}
-                        />
-                     })}
-                    
-                </Map>
-
-            </div>);
-            
+    theComponentDidMount() {
+        setTimeout(function() { //Start the timer
+            this.setState({render: true}) //0.5 second, set render to true
+        }.bind(this), 500)
     }
+
+    render() {
+        if (this.state.render){
+        var markers = this.retrieveMarkers();
+        const coordinates = [this.lati, this.long];
+        return (
+            <div className="map-area">
+
+                <MapContainer center={coordinates} zoom={11} scrollWheelZoom={true}>
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {markers.map((marker) => {
+                        const markerPosition = [marker.lat, marker.lng];
+                        return <Marker position={markerPosition} icon={myIcon}> 
+                        <Popup>
+                            <h1>{marker.name}</h1>
+                            <p>{marker.comment}</p>
+                        </Popup>
+                        </Marker> })}
+                    
+                    
+                </MapContainer>,
+
+            </div>
+        );
+        }else{
+            return null;
+        }
+
+    }
+    
 }
 
-export default GoogleApiWrapper({
-
-    apiKey: ("AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU")
-    
-    //AIzaSyBSuJOh_jsU3BGuOip776L9RW-XZGU8Dsk
-
-})(MapComponent);
- 
