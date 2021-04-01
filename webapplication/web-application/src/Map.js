@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 import marker from './static/radar.svg';
-import { AddLocations, ObtainLocations} from './utils/podManagemet.js';
+import AddLocations from '../src/utils/AddLocations.js';
+import ObtainLocations from '../src/utils/GetLocations.js';
 
 const myIcon = new L.Icon({
     iconUrl: marker,
@@ -38,6 +39,8 @@ export default class MapComponent extends Component {
                     "Oviedo%tLa capital de Asturias!%t43.364739393028024%t-5.8507182415799575",
                     "Gijón%tUna ciudad preciosa!%t43.545142258113735%t5.662559315448055"
                     ]);
+
+        let locations = ObtainLocations();
         
     }
 
