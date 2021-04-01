@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 import marker from './static/radar.svg';
+import { AddLocations, ObtainLocations} from './utils/podManagemet.js';
+
 const myIcon = new L.Icon({
     iconUrl: marker,
     iconRetinaUrl: marker,
@@ -30,30 +32,13 @@ export default class MapComponent extends Component {
     }
 
     retrieveMarkers() {
-        //TODO
         //In this function we are going to query the pods and retrieve a user's coordinates
-        return [
-            {
-                name: "Oviedo",
-                comment: "La capital de Asturias!",
-                lat: "43.364739393028024",
-                lng: "-5.8507182415799575"
-            },
-
-            {
-                name: "Gijón",
-                comment: "Una ciudad preciosa!",
-                lat: "43.545142258113735",
-                lng: "-5.662559315448055"
-            },
-
-            { //Avilés
-                name: "Avilés",
-                comment: "...",
-                lat: "43.56040003876269",
-                lng: "-5.924200713062158"
-            }
-        ];
+        AddLocations([
+                    "Avilés%t...%t43.56040003876269%t-5.924200713062158",
+                    "Oviedo%tLa capital de Asturias!%t43.364739393028024%t-5.8507182415799575",
+                    "Gijón%tUna ciudad preciosa!%t43.545142258113735%t5.662559315448055"
+                    ]);
+        
     }
 
     theComponentDidMount() {
