@@ -10,6 +10,8 @@ import MainView from './components/MainView'
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 import {SessionProvider} from '@inrupt/solid-ui-react';
+import ObtainLocations from "../src/utils/GetLocations";
+import AddLocations from './utils/AddLocations';
 
 
 
@@ -29,7 +31,7 @@ function App() {
 
   return (
     <SessionProvider>
-      {(!isLoggedIn)? <LoginForm/> : <MainView/>}
+      {(!isLoggedIn)? <LoginForm/> : ObtainLocations()}
     </SessionProvider>
   );
   

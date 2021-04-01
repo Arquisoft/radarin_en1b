@@ -12,6 +12,7 @@ import {
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./index.js";
+import MainView from "../components/MainView.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -64,7 +65,7 @@ function ObtainLocations() {
     }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
     console.log(locationList);
-    return getLocations();
+    return <MainView locations={locationList}/>;
 }
 
 export default ObtainLocations;

@@ -72,6 +72,8 @@ function AddLocations(locations) {
     locations.array.forEach(element => {
         addLocation(element);
     });
+
+    return <h1>Added {locations}</h1>
 }
 
 export default AddLocations;
