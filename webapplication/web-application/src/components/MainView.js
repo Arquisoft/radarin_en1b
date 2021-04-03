@@ -8,11 +8,9 @@ const MainView = () => {
 
    const { session } = useSession();
    // const name =   await data[session.info.webId].name;
-
     return (
-        <div className="App">
+            <div className="App">
             <h1>Radarin map preliminary version</h1>
-           
         <MapComponent />
         </div>
     );

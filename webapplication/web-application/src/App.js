@@ -11,6 +11,10 @@ import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 import {SessionProvider} from '@inrupt/solid-ui-react';
 
+//NAV THINGS
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Navigation from './components/Navigation';
 
 
 function App() {
@@ -28,9 +32,18 @@ function App() {
   session.onLogout( () => { setIsLoggedIn(false)})
 
   return (
-    <SessionProvider>
-      {(!isLoggedIn)? <LoginForm/> : <MainView/>}
-    </SessionProvider>
+    <div className="App">
+      <Navigation/>
+      <Switch>
+        <Route path = '/home' component={Home}/>
+        <Route path = '/login' component={LoginForm}/>
+        <Route path = '/map' component={MainView}/>
+      </Switch>
+      <SessionProvider>
+        {(!isLoggedIn)? <LoginForm/> : <MainView/>}
+      </SessionProvider>
+    </div>
+    
   );
   
   /*
