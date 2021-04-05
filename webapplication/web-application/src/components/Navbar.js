@@ -1,7 +1,7 @@
 import {Component} from 'react';
-import {MenuItems} from './MenuItems/MenuItems'
-import {Button} from './MenuItems/Buttons'
-import './MenuItems/Navbar.css'
+import {MenuItems} from './MenuItems/MenuItems';
+import {Button} from './MenuItems/Buttons';
+import './MenuItems/Navbar.css';
 class Navbar extends Component{
 
     render(){
