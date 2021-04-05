@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.welcome{
+  text-align: center;
+  margin-top: 40vh;
+}
+
+.background{
+  background-image: url("../static/radarin-background.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

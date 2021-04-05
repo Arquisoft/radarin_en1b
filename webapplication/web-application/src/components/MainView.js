@@ -2,6 +2,7 @@
 import MapComponent from '../Map'
 //import { FOAF } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
+import Navbar from "./Navbar"
 
 
 const MainView = () => {
@@ -11,7 +12,8 @@ const MainView = () => {
 
     return (
         <div className="App">
-            <h1>Radarin map preliminary version</h1>
+            <Navbar />
+            <h1>Radarin map</h1>
            
         <MapComponent />
         </div>
