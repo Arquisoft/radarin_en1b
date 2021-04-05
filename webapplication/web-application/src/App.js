@@ -1,7 +1,7 @@
 import logo from './static/logo.svg';
 import './css/App.css';
 
-import MapComponent from './Map'
+import MapComponent from './components/Map'
 
 import LoginForm from './views/login/LoginForm'
 import MainView from './views/mainView/MainView'

@@ -16,8 +16,7 @@ function LoginForm(){
                 <h2> Here you will be able to access and manage all data</h2>
                 <LoginButton
                     oidcIssuer={idp}
-                    redirectUrl={currentUrl}
-                >
+                    redirectUrl={currentUrl}>
                     <Button variant="contained" color="primary" >
                         Log In
                     </Button>             

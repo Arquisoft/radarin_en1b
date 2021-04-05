@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
-import marker from './static/radar.svg';
-import './css/Map.css'
+import marker from '../static/radar.svg';
+import '../css/Map.css'
 const myIcon = new L.Icon({
     iconUrl: marker,
     iconRetinaUrl: marker,
