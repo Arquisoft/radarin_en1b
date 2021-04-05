@@ -1,16 +1,14 @@
 import {Component} from 'react';
-import {MenuItems} from './MenuItems/MenuItems';
-import {Button} from './MenuItems/Buttons';
-import './MenuItems/Navbar.css';
+import {MenuItems} from './MenuItems/MenuItems'
+import {Button} from './MenuItems/Buttons'
+import './MenuItems/Navbar.css'
 class Navbar extends Component{
 
     render(){
         return(
         <nav className="NavbarItems">
             <h1 className="navbar-logo">Radarin Manager <i className="fab fa-react"></i></h1>
-            <div className="menu-icon">
-
-            </div>
+           
             <ul className="nav-menu">
                 {MenuItems.map((item,index) => {
                     return (
