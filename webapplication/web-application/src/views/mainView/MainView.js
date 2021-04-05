@@ -1,11 +1,11 @@
 
-import MapComponent from '../Map';
+import MapComponent from '../../Map';
 //import { FOAF } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
-import Navbar from "./Navbar";
+import Navbar from "../navbar/Navbar";
 
 
-const MainView = () => {
+const MainView = props => {
 
    const { session } = useSession();
    // const name =   await data[session.info.webId].name;
@@ -13,9 +13,7 @@ const MainView = () => {
     return (
         <div className="App">
             <Navbar />
-            <h1>Radarin map</h1>
-           
-        <MapComponent />
+            <MapComponent />
         </div>
     );
 }

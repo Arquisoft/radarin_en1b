@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 import marker from './static/radar.svg';
+import './css/Map.css'
 const myIcon = new L.Icon({
     iconUrl: marker,
     iconRetinaUrl: marker,
@@ -58,8 +59,8 @@ export default class MapComponent extends Component {
 
     theComponentDidMount() {
         setTimeout(function() { //Start the timer
-            this.setState({render: true}) //0.5 second, set render to true
-        }.bind(this), 500)
+            this.setState({render: true}) //0.1 second, set render to true
+        }.bind(this),1)
     }
 
     render() {
@@ -67,9 +68,9 @@ export default class MapComponent extends Component {
         var markers = this.retrieveMarkers();
         const coordinates = [this.lati, this.long];
         return (
-            <div className="map-area">
+            <div className="map">
 
-                <MapContainer center={coordinates} zoom={11} scrollWheelZoom={true}>
+                <MapContainer center={coordinates} zoom={11} scrollWheelZoom={true} className="map">
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -84,7 +85,7 @@ export default class MapComponent extends Component {
                         </Marker> })}
                     
                     
-                </MapContainer>,
+                </MapContainer>
 
             </div>
         );

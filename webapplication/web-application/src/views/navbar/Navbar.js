@@ -1,7 +1,7 @@
 import {Component} from 'react';
-import {MenuItems} from './MenuItems/MenuItems'
-import {Button} from './MenuItems/Buttons'
-import './MenuItems/Navbar.css'
+import {MenuItems} from '../../components/MenuItems';
+import '../../css/Navbar.css';
+import { NavLink} from 'react-router-dom';
 class Navbar extends Component{
 
     render(){
@@ -10,13 +10,15 @@ class Navbar extends Component{
             <h1 className="navbar-logo">Radarin Manager <i className="fab fa-react"></i></h1>
            
             <ul className="nav-menu">
+              
                 {MenuItems.map((item,index) => {
                     return (
                         <li key = {index}>
-                            <a className={item.cName} href={item.url}>
+                            <NavLink to={item.url} className={item.cName} >
                                 {item.title}
-                            </a>
+                            </NavLink>
                         </li>
+
                     )
                 })}
             </ul>

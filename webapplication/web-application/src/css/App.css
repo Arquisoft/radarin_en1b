@@ -5,10 +5,25 @@
 .welcome{
   text-align: center;
   margin-top: 40vh;
+  color: white;
+  -webkit-text-stroke-width: 0.05px;
+  -webkit-text-stroke-color: black;
+  text-shadow: black 0px 0px 20px;
 }
 
+.about-us{
+  text-align: center;
+  margin-top: 15vh;
+  color: white;
+  -webkit-text-stroke-width: 0.05px;
+  -webkit-text-stroke-color: black;
+  text-shadow: black 0px 0px 20px;
+  font-size: 22px;
+}
+
+
 .background{
-  background-image: url("../static/radarin-background.png");
+  background-image: url("../static/back4.jpg");
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;

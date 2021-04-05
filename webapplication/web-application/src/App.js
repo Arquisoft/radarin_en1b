@@ -1,15 +1,18 @@
-import logo from './logo.svg';
+import logo from './static/logo.svg';
 import './css/App.css';
 
 import MapComponent from './Map'
 
-import LoginForm from './components/LoginForm'
-import MainView from './components/MainView'
+import LoginForm from './views/login/LoginForm'
+import MainView from './views/mainView/MainView'
 
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 import {SessionProvider} from '@inrupt/solid-ui-react';
+import Navbar from './views/navbar/Navbar';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import AboutUs from './views/aboutUs/AboutUs';
 
 
 
@@ -28,9 +31,14 @@ function App() {
   session.onLogout( () => { setIsLoggedIn(false)})
 
   return (
-    <SessionProvider>
-      {(!isLoggedIn)? <LoginForm/> : <MainView/>}
-    </SessionProvider>
+    <BrowserRouter>
+      <Navbar />
+      <Switch>
+        <Route path='/' exact component={LoginForm}/>
+        <Route path='/map' exact component={MapComponent}/>
+        <Route path='/about-us' exact component={AboutUs}/>
+      </Switch>
+    </BrowserRouter>
   );
   
   /*

@@ -3,17 +3,14 @@ import {useState} from "react";
 //import {useSession} from '@inrupt/solid-ui-react/dist';
 import {LoginButton} from '@inrupt/solid-ui-react';
 import {Button} from '@material-ui/core';
-import Navbar from "./Navbar";
 
-function LoginForm () {
+function LoginForm(){
     // IDentity Provider, used to store the POD, in this case just inrupt.net
     const [ idp, setIdp] = useState("https://inrupt.net");
     const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
     return(
-        <div className="background">
         <div className="App">
-        <Navbar />
             <div className="welcome">
                 <h1> Welcome to Radarin Manager</h1>
                 <h2> Here you will be able to access and manage all data</h2>
@@ -27,7 +24,6 @@ function LoginForm () {
                 </LoginButton> 
             </div>     
         </div> 
-        </div>
     );
 }
 
