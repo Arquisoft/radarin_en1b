@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 import marker from './static/radar.svg';
+import AddLocationForm from './AddLocationForm';
 const myIcon = new L.Icon({
     iconUrl: marker,
     iconRetinaUrl: marker,
@@ -37,8 +38,8 @@ export default class MapComponent extends Component {
         window.navigator.geolocation.getCurrentPosition((position) => {
             this.lati = position.coords.latitude;
             this.long = position.coords.longitude;
-            console.log("latitude = " + this.lati);
-            console.log("longitude = " + this.long);
+            //console.log("latitude = " + this.lati);
+            //console.log("longitude = " + this.long);
         }, console.log);
     }
 
@@ -108,7 +109,8 @@ export default class MapComponent extends Component {
                         </Marker> })}
                     
                     
-                </MapContainer>,
+                </MapContainer>
+                <AddLocationForm />
 
             </div>
         );
