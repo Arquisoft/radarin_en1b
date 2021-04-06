@@ -1,85 +1,75 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+function AddLocationForm() {
 
-const initialState = {
-  value: "",
-  localizationDescription: "",
-  latitude: 1,
-  longitude: 1
-};
+  const [lati, setLati] = useState(0);
+  const [long, setLong] = useState(0);
+  const [value, setValue] = useState("");
+  const [localizationDescription, setLocalizationDescription] = useState("");
 
-class AddLocationForm extends Component{
+    const handleChangeName = (event) => {
+      setValue(event.target.value);
+      geolocateUser();
+    };
 
-    constructor(props){
-        super(props);
-        this.lati = 0;
-        this.long = 0;
-        this.state = initialState;
- 
-        this.handleChangeName = this.handleChangeName.bind(this);
-        this.handleChangeDescription = this.handleChangeDescription.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChangeName(event) {
-      this.setState({value: event.target.value});
-      //console.log("name =" + this.state.value);
-    }
-
-    handleChangeDescription(event) {
-      this.setState({localizationDescription: event.target.value});
-      //console.log("description =" + this.state.localizationDescription);
-    }
+    const handleChangeDescription = (event) => {
+      setLocalizationDescription(event.target.value);
+      geolocateUser();
+    };
   
-    handleSubmit(event) {
-      this.obtainUserLocation();
-      alert('A new localization was added: ' + this.state.value);
+    const handleSubmit = (event) => {
+      obtainUserLocation();
+      alert('A new localization was added: ' + value);
       event.preventDefault();
-    }
+    };
 
-    obtainUserLocation() {
-      this.geolocateUser();
-      console.log("latitude = " + this.state.latitude);
-      console.log("longitude = " + this.state.longitude);
-      console.log("name = " + this.state.value);
-      console.log("description = " + this.state.localizationDescription);
-      //aqui se mete
-      this.resetState();
-  }
+    const obtainUserLocation = () => {
+      geolocateUser();
+      console.log("latitude = " + lati);
+      console.log("longitude = " + long);
+      console.log("name = " + value);
+      console.log("description = " + localizationDescription);
+      resetState();
+  };
 
-  resetState() {
-    this.setState(initialState);
-  }
+  const resetState = () => {
+    setValue("");
+    setLocalizationDescription("");
+    setLong(0);
+    setLati(0);
+  };
 
-  geolocateUser() {
+  const geolocateUser = () => {
     window.navigator.geolocation.getCurrentPosition((position) => {
-      this.lati = position.coords.latitude;
-      this.long = position.coords.longitude;
-      this.setState({latitude: this.lati});
-      this.setState({longitude: this.long});
-      if (this.state.latitude == 1 || this.state.longitude == 1) {
-          console.log("no cargo");
-          setTimeout(this.geolocateUser, 1000);
+      setLati(position.coords.latitude);
+      setLong(position.coords.longitude);
+      if (lati === 0 || long === 0) {
+          setTimeout(geolocateUser, 1000);
       }
     }, console.log);
-  }
-
-    render() {
+  };
       return (
         <div> 
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label>Name of the location: 
-                   <input type="text" value = {this.state.value} onChange={this.handleChangeName}/> 
+                   <input type="text" value = {value} onChange={handleChangeName}/> 
                 </label>
                 <br/>
                 <label>Description of the location:  
-                   <input type="text" value = {this.state.localizationDescription} onChange={this.handleChangeDescription}/>
+                   <input type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
                 </label>
                 <br/>
-                <button onClick={this.handleSubmit}>Add new location</button>
+                <button onClick={handleSubmit}>Add new location</button>
            </form>
        </div>
     );
-    }
+}
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
 }
 
 export default AddLocationForm;
