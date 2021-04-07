@@ -1,0 +1,14 @@
+.bg {
+    background-image: url("./login-bg.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card {
+    align-items: center;
+    justify-content: center;
+    background-color: lightgrey;
+    border: 5px solid black
+}
