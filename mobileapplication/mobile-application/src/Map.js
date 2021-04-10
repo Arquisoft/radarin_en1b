@@ -17,8 +17,13 @@ export default class MapComponent extends Component {
 
     constructor() {
         super();
-        this.lati = 43.4683239;
+        this.lati = 42.0;
         this.long = -5.6941612;
+        window.navigator.geolocation.getCurrentPosition((position) => {
+            this.lati = position.coords.latitude;
+            this.long = position.coords.longitude;
+            this.componentDidMount();
+        }, console.log);
         this.state = {
             render: false, //Set render state to false
             latitude: this.lati, //Added in the state to rerender the component
@@ -95,7 +100,7 @@ export default class MapComponent extends Component {
     render() {
         if (this.state.render){
         var markers = this.retrieveMarkers();
-        const coordinates = [this.state.latitude, this.state.longitude];
+        const coordinates = [this.lati, this.long];
         return (
             <div className="map-area">
 
