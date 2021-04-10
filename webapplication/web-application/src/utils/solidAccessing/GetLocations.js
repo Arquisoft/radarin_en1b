@@ -1,40 +1,22 @@
 import React, { useEffect, useState } from "react";
 import {
-    addStringNoLocale,
-    getStringNoLocale,
-    createThing,
+    getStringNoLocaleAll,
     getSolidDataset,
     getSourceUrl,
     getThing,
     getUrlAll,
-    saveSolidDatasetAt,
-    setThing,
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./index.js";
+import {addUserLocations, addFriendLocations} from './utils/locationsRedux';
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
-
-function AddLocations(locations) {
+function ObtainLocations() {
     const { session } = useSession();
-    const [locationList, setLocationList] = useState();
+    const [locationList, setLocationList] = useState(null);
+    const [locationTexts, setLocationTexts] = useState([]);
 
-
-    const addLocation = async (text) => {
-        const indexUrl = getSourceUrl(locationList);
-        const listaLoc = await getSolidDataset(indexUrl, { fetch });
-        const thing = getThing(listaLoc, indexUrl);
-        const locationWithText = addStringNoLocale(
-            thing,
-            "http://schema.org/text",
-            text
-        );
-        const savedThing = setThing(locationList, locationWithText);
-
-        const save = await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
-        setLocationList(save);
-    }
 
     /**
      * Con useEffect, le estamos diciendo a react que
@@ -46,6 +28,7 @@ function AddLocations(locations) {
     useEffect(() => {
         if (!session) return;
         (async () => {
+
             //Obtenemos el dataset
             const profileDataset = await getSolidDataset(session.info.webId, {
                 fetch: session.fetch,
@@ -64,16 +47,24 @@ function AddLocations(locations) {
             const containerUri = `${pod}locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
             const list = await getOrCreateLocationList(containerUri, session.fetch);
             setLocationList(list);
+
+            const indexUrl = getSourceUrl(list);
+            console.log(indexUrl);
+            const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
+            console.log(listaLoc);
+            const thing = getThing(listaLoc, indexUrl);
+            console.log(thing);
+            const localizaciones = getStringNoLocaleAll(
+                thing,
+                "http://schema.org/text"
+            );
+            setLocationTexts(localizaciones);
+            console.log(localizaciones);
         })();
+
     }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
-    console.log(locationList);
     
-    locations.array.forEach(element => {
-        addLocation(element);
-    });
-
-    return <h1>Added {locations}</h1>
 }
 
-export default AddLocations;
+export default ObtainLocations;
