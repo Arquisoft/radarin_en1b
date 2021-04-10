@@ -15,3 +15,27 @@ This should be your motto for systematic detection and evaluation of risks and t
 .Form
 List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
 ****
+
+=== _Risks and Technical Debt_
+
+Here there are some technical debts that developers evaluated in the architecture
+
+==== _Pods security_
+
+Pods were a key concept during our development. We decided that the users could store their favourite locations. However, it wouldn't make too much sense to make a new collection within the database since these locations will be considered private from the user. Thus, we decided to store those locations in each users' pods, so they are kept within the user's private information. This way, we are assured that only the user and the ones the user gave permission can be the only ones to see that information. 
+
+==== _Load in the database_
+
+Optimizing the database was key since there could be several issues regarding obtaining locations from friends. Thus, the architecture record we made is that the database will only store the last location of the user, and it keeps getting updated as long as the application is running. This way, we don't keep unnecesary and out of date information in the system's database. Furthermore, thanks to MongoDB's query system, we can optimize queries to the point we can retrieve only the locations of the friends that are nearby, reducing the scope of the query. However, it must be taken into account that if the user has many friends and they are all very close to them, the database could be affected to the point that queries may take a long time to be processed. However, we found that this approach of getting the friend locations near the user seems like the best option for the average user.
+
+==== _Running the application in the background_
+
+When we started developing in React Native Expo, one of the strongest points of such techonology was the option to keep doing processes in the https://docs.expo.io/versions/v40.0.0/sdk/task-manager/[background]. However, due to the architectural decision of no longer developing the application in Expo, and start developing the mobile application in React, since it's a web based approach we lost that functionality during the process. However, tracking the location is kept in the application via intervals, but it can no longer be done without the application being open.
+
+==== _Rerendering the map_
+
+Rerendering map via intervals is provided within the mobile application. After an established period of 30 seconds, chosen to not overcharge the database with petitions and due to the nature of the application (is not really necessary to rerender the map so frequently, because we are supposing that the users are walking, and updating the map every 5 seconds wouldn't show much difference). 
+
+==== _Asyncronous functions_
+
+Obtaining locations from the user, from the friends, is done via asyncronous functions which can be troublesome if not taken care of carefully. However, due to the architecture design taken, we could work with asyncronous functions without any problem, but this could provide some trouble to some users in a minor way. Either way, if the asyncronous functions don't work at first, we reassured they will be computed again to keep the integrity of the application in check.
