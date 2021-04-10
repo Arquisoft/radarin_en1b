@@ -61,24 +61,24 @@ function AddLocationForm() {
   }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
   const addLocation = async (text) => {
-      const indexUrl = getSourceUrl(locationList);
-      console.log(indexUrl);
-      const listaLoc = await getSolidDataset(indexUrl.split('favlocations.ttl')[0], { fetch: session.fetch });
-      
-      //const thing = getThing(listaLoc, indexUrl);
+    const indexUrl = getSourceUrl(locationList);
+    console.log(indexUrl);
+    const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
+    
+    //const thing = getThing(listaLoc, indexUrl);
 
-      const  thing = getThing(listaLoc, indexUrl);
+    const thing = getThing(listaLoc, indexUrl);
 
-      const locationWithText = addStringNoLocale(
-          thing,
-          "http://schema.org/text",
-          text
-      );
-      const savedThing = setThing(locationList, locationWithText);
+    const locationWithText = addStringNoLocale(
+        thing,
+        "http://schema.org/text",
+        text
+    );
+    const savedThing = setThing(locationList, locationWithText);
 
-      const save = await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
-      setLocationList(save);
-  }
+    const save = await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
+    setLocationList(save);
+}
 
     const handleChangeName = (event) => {
       setValue(event.target.value);
