@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+    getStringNoLocale,
     getStringNoLocaleAll,
     getSolidDataset,
     getSourceUrl,
@@ -8,7 +9,7 @@ import {
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./index.js";
-import {addUserLocations} from './utils/locationsRedux';
+import {addUserLocations} from '../locationsRedux/locationsSlice';
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -53,18 +54,21 @@ function ObtainUserLocations() {
             const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
             console.log(listaLoc);
             const thing = getThing(listaLoc, indexUrl);
-            console.log(thing);
             const localizaciones = getStringNoLocaleAll(
                 thing,
                 "http://schema.org/text"
             );
+            console.log(localizaciones);
             setLocationTexts(localizaciones);
-
+            addUserLocations(locationTexts);
         })();
 
     }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
-    addUserLocations(locationTexts);
+    console.log('GetUserLocations');
+    console.log(locationTexts);
+    
+    return <div></div>;
 }
 
 export default ObtainUserLocations;

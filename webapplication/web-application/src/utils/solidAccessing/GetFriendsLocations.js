@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+    getStringNoLocale,
     getStringNoLocaleAll,
     getSolidDataset,
     getSourceUrl,
@@ -8,11 +9,11 @@ import {
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./index.js";
-import {addFriendLocations} from './utils/locationsRedux';
+import {addFriendLocations} from '../locationsRedux/locationsSlice';
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
-function ObtainFriendsLocations(webId) {
+function ObtainFriendsLocations( { webId } ) {
     const { session } = useSession();
     const [locationList, setLocationList] = useState(null);
     const [locationTexts, setLocationTexts] = useState([]);
@@ -50,11 +51,11 @@ function ObtainFriendsLocations(webId) {
 
             const indexUrl = getSourceUrl(list);
             console.log(indexUrl);
-            const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
+            const listaLoc = await getSolidDataset(indexUrl.split('favlocations.ttl')[0], { fetch: session.fetch });
             console.log(listaLoc);
             const thing = getThing(listaLoc, indexUrl);
             console.log(thing);
-            const localizaciones = getStringNoLocaleAll(
+            const localizaciones = getStringNoLocale(
                 thing,
                 "http://schema.org/text"
             );
@@ -64,7 +65,11 @@ function ObtainFriendsLocations(webId) {
 
     }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
+    console.log('GetFriendsLocations');
+    console.log(locationTexts);
     addFriendLocations(locationTexts);
+
+    return <div></div>;
 }
 
 export default ObtainFriendsLocations;
