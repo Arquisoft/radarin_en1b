@@ -63,11 +63,11 @@ function AddLocationForm() {
   const addLocation = async (text) => {
       const indexUrl = getSourceUrl(locationList);
       console.log(indexUrl);
-      const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
+      const listaLoc = await getSolidDataset(indexUrl.split('favlocations.ttl')[0], { fetch: session.fetch });
       
       //const thing = getThing(listaLoc, indexUrl);
 
-      const  thing = createThing(listaLoc);
+      const  thing = getThing(listaLoc, indexUrl);
 
       const locationWithText = addStringNoLocale(
           thing,
