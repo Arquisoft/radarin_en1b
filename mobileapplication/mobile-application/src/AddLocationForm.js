@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
     addStringNoLocale,
-    getStringNoLocale,
-    createThing,
     getSolidDataset,
     getSourceUrl,
     getThing,
@@ -19,7 +17,6 @@ function AddLocationForm() {
 
   const { session } = useSession();
   const [locationList, setLocationList] = useState();
-  const [locationText, setLocationText] = useState("");
 
   const [lati, setLati] = useState(0);
   const [long, setLong] = useState(0);

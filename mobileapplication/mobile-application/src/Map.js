@@ -17,31 +17,56 @@ export default class MapComponent extends Component {
 
     constructor() {
         super();
-        this.lati = 0;
-        this.long = 0;
-        this.obtainLocations();
+        this.lati = 43.4683239;
+        this.long = -5.6941612;
         this.state = {
-            render: false //Set render state to false
+            render: false, //Set render state to false
+            latitude: this.lati, //Added in the state to rerender the component
+            longitude: this.long
+        }
+        this.obtainLocations();
+    }
+
+    refreshView() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                    position => {
+                        this.lati = position.coords.latitude;
+                        this.long = position.coords.longitude;       
+                    },
+                    error => {
+                        console.log("Error: ", error)
+                    },{ enableHighAccuracy: true });
         }
     }
 
     obtainLocations() {
-        let counter = 0;
         setInterval(() => {
             this.obtainUserLocation();
             this.obtainFriendLocations();
-            this.render();
-        }, 10);
+        }, 1000);
     }
 
     obtainUserLocation() {
-        window.navigator.geolocation.getCurrentPosition((position) => {
-            this.lati = position.coords.latitude;
-            this.long = position.coords.longitude;
-            //console.log("latitude = " + this.lati);
-            //console.log("longitude = " + this.long);
-        }, console.log);
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                    position => {
+                        let latitude = position.coords.latitude;
+                        let longitude = position.coords.longitude;
+                        console.log("lat" + latitude);
+                        console.log("long" + longitude);
+                        this.setState({
+                            latitude: latitude,
+                            longitude: longitude
+                        })                                             
+
+                    },
+                    error => {
+                        console.log("Error: ", error)
+                    },{ enableHighAccuracy: true });
     }
+}
+
 
     obtainFriendLocations() {
         //TODO
@@ -55,28 +80,8 @@ export default class MapComponent extends Component {
             {
                 name: "Your location",
                 comment: "Users' current location",
-                lat: this.lati,
-                lng: this.long
-            },
-            {
-                name: "Oviedo",
-                comment: "La capital de Asturias!",
-                lat: "43.364739393028024",
-                lng: "-5.8507182415799575"
-            },
-
-            {
-                name: "Gijón",
-                comment: "Una ciudad preciosa!",
-                lat: "43.545142258113735",
-                lng: "-5.662559315448055"
-            },
-
-            { //Avilés
-                name: "Avilés",
-                comment: "...",
-                lat: "43.56040003876269",
-                lng: "-5.924200713062158"
+                lat: this.state.latitude,
+                lng: this.state.longitude
             }
         ];
     }
@@ -90,11 +95,11 @@ export default class MapComponent extends Component {
     render() {
         if (this.state.render){
         var markers = this.retrieveMarkers();
-        const coordinates = [this.lati, this.long];
+        const coordinates = [this.state.latitude, this.state.longitude];
         return (
             <div className="map-area">
 
-                <MapContainer center={coordinates} zoom={11} scrollWheelZoom={true}>
+                <MapContainer center={coordinates} zoom={10} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
