@@ -48,7 +48,10 @@ The requirements where provided to us https://arquisoft.github.io/course2021/lab
 |An application that will run in user's mobile phone.
 
 |Store the minimum needed information of a user.
-|The application that acts as a server will store locations and references to the users' pods.
+|The database will only store a reference to the users pods and the last location of each user
+
+|Keep the locations of the user secured.
+|The pods will contain all the locations the user will upload themselves, only obtainable by them and the people they give access tp.
 
 |Deploy the system.
 |The deployment will work from docker containers and from a cloud service like heroku.
@@ -82,11 +85,10 @@ Where only the users can access that data, or if allowed, friends can also see i
 Fast and responsive times when accessing information and features.
 With timming close to the following:
 - Under 4 seconds for logging in.
-- Sending the current location and receiving other friends locations every 15-20 seconds (more or less time can maybe be setup using the app, so users can choose between using a more or less resource consuming approach, and thus adding more flexibility)
-- Sending information such as reviews / pictures in 5 seconds or less.
+- Sending the current location and receiving other friends locations every 25 seconds (Enough time for the map to be completely refreshed with noticable changes and for the application to not overcharge the database)
 
 .Usability
-Having an easy to learn, easy to use application which anyone can install and run with close to no doubts or problems.
+Having an easy to learn, easy to use application which anyone can run with close to no doubts or problems, using similar components to the ones that appear in webs that work the same way.
 
 Other important quality goals are:
 
@@ -94,7 +96,7 @@ Other important quality goals are:
 Having an application that is reliable, available at all times, being tolerant with possible errors occuring and being able to recover from these errors.
 
 .Compatibility
-Different versions for different operating systems, so users with all types of phones can experience the application. 
+Since both applications are based on web, they will function in every system that has access to the web via web browser. The browser will ask for permissions when connecting to the app. 
 
 [role="arc42help"]
 ****

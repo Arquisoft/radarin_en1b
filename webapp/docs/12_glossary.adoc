@@ -26,19 +26,24 @@ Potentially more columns in case you need translations.
 [options="header"]
 |===
 | Term         | Definition
+| Angular    | AngularJS is a toolset for building the framework most suited to your application development. It is fully extensible and works well with other libraries. Every feature can be modified or replaced to suit your unique development workflow and feature needs.
 | Cloud server     | A cloud server is a pooled, centralized server resource that is hosted and delivered over a network and accessed on demand by multiple users.
 | Container     | A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
 | Continuous integration   | Continuous Integration is a development practice that requires developers to integrate code into a shared repository several times a day.
 | Controller    | A controller is a program component that serves as a mediator between a user and application and handles business-related tasks triggered in user interface field.
+| Cordova    | Cordova wraps your HTML/JavaScript app into a native container which can access the device functions of several platforms. These functions are exposed via a unified JavaScript API, allowing you to easily write one set of code to target nearly every phone or tablet on the market today and publish to their app stores.
 | Docker     | Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
 | Ergonomics     | Software ergonomics is a subcategory of ergonomics that concerns the software design, rather than the hardware design, of systems. Software ergonomics includes the determination of user needs, interface design, user support and usability testing.
+| Expo     | Expo is a framework and a platform for universal React applications. It is a set of tools and services built around React Native and native platforms that help you develop, build, deploy, and quickly iterate on iOS, Android, and web apps from the same JavaScript/TypeScript codebase.
 | Heroku     | Heroku is a cloud platform as a service (PaaS)that allows develoopers to build, run and scale applications supporting several programming languages such as Ruby, Java, Node.js, Python.
 | HTTP protocol    | Stands for "Hypertext Transfer Protocol." HTTP is the protocol used to transfer data over the web. It is part of the Internet protocol suite and defines commands and services used for transmitting webpage data.
+| Ionic    | An open source mobile UI toolkit for building high quality, cross-platform native and web app experiences. Move faster with a single code base, running everywhere with JavaScript and the Web.
 | Migration    | Software migration is the practice of transferring data, accounts, and functionality from one operating environment to another.
 | MongoDB   | Open-source document-oriented NoSQL database program. Instead of storing the data in tables, it saves BSON (similar to JSON) data structures.
 | MVC     | Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements.
 | Pod     | Pods are where you store your data. Any kind of data can be stored in a Pod. Once stored in a Pod, you control who can access your data.
 | React    | React is an open-source, front end, JavaScript library for building user interfaces or UI components. 
+| React Native   | React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces. 
 | Repository    | A central location in which data is stored and managed.
 | Server     | A computer or computer program which manages access to a centralized resource or service in a network.
 | SOLID     | In object-oriented computer programming, SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.
