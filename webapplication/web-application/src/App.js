@@ -1,17 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 
-import MapComponent from './Map'
+import MapComponent from './Map';
 
-import LoginForm from './components/LoginForm'
-import MainView from './components/MainView'
+import LoginForm from './components/LoginForm';
 
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 import {SessionProvider} from '@inrupt/solid-ui-react';
 import ObtainLocations from "../src/utils/GetLocations";
-import AddLocations from './utils/AddLocations';
+import store from './utils/locationsRedux/store.js';
+import { Provider } from 'react-redux';
 
 
 
@@ -31,7 +31,13 @@ function App() {
 
   return (
     <SessionProvider>
-      {(!isLoggedIn)? <LoginForm/> : ObtainLocations()}
+      
+        {(!isLoggedIn)? <LoginForm/> : 
+        <Provider store={store}>
+          <ObtainLocations/>
+          <Map/>
+        </Provider>}
+      
     </SessionProvider>
   );
   

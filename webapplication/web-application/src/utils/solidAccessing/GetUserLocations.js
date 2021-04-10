@@ -8,11 +8,11 @@ import {
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./index.js";
-import {addUserLocations, addFriendLocations} from './utils/locationsRedux';
+import {addUserLocations} from './utils/locationsRedux';
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
-function ObtainLocations() {
+function ObtainUserLocations() {
     const { session } = useSession();
     const [locationList, setLocationList] = useState(null);
     const [locationTexts, setLocationTexts] = useState([]);
@@ -59,12 +59,12 @@ function ObtainLocations() {
                 "http://schema.org/text"
             );
             setLocationTexts(localizaciones);
-            console.log(localizaciones);
+
         })();
 
     }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
-    
+    addUserLocations(locationTexts);
 }
 
-export default ObtainLocations;
+export default ObtainUserLocations;
