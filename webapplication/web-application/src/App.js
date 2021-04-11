@@ -8,11 +8,6 @@ import LoginForm from './components/LoginForm';
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
-import {SessionProvider} from '@inrupt/solid-ui-react';
-import ObtainUserLocations from "../src/utils/solidAccessing/GetUserLocations";
-import store from './utils/locationsRedux/store.js';
-import { Provider } from 'react-redux';
-
 
 
 function App() {
@@ -30,15 +25,13 @@ function App() {
   session.onLogout( () => { setIsLoggedIn(false)})
 
   return (
-    <SessionProvider>
+    <div>
       
         {(!isLoggedIn)? <LoginForm/> : 
-        <Provider store={store}>
-          <ObtainUserLocations/>
+        <span >
           <MapComponent/>
-        </Provider>}
-      
-    </SessionProvider>
+        </span>}
+    </div>
   );
   
   /*

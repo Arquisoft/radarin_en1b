@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
 import {
-    getStringNoLocale,
     getStringNoLocaleAll,
     getSolidDataset,
     getSourceUrl,
     getThing,
     getUrlAll,
 } from "@inrupt/solid-client";
-import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./index.js";
-import {addUserLocations} from '../locationsRedux/locationsSlice';
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
-function ObtainUserLocations() {
-    const { session } = useSession();
-    const [locationList, setLocationList] = useState(null);
-    const [locationTexts, setLocationTexts] = useState([]);
 
+export default async function obtainUserLications(session, friends) {
+    let friends = [];
+    obtainUserLocation(session, session.info.webId);
+
+    friends.forEach((friends) => await obtainUserLocation(session, freidn.id));
+}
+
+async function obtainUserLocation(session, webID) { 
 
     /**
      * Con useEffect, le estamos diciendo a react que
@@ -26,49 +26,60 @@ function ObtainUserLocations() {
      * Guardará la función que le pasemos para llamarla 
      * después de actualizar el DOM.
      */
-    useEffect(() => {
-        if (!session) return;
-        (async () => {
+    //Obtenemos el dataset
 
-            //Obtenemos el dataset
-            const profileDataset = await getSolidDataset(session.info.webId, {
-                fetch: session.fetch,
-            });
+    let err = false;
 
-            //Obtenemos la "Thing" del perfil con la información del dataset
-            const profileThing = getThing(profileDataset, session.info.webId);
-            //Conseguimos todos los URL de los POD del usuario, usando el estándar que le pasamos
-            const podsUrls = getUrlAll(
-                profileThing,
-                STORAGE_PREDICATE
-            );
+    const profileDataset = await getSolidDataset(webID, {
+        fetch: session.fetch,
+    });
 
-            //Solo nos interesa el primer POD del usuario
-            const pod = podsUrls[0];
-            const containerUri = `${pod}locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
-            const list = await getOrCreateLocationList(containerUri, session.fetch);
-            setLocationList(list);
 
-            const indexUrl = getSourceUrl(list);
-            console.log(indexUrl);
-            const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
-            console.log(listaLoc);
-            const thing = getThing(listaLoc, indexUrl);
-            const localizaciones = getStringNoLocaleAll(
-                thing,
-                "http://schema.org/text"
-            );
-            console.log(localizaciones);
-            setLocationTexts(localizaciones);
-            addUserLocations(locationTexts);
-        })();
-
-    }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
-
-    console.log('GetUserLocations');
-    console.log(locationTexts);
+    //Obtenemos la "Thing" del perfil con la información del dataset
+    const profileThing = getThing(profileDataset, webID);
+    //Conseguimos todos los URL de los POD del usuario, usando el estándar que le pasamos
+    const podsUrls = getUrlAll(
+        profileThing,
+        STORAGE_PREDICATE
+    );
+    //Solo nos interesa el primer POD del usuario
+    const pod = podsUrls[0];
+    const containerUri = `${pod}public/locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
+    let isMainUser = session.info.webId === webID;
+    const list = await getOrCreateLocationList(containerUri, isMainUser, session.fetch).catch((e) => {
+        err = true;
+    });
     
-    return <div></div>;
-}
+    if(err) {
+        return { id: webID, localizaciones: []};
+    }
 
-export default ObtainUserLocations;
+    const indexUrl = getSourceUrl(list);
+    console.log(indexUrl);
+    const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
+    console.log(listaLoc);
+    const thing = getThing(listaLoc, indexUrl);
+    const localizaciones = getStringNoLocaleAll(
+        thing,
+        "http://schema.org/text"
+    );
+
+    let localizacionesObjetos = [];
+    localizaciones.forEach((localizacion) => {
+        let parsedLocation = localizacion.split('%t');
+
+        let parsedLocationObj = {
+            name: parsedLocation[0],
+            comment: parsedLocation[1],
+            lat: parsedLocation[2],
+            lng: parsedLocation[3]
+        };
+
+        localizacionesObjetos.push(parsedLocationObj);
+    })
+
+    console.log("payo ke e yegao alffinal lokin");
+
+    
+    return {id: webID, localizaciones: localizacionesObjetos};
+}

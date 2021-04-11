@@ -1,28 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import obtainUserLocations from '../solidAccessing/GetUserLocations';
+export const getUserLocation = createAsyncThunk( "locationsSlice/getLocations", async (session, {getState}) => {
+    return await obtainUserLocations(session, getState().friends.value);
+});
 
 export const locationsSlice = createSlice({
   name: 'locations',
   initialState: {
-    value: [], //[[localizaciones del usuario], [[amigo1], [amigo2], [amigo3]] ]
-  },
-  reducers: {
-    addUserLocations: (state, locations) => {
-      // Guardamos las localizaciones del usuario
-      state.push(locations);
+    status: "idle",
+    value: [], //[localizaciones del usuario]
+    error: null
+  },extraReducers:{
+    [getUserLocation.pending]: (state, action) => {
+      state.status = "pending";
     },
-    addFriendLocations: (state, locations) => {
-      if(state.length < 2) {
-        state.value[1].push([locations]); //Guardamos las localizaciones de los amigos como arrays dentro del array
-      } else {
-        state.push([]);
-        state.value[1].push([locations]); //Guardamos las localizaciones de los amigos como arrays dentro del array
-      }
-      
+    [getUserLocation.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.value = action.payload; //Guardamos las localizaciones de los amigos como arrays dentro del array
+    },[getUserLocation.rejected]: (state, action) => {
+      state.status = "rejected";
+      state.error = action.error.message;
     },
-  },
+  }
 })
 
 // Action creators are generated for each case reducer function
-export const { addUserLocations, addFriendLocations } = locationsSlice.actions;
-
 export default locationsSlice.reducer;

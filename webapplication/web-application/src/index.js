@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import {SessionProvider} from '@inrupt/solid-ui-react';
+import store from './utils/locationsRedux/store.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SessionProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+    </SessionProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
