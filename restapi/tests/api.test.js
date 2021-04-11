@@ -39,6 +39,20 @@ describe('user ', () => {
     });
 
     /**
+     * Tests that a user can be modified without any error.
+     */
+     it('can be modified correctly', async () => {
+        webId = 'webId'
+        location = [-5.66152, 43.53573]
+        await request(app).post('/api/users/add').send({webId: webId,location: location}).set('Accept', 'application/json')
+        location = [0.0, 0.0]
+        const response = await request(app).post('/api/users/add').send({webId: webId,location: location}).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+        expect(response.body.webId).toBe(webId);
+        expect(response.body.location.coordinates).toStrictEqual(location);
+    });
+
+    /**
      * Test that we can list users without any error.
      */
     /*it('can be listed',async () => {
