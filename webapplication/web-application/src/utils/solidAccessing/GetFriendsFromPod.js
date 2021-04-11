@@ -8,9 +8,9 @@ async function getFriendsWebIds(session) {
     let result = [];
     friends.forEach( async (friend) => {
         const friendName = await getFriendName(friend);
-        result.concat({id:friend, name: friendName});
+        result = result.concat({id:friend, name: friendName});
     });
-    return friends;
+    return result;
 }
 
 async function getFriendName(friendId) {

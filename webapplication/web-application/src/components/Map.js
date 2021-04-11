@@ -60,7 +60,7 @@ function MapComponent() {
 
         const coordinates = [lati, long];
         
-        setMarkers(totalLocations[session.info.webId]);
+        setMarkers(totalLocations[0]);
 
         let friendsLocations = [];
         console.log(totalLocations);

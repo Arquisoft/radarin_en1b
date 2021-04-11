@@ -10,14 +10,26 @@ import { getOrCreateLocationList } from "./index.js";
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
 
-export default async function obtainUserLications(session, friends) {
-    let friends = [];
-    obtainUserLocation(session, session.info.webId);
+export default async function obtainUserLocations(session, friends) {
+    let locations = [];
 
-    friends.forEach((friends) => await obtainUserLocation(session, freidn.id));
+    let sessionUserLocations = await obtainUserLocation(session, {id: session.info.webId, name: 'You'});
+    locations.push(sessionUserLocations);
+
+    friends.forEach(async (friend) => {
+        console.log(friend);
+        let friendLocation = await obtainUserLocation(session, friend);
+        
+        locations.push(friendLocation);
+    });
+
+    console.log(locations);
+
+    return locations;
+    
 }
 
-async function obtainUserLocation(session, webID) { 
+async function obtainUserLocation(session, person) { 
 
     /**
      * Con useEffect, le estamos diciendo a react que
@@ -27,6 +39,8 @@ async function obtainUserLocation(session, webID) {
      * después de actualizar el DOM.
      */
     //Obtenemos el dataset
+
+    let webID = person.id;
 
     let err = false;
 
@@ -78,8 +92,7 @@ async function obtainUserLocation(session, webID) {
         localizacionesObjetos.push(parsedLocationObj);
     })
 
-    console.log("payo ke e yegao alffinal lokin");
 
     
-    return {id: webID, localizaciones: localizacionesObjetos};
+    return {id: person.id, name: person.name, localizaciones: localizacionesObjetos};
 }
