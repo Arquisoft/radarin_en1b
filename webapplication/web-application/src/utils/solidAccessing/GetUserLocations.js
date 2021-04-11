@@ -10,12 +10,25 @@ import { getOrCreateLocationList } from "./index.js";
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
 
-export default async function obtainUserLications(session, friends) {
-    let friends = [];
-    obtainUserLocation(session, session.info.webId);
+export default async function obtainUserLocations(session, friends) {
 
-    friends.forEach((friends) => await obtainUserLocation(session, freidn.id));
+    let locations = [];
+    locations.push(obtainUserLocation(session, session.info.webId));
+
+    friends.forEach(async (friend) => {
+
+        let friendLocation = await obtainUserLocation(session, friend.id);
+
+        locations.push(friendLocation);
+
+    });
+
+    console.log(locations);
+
+    return locations;    
+
 }
+
 
 async function obtainUserLocation(session, webID) { 
 
