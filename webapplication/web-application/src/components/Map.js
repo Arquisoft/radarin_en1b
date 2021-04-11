@@ -26,30 +26,34 @@ function MapComponent() {
     const [render, setRender] = useState(false);
     const [lati, setLati] = useState(0.0);
     const [long, setLong] = useState(0.0);
-    const [markers, setMarkers] = useState([]);
-    const [friendMarkers, setFriendMarkers] = useState([]);
     const dispatch = useDispatch();
     const { session } = useSession();
     let content;
 
     const totalLocations = useSelector((state) => state.locations.value);
-    console.log(totalLocations);
     const statusLocations = useSelector((state) => state.locations.status);
     const errorLocations = useSelector((state) => state.locations.error);
 
     const totalFriends = useSelector((state) => state.friends.value);
     const statusFriends = useSelector((state) => state.friends.status);
 
+    window.navigator.geolocation.getCurrentPosition((position) => {
+        setLati(position.coords.latitude);
+        setLong(position.coords.longitude);
+    });
+
+
     useEffect(() => {
-        if(statusFriends === "idle"){
+        if (statusFriends === "idle") {
             dispatch(
                 getFriends(session)
             );
         }
-        if (statusLocations === "idle" && statusFriends === "fulfilled") {
-           dispatch(getUserLocation(session));
+        else if (statusLocations === "idle" && statusFriends === "fulfilled") {
+            dispatch(getUserLocation(session));
+            console.log('Entro otra vez');
         }
-    });
+    }, [statusLocations, statusFriends]);
 
 
     if (statusLocations === "pending" || statusLocations === "idle") {
@@ -57,41 +61,15 @@ function MapComponent() {
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
     } else if (statusLocations === "fulfilled") {
-        window.navigator.geolocation.getCurrentPosition((position) => {
-            setLati(position.coords.latitude);
-            setLong(position.coords.longitude);
-        });
 
-        const coordinates = [lati, long];
-        
-        let friendsLocations = [];
-
-        totalLocations.forEach((info) => {
-            if(info.id === session.info.webId) {
-                let markers = [];
-                info.locations.forEach((location) =>{
-                    markers.push(location);
-                });
-                setMarkers(markers);
-            } else {
-                info.locations.forEach((location) => {
-                    friendsLocations.push({
-                        author: info.name,
-                        name: location.name,
-                        comment: location.comment,
-                        lat: location.lat,
-                        lng: location.lng,
-                    });
-                });
-            }
-        });
-
-        setFriendMarkers(friendsLocations);
+        let locations = parseLocations(totalLocations, session);
+        let markers = locations[0];
+        let friendMarkers = locations[1];
 
         content = (
             <div className="map-area">
 
-                <MapContainer center={coordinates} zoom={11} scrollWheelZoom={true}>
+                <MapContainer center={[lati, long]} zoom={11} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -108,7 +86,7 @@ function MapComponent() {
 
                     {friendMarkers.map((friendMarker) => {
                         const markerPosition = [friendMarker.lat, friendMarker.lng];
-                        return <Marker position={markerPosition} icon={myIcon}>
+                        return <Marker position={markerPosition} icon={iconPerson}>
                             <Popup>
                                 <h1>{friendMarker.author} Location:</h1>
                                 <h1>{friendMarker.name}</h1>
@@ -125,3 +103,30 @@ function MapComponent() {
     return <div>{content}</div>;
 }
 export default MapComponent;
+
+function parseLocations(totalLocations, session) {
+    let toRet = [];
+    let friendsLocations = [];
+    totalLocations.forEach((info) => {
+        if (info.id === session.info.webId) {
+            let markers = [];
+            info.localizaciones.forEach((location) => {
+                markers.push(location);
+            });
+            toRet.push(markers);
+        } else {
+            info.localizaciones.forEach((location) => {
+                friendsLocations.push({
+                    author: info.name,
+                    name: location.name,
+                    comment: location.comment,
+                    lat: location.lat,
+                    lng: location.lng,
+                });
+            });
+        }
+    });
+    toRet.push(friendsLocations);
+
+    return toRet;
+}
