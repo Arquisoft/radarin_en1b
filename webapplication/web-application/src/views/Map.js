@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
@@ -7,6 +7,9 @@ import personMarker from '../static/person.svg';
 import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
+import '../css/Map.css'
+import SyncLoader from "react-spinners/SyncLoader";
+import { css } from "@emotion/core";
 
 const myIcon = new L.Icon({
     iconUrl: marker,
@@ -23,7 +26,6 @@ const iconPerson = new L.Icon({
 });
 
 function MapComponent() {
-    const [render, setRender] = useState(false);
     const [lati, setLati] = useState(0.0);
     const [long, setLong] = useState(0.0);
     const dispatch = useDispatch();
@@ -34,7 +36,6 @@ function MapComponent() {
     const statusLocations = useSelector((state) => state.locations.status);
     const errorLocations = useSelector((state) => state.locations.error);
 
-    const totalFriends = useSelector((state) => state.friends.value);
     const statusFriends = useSelector((state) => state.friends.status);
 
     window.navigator.geolocation.getCurrentPosition((position) => {
@@ -51,13 +52,20 @@ function MapComponent() {
         }
         else if (statusLocations === "idle" && statusFriends === "fulfilled") {
             dispatch(getUserLocation(session));
-            console.log('Entro otra vez');
         }
-    }, [statusLocations, statusFriends]);
+    });//, [statusLocations, statusFriends]);
 
 
     if (statusLocations === "pending" || statusLocations === "idle") {
-        content = <div className="waiting-screen">Radarín is computing your locations....</div>
+        const override = css`
+        display: block;
+        margin: 0 auto;
+        border-color: red;
+        `;
+        content = <div className="waiting-screen">
+                    <h1>Radarin Manager is computing your locations...</h1>
+                    <SyncLoader css={override} size={40} color={"rgb(9, 71, 241)"} />
+                  </div>
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
     } else if (statusLocations === "fulfilled") {
@@ -67,9 +75,9 @@ function MapComponent() {
         let friendMarkers = locations[1];
 
         content = (
-            <div className="map-area">
+            <div className="map">
 
-                <MapContainer center={[lati, long]} zoom={11} scrollWheelZoom={true}>
+                <MapContainer center={[lati, long]} zoom={11} scrollWheelZoom={true} className="map">
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -95,12 +103,12 @@ function MapComponent() {
                         </Marker>
                     })}
 
-                </MapContainer>,
+                </MapContainer>
 
             </div>
         );
     }
-    return <div>{content}</div>;
+    return <div className="map">{content}</div>;
 }
 export default MapComponent;
 
