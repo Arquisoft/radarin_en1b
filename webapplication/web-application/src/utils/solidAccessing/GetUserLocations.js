@@ -30,7 +30,6 @@ export default async function obtainUserLocations(session, friends) {
 }
 
 async function obtainUserLocation(session, person) { 
-
     /**
      * Con useEffect, le estamos diciendo a react que
      * queremos que el componente haga algo después de
