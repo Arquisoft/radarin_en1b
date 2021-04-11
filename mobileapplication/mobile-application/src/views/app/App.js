@@ -15,7 +15,7 @@ import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import AboutUs from '../aboutUs/AboutUs';
 import NotLoggedIn from '../notLoggedIn/NotLoggedIn';
 import StoreLocation from '../storeLocation/StoreLocation';
-
+import Welcome from '../welcome/Welcome';
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Switch>
-          <Route path='/' exact component={LoginForm}/>
+          <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
           <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
           <Route path='/store-location' exact component={(isLoggedIn)? StoreLocation : NotLoggedIn}/>
           <Route path='/about-us' exact component={AboutUs}/>
