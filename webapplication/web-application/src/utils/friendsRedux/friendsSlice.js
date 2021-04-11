@@ -2,7 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import getFriendsWebIds from '../solidAccessing/GetFriendsFromPod';
 
 export const getFriends = createAsyncThunk("friends/getFriends", async (session) => {
-  return await  getFriendsWebIds(session);
+  let friendWebIds = await getFriendsWebIds(session);
+  console.log(friendWebIds);
+  return friendWebIds;
 });
 
 export const friendsSlice = createSlice({
@@ -18,7 +20,7 @@ export const friendsSlice = createSlice({
     },
     [getFriends.fulfilled]: (state, action) => {
       state.status = "fulfilled";
-      state.value = state.value.concat(action.payload); 
+      state.value = action.payload; 
     },[getFriends.rejected]: (state, action) => {
       state.status = "rejected";
       state.error = action.error.message;

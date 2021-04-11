@@ -24,19 +24,18 @@ function MapComponent() {
     const { session } = useSession();
     let content;
 
+    const totalFriends = useSelector((state) => state.friends.value);
+    const statusFriends = useSelector((state) => state.friends.status);
+
     const totalLocations = useSelector((state) => state.locations.value);
     const statusLocations = useSelector((state) => state.locations.status);
     const errorLocations = useSelector((state) => state.locations.error);
-
-
-    const totalFriends = useSelector((state) => state.friends.value);
-    const statusFriends = useSelector((state) => state.friends.status);
 
     useEffect(() => {
         if(statusFriends === "idle"){
             dispatch(
                 getFriends(session)
-            )
+            );
         }
         if (statusLocations === "idle" && statusFriends === "fulfilled") {
            dispatch(getUserLocation(session));

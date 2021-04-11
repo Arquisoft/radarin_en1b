@@ -6,16 +6,20 @@ async function getFriendsWebIds(session) {
     const profile = webIdDoc.getSubject(session.info.webId);
     const friends = profile.getAllRefs('http://xmlns.com/foaf/0.1/knows');
     let result = [];
-    friends.forEach( async (friend) => {
+
+    for(const friend of friends) {
         const friendName = await getFriendName(friend);
         result = result.concat({id:friend, name: friendName});
-    });
+    }
+
     return result;
 }
 
 async function getFriendName(friendId) {
+    console.log(friendId);
     const webIdDoc = await fetchDocument(friendId);
     const profile = webIdDoc.getSubject(webIdDoc);
+    
     return profile.getString('http://xmlns.com/foaf/0.1/name');
     
 }
