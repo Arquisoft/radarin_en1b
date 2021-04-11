@@ -1,5 +1,5 @@
 
-import MapComponent from '../Map'
+import MapComponent from './Map'
 //import { FOAF } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
 

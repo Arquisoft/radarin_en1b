@@ -1,15 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../static/radar.svg';
+import '../../css/App.css';
 
-import MapComponent from './Map'
+import MapComponent from '../../components/Map'
 
-import LoginForm from './components/LoginForm'
-import MainView from './components/MainView'
+import LoginForm from '../login/LoginForm'
+import MainView from '../../components/MainView'
 
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 import {SessionProvider} from '@inrupt/solid-ui-react';
+import Navbar from '../navbar/Navbar';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import AboutUs from '../aboutUs/AboutUs';
+import NotLoggedIn from '../notLoggedIn/NotLoggedIn';
+import StoreLocation from '../storeLocation/StoreLocation';
 
 
 
@@ -29,7 +34,15 @@ function App() {
 
   return (
     <SessionProvider>
-      {(!isLoggedIn)? <LoginForm/> : <MainView/>}
+      <BrowserRouter>
+        <Navbar/>
+        <Switch>
+          <Route path='/' exact component={LoginForm}/>
+          <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
+          <Route path='/store-location' exact component={(isLoggedIn)? StoreLocation : NotLoggedIn}/>
+          <Route path='/about-us' exact component={AboutUs}/>
+        </Switch>
+      </BrowserRouter>
     </SessionProvider>
   );
   

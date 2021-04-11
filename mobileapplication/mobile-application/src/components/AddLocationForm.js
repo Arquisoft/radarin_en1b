@@ -9,7 +9,7 @@ import {
     setThing,
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
-import { getOrCreateLocationList } from "./utils/index.js";
+import { getOrCreateLocationList } from "../utils/index.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -42,6 +42,7 @@ function AddLocationForm() {
 
           //Obtenemos la "Thing" del perfil con la información del dataset
           const profileThing = getThing(profileDataset, session.info.webId);
+          console.log(profileThing);
           //Conseguimos todos los URL de los POD del usuario, usando el estándar que le pasamos
           const podsUrls = getUrlAll(
               profileThing,
@@ -50,7 +51,7 @@ function AddLocationForm() {
 
           //Solo nos interesa el primer POD del usuario
           const pod = podsUrls[0];
-          const containerUri = `${pod}locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
+          const containerUri = `${pod}public/locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
           const list = await getOrCreateLocationList(containerUri, session.fetch);
           console.log(`Location list: ${list}`);
           setLocationList(list);
@@ -59,12 +60,13 @@ function AddLocationForm() {
 
   const addLocation = async (text) => {
     const indexUrl = getSourceUrl(locationList);
-    console.log(indexUrl);
+    console.log("index " + indexUrl);
     const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
-    
-    //const thing = getThing(listaLoc, indexUrl);
 
+    console.log("listaLoc " + listaLoc);
+    
     const thing = getThing(listaLoc, indexUrl);
+    console.log(thing);
 
     const locationWithText = addStringNoLocale(
         thing,
@@ -95,10 +97,10 @@ function AddLocationForm() {
 
     const obtainUserLocation = () => {
       geolocateUser();
-      console.log("latitude = " + lati);
-      console.log("longitude = " + long);
-      console.log("name = " + value);
-      console.log("description = " + localizationDescription);
+      //console.log("latitude = " + lati);
+      //console.log("longitude = " + long);
+      //console.log("name = " + value);
+      //console.log("description = " + localizationDescription);
       addLocation(value + "%t" + localizationDescription + "%t" + lati + "%t" + long);
       resetState();
   };
@@ -128,7 +130,7 @@ function AddLocationForm() {
                    <input type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
                 </label>
                 <br/>
-                <button onClick={handleSubmit}>Add new location</button>
+                <button onClick={handleSubmit} variant="contained" color="primary" >Add new location</button>
            </form>
        </div>
     );
