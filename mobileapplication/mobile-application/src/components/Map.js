@@ -102,9 +102,9 @@ export default class MapComponent extends Component {
         var markers = this.retrieveMarkers();
         const coordinates = [this.lati, this.long];
         return (
-            <div className="map-area">
+            <div className="map">
 
-                <MapContainer center={coordinates} zoom={10} scrollWheelZoom={true}>
+                <MapContainer center={coordinates} zoom={10} scrollWheelZoom={true} className="map">
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
