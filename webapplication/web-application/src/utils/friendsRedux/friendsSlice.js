@@ -3,7 +3,6 @@ import getFriendsWebIds from '../solidAccessing/GetFriendsFromPod';
 
 export const getFriends = createAsyncThunk("friends/getFriends", async (session) => {
   let friendWebIds = await getFriendsWebIds(session);
-  console.log(friendWebIds);
   return friendWebIds;
 });
 

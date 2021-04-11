@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
 import marker from '../static/radar.svg';
+import personMarker from '../static/person.svg';
 import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
@@ -10,6 +11,13 @@ import { useSession } from '@inrupt/solid-ui-react/dist';
 const myIcon = new L.Icon({
     iconUrl: marker,
     iconRetinaUrl: marker,
+    popupAnchor: [-0, -0],
+    iconSize: [32, 45],
+});
+
+const iconPerson = new L.Icon({
+    iconUrl: personMarker,
+    iconRetinaUrl: personMarker,
     popupAnchor: [-0, -0],
     iconSize: [32, 45],
 });
@@ -24,12 +32,13 @@ function MapComponent() {
     const { session } = useSession();
     let content;
 
-    const totalFriends = useSelector((state) => state.friends.value);
-    const statusFriends = useSelector((state) => state.friends.status);
-
     const totalLocations = useSelector((state) => state.locations.value);
+    console.log(totalLocations);
     const statusLocations = useSelector((state) => state.locations.status);
     const errorLocations = useSelector((state) => state.locations.error);
+
+    const totalFriends = useSelector((state) => state.friends.value);
+    const statusFriends = useSelector((state) => state.friends.status);
 
     useEffect(() => {
         if(statusFriends === "idle"){
@@ -44,33 +53,40 @@ function MapComponent() {
 
 
     if (statusLocations === "pending" || statusLocations === "idle") {
-        content = <div>Wait...</div>
-    }
-
-    else if (statusLocations === "rejected") {
+        content = <div className="waiting-screen">Radarín is computing your locations....</div>
+    } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
-    }
-
-    else if (statusLocations === "fulfilled") {
+    } else if (statusLocations === "fulfilled") {
         window.navigator.geolocation.getCurrentPosition((position) => {
             setLati(position.coords.latitude);
             setLong(position.coords.longitude);
-        }, console.log);
+        });
 
         const coordinates = [lati, long];
         
-        setMarkers(totalLocations[0]);
-
         let friendsLocations = [];
-        console.log(totalLocations);
-        totalFriends.forEach((friend) => {
-            totalLocations[friend.id].forEach((location) => {
-                friendsLocations.push({
-                    location: location,
-                    author: friend.name
+
+        totalLocations.forEach((info) => {
+            if(info.id === session.info.webId) {
+                let markers = [];
+                info.locations.forEach((location) =>{
+                    markers.push(location);
                 });
-            });
+                setMarkers(markers);
+            } else {
+                info.locations.forEach((location) => {
+                    friendsLocations.push({
+                        author: info.name,
+                        name: location.name,
+                        comment: location.comment,
+                        lat: location.lat,
+                        lng: location.lng,
+                    });
+                });
+            }
         });
+
+        setFriendMarkers(friendsLocations);
 
         content = (
             <div className="map-area">
@@ -90,13 +106,13 @@ function MapComponent() {
                         </Marker>
                     })}
 
-                    {friendMarkers.map((markerWAuthor) => {
-                        const markerPosition = [markerWAuthor.location.lat, markerWAuthor.location.lng];
+                    {friendMarkers.map((friendMarker) => {
+                        const markerPosition = [friendMarker.lat, friendMarker.lng];
                         return <Marker position={markerPosition} icon={myIcon}>
                             <Popup>
-                                <h1>{markerWAuthor.author} Location:</h1>
-                                <h1>{markerWAuthor.location.name}</h1>
-                                <p>{markerWAuthor.location.comment}</p>
+                                <h1>{friendMarker.author} Location:</h1>
+                                <h1>{friendMarker.name}</h1>
+                                <p>{friendMarker.comment}</p>
                             </Popup>
                         </Marker>
                     })}

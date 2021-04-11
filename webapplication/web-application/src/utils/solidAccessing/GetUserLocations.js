@@ -16,14 +16,11 @@ export default async function obtainUserLocations(session, friends) {
     let sessionUserLocations = await obtainUserLocation(session, {id: session.info.webId, name: 'You'});
     locations.push(sessionUserLocations);
 
-    friends.forEach(async (friend) => {
-        console.log(friend);
+    for(const friend of friends) {
         let friendLocation = await obtainUserLocation(session, friend);
-        
         locations.push(friendLocation);
-    });
+    }
 
-    console.log(locations);
 
     return locations;
     
@@ -68,9 +65,7 @@ async function obtainUserLocation(session, person) {
     }
 
     const indexUrl = getSourceUrl(list);
-    console.log(indexUrl);
     const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
-    console.log(listaLoc);
     const thing = getThing(listaLoc, indexUrl);
     const localizaciones = getStringNoLocaleAll(
         thing,
