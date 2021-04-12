@@ -24,9 +24,10 @@ export default class MapComponent extends Component {
         super(props);
         this.state = {
             render: false,
-            latitude: null,
-            longitude: null,
-            users: null
+            latitude: 0.0,
+            longitude: 0.0,
+            friendsWebIds: [],
+            nearFriends: []
         }
         this.obtainLocations();
     }
@@ -43,7 +44,6 @@ export default class MapComponent extends Component {
             navigator.geolocation.getCurrentPosition(
                 async position => {
                     this.setState({
-                        render: false,
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude
                     })
@@ -68,8 +68,14 @@ export default class MapComponent extends Component {
             console.log(friendsWebIds)
             let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id))
             console.log(nearFriends)
+
+            if (nearFriends.length > 0) {
+                alert('There are friends near you');
+            }
+
             this.setState({
-                users: nearFriends,
+                friendsWebIds: friendsWebIds,
+                nearFriends: nearFriends,
                 render: true
             })
         } catch(error) {
@@ -78,7 +84,7 @@ export default class MapComponent extends Component {
     }
 
     retrieveMarkers() {
-        let markers = this.state.users;
+        let markers = this.state.nearFriends;
         markers.push({
             webId: "Your location",
             location: {
@@ -92,26 +98,24 @@ export default class MapComponent extends Component {
         if (this.state.render) {
             let markers = this.retrieveMarkers();
             const coordinates = [this.state.latitude, this.state.longitude];
-            return (
-                <div className="map">
-                    <MapContainer center={coordinates} zoom={15} scrollWheelZoom={true} className="map">
-                        <TileLayer
-                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        {markers.map((marker, i) => {
-                            const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
-                            console.log(i)
-                            console.log(markerPosition)
-                            return <Marker key = {i} position={markerPosition} icon={(i == markers.length - 1) ? userIcon : friendIcon}> 
-                            <Popup>
-                                <h1>{marker.webId}</h1>
-                                <p>{marker.webId}</p>
-                            </Popup>
-                            </Marker> })}
-                    </MapContainer>
-                </div>
-            );
+            return (<div className="map">
+                <MapContainer center={coordinates} zoom={15} scrollWheelZoom={true} className="map">
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {markers.map((marker, i) => {
+                        const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
+                        console.log(i)
+                        console.log(markerPosition)
+                        return <Marker key = {i} position={markerPosition} icon={(i == markers.length - 1) ? userIcon : friendIcon}> 
+                        <Popup>
+                            <h1>{marker.webId}</h1>
+                            <p>{marker.webId}</p>
+                        </Popup>
+                        </Marker> })}
+                </MapContainer>
+            </div>);
         } else {
             return null;
         }
