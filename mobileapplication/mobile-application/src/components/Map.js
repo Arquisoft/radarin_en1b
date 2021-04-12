@@ -33,13 +33,13 @@ export default class MapComponent extends Component {
     }
 
     obtainLocations() {
+        this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
         }, 30000);
     }
 
     obtainUserLocation() {
-        console.log(200)
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 async position => {
@@ -49,7 +49,6 @@ export default class MapComponent extends Component {
                     })
 
                     let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude])
-                    console.log(response)
                     if (response.error)
                         console.log("Error adding user location to restapi. Is it on?")
 
@@ -65,13 +64,20 @@ export default class MapComponent extends Component {
     async obtainFriendLocations() {
         try {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
-            console.log(friendsWebIds)
             let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id))
-            console.log(nearFriends)
 
-            if (nearFriends.length > 0) {
-                // alert('There are friends near you');
+            for (let near of nearFriends) {
+                for (let friend of friendsWebIds) {
+                    if (friend.id === near.webId) {
+                        near.webId = friend.name;
+                        break;
+                    }
+                }
             }
+
+            //if (nearFriends.length > 0) {
+                // alert('There are friends near you');
+            //}
 
             this.setState({
                 friendsWebIds: friendsWebIds,

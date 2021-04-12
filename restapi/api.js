@@ -6,6 +6,8 @@ const router = express.Router()
 router.post("/users/list", async (req, res) => {
     let location = req.body.location; // [longitude, latitude]
     let friends = req.body.friends; // [webId1, webId2, ...]
+    let date = new Date();
+    date.setMinutes(date.getMinutes() - 15); // Time (15 min)
 
     const users = await User.find({
         webId: { 
@@ -17,14 +19,12 @@ router.post("/users/list", async (req, res) => {
                     type: "Point",
                     coordinates: location
                 },
-                $maxDistance: 1000, // Distance in meters
+                $maxDistance: 1000, // Distance (1 km)
                 $minDistance: 0
             } 
         },
-        updatedAt: {
-            $gt: {
-                $currentDate > 15
-            }
+        lastUpdate: {
+            $gte: new Date(date.toISOString()) // Time (15 min)
         }
     })
 	res.send(users)
@@ -41,6 +41,7 @@ router.post("/users/add", async (req, res) => {
             type: "Point",
             coordinates: location
         };
+        user.lastUpdate = new Date();
         await user.save();
         res.send(user)
     } else {
@@ -49,7 +50,8 @@ router.post("/users/add", async (req, res) => {
             location: {
                 type: "Point",
                 coordinates: location
-            }
+            },
+            lastUpdate: new Date()
         });
         await user.save();
         res.send(user)

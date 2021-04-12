@@ -12,8 +12,10 @@ const schema = mongoose.Schema({
             type: [Number],
             required: true
         }
-    }
-},{ timestamps: true })
+    },
+    lastUpdate: Date
+})
+//,{ timestamps: true })
 
 schema.index({ location: "2dsphere" }) // Index creation over location
                                        // to speed up geospatial queries
