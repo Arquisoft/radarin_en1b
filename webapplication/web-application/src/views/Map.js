@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
 import marker from '../static/radar.svg';
-import personMarker from '../static/friendsLocations.svg';
+import personMarker from '../static/friendLocation.svg';
 import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
