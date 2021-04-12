@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {addUserOrUpdateLocation,getNearFriends} from '../api/api'
+import {addUser,getUsers} from '../api/api'
 
 class EmailForm extends React.Component{
   constructor(props) {
@@ -24,10 +24,12 @@ class EmailForm extends React.Component{
   }
 
   async registerUser(){
-      let response = await addUserOrUpdateLocation(this.state.email, [-5.66152, 43.53573])
+      let response = await addUser(this.state.username,this.state.email)
       console.log(response)
       if (response.error)
         this.setState({welcomeMsg:response.error})
+      else if (response.name===this.state.username)
+        this.setState({welcomeMsg:"Welcome to ASW"})
       else
         this.setState({welcomeMsg:"Unexpected error, maybe the restapi is still sleeping..."})
       //Refresh the users
@@ -36,8 +38,7 @@ class EmailForm extends React.Component{
 
   async fetchUsers(){
     try{
-      let users = await getNearFriends([-5.66152, 43.53663], ["user1@user1.com", "user2@user2.com"])
-      console.log(users)
+      let users = await getUsers()
       this.props.refreshUsers(users)
     }
     catch(error)
@@ -49,7 +50,7 @@ class EmailForm extends React.Component{
   async handleSubmit(e) {
     e.preventDefault()
     //Add the user to the database
-    if (this.state.email){
+    if (this.state.username && this.state.email){
       this.registerUser()
     }
     else
@@ -67,6 +68,10 @@ class EmailForm extends React.Component{
               </Form.Text>
             </Form.Group>
         
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control name="username" type="string" placeholder="Name" onChange={this.changeUserName.bind(this)} value={this.state.username} />
+            </Form.Group>
             <Button variant="primary" type="submit">
               Submit
             </Button>
