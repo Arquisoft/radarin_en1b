@@ -54,25 +54,27 @@ For multiple environments or alternative deployments please copy that section of
 ----
 node "Windows-PC" {
      
-    component [Browser] as Navegador
+    component [Browser] as NavegadorPc
     
  }
 
 node "Heroku server" as MainPage{
-    component "Web App" as MainApp {
-       component [index.html] as MainIndex
+    component "Radarin Manager (Web-intended version)" as MainApp {
+       component [App.js] as MainIndex
     }
-    
+   
+   component "Radarin Radar (Mobile-intended version)" as MobileApp {
+        component [App.js] as MobileIndex
+   }
 }
 
-Navegador --> MainPage
+node "Mobile Phone" as Mobile {
 
-node "Mobile Phone" as Mobile{
-     component "MobileApp" as MobileApp {
-        component [index.html] as MobileIndex
-     }
-     
+  component [Browser] as NavegadorMovil
 }
+
+NavegadorPc --> MainIndex
+NavegadorMovil --> MobileIndex
 
 database "User POD" as UPOD
 
@@ -80,7 +82,7 @@ database "MainApp.db" as MainDatabase
 
 MainApp --> MainDatabase
 MainApp --> UPOD
-Mobile --> UPOD
+MobileApp --> UPOD
 ----
 
 Motivation::
