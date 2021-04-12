@@ -20,6 +20,11 @@ router.post("/users/list", async (req, res) => {
                 $maxDistance: 1000, // Distance in meters
                 $minDistance: 0
             } 
+        },
+        updatedAt: {
+            $gt: {
+                $currentDate > 15
+            }
         }
     })
 	res.send(users)

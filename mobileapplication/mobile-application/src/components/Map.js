@@ -33,13 +33,13 @@ export default class MapComponent extends Component {
     }
 
     obtainLocations() {
-        this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
         }, 30000);
     }
 
     obtainUserLocation() {
+        console.log(200)
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 async position => {
@@ -70,7 +70,7 @@ export default class MapComponent extends Component {
             console.log(nearFriends)
 
             if (nearFriends.length > 0) {
-                alert('There are friends near you');
+                // alert('There are friends near you');
             }
 
             this.setState({
