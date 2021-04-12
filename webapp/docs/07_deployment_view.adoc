@@ -71,6 +71,7 @@ node "Heroku server" as MainPage{
         component [App.js] as MobileIndex
    }
 
+
   database "MainApp.db" as MainDatabase
 }
 
@@ -83,10 +84,11 @@ NavegadorPc --> MainIndex
 NavegadorMovil --> MobileIndex
 
 
-
 MainApp --> MainDatabase
+
 MainApp --> podProvider
 MobileApp --> podProvider
+
 ----
 
 Motivation::

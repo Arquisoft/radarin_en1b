@@ -39,3 +39,7 @@ Rerendering map via intervals is provided within the mobile application. After a
 ==== _Asyncronous functions_
 
 Obtaining locations from the user, from the friends, is done via asyncronous functions which can be troublesome if not taken care of carefully. However, due to the architecture design taken, we could work with asyncronous functions without any problem, but this could provide some trouble to some users in a minor way. Either way, if the asyncronous functions don't work at first, we reassured they will be computed again to keep the integrity of the application in check.
+
+==== _Deployments in Heroku_
+
+As we have discussed in one of the first sessions, web application and mobile application will have different features, and as a consequence, two different deploys are needed. Initially, this cannot look like a real problem, but having to maintain two different Heroku repositories, as well as the GitHub one, could be really dangerous, specially if we forget to push some changes, or if the automation of this process does not work as expected. We have to take into account the matter that we are using the not paid version of Heroku, and sometimes, when deploying the application after some changes, could take long times to be built.

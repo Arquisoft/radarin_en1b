@@ -17,9 +17,8 @@ The basic interactions of these parts can be observed in the following diagram
 ----
 database "Main Database" as Mdb
 database "User1's POD" as Pod1
-component "Web App" as WApp
-component "Mobile App" as MApp
-[WApp] --> [Mdb]: query
+component "Radarin Manager" as WApp
+component "Radarin Radar" as MApp
 [MApp] --> [Mdb]: query
 [WApp] --> [Pod1]: query
 [MApp] --> [Pod1]: query
