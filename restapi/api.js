@@ -17,7 +17,7 @@ router.post("/users/list", async (req, res) => {
                     type: "Point",
                     coordinates: location
                 },
-                $maxDistance: 100, // Distance in meters
+                $maxDistance: 1000, // Distance in meters
                 $minDistance: 0
             } 
         }

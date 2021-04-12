@@ -9,7 +9,7 @@ import MainView from '../../components/MainView'
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
-import {SessionProvider} from '@inrupt/solid-ui-react';
+import {SessionContext, SessionProvider} from '@inrupt/solid-ui-react';
 import Navbar from '../navbar/Navbar';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import AboutUs from '../aboutUs/AboutUs';
@@ -38,7 +38,9 @@ function App() {
         <Navbar/>
         <Switch>
           <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
-          <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
+          <Route path='/map' exact render={(props) => (
+            (isLoggedIn)? <MapComponent {...props} session={session} /> : <NotLoggedIn />
+          )} />
           <Route path='/store-location' exact component={(isLoggedIn)? StoreLocation : NotLoggedIn}/>
           <Route path='/about-us' exact component={AboutUs}/>
         </Switch>

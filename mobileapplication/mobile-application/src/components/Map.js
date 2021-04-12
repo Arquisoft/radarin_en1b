@@ -1,128 +1,118 @@
 import React, { Component } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
-import marker from '../static/person.svg';
+import user from '../static/user.svg';
+import friend from '../static/friend.svg';
 import '../css/Map.css'
-const myIcon = new L.Icon({
-    iconUrl: marker,
-    iconRetinaUrl: marker,
+import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
+import { addUserOrUpdateLocation, getNearFriends } from '../api/api'
+const userIcon = new L.Icon({
+    iconUrl: user,
+    iconRetinaUrl: user,
+    popupAnchor:  [-0, -0],
+    iconSize: [32,45],     
+});
+const friendIcon = new L.Icon({
+    iconUrl: friend,
+    iconRetinaUrl: friend,
     popupAnchor:  [-0, -0],
     iconSize: [32,45],     
 });
 
 export default class MapComponent extends Component {
-    state = {
-        locationDisplayed: false
-    };
-
-    constructor() {
-        super();
-        this.lati = 42.0;
-        this.long = -5.6941612;
-        window.navigator.geolocation.getCurrentPosition((position) => {
-            this.lati = position.coords.latitude;
-            this.long = position.coords.longitude;
-            this.componentDidMount();
-        }, console.log);
+    constructor(props) {
+        super(props);
         this.state = {
-            render: false, //Set render state to false
-            latitude: this.lati, //Added in the state to rerender the component
-            longitude: this.long
+            render: false,
+            latitude: null,
+            longitude: null,
+            users: null
         }
         this.obtainLocations();
     }
 
-    refreshView() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                    position => {
-                        this.lati = position.coords.latitude;
-                        this.long = position.coords.longitude;       
-                    },
-                    error => {
-                        console.log("Error: ", error)
-                    },{ enableHighAccuracy: true });
-        }
-    }
-
     obtainLocations() {
+        this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
-            this.obtainFriendLocations();
-        }, 1000);
+        }, 30000);
     }
 
     obtainUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                    position => {
-                        let latitude = position.coords.latitude;
-                        let longitude = position.coords.longitude;
-                        console.log("lat" + latitude);
-                        console.log("long" + longitude);
-                        this.setState({
-                            latitude: latitude,
-                            longitude: longitude
-                        })                                             
+                async position => {
+                    this.setState({
+                        render: false,
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude
+                    })
 
-                    },
-                    error => {
-                        console.log("Error: ", error)
-                    },{ enableHighAccuracy: true });
+                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude])
+                    console.log(response)
+                    if (response.error)
+                        console.log("Error adding user location to restapi. Is it on?")
+
+                    this.obtainFriendLocations();
+                },
+                error => {
+                    console.log("Error: ", error)
+                },{ enableHighAccuracy: true }
+            );
+        }
     }
-}
 
-
-    obtainFriendLocations() {
-        //TODO
+    async obtainFriendLocations() {
+        try {
+            let friendsWebIds = await getFriendsWebIds(this.props.session);
+            console.log(friendsWebIds)
+            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id))
+            console.log(nearFriends)
+            this.setState({
+                users: nearFriends,
+                render: true
+            })
+        } catch(error) {
+            console.log("Error fetching friend list from restapi. Is it on?")
+        }
     }
-
 
     retrieveMarkers() {
-        //TODO
-        //In this function we are going to query the pods and retrieve a user's coordinates
-        return [
-            {
-                name: "Your location",
-                comment: "Users' current location",
-                lat: this.state.latitude,
-                lng: this.state.longitude
+        let markers = this.state.users;
+        markers.push({
+            webId: "Your location",
+            location: {
+                coordinates: [this.state.longitude, this.state.latitude]
             }
-        ];
-    }
-
-    componentDidMount() {
-        setTimeout(function() { //Start the timer
-            this.setState({render: true}) //0.5 second, set render to true
-        }.bind(this), 500)
+        })
+        return markers;
     }
 
     render() {
-        if (this.state.render){
-        var markers = this.retrieveMarkers();
-        const coordinates = [this.lati, this.long];
-        return (
-            <div className="map">
-
-                <MapContainer center={coordinates} zoom={10} scrollWheelZoom={true} className="map">
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    {markers.map((marker) => {
-                        const markerPosition = [marker.lat, marker.lng];
-                        return <Marker key = {marker.name} position={markerPosition} icon={myIcon}> 
-                        <Popup>
-                            <h1>{marker.name}</h1>
-                            <p>{marker.comment}</p>
-                        </Popup>
-                        </Marker> })}
-                    
-                    
-                </MapContainer>
-            </div>
-        );
-        }else{
+        if (this.state.render) {
+            let markers = this.retrieveMarkers();
+            const coordinates = [this.state.latitude, this.state.longitude];
+            return (
+                <div className="map">
+                    <MapContainer center={coordinates} zoom={15} scrollWheelZoom={true} className="map">
+                        <TileLayer
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        {markers.map((marker, i) => {
+                            const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
+                            console.log(i)
+                            console.log(markerPosition)
+                            return <Marker key = {i} position={markerPosition} icon={(i == markers.length - 1) ? userIcon : friendIcon}> 
+                            <Popup>
+                                <h1>{marker.webId}</h1>
+                                <p>{marker.webId}</p>
+                            </Popup>
+                            </Marker> })}
+                    </MapContainer>
+                </div>
+            );
+        } else {
             return null;
         }
 
