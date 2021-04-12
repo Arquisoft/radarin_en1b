@@ -95,3 +95,22 @@ Consequences::
 
 MongoDB is defined as "a document database with the scalability and flexibility that you want with the querying and
 indexing that you need". In our case, we will combine its use with JSON objects carrying the needed data.
+
+
+=== LDFlex for Solid POD's Comunication
+
+Context::
+
+As a first approach to the comunication between Solid pods and the web application we found the libraries https://github.com/LDflex/LDflex[LDFlex] and https://github.com/solid/query-ldflex[Query-LDFlex] through the researches we made through the https://forum.solidproject.org/t/how-can-my-app-handle-data-from-a-solid-pod/1787[Solid Forum].
+
+Decision::
+
+ As we saw that several groups last year had used this technology, we took the decision of implement it in our project as an easy way of data managment with the Pods. But after several attempt of integrating it, we could  never obtained the desired Used data an several errors appeared through the tests. Those problems, along with the lack of information and examples leed us to the final decision of *disscard this technology and use the inrupt API*, as we described in the following https://github.com/Arquisoft/radarin_en1b/issues/83[Github issue #83]  
+
+Status::
+
+Discarded.
+
+Consequences::
+
+As this part is one of the main objectives of the project, a considerable amount of time was spent in the integration and ressearch of this technology. All the time and effort could not be used for the final application.
