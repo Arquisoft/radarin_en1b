@@ -57,22 +57,22 @@ node "<<device>>\nWindows-PC" {
     component [Browser] as NavegadorPc
     
  }
+node "MongoDB Atlas" as mongo {
+    database "MainApp.db" as MainDatabase
+}
+
 node "<<device>>\n POD Provider" as podProvider {
  
  database "user POD" as upod
 }
 
 node "Heroku server" as MainPage{
-    component "Radarin Manager (Web-intended version)" as MainApp {
+   component "Radarin Manager (Web-intended version)" as MainApp {
        component [App.js] as MainIndex
-    }
-   
+    }   
    component "Radarin Radar (Mobile-intended version)" as MobileApp {
         component [App.js] as MobileIndex
    }
-
-
-  database "MainApp.db" as MainDatabase
 }
 
 node "<<device>>\nMobile Phone" as Mobile {
@@ -83,9 +83,7 @@ node "<<device>>\nMobile Phone" as Mobile {
 NavegadorPc --> MainIndex
 NavegadorMovil --> MobileIndex
 
-
-MainApp --> MainDatabase
-
+MainApp --> mongo
 MainApp --> podProvider
 MobileApp --> podProvider
 
