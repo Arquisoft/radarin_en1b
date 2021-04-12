@@ -6,6 +6,9 @@ import friend from '../static/friend.svg';
 import '../css/Map.css'
 import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
 import { addUserOrUpdateLocation, getNearFriends } from '../api/api'
+import { css } from "@emotion/core";
+import SyncLoader from "react-spinners/SyncLoader";
+
 const userIcon = new L.Icon({
     iconUrl: user,
     iconRetinaUrl: user,
@@ -124,7 +127,15 @@ export default class MapComponent extends Component {
                 </MapContainer>
             </div>);
         } else {
-            return null;
+            const override = css`
+            display: block;
+            margin: 0 auto;
+            border-color: red;
+            `;
+            return <div className="waiting-screen">
+                        <h1>Radarin Radar is computing the locations...</h1>
+                        <SyncLoader css={override} size={25} color={"rgb(236, 63, 78)"} />
+                    </div>;
         }
     }
 
