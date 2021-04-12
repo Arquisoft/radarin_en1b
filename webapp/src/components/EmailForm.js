@@ -24,7 +24,7 @@ class EmailForm extends React.Component{
   }
 
   async registerUser(){
-      let response = await addUserOrUpdateLocation(this.state.email, [-5.66152,43.53573])
+      let response = await addUserOrUpdateLocation(this.state.email, [-5.66152, 43.53573])
       console.log(response)
       if (response.error)
         this.setState({welcomeMsg:response.error})
@@ -36,7 +36,7 @@ class EmailForm extends React.Component{
 
   async fetchUsers(){
     try{
-      let users = await getNearFriends([-5.66152,43.53663], ["user1@user1.com", "user2@user2.com"])
+      let users = await getNearFriends([-5.66152, 43.53663], ["user1@user1.com", "user2@user2.com"])
       console.log(users)
       this.props.refreshUsers(users)
     }
