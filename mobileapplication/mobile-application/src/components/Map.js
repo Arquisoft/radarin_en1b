@@ -75,9 +75,9 @@ export default class MapComponent extends Component {
                 }
             }
 
-            //if (nearFriends.length > 0) {
-                // alert('There are friends near you');
-            //}
+            if (nearFriends.length > 0) {
+                alert('There are friends near you');
+            }
 
             this.setState({
                 friendsWebIds: friendsWebIds,
@@ -95,7 +95,8 @@ export default class MapComponent extends Component {
             webId: "Your location",
             location: {
                 coordinates: [this.state.longitude, this.state.latitude]
-            }
+            },
+            lastUpdate: new Date().toISOString()
         })
         return markers;
     }
@@ -117,7 +118,7 @@ export default class MapComponent extends Component {
                         return <Marker key = {i} position={markerPosition} icon={(i == markers.length - 1) ? userIcon : friendIcon}> 
                         <Popup>
                             <h1>{marker.webId}</h1>
-                            <p>{marker.webId}</p>
+                            <p>Updated at {marker.lastUpdate}</p>
                         </Popup>
                         </Marker> })}
                 </MapContainer>
@@ -125,8 +126,6 @@ export default class MapComponent extends Component {
         } else {
             return null;
         }
-
     }
-    
-}
 
+}
