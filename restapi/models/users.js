@@ -13,9 +13,9 @@ const schema = mongoose.Schema({
             required: true
         }
     }
-})
+},{ timestamps: true })
 
-schema.index({ location: "2dsphere" }); // Index creation over location
-                                        // to speed up geospatial queries
+schema.index({ location: "2dsphere" }) // Index creation over location
+                                       // to speed up geospatial queries
 
 module.exports = mongoose.model("User", schema)
