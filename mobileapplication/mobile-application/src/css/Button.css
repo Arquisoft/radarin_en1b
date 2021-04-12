@@ -10,6 +10,15 @@
     cursor: pointer;
 }
 
+.btn:hover{
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 .btn--primary{
     background-color: var(--primary);
 }
