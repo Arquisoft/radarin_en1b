@@ -1,20 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
-import App from './views/App';
-import reportWebVitals from './tests/reportWebVitals';
-import { Provider } from 'react-redux';
-import {SessionProvider} from '@inrupt/solid-ui-react';
-import store from './utils/locationsRedux/store.js';
-
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SessionProvider>
-      <Provider store={store}>
-          <App />
-      </Provider>
-    </SessionProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
