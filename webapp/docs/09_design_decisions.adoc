@@ -95,3 +95,147 @@ Consequences::
 
 MongoDB is defined as "a document database with the scalability and flexibility that you want with the querying and
 indexing that you need". In our case, we will combine its use with JSON objects carrying the needed data.
+
+=== LDFlex for Solid POD's Comunication
+
+Context::
+
+As a first approach to the comunication between Solid pods and the web application we found the libraries https://github.com/LDflex/LDflex[LDFlex] and https://github.com/solid/query-ldflex[Query-LDFlex] through the researches we made through the https://forum.solidproject.org/t/how-can-my-app-handle-data-from-a-solid-pod/1787[Solid Forum].
+
+Decision::
+
+ As we saw that several groups last year had used this technology, we took the decision of implement it in our project as an easy way of data managment with the Pods. But after several attempt of integrating it, we could  never obtained the desired Used data an several errors appeared through the tests. Those problems, along with the lack of information and examples leed us to the final decision of *disscard this technology and use the inrupt API*, as we described in the following https://github.com/Arquisoft/radarin_en1b/issues/83[Github issue #83]  
+
+Status::
+
+Discarded.
+
+Consequences::
+
+As this part is one of the main objectives of the project, a considerable amount of time was spent in the integration and ressearch of this technology. All the time and effort could not be used for the final application.
+
+=== TypeScript for the mobile application
+
+Context::
+
+One of the technologies we tried to use when we found some of Expo's limitations and lack of tutorials. We developed a small two screen application, one of them containing a map.
+
+Decision::
+
+Expo seemed like a better approach to deploy, and even though there were many more tutorials regarding TypeScript, the Expo documentation and ease of it being deployed made us stick with Expo in the short term.
+
+Status::
+
+Discarded.
+
+Consequences::
+
+We discarded the mock application we created and resumed our research and development in Expo.
+
+=== Expo React Native for mobile application
+
+Context::
+
+The first approach in order to develop the mobile application was to use React Native, as it was one of the technologies the teachers suggested. We ended up doing research about React Native, ending up with a map that geolocated the user in the 0.1 delivery. After that, we kept developing the application further, as far as creating a login screen and adding a navigation menu for the users, which contained about us information, for example. As we kept developing we had to implement the SOLID login in the application which took a big amount of time of both research and trial and error.
+
+Decision::
+
+As we kept researching further about the SOLID login in React Native, we came to the conclusion that, without creating a library it was impossible to achieve. As such, we discarded the option to use React Native for the mobile app, and start developing it with React (Issue: https://github.com/Arquisoft/radarin_en1b/issues/84)
+
+Status::
+
+Discarded.
+
+Consequences::
+
+As we discarded the technology we were using, the whole mobile application we have developed was put on a stop and nothing of it was recycled due to the differences React Native has with React. This decision made the mobile developers start researching React and start understanding more about this techonology, while it also made the web developers help to develop the mobile application due to their already existing experience with React. The architectural decision of stopping using React Native was not a straight forward conclusion to the SOLID login in React Native problem, since we spent a huge amount of time trying to find a way (via techonology, via new functions, etc) in order to keep using the already existing React Native application we had developed since the beggining. However, after spending so much time with it, it became clear that this problem was not an easy task and it made us take a huge decision regarding the mobile application: Stop using React Native. This meant that all the extra time and effort taken to research a solution were wasted, as it was all the time we spent developing the React Native application. Luckily, since we decided to develop the mobile application with React, some parts of the mobile application were used as a base version, and this made both teams work closer to each other since the techonology used was the same for both teams. This was the positive thing to take into account this decision, since it made both teams work a lot of time to make the mobile application as most functional as it could be for the deadline.
+
+=== Ionic for logging in mobile application
+
+Context::
+
+One of the technologies we tried using in order to fix the React Native login was trying to create a new application that would recycle elements from the mobile application but would also use the login in SOLID the web application already had.
+
+Decision::
+
+Since it was giving several errors and the only way to fix them was to create a whole new application and almost not reusing anything we already had, it didn't seem like the right path to follow.
+
+Status::
+
+Discarded.
+
+Consequences::
+
+We stopped researching in Ionic and we started using React for the mobile application.
+
+=== Angular for logging in mobile application
+
+Context::
+
+Other one of the technologies we tried using in order to fix the React Native login was trying to implement Angular in our already existing application.
+
+Decision::
+
+Since the login was supposed to work with this techonology but it didn't we discarded the option.
+
+Status::
+
+Discarded.
+
+Consequences::
+
+We stopped researching in Angular and started using React for the mobile application.
+
+=== GoogleMaps for the maps
+
+Context::
+
+Since the web application needed a map, a few options were discussed to implement it. As we've seen GoogleMaps while developing applications in the subject SEW, this was one of the first approaches taken to implement the functionality. However, when we wanted to create marker pop ups, it resulted in a quite difficult task, and a better option was found out.
+
+Decision::
+
+The GoogleMaps map was discarded completely.
+
+Status::
+
+Discarded.
+
+Consequences::
+
+Implementing the map with GoogleMaps was discarded, and a new approach to develop map was start using Leaflet.
+
+=== Leaflet for the maps
+
+Context::
+
+Since the GoogleMaps map wasn't the best option, and Leaflet provided a nice documentation with a very clear way of implementing the things we wanted such as markers, research in Leaflet began.
+
+Decision::
+
+Leaflet being a more interesting option than GoogleMaps, with an easier implementation of markers, was the next approach to follow when implementing maps.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+Both the maps the web application and mobile application use are the ones provided by Leaflet, due to their ease of use.
+
+=== Redux toolkit to carry over information
+
+Context::
+
+As we needed to keep the friends and their locations in the context of the application, we needed to carry over such information between different parts of the applications. 
+
+Decision::
+
+Because this option wasn't supported by React, we researched and came to the conclusion that Redux toolkit might be helpful in implementing this task.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+The web application received a major change due to the implementation of Redux, but after finally implementing it, the friends and their locations were stored in the Redux session which allowed us to take such information and export it into the map.
