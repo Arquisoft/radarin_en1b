@@ -52,35 +52,41 @@ For multiple environments or alternative deployments please copy that section of
 
 [plantuml,"Component diagram",png]
 ----
-node "Windows-PC" {
+node "<<device>>\nWindows-PC" {
      
-    component [Browser] as Navegador
+    component [Browser] as NavegadorPc
     
  }
+node "<<device>>\n POD Provider" as podProvider {
+ 
+ database "user POD" as upod
+}
 
 node "Heroku server" as MainPage{
-    component "Web App" as MainApp {
-       component [index.html] as MainIndex
+    component "Radarin Manager (Web-intended version)" as MainApp {
+       component [App.js] as MainIndex
     }
-    
+   
+   component "Radarin Radar (Mobile-intended version)" as MobileApp {
+        component [App.js] as MobileIndex
+   }
+
+  database "MainApp.db" as MainDatabase
 }
 
-Navegador --> MainPage
+node "<<device>>\nMobile Phone" as Mobile {
 
-node "Mobile Phone" as Mobile{
-     component "MobileApp" as MobileApp {
-        component [index.html] as MobileIndex
-     }
-     
+  component [Browser] as NavegadorMovil
 }
 
-database "User POD" as UPOD
+NavegadorPc --> MainIndex
+NavegadorMovil --> MobileIndex
 
-database "MainApp.db" as MainDatabase
+
 
 MainApp --> MainDatabase
-MainApp --> UPOD
-Mobile --> UPOD
+MainApp --> podProvider
+MobileApp --> podProvider
 ----
 
 Motivation::
