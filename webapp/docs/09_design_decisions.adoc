@@ -96,7 +96,6 @@ Consequences::
 MongoDB is defined as "a document database with the scalability and flexibility that you want with the querying and
 indexing that you need". In our case, we will combine its use with JSON objects carrying the needed data.
 
-
 === LDFlex for Solid POD's Comunication
 
 Context::
@@ -149,7 +148,7 @@ Discarded.
 
 Consequences::
 
-As we discarded the techonology we were using, the whole mobile application we have developed was put on a stop and nothing of it was recycled due to the differences React Native has with React. This decision made the mobile developers start researching React and start understanding more about time, while it also made the web developers help developing the mobile application due to their already experience with React. This cost a huge amount of time and effort, since the new mobile application was made in a very little time and it was quite complex.
+As we discarded the technology we were using, the whole mobile application we have developed was put on a stop and nothing of it was recycled due to the differences React Native has with React. This decision made the mobile developers start researching React and start understanding more about this techonology, while it also made the web developers help to develop the mobile application due to their already existing experience with React. The architectural decision of stopping using React Native was not a straight forward conclusion to the SOLID login in React Native problem, since we spent a huge amount of time trying to find a way (via techonology, via new functions, etc) in order to keep using the already existing React Native application we had developed since the beggining. However, after spending so much time with it, it became clear that this problem was not an easy task and it made us take a huge decision regarding the mobile application: Stop using React Native. This meant that all the extra time and effort taken to research a solution were wasted, as it was all the time we spent developing the React Native application. Luckily, since we decided to develop the mobile application with React, some parts of the mobile application were used as a base version, and this made both teams work closer to each other since the techonology used was the same for both teams. This was the positive thing to take into account this decision, since it made both teams work a lot of time to make the mobile application as most functional as it could be for the deadline.
 
 === Ionic for logging in mobile application
 
@@ -177,7 +176,7 @@ Other one of the technologies we tried using in order to fix the React Native lo
 
 Decision::
 
-Since it was very different to what we already had, and understanding Angular meant taking more time to research and the deadline was close, we discarded this option.
+Since the login was supposed to work with this techonology but it didn't we discarded the option.
 
 Status::
 
