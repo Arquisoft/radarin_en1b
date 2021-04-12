@@ -61,15 +61,15 @@ image:UmlDiagram.jpg["Domain of the application"]
 |===
 | Name        | Description
 | User    | Represents the user of the application. It is identified by the username, that must be unique to each user. Since the application provides the option for users to be notified by nearby user friends, the current location of the user and a reference to a list of all of the friends of the user must be also used.
-| Location     | Represents a location that the user might want to store in the server. This location will have a name, and the current coordinates of the location will also be stored.
-| Coordinate     | Represents the coordinates of a user or of a location. It will store in its attributes the specific height, width... of the concrete coordinate. 
+| Location (current location of user)    | Represents the current location of the user, that will be constantly updated within the app, to track the location of the user.
+| Location (uplodaded by the user)     | Represents a location that the user might want to store in the server. This location will have a name, a description of the uploaded location, and the current coordinates of the location will also be stored.
 |===
 
 
 === _Architecture and Design Patterns_
 
-The architecture of the application will be built around the MVC structure (Model–view–controller), spliting the different sections of the application in different areas to assure everything works as expected and to ease the work of implementing quality changes.
-As such, data, models and controllers will be highly differentiated. The controllers will manage the user interface and models for data; and as such, the model will communicate with our server, in specific repositories where all the data is stored.
+The architecture of the application will be built around React components, trying to respect their life cycle and taking advantage of that in order to implement the functionality. This way, we can implement the design within the functionality and keep doing calls to different functions and components.
+Taking this into account, functionalities and components will be separated in different .js files that will be called in the design. With this, we can have different modules that implements different functionalities, making each component more differentiated.
 
 === _User Experience_
 The experience of users when first using the application will be a simple to use and easy to learn process, with the help of techniques like familiarization (if we are used to something in the real world, modelling in an application will give the user the confidence and knowledge of having
@@ -84,13 +84,9 @@ The user interface will be made using https://reactjs.org/[React framework], a c
 The application will not have a high learning curve since the functionality will be very clear because of the usage of familiarization, thus guaranteeing that users of all ages will be able to understand and use the application.
 As the UI is simple to learn and use, the amount of rejection by the user is reduced, and so, a happy user.
 
-==== _Internationalization_
-
-Due to the nature of the course (being a bilingual subject, taught in English), English must be supported, Spanish might be supported as well.
-
 === _Security & Safety_
 
-No part of the application has life endangering aspects since all the applications asks for is the user's information, which will be securely stored using Pods. Resulting in the user specfying the information to be shown.
+No part of the application has life endangering aspects since all the applications asks for is the user's information, which will be securely stored using Pods. Thus, the only time the user provides information to the application is via login, and only their id and the same locations the user adds in the application will be used, mainting the confidentialy of their profile. Resulting in the user specfying the information to be shown.
 Using HTTP protocols, we ensure the security and the integrity of all the data that the application may exchange with the server.
 
 === _Development Concepts_
@@ -105,6 +101,10 @@ The ability to:
 - Work in teams
 
 - Properly use a online repository
+
+- Be able to do research
+
+- Make quick decisions that will prevent the development to be stopped
 
 ==== _Build, Test, Deploy_
 

@@ -58,7 +58,7 @@ In the best case you will get away with examples or simple signatures.
 ****
 // _**<Overview Diagram>**_ //
 
-image:Doc5-BuildingBlockView.png["Hierarchy of building blocks"]
+image:05_building_blocks_diagram.png["Hierarchy of building blocks"]
 
 Motivation::
 
@@ -173,6 +173,8 @@ Contained Building Blocks::
 |Mobile Application | Used by users to recive notifications from nearby friends and sending locations to the server.
 
 |Web Application | Used by the users to manage and visualize locations and by the administrator to manage users and monitor server status. It accesses the user data by means of the POD.
+
+|Server Database | Database used by the Web Application to store Locations and the minumum amount of data needed from the users. Also used by the Mobile application to access relevant information of the system stored in the Database.
 
 |User POD | Provided by the Solid POD Provider, stores the personal data of the user such as his/her friend list.
 

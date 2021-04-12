@@ -38,23 +38,30 @@ Keep these excerpts as short as possible. Balance readability of this document w
 
 === Requirements Overview
 The requirements where provided to us https://arquisoft.github.io/course2021/labAssignmentDescription.html#requirements[here].
+|===
+|Functional requirements |Implementation requirements
 
-Two Software components have to be taken into account:
+|To store, manage and visualize locations among other administration options.
+|A Web application that will run in a server.
 
-    . A Web application running on a server.
+|Send locations and receive notifications from nearby users.
+|An application that will run in user's mobile phone.
 
-    Stores all data received from the application (stored in Pods). 
-    Minimum amount of information has to be stored.
-    Is the one charge of storing, managing and visualizing locations among other administration options (such as monitor the status of the server). 
+|Store the minimum needed information of a user.
+|The database will only store a reference to the users pods and the last location of each user
 
-    . An application running on the user's phone.
-    
-    Sending the location to the server and receiving the location of nearby friends (only with the user's consent).
+|Keep the locations of the user secured.
+|The pods will contain all the locations the user will upload themselves, only obtainable by them and the people they give access tp.
 
-Tools used for system deployment are https://www.docker.com/[docker] (containers) and https://heroku.com/[heroku] (cloud service).
+|Deploy the system.
+|The deployment will work from docker containers and from a cloud service like heroku.
 
-Unit, acceptance and load tests have to be designed and written to be run automatically in a continuous integration server.
+|Monitor the system.
+|Option included in the Web application, allowing also to monitor the server status.
 
+|Test that the system works properly.
+|Unitary tests and load tests running in a continuous integration server.
+|===
 [role="arc42help"]
 ****
 .Contents
@@ -78,11 +85,10 @@ Where only the users can access that data, or if allowed, friends can also see i
 Fast and responsive times when accessing information and features.
 With timming close to the following:
 - Under 4 seconds for logging in.
-- Sending the current location and receiving other friends locations every 15-20 seconds (more or less time can maybe be setup using the app, so users can choose between using a more or less resource consuming approach, and thus adding more flexibility)
-- Sending information such as reviews / pictures in 5 seconds or less.
+- Sending the current location and receiving other friends locations every 25 seconds (Enough time for the map to be completely refreshed with noticable changes and for the application to not overcharge the database)
 
 .Usability
-Having an easy to learn, easy to use application which anyone can install and run with close to no doubts or problems.
+Having an easy to learn, easy to use application which anyone can run with close to no doubts or problems, using similar components to the ones that appear in webs that work the same way.
 
 Other important quality goals are:
 
@@ -90,7 +96,7 @@ Other important quality goals are:
 Having an application that is reliable, available at all times, being tolerant with possible errors occuring and being able to recover from these errors.
 
 .Compatibility
-Different versions for different operating systems, so users with all types of phones can experience the application. 
+Since both applications are based on web, they will function in every system that has access to the web via web browser. The browser will ask for permissions when connecting to the app. 
 
 [role="arc42help"]
 ****
@@ -132,4 +138,5 @@ Table with role names, person names, and their expectations with respect to the 
 | _Teachers_ | _Both the people that assigned the task to the developers and the ones that will evaluate both the procedure and result of such assignment_ | _A functional system that will be compatible with the SOLID project, storing information in pods (evaulating the security), which corresponds to the assignement given and that is easy to use, responsive and original_
 | _Developers_ | _The people who will work on the systems and make decisions to determine the design and architecture of the application_ | _A complete system who fulfills all the requirements given to them_
 | _Users_ | _The posible users the system may have in a future_ | _A system that will provide the functionality that it offers, with the security that it is promised and which is easy to use and a good option for a long-term use_
+| _Specialized developers (for example Empathy workers)_ | _People that are very experienced in the architectures and functionalities we are going to develop_ | _A system that follows the guidelines specified by the software we are using and that follows all the expected conventions_
 |===

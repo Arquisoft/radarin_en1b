@@ -31,85 +31,46 @@ There are many notations for describing scenarios, e.g.
 ****
 This section will be in contrast with the last, as we will cover here the dynamic behaviour and how users interact between them.
 
-=== Alice wants to know if Bob is near here, and Bob allows Alice to see him in the radar
+=== Alice wants to know if his friends are near her.
 
 
 * _Today, Alice is bored at home, but she wants to do something, taking into account COVID-19 restrictions.
-    As a consequence of these restrictions, she cannot leave her town, and wants to know if his best friend Bob
-    who lives in the same town as her, is near. As Bob allows Alice to find her in the application, Alice is able to access Bob's location in case he is near her._
+    As a consequence of these restrictions, she cannot leave her town, and wants to know if some of his friends are near her._
 * _As you can see in the diagram below, at first Alice has to authenticate and allow sharing his location in order to find his mutuals between a proximity radius.
-    Then, her pod shares the location with the App, that will compute the distance to the mutuals that have previously allowed the App to do so. In this case, Alice wants to see in the radar Bob's location, that hasn't previously allowed the App to share the location.
-    As a consequence, the App sends a request to Bob's pod, and the pod, to Bob respectively.
-    Once Bob accepts wether he wants to share his location (or not, in this case, he wants to),
-    the response is sent to the pod, and from the pod to the App, that manages Alice's and Bob's locations,and if they are near enough (in this case, they are), Bob appears in Alice's radar._
+    Once this is done, his App (the instance of our App downloaded in her mobile) asks Alice's Pod for the list of her friends, to be shown to Alice in the radar just in case they are near her.
+    Then, Alice's last location is shared to the server where it is going to be stored, and it is a minimum piece of information, as the majority of the data will be in every user's Pod.
+    After this, Alice's Pod returns to Alice's App the information needed of his friends, and the App itself computes the distance to her online friends, and discard those that are offline.
+    Finally, Alice receives the radar, with only those friends that are online._
 
 [plantuml,"Sequence diagram 1",png]
 ----
 actor Alice
+entity MAApp as "Alice's Mobile App"
 database Pod1 as "Alice's Pod"
-database App as "Main App"
-database Pod2 as "Bob's Pod"
-actor Bob
-Alice --> Pod1: Authenticates and allows to share her location
-Pod1 --> App: Share's Alice location with the app
-App  -> Pod2: Asks for Bob's permission to share his location
-Pod2 -> Bob: Sends a petition
-Pod2 <-- Bob: Accepts to share his location
-App <-- Pod2: Sends the response
-Pod1 <-- App: Manages the response, and shows Bob in the radar
-Alice <-- Pod1: Radar with Bob's location
+database Server as "Web Server"
+Alice --> MAApp: Authenticates and allows to share her location
+MAApp --> Pod1: Accesses the list of friends
+MAApp --> Server: Sends the last location
+MAApp <-- Pod1: Retrieves the information needed
+MAApp <-- MAApp: Computes and manages distances to show in radar
+Alice <-- MAApp: The radar is shown
 ----
-=== Alice wants to know if Bob is near her, and Bob doesn't want Alice to see him in the radar
-* _In this case, we have the same exact context as in the previous use case, but this time, Bob is at home
-    watching some sitcoms, and he is not allowing anything to disturb him, so it refuses to connect with Alice in the App_
-* _As you can see in the diagram below, at first Alice has to authenticate and allow sharing her location in order to find her mutuals between a proximity radius.
-    Then, her pod shares the location with the App, that will compute the distance to the mutuals that have previously allowed the App to do so. In this case, Alice wants to see in the radar Bob's location, that hasn't previously allowed the App to share the location.
-    As a consequence, the App sends a request to Bob's pod, and the pod, to Bob respectively.
-    The difference, is that this time, Bob refuses the petition, as he doesn't want to leave the sofa today.
-    As a consequence, the response to the petition it is sent to the pod, and from the pod to the App,
-    that will manage Bob's response, not showing him in the radar, but Alice will not know that it was because
-    Bob refused the connection._
+=== Alice wants to know if his friends are near her, but she doesn't have Internet Connection.
+* _In this case, we have the same exact context as in the previous use case, but this time, Alice went for a walk with her dog to the mountain, and at a certain point of the walk, she lost the connection to the Internet._
+* _It is the same context. Alice was already authenticated, and allowed to share her location, but with after some time, the server has not received any recent location (more recent than a given amount of time), and, as a consequence, she is not able to see the radar._
 
 [plantuml,"Sequence diagram 2",png]
 ----
 actor Alice
+entity MAApp as "Alice's Mobile App"
 database Pod1 as "Alice's Pod"
-database App as "Main App"
-database Pod2 as "Bob's Pod"
-actor Bob
-Alice --> Pod1: Authenticates and allows to share her location
-Pod1 --> App: Share's Alice location with the app
-App  -> Pod2: Asks for Bob's permission to share his location
-Pod2 -> Bob: Sends a petition
-Pod2 <-- Bob: Refuses the petition
-App <-- Pod2: Sends the response
-Pod1 <-- App: Manages the response, and doesn't show Bob in the radar
-Alice <-- Pod1: Radar without Bob's location
+database Server as "Web Server"
+Alice --> MAApp: Authenticates and allows to share her location
+MAApp --> Pod1: Accesses the list of friends
+MAApp --> Server: Is not able to send the location
+MAApp <-- Pod1: No new information is retrieved
+MAApp <-- MAApp: It is not able to compute what is needed
+Alice <-- MAApp: An alert is shown
 ----
 
-=== Alice wants to know if Bob is near her, and Bob allows Alice to see him in the radar, but they are not near enough
-* _Now, Bob has changed his mind, and is bored from laying on the coach, and wants to share his location with Alice, just in case she is online allowing them to meet. But Alice, breaking COVID-19 restrictions by the government, has gone on a walk with her dog, and without realizing, she left town.
-However, she remains online in the app, but it is not able to see Bob there._
-* _As you can see in the diagram below, at first Alice has to authenticate and allow sharing her location in order to find her mutuals in a proximity radius.
-    Then, her pod shares the location with the App, that will compute the distance to the mutuals that have previously allowed the App to do so. In this case, Alice wants to see in the radar Bob's location, that hasn't previously allowed the App to share the location.
-    As a consequence, the App sends a request to Bob's pod, and the pod, to Bob respectively.
-    Bob is bored, so he accepts the petition, and then the response is sent to the pod, and then to the App
-    But this time, the App is trying to match both Alice and Bob locations, but they are outside the proximity range established, so it has to manage this by not showing Bob in Alice's radar._
-
-[plantuml,"Sequence diagram 3",png]
-----
-actor Alice
-database Pod1 as "Alice's Pod"
-database App as "Main App"
-database Pod2 as "Bob's Pod"
-actor Bob
-Alice --> Pod1: Authenticates and allows to share her location
-Pod1 --> App: Share's Alice location with the app
-App  -> Pod2: Asks for Bob's permission to share his location
-Pod2 -> Bob: Sends a petition
-Pod2 <-- Bob: Accepts the petition
-App <-- Pod2: Sends the response
-Pod1 <-- App: Manages the response, but they are far, so Bob is not showing in the radar
-Alice <-- Pod1: Radar without Bob's location
-----
 
