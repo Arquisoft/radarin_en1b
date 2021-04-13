@@ -3,7 +3,7 @@ const feature = loadFeature('./features/register-form.feature');
 
 defineFeature(feature, test => {
   
-  beforeEach(async () => {
+  /*beforeEach(async () => {
     await global.page.goto('http://localhost:3000')
   })
 
@@ -43,5 +43,5 @@ defineFeature(feature, test => {
     then('An error message should be shown in the screen', async () => {
     });
     
-  });
+  });*/
 });
