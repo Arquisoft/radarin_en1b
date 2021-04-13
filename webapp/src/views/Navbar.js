@@ -18,7 +18,6 @@ class Navbar extends Component{
                                 {item.title}
                             </NavLink>
                         </li>
-
                     )
                 })}
             </ul>
