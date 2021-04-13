@@ -17,6 +17,7 @@ The system is compatible with https://solidproject.org/[Solid Project], and it s
 
 The system can only store locations and timestamps in which these events take place. It will avoid storing any other type of personal information about the users.
 
+The deployment is done https://radarinen1bwebapp.herokuapp.com/[here].
 
 [role="arc42help"]
 ****

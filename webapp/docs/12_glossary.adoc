@@ -54,3 +54,4 @@ Potentially more columns in case you need translations.
 | Virtualization     | Virtualization is the act of creating a virtual (rather than actual) version of something, including virtual computer hardware platforms, storage devices, and computer network resources.
 | Web application     | A web application is application software that runs on a web server, unlike computer-based software programs that are run locally on the operating system of the device.
 |===
+https://radarinen1bwebapp.herokuapp.com/[Back to Radarin Manager].
