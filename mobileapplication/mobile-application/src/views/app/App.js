@@ -1,15 +1,13 @@
-import logo from '../../static/radar.svg';
 import '../../css/App.css';
 
 import MapComponent from '../../components/Map'
 
 import LoginForm from '../login/LoginForm'
-import MainView from '../../components/MainView'
 
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
-import {SessionContext, SessionProvider} from '@inrupt/solid-ui-react';
+import { SessionProvider} from '@inrupt/solid-ui-react'; // SessionContext
 import Navbar from '../navbar/Navbar';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import AboutUs from '../aboutUs/AboutUs';
@@ -26,8 +24,8 @@ function App() {
   const {session} = useSession();
 
   // IDentity Provider, used to store the POD, in this case just inrupt.net
-  const [ idp, setIdp] = useState("https://inrupt.net");
-  const [currentUrl, setCurrentUrl] = useState(window.location.href);
+  //const [ idp, setIdp] = useState("https://inrupt.net");
+  //const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
   session.onLogin( () => { setIsLoggedIn(true)})
   session.onLogout( () => { setIsLoggedIn(false)})

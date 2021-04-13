@@ -118,7 +118,7 @@ export default class MapComponent extends Component {
                         const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
                         console.log(i)
                         console.log(markerPosition)
-                        return <Marker key = {i} position={markerPosition} icon={(i == markers.length - 1) ? userIcon : friendIcon}> 
+                        return <Marker key = {i} position={markerPosition} icon={(i === markers.length - 1) ? userIcon : friendIcon}> 
                         <Popup>
                             <h1>{marker.webId}</h1>
                             <p>Updated at {marker.lastUpdate}</p>
