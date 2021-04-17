@@ -7,6 +7,7 @@ import personMarker from '../static/friendLocation.svg';
 import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
+import removeUserLocation from '../utils/solidAccessing/RemoveLocations.js';
 import '../css/Map.css'
 import SyncLoader from "react-spinners/SyncLoader";
 import { css } from "@emotion/core";
@@ -88,6 +89,8 @@ function MapComponent() {
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
+                                <button onClick={removeUserLocation.bind(this, session, marker)
+                                }>Remove location</button>
                             </Popup>
                         </Marker>
                     })}
@@ -111,6 +114,7 @@ function MapComponent() {
     return <div className="map">{content}</div>;
 }
 export default MapComponent;
+
 
 function parseLocations(totalLocations, session) {
     let toRet = [];
