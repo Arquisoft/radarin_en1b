@@ -26,6 +26,7 @@ const iconPerson = new L.Icon({
     iconSize: [32, 45],
 });
 
+
 function MapComponent() {
     const [lati, setLati] = useState(0.0);
     const [long, setLong] = useState(0.0);
@@ -89,7 +90,7 @@ function MapComponent() {
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
-                                <button onClick={removeUserLocation.bind(this, session, marker)
+                                <button onClick={sendToRemoveButton.bind(this, session, marker)
                                 }>Remove location</button>
                             </Popup>
                         </Marker>
@@ -114,6 +115,16 @@ function MapComponent() {
     return <div className="map">{content}</div>;
 }
 export default MapComponent;
+
+function sendToRemoveButton(session, marker) {
+    //const forceUpdate = useForceUpdate();
+    removeUserLocation(session, marker);
+}
+
+function useForceUpdate(){
+    const [value, setValue] = useState(0); // integer state
+    return () => setValue(value => value + 1); // update the state to force render
+}
 
 
 function parseLocations(totalLocations, session) {

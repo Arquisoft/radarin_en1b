@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
     removeStringNoLocale,
     getSolidDataset,
@@ -8,7 +7,6 @@ import {
     getUrlAll,
     saveSolidDatasetAt
 } from "@inrupt/solid-client";
-import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "./indexRemove.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
