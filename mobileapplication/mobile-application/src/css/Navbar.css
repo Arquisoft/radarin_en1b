@@ -63,10 +63,10 @@
     }
 
     .nav-menu{
-        display: none;
-        flex-direction: column;
+        background: linear-gradient(90deg, rgb(221, 67, 95), rgb(110, 102, 221) 100%);
+        display: table-column;
         width: 89vw;
-        height: 394px;
+        height: 363px;
         position: absolute;
         top: 80px;
         right: -100%;
@@ -75,10 +75,11 @@
         margin-top: 0;
         padding-right: 0;
         margin-right: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 
     .nav-menu.active{
-        display: flex;
         background: linear-gradient(90deg, rgb(221, 67, 95), rgb(110, 102, 221) 100%);
         right: 0;
         opacity: 1;
@@ -87,6 +88,8 @@
         margin-right: 0;
         margin-left: 0;
         padding-left: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 
     .nav-links{

@@ -79,7 +79,7 @@ export default class MapComponent extends Component {
             }
 
             if (nearFriends.length > 0) {
-                alert('There are friends near you');
+                
             }
 
             this.setState({
