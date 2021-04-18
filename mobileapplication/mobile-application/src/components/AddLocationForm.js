@@ -42,7 +42,6 @@ function AddLocationForm() {
 
           //Obtenemos la "Thing" del perfil con la información del dataset
           const profileThing = getThing(profileDataset, session.info.webId);
-          console.log(profileThing);
           //Conseguimos todos los URL de los POD del usuario, usando el estándar que le pasamos
           const podsUrls = getUrlAll(
               profileThing,
@@ -53,21 +52,14 @@ function AddLocationForm() {
           const pod = podsUrls[0];
           const containerUri = `${pod}public/locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
           const list = await getOrCreateLocationList(containerUri, session.fetch);
-          console.log(`Location list: ${list}`);
           setLocationList(list);
       })();
   }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
   const addLocation = async (text) => {
     const indexUrl = getSourceUrl(locationList);
-    console.log("index " + indexUrl);
     const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
-
-    console.log("listaLoc " + listaLoc);
-    
     const thing = getThing(listaLoc, indexUrl);
-    console.log(thing);
-
     const locationWithText = addStringNoLocale(
         thing,
         "http://schema.org/text",
