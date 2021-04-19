@@ -20,6 +20,9 @@
     font-size: 1.6rem;
 }
 
+.white{
+    color: white;
+}
 .nav-menu{
     display: grid;
     grid-template-columns: repeat(5,auto);
@@ -36,6 +39,12 @@
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 0.5rem 1rem;
+}
+.navText{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+
 }
 
 .nav-links:hover{

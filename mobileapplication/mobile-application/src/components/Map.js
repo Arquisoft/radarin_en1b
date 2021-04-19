@@ -8,6 +8,7 @@ import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
 import { addUserOrUpdateLocation, getNearFriends } from '../api/api'
 import { css } from "@emotion/core";
 import SyncLoader from "react-spinners/SyncLoader";
+import Notification from './Notification';
 
 const userIcon = new L.Icon({
     iconUrl: user,
@@ -30,7 +31,8 @@ export default class MapComponent extends Component {
             latitude: 0.0,
             longitude: 0.0,
             friendsWebIds: [],
-            nearFriends: []
+            nearFriends: [],
+            pastNearFriends: []
         }
         this.obtainLocations();
     }
@@ -78,8 +80,13 @@ export default class MapComponent extends Component {
                 }
             }
 
-            if (nearFriends.length > 0) {
-                
+            if (nearFriends.length <= 0) {
+                for (let near of nearFriends) {
+                    if(!this.state.pastNearFriends.includes(near)){
+                        this.state.pastNearFriends.push(near);
+                        <Notification name={near.webId}/>
+                    }
+                }
             }
 
             this.setState({

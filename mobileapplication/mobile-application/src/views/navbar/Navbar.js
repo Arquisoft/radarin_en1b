@@ -21,10 +21,17 @@ class Navbar extends Component{
             <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
                 {MenuItems.map((item,index) => {
                     return (
-                        <li key = {index}>
-                            <NavLink to={item.url} className={item.cName} onClick={this.handleClick}>
+                        <li key = {index}  >
+                            <a href={item.url} className={item.cName}>
+                                <i  className={index === 0 ?'fas fa-home white '  :
+                                    index === 1 ?  'fas fa-map white' :
+                                    index === 2 ?  'fas fa-database white' :
+                                    index === 3 ? 'fas fa-address-card white': null
+                                }/>
+                            <NavLink to={item.url} className='navText' onClick={this.handleClick}>
                                 {item.title}
                             </NavLink>
+                            </a>
                         </li>
                     )
                 })}

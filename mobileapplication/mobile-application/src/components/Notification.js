@@ -1,33 +1,40 @@
-import React from "react";
-import ReactNotification from "react-notifications-component";
+import React, {Component}  from 'react';
+import icon from '../static/united.svg';
+import '../css/Notification.css';
 
-class Notification extends React.Component {
-  constructor(props) {
-    super(props);
-    this.addNotification = this.addNotification.bind(this);
-    
-  }
+export default class Notification extends Component {
+    constructor(props){
+        super();
+        
+    }
 
-  addNotification() {
-    this.notificationDOMRef.addNotification({
-      title: "Awesomeness",
-      message: "Awesome Notifications!",
-      type: "success",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 2000 },
-      dismissable: { click: true }
-    });
-  }
+    handleClick(){
+        var div = document.getElementById('notification');
+        div.remove();
+    }
 
-  render() {
-    return (
-      <div className="app-content">
-        <ReactNotification ref={input => this.notificationDOMRef = input} />
-      </div>
-    );
-  }
+    render(){
+            return (
+                <div id='notification' onClick={() => this.handleClick(this)}>
+                    <div className={'notification-container'}  >
+                                <div 
+                                    className={'notification toast'}
+                                >
+                                    <div className="notification-image">
+                                        <img src={icon} alt="" />
+                                    </div>
+                                    <div>
+                                        <p className="notification-title">
+                                            A friend is near you:
+                                        </p>
+                                        <p className="notification-message">
+                                            {this.props.name}
+                                        </p>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            );
+
+    }
 }
-export default Notification;
