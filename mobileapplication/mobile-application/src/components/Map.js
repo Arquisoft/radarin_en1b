@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import React, { Component } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import user from '../static/user.svg';
 import friend from '../static/friend.svg';
 import '../css/Map.css'
 import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
-import { addUserOrUpdateLocation, getNearFriends } from '../api/api'
+import { addUserOrUpdateLocation, getNearFriends } from '../api/api';
 import { css } from "@emotion/core";
 import SyncLoader from "react-spinners/SyncLoader";
 import Notification from './Notification';
@@ -35,14 +35,14 @@ export default class MapComponent extends Component {
             pastNearFriends: []
         }
         this.obtainLocations();
-    }
+    };
 
     obtainLocations() {
         this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
         }, 30000);
-    }
+    };
 
     obtainUserLocation() {
         if (navigator.geolocation) {
@@ -53,23 +53,23 @@ export default class MapComponent extends Component {
                         longitude: position.coords.longitude
                     })
 
-                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude])
+                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
                     if (response.error)
-                        console.log("Error adding user location to restapi. Is it on?")
+                        console.log("Error adding user location to restapi. Is it on?");
 
                     this.obtainFriendLocations();
                 },
                 error => {
-                    console.log("Error: ", error)
+                    console.log("Error: ", error);
                 },{ enableHighAccuracy: true }
             );
         }
-    }
+    };
 
     async obtainFriendLocations() {
         try {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
-            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id))
+            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id));
 
             for (let near of nearFriends) {
                 for (let friend of friendsWebIds) {
@@ -93,10 +93,10 @@ export default class MapComponent extends Component {
                 friendsWebIds: friendsWebIds,
                 nearFriends: nearFriends,
                 render: true
-            })
+            });
         } catch(error) {
-        }
-    }
+        };
+    };
 
     retrieveMarkers() {
         let markers = this.state.nearFriends;
@@ -106,9 +106,9 @@ export default class MapComponent extends Component {
                 coordinates: [this.state.longitude, this.state.latitude]
             },
             lastUpdate: new Date().toISOString()
-        })
+        });
         return markers;
-    }
+    };
 
     render() {
         if (this.state.render) {
@@ -141,6 +141,6 @@ export default class MapComponent extends Component {
                         <SyncLoader css={override} size={25} color={"rgb(236, 63, 78)"} />
                     </div>;
         }
-    }
+    };
 
-}
+};

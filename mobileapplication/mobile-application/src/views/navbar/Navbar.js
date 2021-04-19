@@ -7,12 +7,12 @@ class Navbar extends Component{
 
     handleClick = () => { 
         this.setState({ clicked: !this.state.clicked});
-    }
+    };
 
     render(){
         return(
         <nav className="NavbarItems">
-            <h1 className="navbar-logo">Radarin Radar <i className=" app-logo fab fa-react"></i></h1>
+            <h1 className="navbar-logo">Radarin Radar <i className=" app-logo fab fa-react"/></h1>
            
            <div className="menu-icon" onClick={this.handleClick}>
                 <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
@@ -33,11 +33,11 @@ class Navbar extends Component{
                             </NavLink>
                             </a>
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </nav>
         )
-    }
+    };
 }
-export default Navbar
+export default Navbar;

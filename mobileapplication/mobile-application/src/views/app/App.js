@@ -1,8 +1,8 @@
 import '../../css/App.css';
 
-import MapComponent from '../../components/Map'
+import MapComponent from '../../components/Map';
 
-import LoginForm from '../login/LoginForm'
+import LoginForm from '../login/LoginForm';
 
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
@@ -27,8 +27,8 @@ function App() {
   //const [ idp, setIdp] = useState("https://inrupt.net");
   //const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
-  session.onLogin( () => { setIsLoggedIn(true)})
-  session.onLogout( () => { setIsLoggedIn(false)})
+  session.onLogin( () => { setIsLoggedIn(true)});
+  session.onLogout( () => { setIsLoggedIn(false)});
 
   return (
     <SessionProvider>
@@ -45,24 +45,6 @@ function App() {
       </BrowserRouter>
     </SessionProvider>
   );
-  
-  /*
-  return (
-
-    <div className="App">
-
-      
-      <SessionProvider sessionId="log-in-exameple">      
-        {<LoginForm/>}      
-      </SessionProvider>
-
-      <h1>Radarin map preliminary version</h1>
-      <div id="webMap">
-        <MapComponent />
-      </div>
-    </div>
-  );
-  */
 }
 
 export default App;

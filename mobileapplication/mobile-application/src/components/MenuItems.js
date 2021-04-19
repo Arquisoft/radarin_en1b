@@ -19,4 +19,4 @@ export const MenuItems = [
         url: "/about-us",
         cName: "nav-links"
     }
-]
+];

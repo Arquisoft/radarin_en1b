@@ -6,12 +6,12 @@ export default class Notification extends Component {
     constructor(props){
         super();
         
-    }
+    };
 
     handleClick(){
         var div = document.getElementById('notification');
         div.remove();
-    }
+    };
 
     render(){
             return (
@@ -35,6 +35,5 @@ export default class Notification extends Component {
                     </div>
                 </div>
             );
-
-    }
+    };
 }
