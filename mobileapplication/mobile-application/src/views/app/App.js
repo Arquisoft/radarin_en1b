@@ -23,10 +23,6 @@ function App() {
   // Variables for log in: 
   const {session} = useSession();
 
-  // IDentity Provider, used to store the POD, in this case just inrupt.net
-  //const [ idp, setIdp] = useState("https://inrupt.net");
-  //const [currentUrl, setCurrentUrl] = useState(window.location.href);
-
   session.onLogin( () => { setIsLoggedIn(true)});
   session.onLogout( () => { setIsLoggedIn(false)});
 

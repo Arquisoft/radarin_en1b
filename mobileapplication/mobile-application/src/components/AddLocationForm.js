@@ -89,10 +89,6 @@ function AddLocationForm() {
 
   const obtainUserLocation = () => {
     geolocateUser();
-    //console.log("latitude = " + lati);
-    //console.log("longitude = " + long);
-    //console.log("name = " + value);
-    //console.log("description = " + localizationDescription);
     addLocation(value + "%t" + localizationDescription + "%t" + lati + "%t" + long);
     resetState();
   };

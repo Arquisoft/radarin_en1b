@@ -1,5 +1,4 @@
 import {useState} from "react";
-//import {useSession} from '@inrupt/solid-ui-react/dist';
 import {LoginButton} from '@inrupt/solid-ui-react';
 import {Button} from '@material-ui/core';
 import "../../css/App.css";
