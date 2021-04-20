@@ -3,7 +3,7 @@ import {useState} from "react";
 import {LoginButton} from '@inrupt/solid-ui-react';
 import {Button} from '@material-ui/core';
 import "../css/App.css";
-import logo from "../static/radar.svg"
+import logo from "../static/radar.svg";
 
 function LoginForm(){
     // IDentity Provider, used to store the POD, in this case just inrupt.net

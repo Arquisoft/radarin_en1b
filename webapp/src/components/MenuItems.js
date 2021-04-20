@@ -19,4 +19,4 @@ export const MenuItems = [
         url: "/docs",
         cName: "fas fa-book-reader white"
     }
-]
+];

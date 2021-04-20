@@ -73,7 +73,9 @@
     width: 325px;
 	margin: auto;
 	color: #fff;
-	padding: 20px 15px 10px 10px;
+	position: fixed;
+	padding: 15px 15px 10px 10px;
+	position: static;
 }
 
 .notification-container button {
@@ -94,6 +96,11 @@
 	background: 0 0;
 	border: 0
 }
+
+@media screen and (max-width: 960px){
+
+}
+
 
 @keyframes in-top {
 	from {

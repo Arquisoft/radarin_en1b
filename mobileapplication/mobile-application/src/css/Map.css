@@ -5,8 +5,7 @@
 }
 .waiting-screen{
     text-align: center;
-    margin-top: 20vh;
+    padding-top: 20vh;
     color: white;
-    text-shadow: black 0px 0px 10px;
     font-size: 18px;
 }
