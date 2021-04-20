@@ -25,32 +25,15 @@ const App = () => {
   session.onLogin( () => { setIsLoggedIn(true)});
   session.onLogout( () => { setIsLoggedIn(false)});
 
-  const handleHome = () =>{
-    if(!isLoggedIn)
-     return LoginForm;
-    else
-     return Welcome;
-  }
-
-  const handleMap = () =>{
-    if(isLoggedIn)
-      return MapComponent;
-    else
-      return NotLoggedIn;
-  }
-
-  const handleDocs = () =>{
-    window.location.assign('https://radarinen1bwebapp.herokuapp.com/docs/');
-  }
 
   return (
     <BrowserRouter>
       <Navbar/>
       <Switch>
-        <Route path='/' exact component={handleHome()}/>
-        <Route path='/map' exact component={handleMap()}/>
+        <Route path='/' exact component={Welcome}/>
+        <Route path='/map' exact component={MapComponent}/>
         <Route path='/about-us' exact component={AboutUs}/>
-        <Route path='/docs' component={handleDocs()}/>
+        <Route path='/docs' component={() => {window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/';}}/>
       </Switch>
     </BrowserRouter>
   );
