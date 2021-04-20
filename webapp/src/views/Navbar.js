@@ -14,7 +14,8 @@ class Navbar extends Component{
                 {MenuItems.map((item,index) => {
                     return (
                         <li key = {index}>
-                            <NavLink to={item.url} className={item.cName} >
+                            <NavLink to={item.url} className='nav-links' >
+                                <i className={item.cName} />
                                 {item.title}
                             </NavLink>
                         </li>

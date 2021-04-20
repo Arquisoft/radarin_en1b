@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import React, { Component } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import user from '../static/user.svg';
 import friend from '../static/friend.svg';
 import '../css/Map.css'
 import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
-import { addUserOrUpdateLocation, getNearFriends } from '../api/api'
+import { addUserOrUpdateLocation, getNearFriends } from '../api/api';
 import { css } from "@emotion/core";
 import SyncLoader from "react-spinners/SyncLoader";
+import Notification from './Notification';
 
 const userIcon = new L.Icon({
     iconUrl: user,
@@ -27,20 +28,21 @@ export default class MapComponent extends Component {
         super(props);
         this.state = {
             render: false,
-            latitude: 0.0,
-            longitude: 0.0,
+            latitude: 43.4586254,
+            longitude: -5.8418686,
             friendsWebIds: [],
-            nearFriends: []
+            nearFriends: [],
+            pastNearFriends: []
         }
         this.obtainLocations();
-    }
+    };
 
     obtainLocations() {
         this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
         }, 30000);
-    }
+    };
 
     obtainUserLocation() {
         if (navigator.geolocation) {
@@ -49,25 +51,25 @@ export default class MapComponent extends Component {
                     this.setState({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude
-                    })
+                    });
 
-                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude])
+                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
                     if (response.error)
-                        console.log("Error adding user location to restapi. Is it on?")
+                        console.log("Error adding user location to restapi. Is it on?");
 
                     this.obtainFriendLocations();
                 },
                 error => {
-                    console.log("Error: ", error)
+                    console.log("Error: ", error);
                 },{ enableHighAccuracy: true }
             );
         }
-    }
+    };
 
     async obtainFriendLocations() {
         try {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
-            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id))
+            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id));
 
             for (let near of nearFriends) {
                 for (let friend of friendsWebIds) {
@@ -79,18 +81,22 @@ export default class MapComponent extends Component {
             }
 
             if (nearFriends.length > 0) {
-                alert('There are friends near you');
+                for (let near of nearFriends) {
+                    if(!this.state.pastNearFriends.includes(near)){
+                        <Notification title='A friend is nearby:' message={near.webId} icon='map'/>
+                    }
+                }
+                this.setState({pastNearFriends: nearFriends});
             }
 
             this.setState({
                 friendsWebIds: friendsWebIds,
                 nearFriends: nearFriends,
                 render: true
-            })
+            });
         } catch(error) {
-            console.log("Error fetching friend list from restapi. Is it on?")
-        }
-    }
+        };
+    };
 
     retrieveMarkers() {
         let markers = this.state.nearFriends;
@@ -100,9 +106,9 @@ export default class MapComponent extends Component {
                 coordinates: [this.state.longitude, this.state.latitude]
             },
             lastUpdate: new Date().toISOString()
-        })
+        });
         return markers;
-    }
+    };
 
     render() {
         if (this.state.render) {
@@ -116,8 +122,6 @@ export default class MapComponent extends Component {
                     />
                     {markers.map((marker, i) => {
                         const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
-                        console.log(i)
-                        console.log(markerPosition)
                         return <Marker key = {i} position={markerPosition} icon={(i === markers.length - 1) ? userIcon : friendIcon}> 
                         <Popup>
                             <h1>{marker.webId}</h1>
@@ -137,6 +141,6 @@ export default class MapComponent extends Component {
                         <SyncLoader css={override} size={25} color={"rgb(236, 63, 78)"} />
                     </div>;
         }
-    }
+    };
 
-}
+};

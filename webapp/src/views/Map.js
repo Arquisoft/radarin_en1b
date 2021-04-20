@@ -26,8 +26,8 @@ const iconPerson = new L.Icon({
 });
 
 function MapComponent() {
-    const [lati, setLati] = useState(0.0);
-    const [long, setLong] = useState(0.0);
+    const [lati, setLati] = useState(43.4586254);
+    const [long, setLong] = useState(-5.8418686);
     const dispatch = useDispatch();
     const { session } = useSession();
     let content;

@@ -1,4 +1,3 @@
-//import { FOAF } from "@inrupt/lit-generated-vocab-common";
 import { fetchDocument } from "tripledoc";
 import { VCARD } from "@inrupt/vocab-common-rdf";
 import {
