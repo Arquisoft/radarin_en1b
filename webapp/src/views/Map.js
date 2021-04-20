@@ -77,9 +77,10 @@ function MapComponent() {
         let friendMarkers = locations[1];
 
         content = (
-            <div className="map">
+            <div id='map' className="map">
 
                 <MapContainer center={[lati, long]} zoom={11} scrollWheelZoom={true} className="map">
+                    <div id='notification-map'></div>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
