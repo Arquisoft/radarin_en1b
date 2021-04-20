@@ -6,7 +6,7 @@ import store from '../utils/locationsRedux/store';
 import '@testing-library/jest-dom/extend-expect';
 import '../css/index.css';
 import App from '../views/App';
-
+jest.mock("react-dom", () => ({ render: jest.fn() }));
 test('root div', () => {
         const div = document.createElement('div');
         div.id = 'root';
