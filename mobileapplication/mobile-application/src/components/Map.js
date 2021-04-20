@@ -28,8 +28,8 @@ export default class MapComponent extends Component {
         super(props);
         this.state = {
             render: false,
-            latitude: 0.0,
-            longitude: 0.0,
+            latitude: 43.4586254,
+            longitude: -5.8418686,
             friendsWebIds: [],
             nearFriends: [],
             pastNearFriends: []
