@@ -1,6 +1,6 @@
 import '../css/App.css';
 import Navbar from './Navbar';
-import {BrowserRouter,Switch,Route } from 'react-router-dom';
+import {BrowserRouter,Switch,Route} from 'react-router-dom';
 import AboutUs from './AboutUs';
 import NotLoggedIn from './NotLoggedIn';
 import MapComponent from './Map';
@@ -11,7 +11,7 @@ import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 
 
-function App() {
+const App = () => {
   // Variable to check session state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -25,38 +25,36 @@ function App() {
   session.onLogin( () => { setIsLoggedIn(true)});
   session.onLogout( () => { setIsLoggedIn(false)});
 
+  const handleHome = () =>{
+    if(!isLoggedIn)
+     return LoginForm;
+    else
+     return Welcome;
+  }
+
+  const handleMap = () =>{
+    if(isLoggedIn)
+      return MapComponent;
+    else
+      return NotLoggedIn;
+  }
+
+  const handleDocs = () =>{
+    window.location.assign('https://radarinen1bwebapp.herokuapp.com/docs/');
+  }
+
   return (
     <BrowserRouter>
       <Navbar/>
       <Switch>
-        <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
-        <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
+        <Route path='/' exact component={handleHome()}/>
+        <Route path='/map' exact component={handleMap()}/>
         <Route path='/about-us' exact component={AboutUs}/>
-        <Route path='/docs' component={() => { 
-          window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/'; 
-           return null;
-        }}/>
+        <Route path='/docs' component={handleDocs()}/>
       </Switch>
     </BrowserRouter>
   );
   
-  /*
-  return (
-
-    <div className="App">
-
-      
-      <SessionProvider sessionId="log-in-exameple">      
-        {<LoginForm/>}      
-      </SessionProvider>
-
-      <h1>Radarin map preliminary version</h1>
-      <div id="webMap">
-        <MapComponent />
-      </div>
-    </div>
-  );
-  */
 }
 
 export default App;

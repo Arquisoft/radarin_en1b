@@ -9,8 +9,7 @@ function LoginForm(){
     // IDentity Provider, used to store the POD, in this case just inrupt.net
     const [idp] = useState("https://inrupt.net");
     const [currentUrl] = useState(window.location.href);
-
-    var loggedIn = false;
+    
     return(
         <div className="App">
             <div className="welcome">
@@ -21,14 +20,13 @@ function LoginForm(){
                 </div>
                 <h1> Welcome to Radarin Manager</h1>
                 <h2> Here you will be able to access and manage all data</h2>
-                {(!loggedIn)? 
-                    <LoginButton
+                <LoginButton
                         oidcIssuer={idp}
                         redirectUrl={currentUrl}>
                         <Button variant="contained" color="primary">
                             Log In 
                         </Button>
-                </LoginButton> : null}
+                </LoginButton>
                 
             </div>     
         </div> 

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Welcome = props => {
+const Welcome = ()=> {
   return (
     <div className="welcome">
       <h1>Welcome to Radarin Manager!</h1>

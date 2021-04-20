@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AboutUs = props => {
+const AboutUs = () => {
   return (
     <div className="about-us">
       <h1>About us</h1>
