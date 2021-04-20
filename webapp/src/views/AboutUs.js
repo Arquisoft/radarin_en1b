@@ -1,6 +1,5 @@
 export default function AboutUs(){
-  return (
-    <div className="about-us">
+  return <div className="about-us">
       <h1>About us</h1>
       <p>We are the Radarin team, a team composed of 6 undergraduate students of Software Engineers:</p>
       <li>Alberto Díez Bajo</li>
@@ -13,6 +12,5 @@ export default function AboutUs(){
       <p>an application developed using React, SOLID, Docker and deployed with Heroku.</p>
       <p>Radarin is an application based on the use of location recording using PODs,</p>
       <p>where you can see yours and your friends locations</p>
-    </div>
-  );
-};
+    </div>;
+}

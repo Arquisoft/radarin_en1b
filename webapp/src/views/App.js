@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import {BrowserRouter,Switch,Route } from 'react-router-dom';
 import AboutUs from './AboutUs';
 import NotLoggedIn from './NotLoggedIn';
+import MapComponent from './Map';
 import LoginForm from './LoginForm';
 import Welcome from './Welcome'
 // IMPORTS FOR USER SESSION:
@@ -29,7 +30,7 @@ function App() {
       <Navbar/>
       <Switch>
         <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
-        <Route path='/map' exact component={NotLoggedIn}/>
+        <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
         <Route path='/about-us' exact component={AboutUs}/>
         <Route path='/docs' component={() => { 
           window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/'; 
@@ -39,23 +40,6 @@ function App() {
     </BrowserRouter>
   );
   
-  /*
-  return (
-
-    <div className="App">
-
-      
-      <SessionProvider sessionId="log-in-exameple">      
-        {<LoginForm/>}      
-      </SessionProvider>
-
-      <h1>Radarin map preliminary version</h1>
-      <div id="webMap">
-        <MapComponent />
-      </div>
-    </div>
-  );
-  */
 }
 
 export default App;

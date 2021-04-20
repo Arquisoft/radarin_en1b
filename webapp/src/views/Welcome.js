@@ -6,4 +6,4 @@ export default function Welcome(){
       <p>It's a pleasure that you are using our services, hope you find all well.</p>
     </div>
   );
-};
+}
