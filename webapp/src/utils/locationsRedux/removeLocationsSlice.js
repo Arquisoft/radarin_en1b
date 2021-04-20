@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import obtainUserLocations from '../solidAccessing/GetUserLocations';
+import removeUserLocation from '../solidAccessing/RemoveLocations';
 export const getUserLocation = createAsyncThunk( "locationsSlice/getLocations", async (session, {getState}) => {
     let locations = await obtainUserLocations(session, getState().friends.value);
     return locations;

@@ -54,7 +54,6 @@ export default async function removeUserLocation(session, location) {
     console.log(newThing);
     const savedThing = setThing(listaLoc, newThing);
     await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
-    window.location.reload();
     alert('Location ' + location.name + ' has been successfully removed');
     
 }

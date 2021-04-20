@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import locationsReducer from './locationsSlice';
+import locationsReducer from './getLocationsSlice';
 import friendsReducer from '../friendsRedux/friendsSlice';
 
 export default configureStore({

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
 import marker from '../static/radar.svg';
 import personMarker from '../static/friendLocation.svg';
-import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
+import { getUserLocation, deleteLocation } from '../utils/locationsRedux/getLocationsSlice.js';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
 import removeUserLocation from '../utils/solidAccessing/RemoveLocations.js';
@@ -90,8 +90,12 @@ function MapComponent() {
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
-                                <button onClick={sendToRemoveButton.bind(this, session, marker)
-                                }>Remove location</button>
+                                <button onClick={(() => {
+                                    removeUserLocation(session, marker);
+                                    dispatch(
+                                        deleteLocation(marker)
+                                    );
+                                    })}>Remove location</button>
                             </Popup>
                         </Marker>
                     })}
@@ -115,16 +119,6 @@ function MapComponent() {
     return <div className="map">{content}</div>;
 }
 export default MapComponent;
-
-function sendToRemoveButton(session, marker) {
-    //const forceUpdate = useForceUpdate();
-    removeUserLocation(session, marker);
-}
-
-function useForceUpdate(){
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue(value => value + 1); // update the state to force render
-}
 
 
 function parseLocations(totalLocations, session) {
