@@ -22,8 +22,8 @@ function App() {
   //const [ idp, setIdp] = useState("https://inrupt.net");
   //const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
-  session.onLogin( () => { setIsLoggedIn(true)})
-  session.onLogout( () => { setIsLoggedIn(false)})
+  session.onLogin( () => { setIsLoggedIn(true)});
+  session.onLogout( () => { setIsLoggedIn(false)});
 
   return (
     <BrowserRouter>

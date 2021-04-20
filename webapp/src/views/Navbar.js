@@ -19,11 +19,11 @@ class Navbar extends Component{
                                 {item.title}
                             </NavLink>
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </nav>
-        )
+        );
     }
 }
-export default Navbar
+export default Navbar;

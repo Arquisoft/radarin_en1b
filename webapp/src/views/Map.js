@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
 import marker from '../static/radar.svg';
@@ -7,7 +7,7 @@ import personMarker from '../static/friendLocation.svg';
 import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
-import '../css/Map.css'
+import '../css/Map.css';
 import SyncLoader from "react-spinners/SyncLoader";
 import { css } from "@emotion/core";
 
@@ -65,7 +65,7 @@ function MapComponent() {
         content = <div className="waiting-screen">
                     <h1>Radarin Manager is computing your locations...</h1>
                     <SyncLoader css={override} size={40} color={"rgb(9, 71, 241)"} />
-                  </div>
+                  </div>;
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
     } else if (statusLocations === "fulfilled") {

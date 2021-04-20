@@ -39,4 +39,4 @@ export async function getOrCreateLocationList(containerUri, isMainUser, fetch) {
       throw error;
     }
   }
-}
+};
