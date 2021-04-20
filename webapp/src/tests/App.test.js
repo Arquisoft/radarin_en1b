@@ -10,7 +10,6 @@ import MapComponent from '../views/Map';
 import AboutUs from '../views/AboutUs';
 import NotLoggedIn from '../views/NotLoggedIn';
 import { fireEvent } from "@testing-library/react";
-import { Button } from '../../../mobileapplication/mobile-application/src/components/Buttons';
 
 test('renders learn react link', () => {
   render(<LoginForm />);
