@@ -12,5 +12,7 @@ export default function AboutUs(){
       <p>an application developed using React, SOLID, Docker and deployed with Heroku.</p>
       <p>Radarin is an application based on the use of location recording using PODs,</p>
       <p>where you can see yours and your friends locations</p>
+      <p>You can read the Documentation </p>
+      <a href='https://radarinen1bwebapp.herokuapp.com/docs/'> here</a>
     </div>;
 }
