@@ -7,6 +7,8 @@ import {
     getUrlAll,
     saveSolidDatasetAt
 } from "@inrupt/solid-client";
+import Notification from "../../components/Notification.js";
+import ReactDOM from 'react-dom';
 import { getOrCreateLocationList } from "./indexRemove.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
@@ -54,6 +56,8 @@ export default async function removeUserLocation(session, location) {
     
     const savedThing = setThing(listaLoc, newThing);
     await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
-    alert('Location ' + location.name + ' has been successfully removed');
+
+    ReactDOM.render(<Notification title={'Location: ' + location.name} message='has been successfully removed' icon='map'/>, document.getElementById('notification-map'));
+    
     
 }
