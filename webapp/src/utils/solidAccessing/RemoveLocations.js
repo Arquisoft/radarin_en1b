@@ -22,7 +22,7 @@ export default async function removeUserLocation(session, location) {
     //Obtenemos el dataset
 
     let locationText = location.name.toString() + '%t' + location.comment.toString() + '%t' + location.lat.toString() + '%t' + location.lng.toString();
-    console.log(locationText);
+
 
 
     const profileDataset = await getSolidDataset(session.info.webId, {
@@ -51,7 +51,7 @@ export default async function removeUserLocation(session, location) {
         "http://schema.org/text",
         locationText
     );
-    console.log(newThing);
+    
     const savedThing = setThing(listaLoc, newThing);
     await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
     alert('Location ' + location.name + ' has been successfully removed');
