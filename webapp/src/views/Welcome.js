@@ -1,4 +1,4 @@
-const Welcome = () => {
+export default function Welcome(){
   return (
     <div className="welcome">
       <h1>Welcome to Radarin Manager!</h1>
@@ -7,5 +7,3 @@ const Welcome = () => {
     </div>
   );
 };
-
-export default Welcome;
