@@ -1,4 +1,4 @@
-const AboutUs = () => {
+export default function AboutUs(){
   return (
     <div className="about-us">
       <h1>About us</h1>
@@ -16,5 +16,3 @@ const AboutUs = () => {
     </div>
   );
 };
-
-export default AboutUs;

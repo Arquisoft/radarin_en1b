@@ -1,4 +1,4 @@
-const NotLoggedIn = () => {
+export default function NotLoggedIn(){
   return (
     <div className="not-logged-in">
       <h1>You are not logged in!</h1>
@@ -6,5 +6,3 @@ const NotLoggedIn = () => {
     </div>
   );
 };
-
-export default NotLoggedIn;
