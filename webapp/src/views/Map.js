@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
 import marker from '../static/radar.svg';
 import personMarker from '../static/friendLocation.svg';
-import { getUserLocation } from '../utils/locationsRedux/locationsSlice';
+import { getUserLocation, deleteLocation } from '../utils/locationsRedux/getLocationsSlice.js';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
-import '../css/Map.css';
+import removeUserLocation from '../utils/solidAccessing/RemoveLocations.js';
+import '../css/Map.css'
 import SyncLoader from "react-spinners/SyncLoader";
 import { css } from "@emotion/core";
 
@@ -24,6 +25,7 @@ const iconPerson = new L.Icon({
     popupAnchor: [-0, -0],
     iconSize: [32, 45],
 });
+
 
 function MapComponent() {
     const [lati, setLati] = useState(43.4586254);
@@ -88,6 +90,12 @@ function MapComponent() {
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
+                                <button onClick={(() => {
+                                    removeUserLocation(session, marker);
+                                    dispatch(
+                                        deleteLocation(marker)
+                                    );
+                                    })}>Remove location</button>
                             </Popup>
                         </Marker>
                     })}
@@ -111,6 +119,7 @@ function MapComponent() {
     return <div className="map">{content}</div>;
 }
 export default MapComponent;
+
 
 function parseLocations(totalLocations, session) {
     let toRet = [];
