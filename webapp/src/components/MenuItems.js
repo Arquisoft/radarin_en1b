@@ -13,10 +13,5 @@ export const MenuItems = [
         title: "About us",
         url: "/about-us",
         cName: "fas fa-address-card white"
-    },
-    {
-        title: "Documentation",
-        url: "/docs",
-        cName: "fas fa-book-reader white"
     }
 ];

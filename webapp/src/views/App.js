@@ -32,10 +32,6 @@ function App() {
         <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
         <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
         <Route path='/about-us' exact component={AboutUs}/>
-        <Route path='/docs' component={() => { 
-          window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/'; 
-           return null;
-        }}/>
       </Switch>
     </BrowserRouter>
   );
