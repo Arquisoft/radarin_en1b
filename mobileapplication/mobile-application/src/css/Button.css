@@ -9,11 +9,14 @@
     border: none;
     cursor: pointer;
     margin-top: 20px;
+
+    font-size: 16px;
 }
 
 
 .marginleft{
     margin-left: 10px;
+    font-size: 16px;
 }
 .btn--primary{
     background-color: var(--primary);

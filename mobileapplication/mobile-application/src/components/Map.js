@@ -83,7 +83,7 @@ export default class MapComponent extends Component {
             if (nearFriends.length > 0) {
                 for (let near of nearFriends) {
                     if(!this.state.pastNearFriends.includes(near)){
-                        <Notification name={near.webId}/>
+                        <Notification title='A friend is nearby:' message={near.webId} icon='map'/>
                     }
                 }
                 this.setState({pastNearFriends: nearFriends});

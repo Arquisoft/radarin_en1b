@@ -84,7 +84,7 @@ function AddLocationForm() {
 
   const handleSubmit = (event) => {
     obtainUserLocation();
-    alert('A new localization was added: ' + value);
+    alert('New locations added!');
     event.preventDefault();
   };
 
@@ -107,23 +107,24 @@ function AddLocationForm() {
           setTimeout(geolocateUser, 1000);
       }
     }, console.log);
+    
   };
-  
+
   return (
-      <div> 
-          <form onSubmit={handleSubmit}>
-              <label>Name of the location: 
-                  <input className='marginleft' type="text" value = {value} onChange={handleChangeName}/> 
-              </label>
-              <br/>
-              <br/>
-              <label>Description of the location:  
-                       <input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
-              </label>
-              <br/>
-              <Button onClick={handleSubmit} variant="contained" color="primary" >Add new location</Button>
-          </form>
-      </div>
+    <div id='cont'> 
+        <form onSubmit={handleSubmit}>
+            <label>Name of the location: 
+              <input className='marginleft' type="text" value = {value} onChange={handleChangeName}/> 
+            </label>
+            <br/>
+            <br/>
+            <label>Description of the location:  
+              <input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
+            </label>
+            <br/>
+            <Button onClick={handleSubmit} variant="contained" color="primary" >Add new location</Button>
+        </form>
+    </div>
   );
 }
 export default AddLocationForm;

@@ -1,5 +1,6 @@
 import React, {Component}  from 'react';
-import icon from '../static/united.svg';
+import map from '../static/united.svg';
+import info from '../static/info.svg';
 import '../css/Notification.css';
 
 export default class Notification extends Component {
@@ -20,7 +21,12 @@ export default class Notification extends Component {
     };
 
     render(){
-
+        var icon = '';
+        if ( this.props.icon === 'info'){
+            icon = info;
+        }else {
+            icon = map;
+        }
         return (
             <div id='notification'>
                 <div className={'notification-container'}  >
@@ -32,10 +38,10 @@ export default class Notification extends Component {
                             </div>
                             <div>
                                 <p className="notification-title">
-                                    A friend is near you:
+                                    {this.props.title}
                                 </p>
                                 <p className="notification-message">
-                                    {this.props.name}
+                                    {this.props.message}
                                 </p>
                             </div>
                         </div>
