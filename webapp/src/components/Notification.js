@@ -13,7 +13,12 @@ export default class Notification extends Component {
         if(div !== undefined)
             div.remove();
     };
-
+''
+    componentDidMount(){
+        setTimeout(() => {
+            this.handleClick();
+        }, 3500);
+    };
 
     render(){
         var icon = '';
