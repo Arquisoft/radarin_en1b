@@ -2,21 +2,16 @@ export const MenuItems = [
     {
         title:"Home",
         url: "/",
-        cName: "nav-links"
+        cName: "fas fa-home white"
     },
     {
         title:"Map",
         url: "/map",
-        cName: "nav-links"
+        cName: "fas fa-map white"
     },
     {
         title: "About us",
         url: "/about-us",
-        cName: "nav-links"
-    },{
-        title: "Documentation",
-        url: "/docs",
-        cName: "nav-links"
+        cName: "fas fa-address-card white"
     }
-    
-]
+];

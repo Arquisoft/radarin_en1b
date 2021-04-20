@@ -7,12 +7,12 @@ class Navbar extends Component{
 
     handleClick = () => { 
         this.setState({ clicked: !this.state.clicked});
-    }
+    };
 
     render(){
         return(
         <nav className="NavbarItems">
-            <h1 className="navbar-logo">Radarin Radar <i className=" app-logo fab fa-react"></i></h1>
+            <h1 className="navbar-logo">Radarin Radar <i className=" app-logo fab fa-react"/></h1>
            
            <div className="menu-icon" onClick={this.handleClick}>
                 <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
@@ -21,16 +21,18 @@ class Navbar extends Component{
             <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
                 {MenuItems.map((item,index) => {
                     return (
-                        <li key = {index}>
-                            <NavLink to={item.url} className={item.cName} onClick={this.handleClick}>
+                        <li key = {index}  className='nav-links'>
+                            <NavLink to={item.url} className='navText' onClick={this.handleClick}>
+                                <i  className={item.cName}/>
                                 {item.title}
                             </NavLink>
                         </li>
-                    )
+                    );
                 })}
+                
             </ul>
         </nav>
         )
-    }
+    };
 }
-export default Navbar
+export default Navbar;

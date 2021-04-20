@@ -1,5 +1,3 @@
-// utils/index.js
-
 import {
     createSolidDataset,
     getSolidDataset,
@@ -30,7 +28,7 @@ import {
            */
           createSolidDataset(),
           {
-            fetch,
+            fetch
           }
         );
         return locationsList;

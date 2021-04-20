@@ -38,4 +38,4 @@ import {
         throw error;
       }
     }
-  };
+};

@@ -7,4 +7,4 @@ export default configureStore({
       locations: locationsReducer,
       friends: friendsReducer
   },
-})
+});

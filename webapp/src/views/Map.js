@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
 import marker from '../static/radar.svg';
@@ -28,8 +28,8 @@ const iconPerson = new L.Icon({
 
 
 function MapComponent() {
-    const [lati, setLati] = useState(0.0);
-    const [long, setLong] = useState(0.0);
+    const [lati, setLati] = useState(43.4586254);
+    const [long, setLong] = useState(-5.8418686);
     const dispatch = useDispatch();
     const { session } = useSession();
     let content;
@@ -67,7 +67,7 @@ function MapComponent() {
         content = <div className="waiting-screen">
                     <h1>Radarin Manager is computing your locations...</h1>
                     <SyncLoader css={override} size={40} color={"rgb(9, 71, 241)"} />
-                  </div>
+                  </div>;
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
     } else if (statusLocations === "fulfilled") {

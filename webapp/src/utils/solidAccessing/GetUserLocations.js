@@ -24,7 +24,7 @@ export default async function obtainUserLocations(session, friends) {
 
     return locations;
     
-}
+};
 
 async function obtainUserLocation(session, person) { 
     /**
