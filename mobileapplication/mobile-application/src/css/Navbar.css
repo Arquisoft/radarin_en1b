@@ -22,6 +22,7 @@
 
 .white{
     color: white;
+    padding-right: 10px;
 }
 .nav-menu{
     display: grid;
@@ -40,11 +41,12 @@
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
+
 .navText{
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 0.5rem 1rem;
-
+    outline:none;
 }
 
 .nav-links:hover{
@@ -86,13 +88,14 @@
         margin-right: 0;
         margin-bottom: 0;
         padding-bottom: 0;
-        opacity: 0;
+        opacity: 0%;
     }
 
     .nav-menu.active{
         background: linear-gradient(90deg, rgb(221, 67, 95), rgb(110, 102, 221) 100%);
         right: 0;
         opacity: 1;
+        position: absolute;
         transition: all 0.5s ease;
         z-index: 1;
         margin-right: 0;
@@ -111,11 +114,13 @@
         width: 100%;
         display: table;
         margin-right: 0;
+        outline:0;
     }
 
     .nav-links:hover {
         background-color: rgb(110, 102, 221);
         border-radius: 0;
+        outline:0;
     }
 
     .navbar-logo{

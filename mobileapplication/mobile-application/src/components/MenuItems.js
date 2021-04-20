@@ -2,21 +2,28 @@ export const MenuItems = [
     {
         title:"Home",
         url: "/",
-        cName: "nav-links"
+        cName: "fas fa-home white"
     },
     {
         title:"Map",
         url: "/map",
-        cName: "nav-links"
+        cName: "fas fa-map white"
     },
     {
         title:"Store Locations",
         url: "/store-location",
-        cName: "nav-links"
+        cName: "fas fa-database white"
     },
     {
         title: "About us",
         url: "/about-us",
-        cName: "nav-links"
+        cName: "fas fa-address-card white"
     }
 ];
+
+//, 
+//{
+//    title: "Log out",
+//    url: "/logout",
+//   cName: "fas fa-sign-out-alt white"
+//}

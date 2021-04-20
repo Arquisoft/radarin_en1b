@@ -10,6 +10,7 @@ import {
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "../utils/index.js";
+import { Button } from "../components/Buttons";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -112,14 +113,15 @@ function AddLocationForm() {
       <div> 
           <form onSubmit={handleSubmit}>
               <label>Name of the location: 
-                  <input type="text" value = {value} onChange={handleChangeName}/> 
+                  <input className='marginleft' type="text" value = {value} onChange={handleChangeName}/> 
               </label>
+              <br/>
               <br/>
               <label>Description of the location:  
-                  <input type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
+                       <input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
               </label>
               <br/>
-              <button onClick={handleSubmit} variant="contained" color="primary" >Add new location</button>
+              <Button onClick={handleSubmit} variant="contained" color="primary" >Add new location</Button>
           </form>
       </div>
   );

@@ -29,7 +29,7 @@ function App() {
   return (
     <SessionProvider>
       <BrowserRouter>
-        <Navbar/>
+        <Navbar session={session}/>
         <Switch>
           <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
           <Route path='/map' exact render={(props) => (

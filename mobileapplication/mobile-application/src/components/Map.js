@@ -51,7 +51,7 @@ export default class MapComponent extends Component {
                     this.setState({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude
-                    })
+                    });
 
                     let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
                     if (response.error)
@@ -80,13 +80,13 @@ export default class MapComponent extends Component {
                 }
             }
 
-            if (nearFriends.length <= 0) {
+            if (nearFriends.length > 0) {
                 for (let near of nearFriends) {
                     if(!this.state.pastNearFriends.includes(near)){
-                        this.state.pastNearFriends.push(near);
                         <Notification name={near.webId}/>
                     }
                 }
+                this.setState({pastNearFriends: nearFriends});
             }
 
             this.setState({
