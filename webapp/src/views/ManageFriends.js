@@ -11,7 +11,6 @@ import CardColumns from 'react-bootstrap/CardColumns';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function ManageFriends() {
     const dispatch = useDispatch();
     const { session } = useSession();
@@ -57,7 +56,7 @@ function ManageFriends() {
                             {friend.id}
                             </Card.Text>
                         </Card.Body>
-                        <Button variant="danger">Delete friend</Button>
+                        <Button variant="danger" onClick={() => deleteFriend(friend.id, session)}>Delete friend</Button>
                         <Button variant="primary" onClick={() => window.location.href = friend.id}>
                             See Details</Button>
                         </Card>
@@ -69,3 +68,14 @@ function ManageFriends() {
     return <div className="manage-friends">{content}</div>;
 }
 export default ManageFriends;
+
+ async function ldflexDeleter(friend, webId) {
+    return ldflex[webId].knows.delete(ldflex[friend]);
+  }
+  
+ async function deleteFriend(friend, session) {
+    await ldflexDeleter(friend, session.info.webId);
+    await reload();
+  }
+
+ 
