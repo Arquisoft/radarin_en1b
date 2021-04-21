@@ -5,7 +5,8 @@ import AboutUs from './AboutUs';
 import NotLoggedIn from './NotLoggedIn';
 import MapComponent from './Map';
 import LoginForm from './LoginForm';
-import Welcome from './Welcome'
+import Welcome from './Welcome';
+import ManageFriends from './ManageFriends';
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
@@ -36,6 +37,7 @@ function App() {
           window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/'; 
            return null;
         }}/>
+        <Route path='/friends' exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
       </Switch>
     </BrowserRouter>
   );

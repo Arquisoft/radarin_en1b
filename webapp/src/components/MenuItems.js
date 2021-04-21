@@ -18,5 +18,11 @@ export const MenuItems = [
         title: "Documentation",
         url: "/docs",
         cName: "fas fa-book-reader white"
+    },
+    {
+        title: "Manage friends",
+        url: "/friends",
+        cName: "fas fa-user-friends white"
     }
+
 ]
