@@ -85,3 +85,14 @@ function ManageFriends() {
     return <div>{content}</div>;
 }
 export default ManageFriends;
+
+ //async function ldflexDeleter(friend, webId) {
+     //return ldflex[webId].knows.delete(ldflex[friend]);
+ // }
+  
+ //async function deleteFriend(friend, session) {
+   // await ldflexDeleter(friend, session.info.webId);
+    //await reload();
+//}
+
+ 
