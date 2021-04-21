@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
 import SyncLoader from "react-spinners/SyncLoader";
 import { css } from "@emotion/core";
-import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
-import CardGroup from 'react-bootstrap/CardGroup';
-import CardColumns from 'react-bootstrap/CardColumns';
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import '../css/Friends.css'
+import photo from '../static/h.png';
 
 function ManageFriends() {
     const dispatch = useDispatch();
@@ -31,6 +26,15 @@ function ManageFriends() {
         }
     });//, [statusLocations, statusFriends]);
 
+    function getUsermame(friend){
+        var splitted = friend.id.toString().split('.')[0];
+        return friend.name +' @' + splitted.substring(8,splitted.length);
+    }
+
+    function addFriends(){
+
+    }
+
     if (statusFriends === "pending" || statusFriends === "idle") {
         const override = css`
         display: block;
@@ -46,26 +50,38 @@ function ManageFriends() {
 
     }else if (statusFriends === "fulfilled"){
         content = (
-        <div className="manage-friends">
-            <CardGroup>
-            {totalFriends.map((friend) => {
-                        return <Card style={{ width: '18rem'}}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
-                        <Card.Body>
-                            <Card.Title>{friend.name}</Card.Title>
-                            <Card.Text>
-                            {friend.id}
-                            </Card.Text>
-                        </Card.Body>
-                        <Button variant="danger">Delete friend</Button>
-                        <Button variant="primary" onClick={() => window.location.href = friend.id}>
-                            See Details</Button>
-                        </Card>
-            })}
-            </CardGroup>
-        </div>
+            <div className='main'>
+                <h1>Manage Friends</h1>
+                <p id='texto'>Here you are able to add, see and remove your friends.</p>
+                <button id='btnAdd' className='add-friend button' onClick={addFriends()}>Add Friend</button>
+                <input id='addFriend' className='button length-input'></input>
+                <p className='no-margin'>Friend list:</p>
+                <div className="manage-friends">
+                    <div className="group">
+                        {totalFriends.map((friend) => {
+                                    return(
+                                        <div className='card'>
+                                            <div className='left'>
+                                                <img className='image' src={photo} alt='Profile'/>
+                                            </div>
+                                            <div className='center'>
+                                                <div className='title'>
+                                                    {getUsermame(friend)} 
+                                                </div>
+                                            </div>
+
+                                            <div className='buttons-friend'>
+                                                        <button className='button delete'>Delete friend</button>
+                                                        <button  className='button details'onClick={() => window.location.href = friend.id}> See Details</button>
+                                            </div>
+                                        </div>
+                                    );
+                        })}
+                    </div>
+                </div>
+            </div>
     );}
     
-    return <div className="manage-friends">{content}</div>;
+    return <div>{content}</div>;
 }
 export default ManageFriends;
