@@ -1,8 +1,5 @@
-import React from 'react';
-
-const AboutUs = props => {
-  return (
-    <div className="about-us">
+export default function AboutUs(){
+  return <div className="about-us">
       <h1>About us</h1>
       <p>We are the Radarin team, a team composed of 6 undergraduate students of Software Engineers:</p>
       <li>Alberto Díez Bajo</li>
@@ -15,8 +12,7 @@ const AboutUs = props => {
       <p>an application developed using React, SOLID, Docker and deployed with Heroku.</p>
       <p>Radarin is an application based on the use of location recording using PODs,</p>
       <p>where you can see yours and your friends locations</p>
-    </div>
-  );
-};
-
-export default AboutUs;
+      <p>You can read the Documentation </p>
+      <a href='https://radarinen1bwebapp.herokuapp.com/docs/'> here</a>
+    </div>;
+}

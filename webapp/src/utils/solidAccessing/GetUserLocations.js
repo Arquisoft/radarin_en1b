@@ -5,7 +5,7 @@ import {
     getThing,
     getUrlAll,
 } from "@inrupt/solid-client";
-import { getOrCreateLocationList } from "./index.js";
+import { getOrCreateLocationList } from "./indexGet.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -24,7 +24,7 @@ export default async function obtainUserLocations(session, friends) {
 
     return locations;
     
-}
+};
 
 async function obtainUserLocation(session, person) { 
     /**

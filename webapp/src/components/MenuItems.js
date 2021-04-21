@@ -25,4 +25,4 @@ export const MenuItems = [
         cName: "fas fa-user-friends white"
     }
 
-]
+];

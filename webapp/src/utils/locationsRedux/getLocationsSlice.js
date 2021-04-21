@@ -11,6 +11,11 @@ export const locationsSlice = createSlice({
     status: "idle",
     value: [], //[localizaciones del usuario]
     error: null
+  }, reducers: {
+    deleteLocation(state, action)  {
+      state.value = state.value.filter((location) => {return !(location.name === action.payload.name && location.comment === action.payload.comment);  }); 
+      state.value[0].localizaciones = state.value[0].localizaciones.filter((location) => {return !(location.name === action.payload.name && location.comment === action.payload.comment);  }); 
+    },
   },extraReducers:{
     [getUserLocation.pending]: (state, action) => {
       state.status = "pending";
@@ -26,4 +31,5 @@ export const locationsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
+export const {deleteLocation} = locationsSlice.actions;
 export default locationsSlice.reducer;

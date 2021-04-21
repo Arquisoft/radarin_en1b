@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Welcome = props => {
+export default function Welcome(){
   return (
     <div className="welcome">
       <h1>Welcome to Radarin Manager!</h1>
@@ -8,6 +6,4 @@ const Welcome = props => {
       <p>It's a pleasure that you are using our services, hope you find all well.</p>
     </div>
   );
-};
-
-export default Welcome;
+}

@@ -6,6 +6,7 @@ import friend from '../static/friend.svg';
 import '../css/Map.css'
 import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
 import { addUserOrUpdateLocation, getNearFriends } from '../api/api';
+import ReactDOM from 'react-dom';
 import { css } from "@emotion/core";
 import SyncLoader from "react-spinners/SyncLoader";
 import Notification from './Notification';
@@ -81,11 +82,14 @@ export default class MapComponent extends Component {
             }
 
             if (nearFriends.length > 0) {
+                let friends = '';
                 for (let near of nearFriends) {
                     if(!this.state.pastNearFriends.includes(near)){
-                        <Notification title='A friend is nearby:' message={near.webId} icon='map'/>
+                        friends += near.webId + ', ';
                     }
                 }
+                
+                ReactDOM.render(<Notification title={'You have friends nearby: '} message={friends.substring(0, friends.length - 1)} icon='map'/>, document.getElementById('notification-map'));
                 this.setState({pastNearFriends: nearFriends});
             }
 
@@ -116,6 +120,7 @@ export default class MapComponent extends Component {
             const coordinates = [this.state.latitude, this.state.longitude];
             return (<div className="map">
                 <MapContainer center={coordinates} zoom={15} scrollWheelZoom={true} className="map">
+                    <div id='notification-map'></div>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

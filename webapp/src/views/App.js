@@ -23,8 +23,8 @@ function App() {
   //const [ idp, setIdp] = useState("https://inrupt.net");
   //const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
-  session.onLogin( () => { setIsLoggedIn(true)})
-  session.onLogout( () => { setIsLoggedIn(false)})
+  session.onLogin( () => { setIsLoggedIn(true)});
+  session.onLogout( () => { setIsLoggedIn(false)});
 
   return (
     <BrowserRouter>
@@ -42,23 +42,5 @@ function App() {
     </BrowserRouter>
   );
   
-  /*
-  return (
-
-    <div className="App">
-
-      
-      <SessionProvider sessionId="log-in-exameple">      
-        {<LoginForm/>}      
-      </SessionProvider>
-
-      <h1>Radarin map preliminary version</h1>
-      <div id="webMap">
-        <MapComponent />
-      </div>
-    </div>
-  );
-  */
 }
-
 export default App;
