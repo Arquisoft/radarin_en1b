@@ -7,36 +7,19 @@ import {Button} from '@material-ui/core';
 
 function LoginForm () {
     // IDentity Provider, used to store the POD, in this case just inrupt.net
-    const [oidcIssuer, setOidcIssuer] = useState("");
+    const [ idp, setIdp] = useState("https://inrupt.net");
+    const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
-  const handleChange = (event) => {
-    setOidcIssuer(event.target.value);
-  };
-
-  return (
-    <div className="app-container">
-	 <span>
-            Log in with:
-            <input
-              className="oidc-issuer-input "
-              type="text"
-              name="oidcIssuer"
-              list="providers"
-              value={oidcIssuer}
-              onChange={handleChange}
-            />
-          <datalist id="providers">
-            <option value="https://broker.pod.inrupt.com/" />
-            <option value="https://inrupt.net/" />
-          </datalist>
-          </span>
-		  <LoginButton
-		     oidcIssuer={oidcIssuer}
-		     redirectUrl={window.location.href}
-		     authOptions={authOptions}
-		   />
-    </div>
-  );
+    return(
+    <LoginButton
+        oidcIssuer={idp}
+        redirectUrl={currentUrl}
+    >
+        <Button variant="contained" color="primary" >
+            Log In
+        </Button>             
+    </LoginButton>       
+    );
 }
 
 export default LoginForm;
