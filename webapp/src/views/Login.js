@@ -41,7 +41,7 @@ export default function Login(){
                             data-testid="combo"
                             className='select-provider sm-lg-text'
                             >
-                                <MenuItem value="" className='sm-lg-text'>
+                                <MenuItem value="https://inrupt.net" className='sm-lg-text'>
                                     <em>Select a Provider</em>
                                 </MenuItem>
                                 <MenuItem value={"https://inrupt.net"} className='sm-lg-text' data-testid="Inrupt"><img src={inrupt} className='image-combo margin-side' alt='inrupt logo'/> Inrupt</MenuItem>

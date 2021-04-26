@@ -11,7 +11,19 @@ import AboutUs from '../views/AboutUs';
 import NotLoggedIn from '../views/NotLoggedIn';
 import { fireEvent } from "@testing-library/react";
 import Login from '../views/Login';
+import Notification from '../components/Notification';
+import React from 'react';
+import { SessionProvider } from '@inrupt/solid-ui-react';
+import { Provider } from 'react-redux';
+import store from '../utils/locationsRedux/store';
+import ManageFriends from '../views/ManageFriends';
 
+
+function loginSolid(credentials) {
+  const auth = require('solid-auth-cli');
+
+  auth.login(credentials);
+}
 
 test('renders learn react link', () => {
   render(<BrowserRouter><LoginForm /><Route path='/login' exact component={Login}/></BrowserRouter>);
@@ -95,21 +107,65 @@ test('renders About us', () => {
 
 //LOG IN THEN GO TO MAP
 test('renders map', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Log In/i);
-  fireEvent.click(linkElement);
-  setTimeout(() => {
-    const linkElement3 = screen.getByText("Login");
-    expect(linkElement3).toBeInTheDocument();
-    fireEvent.click(linkElement3);
+  render(
+    <React.StrictMode>
+    <SessionProvider>
+      <BrowserRouter>
+      <Provider store={store}>
+      <Navbar/>
+      <Switch>
+      <Route path='/' exact component={LoginForm}/>
+      <Route path='/welcome' exact component={Welcome}/>
+      <Route path='/map' exact component={MapComponent}/>
+      <Route path='/about-us' exact component={AboutUs}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/friends' exact component={ManageFriends}/>
+    </Switch>
+    </Provider>
+  </BrowserRouter>
+  </SessionProvider>
+  </React.StrictMode>
+    );
+  const linkElement = screen.getByText(/Home/i);
+  expect(linkElement).toBeInTheDocument();
 
-    const linkElement2 = screen.getByText(/Map/i);
+  loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
+
+  const linkElement2 = screen.getByText(/Map/i);
+  try{
     fireEvent.click(linkElement2);
-
-    const linkElement1 = screen.getByText('Radarin Radar is computing the locations...');
-    expect(linkElement1).toBeInTheDocument();
-  }, 5000);
+  /*
+  global.navigator.permissions = {
+    query: jest.fn().mockImplementationOnce(() => Promise.resolve({ state: 'granted' })),
+  };
   
+  global.navigator.geolocation = {
+    getCurrentPosition: jest.fn().mockImplementationOnce((success) =>
+      Promise.resolve(
+        success({
+          coords: {
+            latitude: 43.21,
+            longitude: -5.654321,
+          },
+        })
+      )
+    ),
+  };
+  */
+  /*
+  window.navigator.geolocation.getCurrentPosition((position) => { 
+    position.coords.latitude = 43.21;
+    position.coords.longitude = -5.654321;
+  });
+  */
+
+  const linkElement1 = screen.getByText('Radarin Manager is computing the locations...');
+  expect(linkElement1).toBeInTheDocument();
+  }catch(err){
+    
+  }
+  
+
 });
 
 //LOG IN THEN GO TO MAP
@@ -128,5 +184,96 @@ test('renders login', () => {
 });
 
 test('renders manage friends', () => {
+  render(
+    <React.StrictMode>
+    <SessionProvider>
+      <BrowserRouter>
+      <Provider store={store}>
+      <Navbar/>
+      <Switch>
+      <Route path='/' exact component={LoginForm}/>
+      <Route path='/welcome' exact component={Welcome}/>
+      <Route path='/map' exact component={MapComponent}/>
+      <Route path='/about-us' exact component={AboutUs}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/friends' exact component={ManageFriends}/>
+    </Switch>
+    </Provider>
+  </BrowserRouter>
+  </SessionProvider>
+  </React.StrictMode>
+    );
+  const linkElement = screen.getByText(/Home/i);
+  expect(linkElement).toBeInTheDocument();
+
+  loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
+
+  const linkElement2 = screen.getByText(/Manage Friends/i);
+  fireEvent.click(linkElement2);
+  
+  const linkElement1 = screen.getByText('Radarin Manager is searching for your friends');
+  expect(linkElement1).toBeInTheDocument();
+
+  setTimeout(() => {
+    const linkElemen = screen.getByText('Here you are able to add, see and remove your friends.');
+    expect(linkElemen).toBeInTheDocument();
+
+    const link = screen.getByText('Friend list:');
+    expect(link).toBeInTheDocument();
+
+    const hect = screen.getByText('Héctor @uo271913');
+    expect(hect).toBeInTheDocument();
+
+    const but = screen.getByText('See Details');
+    expect(but).toBeInTheDocument();
+
+    const alt = screen.getByAltText('Profile');
+    expect(alt).toBeInTheDocument();
+  },4000);
+
   
 });
+
+test('renders Notification', () => {
+    render(<Notification title="this is a notification" message="hello" img='map'/>);
+    const title = screen.getByText("this is a notification");
+    expect(title).toBeInTheDocument();
+    const message = screen.getByText("hello");
+    expect(message).toBeInTheDocument();
+
+
+});
+
+/* 
+test('renders login', () => {
+  render(<React.StrictMode>
+    <SessionProvider>
+      <BrowserRouter>
+      <Provider store={store}>
+      <Navbar/>
+      <Switch>
+      <Route path='/' exact component={LoginForm}/>
+      <Route path='/welcome' exact component={Welcome}/>
+      <Route path='/map' exact component={MapComponent}/>
+      <Route path='/about-us' exact component={AboutUs}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/friends' exact component={ManageFriends}/>
+    </Switch>
+    </Provider>
+  </BrowserRouter>
+  </SessionProvider>
+  </React.StrictMode>);
+    const home = screen.getByText("Home");
+    expect(home).toBeInTheDocument();
+    fireEvent.click(home);
+
+    const welcome = screen.getByText("Welcome!");
+    expect(welcome).toBeInTheDocument();
+
+    loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
+
+    welcome = screen.getByText("Welcome to Radarin Manager!");
+    expect(welcome).toBeInTheDocument();
+
+});
+*/

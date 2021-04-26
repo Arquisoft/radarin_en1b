@@ -22,18 +22,11 @@ function ManageFriends() {
                 getFriends(session)
             );
         }
-        else if(statusFriends === "fulfilled"){
-            console.log(totalFriends);
-        }
     });//, [statusLocations, statusFriends]);
 
     function getUsermame(friend){
         var splitted = friend.id.toString().split('.')[0];
         return friend.name +' @' + splitted.substring(8,splitted.length);
-    }
-
-    function addFriends(){
-
     }
 
     if (statusFriends === "pending" || statusFriends === "idle") {
@@ -53,9 +46,7 @@ function ManageFriends() {
         content = (
             <div className='main'>
                 <h1>Manage Friends</h1>
-                <p id='texto'>Here you are able to add, see and remove your friends.</p>
-                <button id='btnAdd' className='add-friend button' onClick={addFriends()}>Add Friend</button>
-                <input id='addFriend' className='button length-input'></input>
+                <p id='texto'>Here you are able to see your friends.</p>
                 <p className='no-margin'>Friend list:</p>
                 <Container className="manage-friends">
                     <Col className="group">
@@ -72,7 +63,6 @@ function ManageFriends() {
                                             </div>
 
                                             <div className='buttons-friend'>
-                                                        <button className='button delete'>Delete friend</button>
                                                         <button  className='button details' onClick={() => window.open(friend.id,"_blank")}> See Details</button>
                                             </div>
                                         </Row>
@@ -94,14 +84,5 @@ function checkForPhoto(photo){
 
     return userPhoto;
 }
-
- //async function ldflexDeleter(friend, webId) {
-     //return ldflex[webId].knows.delete(ldflex[friend]);
- // }
-  
- //async function deleteFriend(friend, session) {
-   // await ldflexDeleter(friend, session.info.webId);
-    //await reload();
-//}
 
  

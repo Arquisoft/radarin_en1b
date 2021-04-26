@@ -1,9 +1,8 @@
 import {MenuItems} from '../components/MenuItems';
 import '../css/Navbar.css';
 import { NavLink} from 'react-router-dom';
-import Profile from '../components/Profile';
 
-function Navbar({logged,session}){
+function Navbar(){
     return <nav className="NavbarItems">
 
         <ul className="nav-menu">
@@ -11,14 +10,13 @@ function Navbar({logged,session}){
             {MenuItems.map((item,index) => {
                 return (
                     <li key = {index}>
-                        <NavLink to={item.url} className='nav-links' >
+                        <NavLink to={item.url} className='nav-links' data-testid={item.title}>
                             <i className={item.cName} />
                             {item.title}
                         </NavLink>
                     </li>
                 )
             })}
-        {logged && <li><Profile session={session}/></li>}
             
         </ul>
     </nav>;
