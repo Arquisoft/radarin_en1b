@@ -6,12 +6,12 @@ import NotLoggedIn from './NotLoggedIn';
 import MapComponent from './Map';
 import LoginForm from './LoginForm';
 import Welcome from './Welcome';
-import Login from './Login';
 import ManageFriends from './ManageFriends';
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './Login';
 
 function App() {
   // Variable to check session state
@@ -19,10 +19,6 @@ function App() {
 
   // Variables for log in: 
   const {session} = useSession();
-
-  // IDentity Provider, used to store the POD, in this case just inrupt.net
-  //const [ idp, setIdp] = useState("https://inrupt.net");
-  //const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
   session.onLogin( () => { setIsLoggedIn(true)});
   session.onLogout( () => { setIsLoggedIn(false)});
@@ -34,7 +30,7 @@ function App() {
         <Route path='/welcome' exact component={Welcome}/>
         <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
         <Route path='/about-us' exact component={AboutUs}/>
-        <Route path='/login' exact component={Login}/>
+        <Route path='/login' component={Login}/>
         <Route path='/friends' exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
       </Switch>
     </BrowserRouter>

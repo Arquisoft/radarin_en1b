@@ -35,26 +35,27 @@ export default function Login(){
                             <span >
                             <Select
                             labelId="demo-simple-select-filled-label"
-                            id="demo-simple-select-filled"
+                            id="combo"
                             value={provider}
                             onChange={handleChange}
+                            data-testid="combo"
                             className='select-provider sm-lg-text'
                             >
                                 <MenuItem value="" className='sm-lg-text'>
                                     <em>Select a Provider</em>
                                 </MenuItem>
-                                <MenuItem value={"https://inrupt.net"} className='sm-lg-text'><img src={inrupt} className='image-combo margin-side' alt='inrupt logo'/> Inrupt</MenuItem>
+                                <MenuItem value={"https://inrupt.net"} className='sm-lg-text' data-testid="Inrupt"><img src={inrupt} className='image-combo margin-side' alt='inrupt logo'/> Inrupt</MenuItem>
                                 <MenuItem value={"https://solidcommunity.net"} className='sm-lg-text'><img src={solid} className='image-combo margin-side' alt='solid community logo'/> Solid Community</MenuItem>
                             </Select>
                                 
                             </span></Row>
                         <Row className='margin-sides fixed margin-top select'>
                             <h3>If you dont have a pod you can register for one </h3>
-                            <Button onClick='' target="_blank">Register for a SOLID POD</Button>
+                            <Button onClick={() => window.open( oidcIssuer + '/register',"blank")}>Register for a SOLID POD</Button>
                         </Row>
                         <Row className='margin-bot select-small'>
                             <Col ><hr className='loginleft'/></Col>
-                            <Col className='overflow-visible'>Log in </Col>
+                            <Col className='overflow-visible'>Login </Col>
                             <Col ><hr className='loginright'/></Col>
                         </Row>
                         <Row className='margin-bot fixed sm-lg-text select-small'>

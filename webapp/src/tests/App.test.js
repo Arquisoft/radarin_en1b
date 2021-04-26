@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 // import App from '../views/App';
 import LoginForm from '../views/LoginForm';
-import {toBeInTheDocument} from '@testing-library/jest-dom';
+import toBeInTheDocument from '@testing-library/jest-dom';
 import Navbar from '../views/Navbar';
 import App from '../views/App';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
@@ -10,10 +10,13 @@ import MapComponent from '../views/Map';
 import AboutUs from '../views/AboutUs';
 import NotLoggedIn from '../views/NotLoggedIn';
 import { fireEvent } from "@testing-library/react";
+import Login from '../views/Login';
+
 
 test('renders learn react link', () => {
-  render(<LoginForm />);
-  const linkElement = screen.getByText(/Welcome to Radarin Manager/i);
+  render(<BrowserRouter><LoginForm /><Route path='/login' exact component={Login}/></BrowserRouter>);
+  
+  const linkElement = screen.getByText(/Welcome!/i);
   expect(linkElement).toBeInTheDocument();
 });
 
@@ -24,9 +27,6 @@ test('renders navbar logged in', () => {
       <Route path='/' exact component={Welcome}/>
       <Route path='/map' exact component={ MapComponent }/>
       <Route path='/about-us' exact component={AboutUs}/>
-      <Route path='/docs' component={() => { 
-        window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/';
-      }}/>
     </Switch>
   </BrowserRouter>);
   const linkElement = screen.getByText(/Home/i);
@@ -41,12 +41,12 @@ test('renders navbar not logged in', () => {
   render(<BrowserRouter>
     <Navbar/>
     <Switch>
-      <Route path='/' exact component={Welcome}/>
-      <Route path='/map' exact component={ NotLoggedIn }/>
-      <Route path='/about-us' exact component={AboutUs}/>
-      <Route path='/docs' component={() => { 
-        window.location.href = 'https://radarinen1bwebapp.herokuapp.com/docs/';
-      }}/>
+    <Route path='/' exact component={LoginForm }/>
+        <Route path='/welcome' exact component={Welcome}/>
+        <Route path='/map' exact component={NotLoggedIn}/>
+        <Route path='/about-us' exact component={AboutUs}/>
+        <Route path='/login' exact component={Login}/>
+        <Route path='/friends' exact component={ NotLoggedIn}/>
     </Switch>
   </BrowserRouter>);
   const linkElement = screen.getByText(/Home/i);
@@ -74,8 +74,6 @@ test('renders app map no login', () => {
   render(<App />);
   const linkElement = screen.getByText(/Home/i);
   expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText(/Log In/i);
-  expect(linkElement2).toBeInTheDocument();
 });
 
 
@@ -97,7 +95,7 @@ test('renders About us', () => {
   expect(linkElement3).toBeInTheDocument();
   const linkElement4 = screen.getByText(/Javier Carrillo González/i);
   expect(linkElement4).toBeInTheDocument();
-  const linkElement5 = screen.getByText(/Radarin is an application based on the use of location recording using PODs/i);
+  const linkElement5 = screen.getByText(/Radarin is an application developed using React, SOLID, Docker and deployed with Heroku./i);
   expect(linkElement5).toBeInTheDocument();
 });
 
@@ -117,5 +115,24 @@ test('renders map', () => {
     const linkElement1 = screen.getByText('Radarin Radar is computing the locations...');
     expect(linkElement1).toBeInTheDocument();
   }, 5000);
+  
+});
+
+//LOG IN THEN GO TO MAP
+test('renders login', () => {
+  render(<Login />);
+  const comboBox = screen.getByTestId("combo");
+  expect(comboBox).toBeInTheDocument();
+  fireEvent.click(comboBox);
+
+  const but = screen.getByText("Register for a SOLID POD");
+  expect(but).toBeInTheDocument();
+  fireEvent.click(but);
+  
+  //const inrupt = screen.getAllByText("Inrupt")[0];
+  //fireEvent.click(inrupt);
+});
+
+test('renders manage friends', () => {
   
 });
