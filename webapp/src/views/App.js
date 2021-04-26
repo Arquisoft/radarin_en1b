@@ -28,7 +28,7 @@ function App() {
   session.onLogout( () => { setIsLoggedIn(false)});
   return (
     <BrowserRouter>
-      <Navbar/>
+      <Navbar logged={isLoggedIn} session={session}/>
       <Switch>
         <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
         <Route path='/welcome' exact component={Welcome}/>

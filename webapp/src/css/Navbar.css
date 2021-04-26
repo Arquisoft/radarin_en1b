@@ -22,8 +22,8 @@
     justify-content: end;
     font-size: 1.4rem;
     text-decoration: none;
-    margin-top: auto;
     margin-bottom: auto;
+    margin-top: 15px;
 }
 
 .navText{
@@ -39,6 +39,9 @@
     padding: 0.5rem 1rem;
     list-style: none;
     outline:none;
+    margin-bottom: auto;
+    display: inline-block;
+    margin-top: 3px;
 }
 
 .nav-links:hover{
@@ -49,4 +52,7 @@
     text-decoration: none;
 }
 
+.figure-adjust{
+    display: contents;
+}
 
