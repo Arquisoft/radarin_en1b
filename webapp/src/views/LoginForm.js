@@ -9,7 +9,7 @@ import {
   InputLabel, 
   MenuItem, 
   TextField, 
-  withStyles 
+  withStyles
 } from '@material-ui/core';
 
 import "../css/App.css";
@@ -19,11 +19,11 @@ const providers = [
 
   {
     value: 'https://inrupt.net',
-    name: 'inrupt',
+    name: 'Inrupt',
   },
   {
     value: 'https://solidweb.org/',
-    name: 'solid Web',
+    name: 'Solid Web',
   },
   {
     value: 'https://solidcommunity.net/',
@@ -37,19 +37,33 @@ const authOptions = {
 
 const styles = {
   root: {
-    
   },
   labelRoot: {
     fontSize: 40,
+    color: '#c9c9c9',
+    "&.Mui-focused": {
+      color: "#ffffff"
+    },
+    margin: ' 30px 20px 10px 40px',
+    textShadow: "black 0px 0px 10px",
   },
+
+  labelFocused: {
+    color: 'red',
+    textShadow: 'black 0px 0px 15px',
+  },
+
   inputRoot: {
     borderRadius: 4,
+    
     position: 'relative',
-    padding: '25px 20px 10px 12px',
-    margin: '30px 100px 30px 12px',
+    
+    padding: '50px 20px 10px 20px',
+    margin: '40px 130px 30px 35px',
     //border: '5px solid #ced4da',
     fontSize: 35,
-    borderColor: '#80bdff',
+    color: 'white',
+    textShadow: "black 0px 0px 10px",
   },
 };
 
@@ -93,6 +107,7 @@ function LoginForm(props){
           InputLabelProps = {{
             classes : {
               root: classes.labelRoot,
+              focused: classes.labelFocused,
             }
           }}
         />
@@ -104,11 +119,14 @@ function LoginForm(props){
           value = {idp}
           onChange = {(e) => setIdp(e.target.value)}
           InputProps={{
-            className: classes.inputRoot
+            className: classes.inputRoot,
           }}
 
           InputLabelProps =  {{
-            className: classes.labelRoot,
+            classes: {
+              root: classes.labelRoot,
+              focused: classes.labelFocused,
+            }
           }}
           
         >
