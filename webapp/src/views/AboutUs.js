@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import alex from '../static/developers/alex.jpg'
+import hector from '../static/developers/hector.png'
 import '../css/App.css';
 export default function AboutUs(){
   return <div className="about-us">
@@ -14,7 +15,7 @@ export default function AboutUs(){
                           <Col><div><img src={alex} className='imagen' alt=''/></div><a href='https://github.com/DaniBAIG7' target="_blank" rel="noreferrer"className='decoration-none' alt="Image">Daniel Barrientos Iglesias</a></Col>
                       </Row>
                       <Row className='margin-bot'>
-                          <Col><div><img src={alex} className='imagen' alt=''/></div><a href='https://github.com/uo271913' target="_blank" rel="noreferrer" className='decoration-none' alt="Image">Héctor Fernández Maillo</a></Col>
+                          <Col><div><img src={hector} className='imagen' alt=''/></div><a href='https://github.com/uo271913' target="_blank" rel="noreferrer" className='decoration-none' alt="Image">Héctor Fernández Maillo</a></Col>
                           <Col><div><img src={alex} className='imagen' alt=''/></div><a href='https://github.com/uo269412' target="_blank" rel="noreferrer"className='decoration-none' alt="Image">Javier Carrillo González</a></Col>
                           <Col><div><img src={alex} className='imagen' alt=''/></div><a href='https://github.com/luisfesu' target="_blank" rel="noreferrer"className='decoration-none' alt="Image">Luis Antonio Fernández Suárez</a></Col>
                       </Row>

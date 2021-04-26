@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useSelector, useDispatch } from 'react-redux';
 import L from 'leaflet';
-import marker from '../static/radar.svg';
-import personMarker from '../static/friendLocation.svg';
+import marker from '../static/markerUser.svg';
+import friendMarker from '../static/markerFriend.png';
 import { getUserLocation, deleteLocation } from '../utils/locationsRedux/getLocationsSlice.js';
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
@@ -12,6 +12,7 @@ import '../css/Map.css'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import { Button } from 'react-bootstrap';
 
 const myIcon = new L.Icon({
     iconUrl: marker,
@@ -21,16 +22,18 @@ const myIcon = new L.Icon({
 });
 
 const iconPerson = new L.Icon({
-    iconUrl: personMarker,
-    iconRetinaUrl: personMarker,
+    iconUrl: friendMarker,
+    iconRetinaUrl: friendMarker,
     popupAnchor: [-0, -0],
     iconSize: [32, 45],
 });
 
 
 function MapComponent() {
-    const [lati, setLati] = useState(43.4586254);
-    const [long, setLong] = useState(-5.8418686);
+    const [lati, setLati] = useState(0.0);
+    const [long, setLong] = useState(0.0);
+    const [render, setRender] = useState(false);
+    const[locationFound,setLocationFound] = useState(false);
     const [progress, setProgress] = useState(0);
     const dispatch = useDispatch();
     const { session } = useSession();
@@ -41,12 +44,6 @@ function MapComponent() {
     const errorLocations = useSelector((state) => state.locations.error);
 
     const statusFriends = useSelector((state) => state.friends.status);
-
-    window.navigator.geolocation.getCurrentPosition((position) => {
-        setLati(position.coords.latitude);
-        setLong(position.coords.longitude);
-    });
-
 
     useEffect(() => {
         if (statusFriends === "idle") {
@@ -66,7 +63,17 @@ function MapComponent() {
         }
     },[statusFriends, statusLocations, dispatch, session]);
 
+    if (locationFound === false){
+        window.navigator.geolocation.getCurrentPosition((position) => {
+            setLati(position.coords.latitude);
+            setLong(position.coords.longitude);
+            setRender(true);
+            setLocationFound(true);
+        });
+    }
+
     if (statusLocations === "pending" || statusLocations === "idle") {
+        
         content = <div className="waiting-screen">
                     <h1>Radarin Manager is computing your locations...</h1>
                     <br/>
@@ -74,7 +81,7 @@ function MapComponent() {
                   </div>;
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
-    } else if (statusLocations === "fulfilled") {
+    } else if (statusLocations === "fulfilled" && render === true) {
 
         let locations = parseLocations(totalLocations, session);
         let markers = locations[0];
@@ -91,16 +98,16 @@ function MapComponent() {
                     />
                     {markers.map((marker) => {
                         const markerPosition = [marker.lat, marker.lng];
-                        return <Marker position={markerPosition} icon={myIcon}>
+                        return <Marker position={markerPosition} icon={myIcon} >
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
-                                <button onClick={(() => {
+                                <Button className='center-button' onClick={(() => {
                                     removeUserLocation(session, marker);
                                     dispatch(
                                         deleteLocation(marker)
                                     );
-                                    })}>Remove location</button>
+                                    })}>Remove location</Button>
                             </Popup>
                         </Marker>
                     })}
@@ -120,6 +127,10 @@ function MapComponent() {
 
             </div>
         );
+    }else{
+        content = <div className="waiting-screen">
+        <h1>Radarin Manager is computing your locations...</h1>
+      </div>;
     }
     return <div className="map">{content}</div>;
 }

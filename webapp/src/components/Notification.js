@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import map from '../static/remove-location.svg';
+import map from '../static/removeLocation.png';
 import info from '../static/info.svg';
 import '../css/Notification.css';
 
@@ -13,12 +13,13 @@ export default class Notification extends Component {
         if(div !== undefined)
             div.remove();
     };
-''
+    
     componentDidMount(){
         setTimeout(() => {
             this.handleClick();
         }, 3500);
     };
+
 
     render(){
         var icon = '';
@@ -29,14 +30,12 @@ export default class Notification extends Component {
         }
         return (
             <div id='notification'>
-                <div className={'notification-container'}  >
-                        <div 
-                            className={'notification toast'}
-                        >
+                <div className='notification-container'>
+                        <div className='notification toasts'>
                             <div className="notification-image">
-                                <img src={icon} alt="" />
+                                <img src={icon} className='margin-img' alt="" />
                             </div>
-                            <div>
+                            <div className='text-adjust'>
                                 <p className="notification-title">
                                     {this.props.title}
                                 </p>

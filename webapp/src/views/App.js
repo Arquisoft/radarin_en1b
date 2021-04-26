@@ -7,6 +7,7 @@ import MapComponent from './Map';
 import LoginForm from './LoginForm';
 import Welcome from './Welcome';
 import Login from './Login';
+import ManageFriends from './ManageFriends';
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from '@inrupt/solid-ui-react/dist';
@@ -25,19 +26,19 @@ function App() {
 
   session.onLogin( () => { setIsLoggedIn(true)});
   session.onLogout( () => { setIsLoggedIn(false)});
-
   return (
     <BrowserRouter>
       <Navbar/>
       <Switch>
         <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
+        <Route path='/welcome' exact component={Welcome}/>
         <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
         <Route path='/about-us' exact component={AboutUs}/>
         <Route path='/login' exact component={Login}/>
+        <Route path='/friends' exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
       </Switch>
     </BrowserRouter>
   );
   
 }
-
 export default App;

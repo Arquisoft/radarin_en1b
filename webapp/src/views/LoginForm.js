@@ -4,10 +4,9 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import logo from '../static/radarin-logo.svg';
 import { NavLink } from "react-router-dom";
 function LoginForm(){
-    
     return(
         <div className="welcome-container">
-            <div className="card-welcome">
+            <div className="card-home">
                 <Container className="container-width">
                     <Row className='adjust'>
                         <Col className='margin-top-bot'><img src={logo} alt='radarin manager logo' className="image-radarin"/></Col>
@@ -27,6 +26,7 @@ function LoginForm(){
             </div>
         </div>   
     );
+
 }
 
 export default LoginForm;

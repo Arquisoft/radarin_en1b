@@ -17,7 +17,7 @@
 	overflow: hidden;
 	text-decoration: none;
 	margin: 0 0 6px;
-	padding: 30px;
+	padding: 15px;
 	margin-bottom: 15px;
 	width: 400px;
 	max-height: 100px;
@@ -27,6 +27,9 @@
 	opacity: .9;
 	background-position: 15px;
 	background-repeat: no-repeat;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
 }
 
 .notification:hover {
@@ -58,12 +61,21 @@
 .notification-image {
     float: left;
     margin-right: 15px;
-	margin-left: 15px;
+	margin-left: 15px !important;
+
 }
 
 .notification-image img {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+	display: block;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.center-button{
+	display: block !important;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .toast {
@@ -91,7 +103,9 @@
 	background: 0 0;
 	border: 0
 }
-
+.text-adjust{
+	display: block;
+}
 @media screen and (max-width: 960px){
 
 }

@@ -1,0 +1,116 @@
+.group{
+    overflow: auto;
+    height: 590px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manage-friends{
+    text-align: center;
+    margin-left: auto;
+    display: flex;
+}
+
+.no-margin{
+    margin-bottom: 0px;
+}
+.main{
+    color: white;
+    font-size: 35px;
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
+    margin-top: 4%;
+}
+
+.buttons-friend{
+    text-align: center;
+    float: right;
+    width: 40%;
+    position: relative;
+    top: -10%;
+}
+
+.button{
+    width: 6vw;
+    height: 3vh;
+    border-radius: 25px;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.right{
+    margin-left: auto;
+}
+
+.delete{
+    background-color: rgb(255, 0, 0);
+    width: initial;
+}
+
+.details{
+    background-color: rgb(44, 65, 184);
+    color: white;
+}
+
+.card{
+    width: 35vw;
+    height: 6.3vh;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10px;
+    background: rgb(255, 255, 255);
+    color: black;
+    border-radius: 20px;
+    padding-top: 5px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    clear: both;
+    
+}
+
+.image{
+    width: 5vh;
+    border-radius: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    vertical-align: text-top !important;
+    
+}
+
+.left{
+    float: left;
+    width: 10%;
+}
+
+.center{
+    float: inline-start;
+    width: 50%;
+}
+
+.title{
+    text-align: center;
+    margin-top: 1vh;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.length-input{
+    width: 15vw;
+    text-decoration: none;
+    outline:none;
+    border-radius: 15px;
+}
+
+@keyframes slide {
+	from {
+	  transform: translateY(-100%);
+	  opacity: 0%;
+	}
+	to {
+	  transform: translateY(0);
+	  opacity: 100%;
+	}
+}
