@@ -49,7 +49,6 @@ const styles = {
   },
 
   labelFocused: {
-    color: 'red',
     textShadow: 'black 0px 0px 15px',
   },
 
