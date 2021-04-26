@@ -12,11 +12,9 @@ import inrupt from '../static/inrupt.png'
 export default function Login(){
 
     const [oidcIssuer, setOidcIssuer] = useState("");
-    const [provider, setProvider] = useState('');
 
     const handleChange = (event) => {
-        setOidcIssuer(event.target.value);
-        setProvider(event.target.value);
+        setOidcIssuer(event.target.value)
     };
 
     const authOptions = {
@@ -36,12 +34,12 @@ export default function Login(){
                             <Select
                             labelId="demo-simple-select-filled-label"
                             id="combo"
-                            value={provider}
+                            value={oidcIssuer}
                             onChange={handleChange}
                             data-testid="combo"
                             className='select-provider sm-lg-text'
                             >
-                                <MenuItem value="https://inrupt.net" className='sm-lg-text'>
+                                <MenuItem value="" className='sm-lg-text'>
                                     <em>Select a Provider</em>
                                 </MenuItem>
                                 <MenuItem value={"https://inrupt.net"} className='sm-lg-text' data-testid="Inrupt"><img src={inrupt} className='image-combo margin-side' alt='inrupt logo'/> Inrupt</MenuItem>

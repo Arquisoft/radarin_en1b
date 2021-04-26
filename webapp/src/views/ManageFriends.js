@@ -8,6 +8,7 @@ import '../css/Friends.css'
 import userPhoto from '../static/user.svg';
 import { Col, Container, Row } from 'react-bootstrap';
 
+
 function ManageFriends() {
     const dispatch = useDispatch();
     const { session } = useSession();
@@ -24,11 +25,6 @@ function ManageFriends() {
         }
     });//, [statusLocations, statusFriends]);
 
-    function getUsermame(friend){
-        var splitted = friend.id.toString().split('.')[0];
-        return friend.name +' @' + splitted.substring(8,splitted.length);
-    }
-
     if (statusFriends === "pending" || statusFriends === "idle") {
         const override = css`
         display: block;
@@ -42,7 +38,7 @@ function ManageFriends() {
     } else if (statusFriends === "rejected") {
         content = <div>{errorFriends}</div>
 
-    }else if (statusFriends === "fulfilled"){
+    }else{
         content = (
             <div className='main'>
                 <h1>Manage Friends</h1>
@@ -54,16 +50,16 @@ function ManageFriends() {
                                     return(
                                         <Row className='card'>
                                             <div className='left'>
-                                                <img className='image' src={checkForPhoto(friend.image)} alt='Profile'/>
+                                                <img className='image' src={friend.image!== null? friend.image : userPhoto} alt='Profile'/>
                                             </div>
                                             <div className='center'>
                                                 <div className='title'>
-                                                    {getUsermame(friend)} 
+                                                    {friend.name +' @' + friend.id.toString().split('.')[0].substring(8,friend.id.toString().split('.')[0].length)} 
                                                 </div>
                                             </div>
 
                                             <div className='buttons-friend'>
-                                                        <button  className='button details' onClick={() => window.open(friend.id,"_blank")}> See Details</button>
+                                                        <button  className='button details' onClick={() => window.open(friend.id,"_blank")}>See Details</button>
                                             </div>
                                         </Row>
                                     );
@@ -77,12 +73,5 @@ function ManageFriends() {
 }
 export default ManageFriends;
 
-function checkForPhoto(photo){
-    if (photo !== null){
-        return photo;
-    }
-
-    return userPhoto;
-}
 
  
