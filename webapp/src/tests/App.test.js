@@ -61,12 +61,6 @@ test('renders app home login', () => {
   render(<App />);
   const linkElement = screen.getByText(/Home/i);
   expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText("Log In");
-  fireEvent.click(linkElement2);
-  setTimeout(() => {
-    const linkElement3 = screen.getByText("Login");
-    expect(linkElement3).toBeInTheDocument();
-  }, 5000);
   
 });
 
