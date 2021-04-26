@@ -51,7 +51,7 @@ export default function Login(){
                             </span></Row>
                         <Row className='margin-sides fixed margin-top select'>
                             <h3>If you dont have a pod you can register for one </h3>
-                            <Button onClick={() => window.open( oidcIssuer + '/register',"blank")}>Register for a SOLID POD</Button>
+                            <Button onClick={() => oidcIssuer !== "" ? window.open( oidcIssuer + '/register',"blank"): null}>Register for a SOLID POD</Button>
                         </Row>
                         <Row className='margin-bot select-small'>
                             <Col ><hr className='loginleft'/></Col>

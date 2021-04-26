@@ -1,7 +1,7 @@
 import "../css/App.css";
 import 'react-bootstrap';
 import { Button, Col, Container, Row } from "react-bootstrap";
-import logo from '../static/radarin-logo.svg';
+import logo from '../static/radarin-logo.png';
 import {NavLink} from "react-router-dom";
 function LoginForm(){
     return(
@@ -15,7 +15,7 @@ function LoginForm(){
                                 <div className='margin-top-button'>
                                         <NavLink to="/login"> 
                                             <Button className='login-button'> 
-                                                    Log In 
+                                                Log In / Register
                                             </Button>
                                         </NavLink>
                                 </div>
