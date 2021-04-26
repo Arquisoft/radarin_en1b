@@ -4,7 +4,7 @@
 
 .welcome{
   text-align: center;
-  margin-top: 25vh;
+  margin-top: 39vh;
   color: white;
   text-shadow: black 0px 0px 10px;
   font-size: 22px;
@@ -12,10 +12,9 @@
 
 .about-us{
   text-align: center;
-  margin-top: 15vh;
   color: white;
-  text-shadow: black 0px 0px 10px;
   font-size: 22px;
+  display: contents;
 }
 
 .not-logged-in{
@@ -26,9 +25,16 @@
   font-size: 22px;
 }
 
+.margin-top{
+  margin-top: 2%;
+}
+
+.margin-top-button{
+  margin-top: 3%;
+}
 
 .background{
-  background-image: url("../static/background.jpg");
+  background-image: url("../static/back.jpg");
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -74,6 +80,139 @@
 
 .logo-welcome {
   height: 120px;
+}
+
+.card-welcome{
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: rgb(255, 255, 255);
+  border: black;
+  border-radius: 10px;
+  height: 35vh;
+  width: 70vw;
+  margin: auto;
+}
+
+.vl {
+  border-left: 2px groove rgb(226, 226, 226);
+  position: absolute;
+  flex-grow: 0 ;
+}
+
+.margin-top-bot{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.welcome-container{
+  text-align: center;
+  margin: auto;
+  margin-top: 30vh;
+  font-size: 22px;
+}
+
+.margin-top-button{
+  margin-top: 6%;
+}
+
+.adjust{
+  margin-top: 4.5%;
+}
+
+.imagen{
+  width: 250px;
+  border-radius: 10px;
+}
+
+.margin-bot{
+  margin-bottom: 2%;
+}
+
+.decoration-none {
+  color: white;
+  text-decoration: none; /* no underline */
+}
+
+.container-width{
+  max-width: 100% !important;
+}
+
+.image-radarin{
+  width: 95%;
+}
+
+.login-button{
+  font-size: 22px !important;
+}
+
+hr.loginleft {
+  width: 130% !important;
+  margin-top: 1.5rem !important;
+  border: 1px solid black;
+}
+
+hr.loginright {
+  width: 100% !important;
+  margin-top: 1.5rem !important;
+  position: absolute;
+  left: -15%;
+  border: 1px solid black;
+}
+
+
+.lg-text{
+  font-size: 29px !important;
+}
+
+.sm-lg-text{
+  font-size: 22px !important;
+}
+
+.overflow-visible{
+  overflow: visible !important;
+}
+.sm{
+  width: 20%;
+  padding-top: 2px;
+}
+
+.margin-sides{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.select-provider{
+  width: 80%;
+  border: 1px solid rgb(121, 121, 121);
+  margin-bottom: 2%;
+}
+
+.fixed{
+  display: block !important;
+}
+
+.margin-auto{
+  margin: auto;
+}
+
+.thanks{
+  position: relative;
+  color: white;
+  top: -13vh;
+}
+.image-combo{
+  height: 50px;
+}
+
+.toButton{
+  text-decoration: none !important;
+  background: none !important;
+  border: none !important;
+  height: 12%;
+}
+
+.margin-side{
+  margin-right: 20px;
 }
 
 @keyframes App-logo-float {

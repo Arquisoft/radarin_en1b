@@ -9,8 +9,9 @@ import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
 import removeUserLocation from '../utils/solidAccessing/RemoveLocations.js';
 import '../css/Map.css'
-import SyncLoader from "react-spinners/SyncLoader";
-import { css } from "@emotion/core";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 const myIcon = new L.Icon({
     iconUrl: marker,
@@ -30,6 +31,7 @@ const iconPerson = new L.Icon({
 function MapComponent() {
     const [lati, setLati] = useState(43.4586254);
     const [long, setLong] = useState(-5.8418686);
+    const [progress, setProgress] = useState(0);
     const dispatch = useDispatch();
     const { session } = useSession();
     let content;
@@ -51,22 +53,24 @@ function MapComponent() {
             dispatch(
                 getFriends(session)
             );
-        }
-        else if (statusLocations === "idle" && statusFriends === "fulfilled") {
+            setProgress(progress => progress + 20);
+        }else if (statusLocations === "pending") {
+            setProgress(progress => progress + 20);
+        } else if (statusLocations === "idle" && statusFriends === "fulfilled") {
             dispatch(getUserLocation(session));
+            setProgress(progress => progress + 20);
+        }else if(statusFriends === "fulfilled"){
+            setProgress(progress => progress + 20);
+        }else if (statusLocations === "idle"){
+            setProgress(progress => progress + 20);
         }
-    });//, [statusLocations, statusFriends]);
-
+    },[statusFriends, statusLocations, dispatch, session]);
 
     if (statusLocations === "pending" || statusLocations === "idle") {
-        const override = css`
-        display: block;
-        margin: 0 auto;
-        border-color: red;
-        `;
         content = <div className="waiting-screen">
                     <h1>Radarin Manager is computing your locations...</h1>
-                    <SyncLoader css={override} size={40} color={"rgb(9, 71, 241)"} />
+                    <br/>
+                    {CircularStatic(progress)}
                   </div>;
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
@@ -121,6 +125,30 @@ function MapComponent() {
 }
 export default MapComponent;
 
+ function CircularStatic(progress) {
+    return <CircularProgressWithLabel value={progress} />;
+}
+
+function CircularProgressWithLabel(props) {
+    return (
+      <Box position="relative" display="inline-flex">
+        <CircularProgress size={150} variant="determinate" {...props} />
+        <Box
+          top={0}
+          left={0}
+          bottom={0}
+          right={0}
+          position="absolute"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          
+        >
+          <Typography variant="caption" component="div">{`${Math.round(props.value,)}%`}</Typography>
+        </Box>
+      </Box>
+    );
+  }
 
 function parseLocations(totalLocations, session) {
     let toRet = [];

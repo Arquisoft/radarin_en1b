@@ -4,8 +4,7 @@ import { NavLink} from 'react-router-dom';
 
 function Navbar(){
     return <nav className="NavbarItems">
-        <h1 className="navbar-logo">Radarin Manager <i className=" app-logo fab fa-react"></i></h1>
-        
+
         <ul className="nav-menu">
             
             {MenuItems.map((item,index) => {

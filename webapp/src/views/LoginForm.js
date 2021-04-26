@@ -1,35 +1,31 @@
-
-import {useState} from "react";
-import {LoginButton} from '@inrupt/solid-ui-react';
-import {Button} from '@material-ui/core';
 import "../css/App.css";
-import logo from "../static/radar.svg";
-
+import 'react-bootstrap';
+import { Button, Col, Container, Row } from "react-bootstrap";
+import logo from '../static/radarin-logo.svg';
+import { NavLink } from "react-router-dom";
 function LoginForm(){
-    // IDentity Provider, used to store the POD, in this case just inrupt.net
-    const [idp] = useState("https://inrupt.net");
-    const [currentUrl] = useState(window.location.href);
     
     return(
-        <div className="App">
-            <div className="welcome">
-                <div className="float">
-                    <div className="spin">
-                        <img className="logo-welcome" src={logo} alt="React Logo"></img>
-                    </div>
-                </div>
-                <h1> Welcome to Radarin Manager</h1>
-                <h2> Here you will be able to access and manage all data</h2>
-                <LoginButton
-                        oidcIssuer={idp}
-                        redirectUrl={currentUrl}>
-                        <Button variant="contained" color="primary">
-                            Log In 
-                        </Button>
-                </LoginButton>
-                
-            </div>     
-        </div> 
+        <div className="welcome-container">
+            <div className="card-welcome">
+                <Container className="container-width">
+                    <Row className='adjust'>
+                        <Col className='margin-top-bot'><img src={logo} alt='radarin manager logo' className="image-radarin"/></Col>
+                        <Col className='vl margin-top-bot bottom-button'><h1> Welcome!</h1>
+                            <h2>Here you will be able to manage your data</h2>
+                                <div className='margin-top-button'>
+                                <NavLink to="/login"> 
+                                    <Button className='login-button'> 
+                                            Log In 
+                                    </Button>
+                                </NavLink>
+                                </div>
+                        </Col>
+                    </Row>
+                </Container>
+                    
+            </div>
+        </div>   
     );
 }
 
