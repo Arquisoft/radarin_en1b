@@ -1,7 +1,17 @@
 
 import {useState, useEffect} from "react";
 import {LoginButton} from '@inrupt/solid-ui-react';
-import {Button, FormControl, FormGroup, InputLabel, MenuItem, TextField} from '@material-ui/core';
+
+import {
+  Button, 
+  FormControl,
+  FormGroup, 
+  InputLabel, 
+  MenuItem, 
+  TextField, 
+  withStyles 
+} from '@material-ui/core';
+
 import "../css/App.css";
 import logo from "../static/radar.svg";
 
@@ -25,7 +35,27 @@ const authOptions = {
     clientName: "Radarin Manager",
   };
 
-function LoginForm(){
+const styles = {
+  root: {
+    
+  },
+  labelRoot: {
+    fontSize: 40,
+  },
+  inputRoot: {
+    borderRadius: 4,
+    position: 'relative',
+    padding: '25px 20px 10px 12px',
+    margin: '30px 100px 30px 12px',
+    //border: '5px solid #ced4da',
+    fontSize: 35,
+    borderColor: '#80bdff',
+  },
+};
+
+function LoginForm(props){
+
+  const { classes } = props;
 
   const [idp,setIdp] = useState('https://inrupt.net');
   const [oidcIssuer, setOidcIssuer] = useState("");
@@ -41,14 +71,16 @@ function LoginForm(){
 
   return (
     <div className="app-container">
-      <FormGroup label = "Register Puto">
+      <FormGroup label = "Log in form">
       <TextField
+          className = "input-text-field"
           label="Identity Provider"
           placeholder="Identity Provider"
           type="url"
           value={idp}
           onChange={(e) => setIdp(e.target.value)}
           InputProps={{
+            className: classes.inputRoot,
             endAdornment: (
               <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
                 <Button variant="contained" color="primary">
@@ -56,6 +88,12 @@ function LoginForm(){
                   </Button>
               </LoginButton>
             ),
+          }}
+
+          InputLabelProps = {{
+            classes : {
+              root: classes.labelRoot,
+            }
           }}
         />
         <TextField
@@ -65,15 +103,14 @@ function LoginForm(){
           type = 'url'
           value = {idp}
           onChange = {(e) => setIdp(e.target.value)}
-          inruptProps={{
-            endAdornment: (
-              <LoginButton oidcIssuer={idp} redirectUrl={currentUrl}>
-                <Button variant="contained" color="primary">
-                  Login
-                  </Button>
-              </LoginButton>
-            )
+          InputProps={{
+            className: classes.inputRoot
           }}
+
+          InputLabelProps =  {{
+            className: classes.labelRoot,
+          }}
+          
         >
           {providers.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -88,4 +125,4 @@ function LoginForm(){
   );
 }
 
-export default LoginForm;
+export default withStyles(styles)(LoginForm);
