@@ -1,46 +1,32 @@
-
-import {useState} from "react";
-import {LoginButton} from '@inrupt/solid-ui-react';
-import {Button} from '@material-ui/core';
 import "../css/App.css";
-import logo from "../static/radar.svg";
-
-const authOptions = {
-    clientName: "Radarin Manager",
-  };
-
+import 'react-bootstrap';
+import { Button, Col, Container, Row } from "react-bootstrap";
+import logo from '../static/radarin-logo.png';
+import {NavLink} from "react-router-dom";
 function LoginForm(){
+    return(
+        <div className="welcome-container">
+            <div className="card-home">
+                <Container className="container-width">
+                    <Row className='adjust'>
+                        <Col className='margin-top-bot'><img src={logo} alt='radarin manager logo' className="image-radarin"/></Col>
+                        <Col className='vl margin-top-bot bottom-button'><h1> Welcome!</h1>
+                            <h2>Here you will be able to manage your data</h2>
+                                <div className='margin-top-button'>
+                                        <NavLink to="/login"> 
+                                            <Button className='login-button'> 
+                                                Log In / Register
+                                            </Button>
+                                        </NavLink>
+                                </div>
+                        </Col>
+                    </Row>
+                </Container>
+                    
+            </div>
+        </div>   
+    );
 
-  const [oidcIssuer, setOidcIssuer] = useState("");
-
-  const handleChange = (event) => {
-    setOidcIssuer(event.target.value);
-  };
-
-  return (
-    <div className="app-container">
-	 <span>
-            Log in with:
-            <input
-              className="oidc-issuer-input "
-              type="text"
-              name="oidcIssuer"
-              list="providers"
-              value={oidcIssuer}
-              onChange={handleChange}
-            />
-          <datalist id="providers">
-            <option value="https://broker.pod.inrupt.com/" />
-            <option value="https://inrupt.net/" />
-          </datalist>
-          </span>
-		  <LoginButton
-		     oidcIssuer={oidcIssuer}
-		     redirectUrl={window.location.href}
-		     authOptions={authOptions}
-		   />
-    </div>
-  );
 }
 
 export default LoginForm;

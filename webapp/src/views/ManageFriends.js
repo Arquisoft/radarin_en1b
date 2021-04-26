@@ -5,7 +5,8 @@ import { useSession } from '@inrupt/solid-ui-react/dist';
 import SyncLoader from "react-spinners/SyncLoader";
 import { css } from "@emotion/core";
 import '../css/Friends.css'
-import photo from '../static/h.png';
+import userPhoto from '../static/user.svg';
+import { Col, Container, Row } from 'react-bootstrap';
 
 function ManageFriends() {
     const dispatch = useDispatch();
@@ -56,13 +57,13 @@ function ManageFriends() {
                 <button id='btnAdd' className='add-friend button' onClick={addFriends()}>Add Friend</button>
                 <input id='addFriend' className='button length-input'></input>
                 <p className='no-margin'>Friend list:</p>
-                <div className="manage-friends">
-                    <div className="group">
+                <Container className="manage-friends">
+                    <Col className="group">
                         {totalFriends.map((friend) => {
                                     return(
-                                        <div className='card'>
+                                        <Row className='card'>
                                             <div className='left'>
-                                                <img className='image' src={photo} alt='Profile'/>
+                                                <img className='image' src={checkForPhoto(friend.image)} alt='Profile'/>
                                             </div>
                                             <div className='center'>
                                                 <div className='title'>
@@ -72,19 +73,27 @@ function ManageFriends() {
 
                                             <div className='buttons-friend'>
                                                         <button className='button delete'>Delete friend</button>
-                                                        <button  className='button details'onClick={() => window.location.href = friend.id}> See Details</button>
+                                                        <button  className='button details' onClick={() => window.open(friend.id,"_blank")}> See Details</button>
                                             </div>
-                                        </div>
+                                        </Row>
                                     );
                         })}
-                    </div>
-                </div>
+                    </Col>
+                </Container>
             </div>
     );}
     
     return <div>{content}</div>;
 }
 export default ManageFriends;
+
+function checkForPhoto(photo){
+    if (photo !== null){
+        return photo;
+    }
+
+    return userPhoto;
+}
 
  //async function ldflexDeleter(friend, webId) {
      //return ldflex[webId].knows.delete(ldflex[friend]);

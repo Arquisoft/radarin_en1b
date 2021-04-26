@@ -15,11 +15,6 @@ export const MenuItems = [
         cName: "fas fa-address-card white"
     },
     {
-        title: "Documentation",
-        url: "/docs",
-        cName: "fas fa-book-reader white"
-    },
-    {
         title: "Manage friends",
         url: "/friends",
         cName: "fas fa-user-friends white"

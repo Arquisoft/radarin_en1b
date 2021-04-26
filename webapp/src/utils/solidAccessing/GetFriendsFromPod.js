@@ -15,7 +15,7 @@ async function getFriendsWebIds(session) {
 
     for (const friend of friends) {
         const friendName = await getFriendName(friend, session);
-        const friendImage = await getFriendImage(friend, session);
+        const friendImage = await getFriendImage(friend);
         result = result.concat({ id: friend, name: friendName, image:friendImage });
     }
 
@@ -30,12 +30,13 @@ async function getFriendName(friendId, session) {
     return fn;
 }
 
-async function getFriendImage(friendId, session){
-    const myDataset = await getSolidDataset(friendId.split("#")[0], { fetch: session.fetch });
-    const profile = getThing(myDataset, friendId);
-    const hasPhoto = getStringNoLocale(profile, VCARD.hasPhoto);
-    console.log(hasPhoto);
-    return hasPhoto;
+async function getFriendImage(friendId){
+    const what = await fetchDocument(friendId.split('card')[0]);
+    const img = what.getStore().toArray()[4].object.value;
+    if(img.includes(friendId.split('card')[0])){
+        return img;
+    }
+    return null;
 }
 
 export default getFriendsWebIds;
