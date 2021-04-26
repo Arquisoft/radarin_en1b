@@ -8,11 +8,10 @@ import { getUserLocation, deleteLocation } from '../utils/locationsRedux/getLoca
 import { getFriends } from '../utils/friendsRedux/friendsSlice';
 import { useSession } from '@inrupt/solid-ui-react/dist';
 import removeUserLocation from '../utils/solidAccessing/RemoveLocations.js';
-import '../css/Map.css'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import '../css/Map.css';
 import { Button } from 'react-bootstrap';
+import SyncLoader from "react-spinners/SyncLoader";
+import { css } from "@emotion/core";
 
 const myIcon = new L.Icon({
     iconUrl: marker,
@@ -33,8 +32,6 @@ function MapComponent() {
     const [lati, setLati] = useState(0.0);
     const [long, setLong] = useState(0.0);
     const [render, setRender] = useState(false);
-    const[locationFound,setLocationFound] = useState(false);
-    const [progress, setProgress] = useState(0);
     const dispatch = useDispatch();
     const { session } = useSession();
     let content;
@@ -45,44 +42,34 @@ function MapComponent() {
 
     const statusFriends = useSelector((state) => state.friends.status);
 
+    
+
     useEffect(() => {
         if (statusFriends === "idle") {
             dispatch(
                 getFriends(session)
             );
-            setProgress(progress => progress + 20);
-        }else if (statusLocations === "pending") {
-            setProgress(progress => progress + 20);
-        } else if (statusLocations === "idle" && statusFriends === "fulfilled") {
+        }else if (statusLocations === "idle" && statusFriends === "fulfilled") {
             dispatch(getUserLocation(session));
-            setProgress(progress => progress + 20);
-        }else if(statusFriends === "fulfilled"){
-            setProgress(progress => progress + 20);
-        }else if (statusLocations === "idle"){
-            setProgress(progress => progress + 20);
         }
     },[statusFriends, statusLocations, dispatch, session]);
 
-    if (locationFound === false){
+
+    if (statusLocations === "pending" || statusLocations === "idle") {
         window.navigator.geolocation.getCurrentPosition((position) => {
             setLati(position.coords.latitude);
             setLong(position.coords.longitude);
             setRender(true);
-            setLocationFound(true);
-        });
-    }
-
-    if (statusLocations === "pending" || statusLocations === "idle") {
-        
+        })
         content = <div className="waiting-screen">
                     <h1>Radarin Manager is computing your locations...</h1>
                     <br/>
-                    {CircularStatic(progress)}
+                    <SyncLoader css={css`display: block;margin: 0 auto;border-color: red;`} size={40} color={"rgb(9, 71, 241)"} />
                   </div>;
     } else if (statusLocations === "rejected") {
         content = <div>{errorLocations}</div>
     } else if (statusLocations === "fulfilled" && render === true) {
-
+    
         let locations = parseLocations(totalLocations, session);
         let markers = locations[0];
         let friendMarkers = locations[1];
@@ -127,39 +114,11 @@ function MapComponent() {
 
             </div>
         );
-    }else{
-        content = <div className="waiting-screen">
-        <h1>Radarin Manager is computing your locations...</h1>
-      </div>;
+    
     }
     return <div className="map">{content}</div>;
 }
 export default MapComponent;
-
- function CircularStatic(progress) {
-    return <CircularProgressWithLabel value={progress} />;
-}
-
-function CircularProgressWithLabel(props) {
-    return (
-      <Box position="relative" display="inline-flex">
-        <CircularProgress size={150} variant="determinate" {...props} />
-        <Box
-          top={0}
-          left={0}
-          bottom={0}
-          right={0}
-          position="absolute"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          
-        >
-          <Typography variant="caption" component="div">{`${Math.round(props.value,)}%`}</Typography>
-        </Box>
-      </Box>
-    );
-  }
 
 function parseLocations(totalLocations, session) {
     let toRet = [];
