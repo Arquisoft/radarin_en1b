@@ -5,32 +5,42 @@ import {Button} from '@material-ui/core';
 import "../css/App.css";
 import logo from "../static/radar.svg";
 
+const authOptions = {
+    clientName: "Radarin Manager",
+  };
+
 function LoginForm(){
-    // IDentity Provider, used to store the POD, in this case just inrupt.net
-    const [idp] = useState("https://inrupt.net");
-    const [currentUrl] = useState(window.location.href);
-    
-    return(
-        <div className="App">
-            <div className="welcome">
-                <div className="float">
-                    <div className="spin">
-                        <img className="logo-welcome" src={logo} alt="React Logo"></img>
-                    </div>
-                </div>
-                <h1> Welcome to Radarin Manager</h1>
-                <h2> Here you will be able to access and manage all data</h2>
-                <LoginButton
-                        oidcIssuer={idp}
-                        redirectUrl={currentUrl}>
-                        <Button variant="contained" color="primary">
-                            Log In 
-                        </Button>
-                </LoginButton>
-                
-            </div>     
-        </div> 
-    );
+
+  const [oidcIssuer, setOidcIssuer] = useState("");
+
+  const handleChange = (event) => {
+    setOidcIssuer(event.target.value);
+  };
+
+  return (
+    <div className="app-container">
+	 <span>
+            Log in with:
+            <input
+              className="oidc-issuer-input "
+              type="text"
+              name="oidcIssuer"
+              list="providers"
+              value={oidcIssuer}
+              onChange={handleChange}
+            />
+          <datalist id="providers">
+            <option value="https://broker.pod.inrupt.com/" />
+            <option value="https://inrupt.net/" />
+          </datalist>
+          </span>
+		  <LoginButton
+		     oidcIssuer={oidcIssuer}
+		     redirectUrl={window.location.href}
+		     authOptions={authOptions}
+		   />
+    </div>
+  );
 }
 
 export default LoginForm;
