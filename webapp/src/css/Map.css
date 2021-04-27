@@ -4,6 +4,11 @@
   position: fixed;
 }
 
+.notif{
+  position: absolute;
+  margin-left: 40vw;
+}
+
 .waiting-screen{
   text-align: center;
   margin-top: 40vh;

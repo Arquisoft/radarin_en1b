@@ -55,8 +55,6 @@ export default async function removeUserLocation(session, location) {
     );
     
     const savedThing = setThing(listaLoc, newThing);
-    await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
     ReactDOM.render(<Notification title={'Location: ' + location.name} message='has been successfully removed' icon='map'/>, document.getElementById('notification-map'));
-    
-    
+    await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
 }
