@@ -104,6 +104,10 @@
     border-radius: 15px;
 }
 
+.margin-top-friends{
+    margin-top: 6vh;
+}
+
 @keyframes slide {
 	from {
 	  transform: translateY(-100%);

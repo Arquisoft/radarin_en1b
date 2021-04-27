@@ -10,3 +10,15 @@
   color: white;
   font-size: 18px;
 }
+
+.waiting-screen-map{
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  background: linear-gradient(90deg, rgba(89, 0, 255, 0.959), rgba(255, 127, 22, 0.959) 100%);
+  display: block ruby;
+  padding-bottom: 1vh;
+}
+.margin-right{
+  margin-right: 1vw !important;
+}
