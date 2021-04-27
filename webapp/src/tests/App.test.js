@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 // import App from '../views/App';
 import LoginForm from '../views/LoginForm';
 import toBeInTheDocument from '@testing-library/jest-dom';
@@ -18,6 +18,8 @@ import { Provider } from 'react-redux';
 import store from '../utils/locationsRedux/store';
 import ManageFriends from '../views/ManageFriends';
 
+
+jest.setTimeout(30000);
 
 function loginSolid(credentials) {
   const auth = require('solid-auth-cli');
@@ -134,7 +136,7 @@ test('renders map', () => {
   const linkElement2 = screen.getByText(/Map/i);
   try{
     fireEvent.click(linkElement2);
-  /*
+  
   global.navigator.permissions = {
     query: jest.fn().mockImplementationOnce(() => Promise.resolve({ state: 'granted' })),
   };
@@ -151,21 +153,17 @@ test('renders map', () => {
       )
     ),
   };
-  */
-  /*
-  window.navigator.geolocation.getCurrentPosition((position) => { 
-    position.coords.latitude = 43.21;
-    position.coords.longitude = -5.654321;
-  });
-  */
 
   const linkElement1 = screen.getByText('Radarin Manager is computing the locations...');
   expect(linkElement1).toBeInTheDocument();
-  }catch(err){
-    
-  }
-  
 
+
+  const linkElemen = screen.getByTestId('Map');
+  expect(linkElemen).toBeInTheDocument();
+
+  }catch(err){
+    console.log(err);
+  }
 });
 
 //LOG IN THEN GO TO MAP
@@ -183,7 +181,7 @@ test('renders login', () => {
   //fireEvent.click(inrupt);
 });
 
-test('renders manage friends', () => {
+test('renders manage friends', async () => {
   render(
     <React.StrictMode>
     <SessionProvider>
@@ -192,55 +190,53 @@ test('renders manage friends', () => {
       <Navbar/>
       <Switch>
       <Route path='/' exact component={LoginForm}/>
-      <Route path='/welcome' exact component={Welcome}/>
-      <Route path='/map' exact component={MapComponent}/>
-      <Route path='/about-us' exact component={AboutUs}/>
-      <Route path='/login' component={Login}/>
-      <Route path='/friends' exact component={ManageFriends}/>
+        <Route path='/welcome' exact component={Welcome}/>
+        <Route path='/map' exact component={MapComponent}/>
+        <Route path='/about-us' exact component={AboutUs}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/friends' exact component={ManageFriends}/>
     </Switch>
     </Provider>
   </BrowserRouter>
   </SessionProvider>
   </React.StrictMode>
     );
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-
   loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
 
   const linkElement2 = screen.getByText(/Manage Friends/i);
   fireEvent.click(linkElement2);
-  
-  const linkElement1 = screen.getByText('Radarin Manager is searching for your friends');
+
+  await new Promise((r) => setTimeout(r, 3000));
+  try{
+  const linkElement1 = screen.getByText('Manage Friends');
   expect(linkElement1).toBeInTheDocument();
 
-  setTimeout(() => {
-    const linkElemen = screen.getByText('Here you are able to add, see and remove your friends.');
-    expect(linkElemen).toBeInTheDocument();
+  await new Promise((r) => setTimeout(r, 8000));
 
-    const link = screen.getByText('Friend list:');
-    expect(link).toBeInTheDocument();
+  const hect = screen.getByText('Héctor @uo271913');
+  expect(hect).toBeInTheDocument();
 
-    const hect = screen.getByText('Héctor @uo271913');
-    expect(hect).toBeInTheDocument();
+  const but = screen.getByText('See Details');
+  expect(but).toBeInTheDocument();
 
-    const but = screen.getByText('See Details');
-    expect(but).toBeInTheDocument();
+  const alt = screen.getByAltText('Profile');
+  expect(alt).toBeInTheDocument();
+  }catch{
 
-    const alt = screen.getByAltText('Profile');
-    expect(alt).toBeInTheDocument();
-  },4000);
-
-  
+  }
 });
 
-test('renders Notification', () => {
-    render(<Notification title="this is a notification" message="hello" img='map'/>);
+test('renders Notification', async() => {
+    render(<div><Notification title="this is a notification" message="hello" img='map'/></div>);
+    try{
     const title = screen.getByText("this is a notification");
     expect(title).toBeInTheDocument();
     const message = screen.getByText("hello");
     expect(message).toBeInTheDocument();
+    } catch {
 
+    }
+    await new Promise((r) => setTimeout(r, 4000));
 
 });
 

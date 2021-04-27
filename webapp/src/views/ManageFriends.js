@@ -12,7 +12,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 function ManageFriends() {
     const dispatch = useDispatch();
     const { session } = useSession();
-    let content;
     const statusFriends = useSelector((state) => state.friends.status);
     const totalFriends = useSelector((state) => state.friends.value);
     const errorFriends = useSelector((state) => state.friends.error);
@@ -25,25 +24,21 @@ function ManageFriends() {
         }
     });//, [statusLocations, statusFriends]);
 
-    if (statusFriends === "pending" || statusFriends === "idle") {
-        const override = css`
-        display: block;
-        margin: 0 auto;
-        border-color: red;
-        `;
-        content = <div className="waiting-screen">
-                    <h1>Radarin Manager is searching for your friends</h1>
-                    <SyncLoader css={override} size={40} color={"rgb(9, 71, 241)"} />
-                  </div>
-    } else if (statusFriends === "rejected") {
-        content = <div>{errorFriends}</div>
+    if (statusFriends === "rejected") {
+        return <div>{errorFriends}</div>
 
     }else{
-        content = (
+        return (
             <div className='main'>
                 <h1>Manage Friends</h1>
                 <p id='texto'>Here you are able to see your friends.</p>
                 <p className='no-margin'>Friend list:</p>
+                {statusFriends !== 'fulfilled'? 
+                <div className= 'margin-top-friends' >
+                    <h1>Radarin Manager is searching for your friends</h1>
+                    <SyncLoader css={css`display: block;margin: 0 auto;border-color: red;`} size={40} color={"rgb(9, 71, 241)"} />
+                </div> 
+                : 
                 <Container className="manage-friends">
                     <Col className="group">
                         {totalFriends.map((friend) => {
@@ -65,11 +60,9 @@ function ManageFriends() {
                                     );
                         })}
                     </Col>
-                </Container>
-            </div>
-    );}
-    
-    return <div>{content}</div>;
+                </Container>}
+            </div>);
+    }
 }
 export default ManageFriends;
 
