@@ -9,7 +9,7 @@ export default class Notification extends Component {
 
     componentDidMount(){
         setTimeout(() => {
-            document.getElementById('notification-for-the-map').remove();
+            if(document.getElementById('notification-for-the-map') !== null) document.getElementById('notification-for-the-map').remove();
         }, 3500);
     };
 

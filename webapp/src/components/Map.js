@@ -26,7 +26,7 @@ export default function Map(latii,longi,markersi,friendMarkersi,sessioni,dispatc
         popupAnchor: [-0, -0],
         iconSize: [32, 45],
     });
-
+    
     const getMarkers = () =>{
         if (markers.length > 0){
             return markers.map((marker,index) => {

@@ -9,7 +9,7 @@ import {
 } from "@inrupt/solid-client";
 import Notification from "../../components/Notification.js";
 import ReactDOM from 'react-dom';
-import { getOrCreateLocationList } from "./indexRemove.js";
+import { getOrCreateLocationList } from "./index.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -26,7 +26,7 @@ export default async function removeUserLocation(session, location) {
     let locationText = location.name.toString() + '%t' + location.comment.toString() + '%t' + location.lat.toString() + '%t' + location.lng.toString();
 
 
-
+    console.log(session.fetch);
     const profileDataset = await getSolidDataset(session.info.webId, {
         fetch: session.fetch,
     });
@@ -42,7 +42,7 @@ export default async function removeUserLocation(session, location) {
     //Solo nos interesa el primer POD del usuario
     const pod = podsUrls[0];
     const containerUri = `${pod}public/locations/`; //Nombre de la carpeta, en el caso del ejemplo es Todos
-    const list = await getOrCreateLocationList(containerUri, session.fetch);
+    const list = await getOrCreateLocationList(containerUri,true, session.fetch);
     
 
     const indexUrl = getSourceUrl(list);
