@@ -27,7 +27,6 @@ function App() {
       <Navbar/>
       <Switch>
         <Route path='/' exact component={(!isLoggedIn)? LoginForm : Welcome}/>
-        <Route path='/welcome' exact component={Welcome}/>
         <Route path='/map' exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
         <Route path='/about-us' exact component={AboutUs}/>
         <Route path='/login' component={Login}/>

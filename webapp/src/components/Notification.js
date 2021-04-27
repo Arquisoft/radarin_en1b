@@ -9,14 +9,14 @@ export default class Notification extends Component {
 
     componentDidMount(){
         setTimeout(() => {
-            document.getElementById('notification').remove();
+            document.getElementById('notification-for-the-map').remove();
         }, 3500);
     };
 
 
     render(){
         return (
-            <div id='notification'>
+            <div id='notification-for-the-map'>
                 <div className='notification-container'>
                         <div className='notification toasts'>
                             <div className="notification-image">

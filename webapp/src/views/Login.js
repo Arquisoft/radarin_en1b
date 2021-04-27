@@ -60,7 +60,7 @@ export default function Login(){
                             <h3>If you already have a Provider</h3>
                             <LoginButton
                             oidcIssuer={oidcIssuer}
-                            redirectUrl={window.location.href.toString().split('login')[0] + "welcome"}
+                            redirectUrl={window.location.href.toString().split('login')[0]}
                             authOptions={authOptions}
                             >
                             <Button className='margin-top'>

@@ -17,6 +17,8 @@ import { SessionProvider } from '@inrupt/solid-ui-react';
 import { Provider } from 'react-redux';
 import store from '../utils/locationsRedux/store';
 import ManageFriends from '../views/ManageFriends';
+import Map from '../components/Map';
+import parseLocations from '../components/ParseLocations';
 
 
 jest.setTimeout(30000);
@@ -108,7 +110,7 @@ test('renders About us', () => {
 });
 
 //LOG IN THEN GO TO MAP
-test('renders map', () => {
+test('renders map', async() => {
   render(
     <React.StrictMode>
     <SessionProvider>
@@ -134,36 +136,20 @@ test('renders map', () => {
   loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
 
   const linkElement2 = screen.getByText(/Map/i);
-  try{
-    fireEvent.click(linkElement2);
   
-  global.navigator.permissions = {
-    query: jest.fn().mockImplementationOnce(() => Promise.resolve({ state: 'granted' })),
-  };
+  fireEvent.click(linkElement2);
   
-  global.navigator.geolocation = {
-    getCurrentPosition: jest.fn().mockImplementationOnce((success) =>
-      Promise.resolve(
-        success({
-          coords: {
-            latitude: 43.21,
-            longitude: -5.654321,
-          },
-        })
-      )
-    ),
-  };
-
-  const linkElement1 = screen.getByText('Radarin Manager is computing the locations...');
+  const linkElement1 = screen.getByText('Radarin Manager is computing your locations...');
   expect(linkElement1).toBeInTheDocument();
+  try{
+    await new Promise((r) => setTimeout(r, 5000));
 
+    const lin = screen.getByTestId('map');
+    expect(lin).toBeInTheDocument();
+  }catch{
 
-  const linkElemen = screen.getByTestId('Map');
-  expect(linkElemen).toBeInTheDocument();
-
-  }catch(err){
-    console.log(err);
   }
+
 });
 
 //LOG IN THEN GO TO MAP
@@ -208,7 +194,7 @@ test('renders manage friends', async () => {
 
   await new Promise((r) => setTimeout(r, 3000));
   try{
-  const linkElement1 = screen.getByText('Manage Friends');
+  const linkElement1 = screen.getByText('Radarin Manager is searching for your friends');
   expect(linkElement1).toBeInTheDocument();
 
   await new Promise((r) => setTimeout(r, 8000));
@@ -237,6 +223,17 @@ test('renders Notification', async() => {
 
     }
     await new Promise((r) => setTimeout(r, 4000));
+
+});
+
+test('parseLocations', async() => {
+  const locations =[{ id: "https://radarinen1btesting.inrupt.net/profile/card#me", name: "You", localizaciones:[{comment: "City of Benvante",lat: "42.1082000",
+  lng: "-5.6774000",name: "Benavente"}] },{id: "https://uo271913.inrupt.net/profile/card#me", name: "Héctor", localizaciones:[{comment: "City of Benvante",lat: "42.1082000",
+  lng: "-5.6774000",name: "Benavente"}]}];
+  const result=[[{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}], [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}]];
+
+
+  expect(parseLocations(locations,"https://radarinen1btesting.inrupt.net/profile/card#me")).toStrictEqual(result);
 
 });
 
