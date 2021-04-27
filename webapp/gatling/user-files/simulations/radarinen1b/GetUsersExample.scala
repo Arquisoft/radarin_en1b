@@ -33,10 +33,9 @@ class GetUsersExample extends Simulation {
 
 	val headers_6 = Map("Accept" -> "image/webp,*/*")
 
-	val headers_7 = Map("Origin" -> "https://radarin0webapp.herokuapp.com")
+	val headers_7 = Map("Origin" -> "https://radarinen1bwebapp.herokuapp.com")
 
-    val uri1 = "https://radarin0webapp.herokuapp.com"
-    val uri3 = "https://radarin0restapi.herokuapp.com/api/users/list"
+    val uri1 = "https://radarinen1bwebapp.herokuapp.com"
 
 	val scn = scenario("GetUsersExample")
 		.exec(http("request_0")
@@ -60,7 +59,7 @@ class GetUsersExample extends Simulation {
 			.get(uri1 + "/static/media/logo.6ce24c58.svg")
 			.headers(headers_6),
             http("request_7")
-			.get(uri3)
+			.get(uri1)
 			.headers(headers_7)))
 
 	setUp(scn.inject(atOnceUsers(20))).protocols(httpProtocol)
