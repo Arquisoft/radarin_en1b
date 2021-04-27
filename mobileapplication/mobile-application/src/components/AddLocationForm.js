@@ -7,6 +7,8 @@ import {
     getUrlAll,
     saveSolidDatasetAt,
     setThing,
+    createThing,
+    asUrl
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "../utils/index.js";
@@ -58,17 +60,26 @@ function AddLocationForm() {
   }, [session]); //Le indicamos al useEffect que solo esté atento a la sesión
 
   const addLocation = async (text) => {
+    
     const indexUrl = getSourceUrl(locationList);
+    console.log(indexUrl);
     const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
-    const thing = getThing(listaLoc, indexUrl);
-    const locationWithText = addStringNoLocale(
+
+    let thing = getThing(listaLoc, indexUrl);
+
+    if(thing == null) {
+      thing = createThing(listaLoc, indexUrl);
+    }
+    const newThing = addStringNoLocale(
         thing,
         "http://schema.org/text",
         text
     );
-    const savedThing = setThing(locationList, locationWithText);
+
+    const savedThing = setThing(locationList, newThing);
 
     const save = await saveSolidDatasetAt(indexUrl, savedThing, { fetch: session.fetch });
+    
     setLocationList(save);
   };
 
@@ -122,7 +133,7 @@ function AddLocationForm() {
               <input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
             </label>
             <br/>
-            <Button onClick={handleSubmit} variant="contained" color="primary" >Add new location</Button>
+            <Button onClick={handleSubmit} variant="contained" color="primary">Add new location</Button>
         </form>
     </div>
   );
