@@ -5,7 +5,7 @@ import {
     getThing,
     getUrlAll,
 } from "@inrupt/solid-client";
-import { getOrCreateLocationList } from "./indexGet.js";
+import { getOrCreateLocationList } from "./index.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 

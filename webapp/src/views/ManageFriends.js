@@ -13,7 +13,6 @@ function ManageFriends() {
     const statusFriends = useSelector((state) => state.friends.status);
     const totalFriends = useSelector((state) => state.friends.value);
     const errorFriends = useSelector((state) => state.friends.error);
-
     useEffect(() => {
         if (statusFriends === "idle") {
             dispatch(

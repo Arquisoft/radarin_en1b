@@ -14,14 +14,20 @@ import Login from '../views/Login';
 import Notification from '../components/Notification';
 import React from 'react';
 import { SessionProvider } from '@inrupt/solid-ui-react';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import store from '../utils/locationsRedux/store';
 import ManageFriends from '../views/ManageFriends';
 import Map from '../components/Map';
 import parseLocations from '../components/ParseLocations';
 import ListFriends from '../components/ListFriends';
-
-
+import { getOrCreateLocationList } from '../utils/solidAccessing';
+import { Session } from "@inrupt/solid-client-authn-browser"
+import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
+import obtainUserLocations from '../utils/solidAccessing/GetUserLocations';
+import removeUserLocation from '../utils/solidAccessing/RemoveLocations';
+import { getFriends } from '../utils/friendsRedux/friendsSlice';
+import { locationsSlice } from '../utils/locationsRedux/getLocationsSlice';
+import { getUserLocation} from '../utils/locationsRedux/getLocationsSlice';
 jest.setTimeout(30000);
 
 function loginSolid(credentials) {
@@ -247,9 +253,52 @@ test('renders map component', async() => {
   const markers=[{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
   const friendMarkers= [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
   render(Map(43.5228266,-5.6545074,markers,friendMarkers));
-
+  
   
 });
+
+
+
+test('index', async() => {
+  const session = new Session();
+  session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"}
+  session.fetch = "";
+  const setTrue = await getOrCreateLocationList("https://radarinen1btesting.inrupt.net/public/locations/",true,session.fetch);
+
+});
+
+
+test('friends from pod', async() => {
+  const session = new Session();
+  session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"}
+  const o = await getFriendsWebIds(session);
+});
+
+
+test('get user locations', async() => {
+  const session = new Session();
+  session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"}
+  const friends= [{id: "https://uo271913.inrupt.net/profile/card#me",image: "https://uo271913.inrupt.net/profile/f1.png", name: "Héctor"}]
+  try{
+    const o = await obtainUserLocations(session, friends);
+  } catch{
+
+  }
+});
+
+test('remove user locations', async() => {
+  const session = new Session();
+  session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"}
+  try{
+    const o = await removeUserLocation(session,{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"} );
+  }catch{
+
+  }
+  getFriends(session);
+  locationsSlice;
+  });
+
+
 
 /* 
 test('renders login', () => {
