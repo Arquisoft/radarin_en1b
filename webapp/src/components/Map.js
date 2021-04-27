@@ -5,15 +5,13 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import marker from '../static/markerUser.svg';
 import friendMarker from '../static/markerFriend.png';
-import { useDispatch } from "react-redux";
 
-export default function Map(latii,longi,markersi,friendMarkersi,sessioni){
+export default function Map(latii,longi,markersi,friendMarkersi,sessioni,dispatch){
     const lati = latii;
     const long = longi;
     const markers = markersi;
     const friendMarkers = friendMarkersi;
     const session = sessioni;
-    const dispatch = useDispatch();
 
     const myIcon = new L.Icon({
         iconUrl: marker,

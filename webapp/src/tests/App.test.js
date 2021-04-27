@@ -19,6 +19,7 @@ import store from '../utils/locationsRedux/store';
 import ManageFriends from '../views/ManageFriends';
 import Map from '../components/Map';
 import parseLocations from '../components/ParseLocations';
+import ListFriends from '../components/ListFriends';
 
 
 jest.setTimeout(30000);
@@ -139,7 +140,7 @@ test('renders map', async() => {
   
   fireEvent.click(linkElement2);
   
-  const linkElement1 = screen.getByText('Radarin Manager is computing your locations...');
+  const linkElement1 = screen.getByText('Radarin Manager is accessing the POD ...');
   expect(linkElement1).toBeInTheDocument();
   try{
     await new Promise((r) => setTimeout(r, 5000));
@@ -155,6 +156,7 @@ test('renders map', async() => {
 //LOG IN THEN GO TO MAP
 test('renders login', () => {
   render(<Login />);
+
   const comboBox = screen.getByTestId("combo");
   expect(comboBox).toBeInTheDocument();
   fireEvent.click(comboBox);
@@ -176,40 +178,30 @@ test('renders manage friends', async () => {
       <Navbar/>
       <Switch>
       <Route path='/' exact component={LoginForm}/>
-        <Route path='/welcome' exact component={Welcome}/>
-        <Route path='/map' exact component={MapComponent}/>
-        <Route path='/about-us' exact component={AboutUs}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/friends' exact component={ManageFriends}/>
+      <Route path='/map' exact component={MapComponent}/>
+      <Route path='/about-us' exact component={AboutUs}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/friends' component={ManageFriends}/>
     </Switch>
     </Provider>
   </BrowserRouter>
   </SessionProvider>
   </React.StrictMode>
     );
+
+  const linkElement = screen.getByText(/Home/i);
+  expect(linkElement).toBeInTheDocument();
+  fireEvent.click(linkElement);
+
   loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
 
-  const linkElement2 = screen.getByText(/Manage Friends/i);
+  const linkElement2 = screen.getByText("Manage friends");
+  expect(linkElement2).toBeInTheDocument();
   fireEvent.click(linkElement2);
 
-  await new Promise((r) => setTimeout(r, 3000));
-  try{
-  const linkElement1 = screen.getByText('Radarin Manager is searching for your friends');
+  const linkElement1 = screen.getByText('Invalid URL: undefined');
   expect(linkElement1).toBeInTheDocument();
-
-  await new Promise((r) => setTimeout(r, 8000));
-
-  const hect = screen.getByText('Héctor @uo271913');
-  expect(hect).toBeInTheDocument();
-
-  const but = screen.getByText('See Details');
-  expect(but).toBeInTheDocument();
-
-  const alt = screen.getByAltText('Profile');
-  expect(alt).toBeInTheDocument();
-  }catch{
-
-  }
+  
 });
 
 test('renders Notification', async() => {
@@ -235,6 +227,28 @@ test('parseLocations', async() => {
 
   expect(parseLocations(locations,"https://radarinen1btesting.inrupt.net/profile/card#me")).toStrictEqual(result);
 
+});
+
+test('parseLocations', async() => {
+  const locations =[{ id: "https://akaamerican.inrupt.net/profile/card#me", name: "Alexander", image:"https://akaamerican.inrupt.net/profile/pp.jpg" }];
+  
+  render(ListFriends(locations));
+  const title = screen.getByText("Alexander @akaamerican");
+  expect(title).toBeInTheDocument();
+
+  const button = screen.getByText("See Details");
+  expect(button).toBeInTheDocument();
+  fireEvent.click(button);
+
+});
+
+
+test('renders map component', async() => {
+  const markers=[{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
+  const friendMarkers= [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
+  render(Map(43.5228266,-5.6545074,markers,friendMarkers));
+
+  
 });
 
 /* 

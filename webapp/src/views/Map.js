@@ -37,16 +37,12 @@ function MapComponent() {
     if (statusLocations === "rejected") {
         return <div>{errorLocations}</div>
     } else if (statusLocations === "fulfilled" && show) {
-        console.log(totalLocations);
-        console.log(session.info.webId);
-        console.log(parseLocations(totalLocations, session.info.webId));
         locations = parseLocations(totalLocations, session.info.webId);
         markers = locations[0];
         friendMarkers = locations[1];
-
-        return Map(lati,long,markers,friendMarkers,session);
+        return Map(lati,long,markers,friendMarkers,session,dispatch);
     }else{
-        return LoadingScreen();
+        return LoadingScreen("waiting-screen");
     }
 }
 export default MapComponent;
