@@ -1,8 +1,9 @@
 import {
-    getStringNoLocaleAll,
+    getStringNoLocale,
     getSolidDataset,
     getSourceUrl,
     getThing,
+    getThingAll,
     getUrlAll,
 } from "@inrupt/solid-client";
 import { getOrCreateLocationList } from "./indexGet.js";
@@ -65,12 +66,29 @@ async function obtainUserLocation(session, person) {
     }
 
     const indexUrl = getSourceUrl(list);
+
     const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
-    const thing = getThing(listaLoc, indexUrl);
+
+    const things = getThingAll(listaLoc, indexUrl);
+
+    let localizaciones = [];
+
+    things.forEach(thing => {
+        localizaciones.push(getStringNoLocale(
+            thing,
+            "http://schema.org/text"
+        ))
+    });
+
+    /**
     const localizaciones = getStringNoLocaleAll(
         thing,
         "http://schema.org/text"
     );
+         */
+
+
+    console.log(localizaciones);
 
     let localizacionesObjetos = [];
     localizaciones.forEach((localizacion) => {
