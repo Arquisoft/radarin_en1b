@@ -1,0 +1,10 @@
+{
+  "simulation": "radarinen1b.BasicNavigationSimulation",
+  "simulationId": "basicnavigationsimulation",
+  "start": 1619625544768,
+  "description": "",
+  "scenarios": ["RecordedSimulation"],
+  "assertions": [
+
+  ]
+}
