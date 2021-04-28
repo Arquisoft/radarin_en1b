@@ -35,7 +35,7 @@ export default function Map(latii,longi,markersi,friendMarkersi,sessioni,dispatc
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
-                                <Button className='center-button' onClick={(() => {
+                                <Button data-testid='button' className='center-button' onClick={(() => {
                                     removeUserLocation(session, marker);
                                     dispatch(
                                         deleteLocation(marker)

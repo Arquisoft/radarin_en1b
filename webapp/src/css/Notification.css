@@ -4,9 +4,10 @@
 	position: relative;
 	margin-left: auto;
 	z-index: 999999;
-	animation: in-top 1s ease;
+	animation: in-top 
+		1s 
+			ease;
 	margin-top: 2px;
-
 }
 
 .notification {
@@ -16,24 +17,32 @@
 	pointer-events: auto;
 	overflow: hidden;
 	text-decoration: none;
-	margin: 0 0 6px;
 	padding: 15px;
-	margin-bottom: 15px;
 	width: 400px;
 	max-height: 100px;
-	border-radius: 3px 3px 3px 3px;
-	box-shadow: 0 0 10px #999;
+	border-radius: 3px 
+		3px 
+			3px 
+				3px;
+	box-shadow: 1px 
+		1px 
+			10px 
+				#999;
 	color: #000;
 	opacity: .9;
 	background-position: 15px;
 	background-repeat: no-repeat;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5px;
+	margin: 5px 
+		auto 
+			15px 
+				auto;
 }
 
 .notification:hover {
-	box-shadow: 0 0 12px #fff;
+	box-shadow: 1px 
+		1px 
+			12px 
+				#fff;
 	opacity: 1;
 	cursor: pointer
 }
@@ -61,7 +70,8 @@
 .notification-image {
     float: left;
     margin-right: 15px;
-	margin-left: 15px !important;
+	margin-left: 15px 
+		!important;
 
 }
 
@@ -73,7 +83,8 @@
 }
 
 .center-button{
-	display: block !important;
+	display: block 
+		!important;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -81,7 +92,10 @@
 .toast {
 	margin: auto;
 	color: #fff;
-	padding: 15px 15px 10px 10px;
+	padding: 15px 
+		15px 
+			10px 
+				10px;
 	position: static;
 }
 
@@ -94,32 +108,30 @@
 	color: #fff;
 	outline: none;
 	border: none;
-	text-shadow: 0 1px 0 #fff;
 	opacity: .8;
 	line-height: 1;
 	font-size: 16px;
 	padding: 0;
 	cursor: pointer;
-	background: 0 0;
+	background: 0;
 	border: 0
 }
+
 .text-adjust{
 	display: block;
 }
-@media screen and (max-width: 960px){
-
-}
-
 
 @keyframes in-top {
 	from {
 	  transform: translateY(-100%);
 	  opacity: 0%;
 	}
+
 	to {
 	  transform: translateY(0);
 	  opacity: 100%;
 	}
+
 }
 
 @keyframes toast-in-left {
@@ -127,7 +139,9 @@
 		transform: translateX(-100%);
 		
 	}
+
 	to {
 		transform: translateX(0);
 	}
+
 }
