@@ -8,12 +8,12 @@
 .about-us {
   text-align: center;
   color: white;
-  font-size: 16.6px;
+  font-size: 16px;
   display: contents;
 }
 
 .margin-top {
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .background {
@@ -22,18 +22,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.logo-welcome {
-  height: 120px;
-}
-
-.select {
-  height: 10vh !important;
-}
-
-.select-small {
-  margin-top: 3vh;
 }
 
 .card-home {
@@ -45,10 +33,8 @@
       255,
       255
     );
-  border: black;
-  border-radius: 10px;
-  height: 32vh;
-  width: 70vw;
+  border-radius: 25px;
+  width: 60vw;
   margin: auto;
 }
 
@@ -82,14 +68,18 @@
 }
 
 .margin-top-bot {
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
+}
+
+.div-image-radarin {
+  width: 50%;
+  margin: auto;
 }
 
 .welcome-container {
   text-align: center;
   margin: auto;
-  margin-top: 30vh;
+  margin-top: 33vh;
   font-size: 22px;
 }
 
@@ -97,13 +87,9 @@
   margin-top: 6%;
 }
 
-.adjust {
-  margin-top: 4.5%;
-}
-
 .imagen {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 10px;
 }
 
@@ -117,20 +103,16 @@
 }
 
 .container-width {
-  max-width: 100% !important;
+  max-width: 100% ;
 }
 
 .image-radarin {
-  width: 95%;
-}
-
-.login-button {
-  font-size: 22px !important;
+  width: 100%
 }
 
 hr.loginleft {
-  width: 130% !important;
-  margin-top: 1.5rem !important;
+  width: 130% ;
+  margin-top: 1.5rem ;
   border:
     1px
     solid
@@ -138,8 +120,8 @@ hr.loginleft {
 }
 
 hr.loginright {
-  width: 100% !important;
-  margin-top: 1.5rem !important;
+  width: 100% ;
+  margin-top: 1.5rem ;
   position: absolute;
   left: -15%;
   border:
@@ -148,26 +130,10 @@ hr.loginright {
     black;
 }
 
-.lg-text {
-  font-size: 29px !important;
-}
-
-.sm-lg-text {
-  font-size: 22px !important;
-}
-
-.overflow-visible {
-  overflow: visible !important;
-}
-
 .sm {
   width: 20%;
   padding-top: 2px;
-}
-
-.margin-sides {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  font-size: 16px;
 }
 
 .select-provider {
@@ -183,12 +149,13 @@ hr.loginright {
   margin-bottom: 2%;
 }
 
-.fixed {
-  display: block !important;
+.overflow-visible{
+  overflow: visible;
+  font-size: 27px;
 }
 
-.margin-auto {
-  margin: auto;
+.fixed {
+  display: block !important;
 }
 
 .thanks {
@@ -201,18 +168,3 @@ hr.loginright {
   height: 50px;
 }
 
-.toButton {
-  text-decoration: none !important;
-  background: none !important;
-  border: none !important;
-  height: 12%;
-}
-
-.margin-side {
-  margin-right: 20px;
-}
-
-.margin-button {
-  display: block !important;
-  margin: auto !important;
-}

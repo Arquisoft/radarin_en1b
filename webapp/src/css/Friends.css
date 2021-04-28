@@ -1,68 +1,19 @@
-.group {
-  overflow: auto;
-  height: 590px;
-  width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.manage-friends {
-  text-align: center;
-  margin-left: auto;
-  display: flex;
-}
-
-.no-margin {
-  margin-bottom: none;
-}
-
 .main {
   color: white;
   font-size: 35px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
   margin-top: 4%;
 }
 
-.buttons-friend {
+.manage-friends {
   text-align: center;
-  float: right;
-  width: 40%;
-  position: relative;
-  top: -10%;
+  display: flex;
 }
 
-.button {
-  width: 6vw;
-  height: 3vh;
-  border-radius: 25px;
-  font-size: 18px;
-  margin-right: 10px;
-}
-
-.right {
-  margin-left: auto;
-}
-
-.delete {
-  background-color:
-    rgb(
-      255,
-      0,
-      0
-    );
-  width: initial;
-}
-
-.details {
-  background-color:
-    rgb(
-      44,
-      65,
-      184
-    );
-  color: white;
+.group {
+  overflow: auto;
+  height: 590px;
+  margin: auto;
 }
 
 .card {
@@ -70,20 +21,35 @@
   height: 6.3vh;
   margin-left: auto !important;
   margin-right: auto !important;
-  margin-top: 10px;
-  background:
-    rgb(
-      255,
-      255,
-      255
-    );
   color: black;
-  border-radius: 20px;
   padding-top: 5px;
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-  clear: both;
+  overflow: visible;
+}
+
+.buttons-friend {
+  text-align: center;
+  float: right;
+  width: 40%;
+  position: relative;
+  top: -15%;
+}
+
+.button {
+  border-radius: 25px;
+  font-size: 18px;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.details {
+  background-color:
+    rgb(
+      247,
+      158,
+      26
+    );
 }
 
 .image {
@@ -120,16 +86,4 @@
 
 .margin-top-friends {
   margin-top: 6vh;
-}
-
-@keyframes slide {
-  from {
-    transform: translateY(-100%);
-    opacity: 0%;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 100%;
-  }
 }

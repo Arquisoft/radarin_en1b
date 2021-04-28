@@ -25,6 +25,7 @@ import obtainUserLocations from "../utils/solidAccessing/GetUserLocations";
 import removeUserLocation from "../utils/solidAccessing/RemoveLocations";
 import { getFriends } from "../utils/friendsRedux/friendsSlice";
 import { locationsSlice } from "../utils/locationsRedux/getLocationsSlice";
+import waitingForLogIn from "../views/WaitingForLogin";
 
 jest.setTimeout(30000);
 
@@ -129,7 +130,7 @@ test("renders map", async() => {
   
   fireEvent.click(linkElement2);
   
-  const linkElement1 = screen.getByText("Radarin Manager is accessing the POD ...");
+  const linkElement1 = screen.getByText("Radarin Manager is searching for locations...");
   expect(linkElement1).toBeInTheDocument();
 
 });
@@ -246,5 +247,12 @@ test("renders welcome", () => {
   render(<Welcome/>);
 
   const welcome = screen.getByText("Welcome to Radarin Manager!");
+  expect(welcome).toBeInTheDocument();
+});
+
+test("renders waitingForLogin", () => {
+  render(waitingForLogIn());
+
+  const welcome = screen.getByText("Waiting for Provider approval...");
   expect(welcome).toBeInTheDocument();
 });
