@@ -29,9 +29,9 @@ function ManageFriends() {
             <div className='main'>
                 <h1>Manage Friends</h1>
                 <p id='texto'>Here you are able to see your friends.</p>
-                <p className='no-margin'>Friend list:</p>
+                <p>Friend list:</p>
                 {statusFriends !== "fulfilled"? 
-                    loadingScreen("margin-top-friends")
+                    loadingScreen("margin-top-friends","Radarin Manager is searching for friends...")
                 : 
                     listFriends(totalFriends)
                 }

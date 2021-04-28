@@ -12,6 +12,7 @@ import {useState} from "react";
 import {useSession} from "@inrupt/solid-ui-react/dist";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login";
+import waitingForLogIn from "./WaitingForLogin";
 
 function App() {
   // Variable to check session state
@@ -31,6 +32,7 @@ function App() {
         <Route path="/about-us" exact component={AboutUs}/>
         <Route path="/login" component={Login}/>
         <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
+        <Route path="/waiting-for-login" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
       </Switch>
     </BrowserRouter>
   );

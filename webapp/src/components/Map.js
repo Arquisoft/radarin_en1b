@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import marker from "../static/markerUser.svg";
 import friendMarker from "../static/markerFriend.png";
+import '../css/Map.css';
 
 export default function map(latii,longi,markersi,friendMarkersi,sessioni,dispatch){
     const lati = latii;
@@ -35,14 +36,16 @@ export default function map(latii,longi,markersi,friendMarkersi,sessioni,dispatc
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
-                                <Button data-testid='button' className='center-button' onClick={(() => {
-                                    removeUserLocation(session, marker);
-                                    dispatch(
-                                        deleteLocation(marker)
-                                    );
-                                })}>
-                                    Remove
-                                </Button>
+                                <div className='center-button'>
+                                    <Button data-testid='button' onClick={(() => {
+                                        removeUserLocation(session, marker);
+                                        dispatch(
+                                            deleteLocation(marker)
+                                        );
+                                    })}>
+                                        Remove
+                                    </Button>
+                                </div>
                             </Popup>
                         </Marker>;
             });

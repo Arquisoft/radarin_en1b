@@ -42,7 +42,7 @@ function MapComponent() {
         friendMarkers = locations[1];
         return map(lati,long,markers,friendMarkers,session,dispatch);
     }else{
-        return loadingScreen("waiting-screen");
+        return loadingScreen("waiting-screen","Radarin Manager is searching for locations...");
     }
 }
 export default MapComponent;
