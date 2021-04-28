@@ -46,21 +46,22 @@
 }
 
 .delete {
-  background-color: 
-rgb(
-    255,
-    0,
-    0
+  background-color:
+  rgb(
+      255,
+      0,
+      0
   );
   width: initial;
 }
 
 .details {
-  background-color: rgb(
-    44,
-    65,
-    184
-    );
+  background-color:
+  rgb(
+      44,
+      65,
+      184
+  );
   color: white;
 }
 
@@ -72,7 +73,7 @@ rgb(
   margin-right: auto
     !important;
   margin-top: 10px;
-  background: 
+  background:
   rgb(
     255,
     255,
@@ -126,12 +127,12 @@ rgb(
 
 @keyframes slide {
   from {
-	transform: translateY(-100%);
-	opacity: 0%;
+    transform: translateY(-100%);
+    opacity: 0%;
   }
 
   to {
-	transform: translateY(0);
-	opacity: 100%;
+    transform: translateY(0);
+    opacity: 100%;
   }
 }
