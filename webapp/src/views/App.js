@@ -32,7 +32,7 @@ function App() {
         <Route path="/about-us" exact component={AboutUs}/>
         <Route path="/login" component={Login}/>
         <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
-        <Route path="/waiting-for-login" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
+        <Route path="/wait" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
       </Switch>
     </BrowserRouter>
   );
