@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import obtainUserLocations from '../solidAccessing/GetUserLocations';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import obtainUserLocations from "../solidAccessing/GetUserLocations";
 export const getUserLocation = createAsyncThunk( "locationsSlice/getLocations", async (session, {getState}) => {
     let locations = await obtainUserLocations(session, getState().friends.value);
     return locations;
 });
 
 export const locationsSlice = createSlice({
-  name: 'locations',
+  name: "locations",
   initialState: {
     status: "idle",
     value: [], //[localizaciones del usuario]

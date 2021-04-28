@@ -1,7 +1,7 @@
 import "../css/App.css";
-import 'react-bootstrap';
+import "react-bootstrap";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import logo from '../static/radarin-logo.png';
+import logo from "../static/radarin-logo.png";
 import {NavLink} from "react-router-dom";
 function LoginForm(){
     return(

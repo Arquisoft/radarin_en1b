@@ -1,6 +1,6 @@
-import React, {Component}  from 'react';
-import map from '../static/removeLocation.png';
-import '../css/Notification.css';
+import React, {Component}  from "react";
+import map from "../static/removeLocation.png";
+import "../css/Notification.css";
 
 export default class Notification extends Component {
     constructor(props){
@@ -9,9 +9,9 @@ export default class Notification extends Component {
 
     componentDidMount(){
         setTimeout(() => {
-            if(document.getElementById('notification-for-the-map') !== null) document.getElementById('notification-for-the-map').remove();
+            if(document.getElementById("notification-for-the-map") !== null){ document.getElementById("notification-for-the-map").remove()};
         }, 3500);
-    };
+    }
 
 
     render(){

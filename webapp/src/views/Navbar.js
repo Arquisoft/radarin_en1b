@@ -1,6 +1,6 @@
-import {MenuItems} from '../components/MenuItems';
-import '../css/Navbar.css';
-import { NavLink} from 'react-router-dom';
+import {MenuItems} from "../components/MenuItems";
+import "../css/Navbar.css";
+import { NavLink} from "react-router-dom";
 
 function Navbar(){
     return <nav className="NavbarItems">
@@ -15,7 +15,7 @@ function Navbar(){
                             {item.title}
                         </NavLink>
                     </li>
-                )
+                );
             })}
             
         </ul>
