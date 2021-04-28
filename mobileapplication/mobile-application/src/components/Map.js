@@ -36,7 +36,7 @@ export default class MapComponent extends Component {
             pastNearFriends: []
         }
         this.obtainLocations();
-    };
+    }
 
     obtainLocations() {
         this.obtainUserLocation();
@@ -56,12 +56,10 @@ export default class MapComponent extends Component {
 
                     let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
                     if (response.error)
-                        console.log("Error adding user location to restapi. Is it on?");
-
+                        
                     this.obtainFriendLocations();
                 },
                 error => {
-                    console.log("Error: ", error);
                 },{ enableHighAccuracy: true }
             );
         }
@@ -99,6 +97,7 @@ export default class MapComponent extends Component {
                 render: true
             });
         } catch(error) {
+            return;
         };
     };
 

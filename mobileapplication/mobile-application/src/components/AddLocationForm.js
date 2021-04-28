@@ -12,7 +12,6 @@ import {
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "../utils/index.js";
-import { Button } from "../components/Buttons";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -117,7 +116,7 @@ function AddLocationForm() {
       if (lati === 0 || long === 0) {
           setTimeout(geolocateUser, 1000);
       }
-    }, console.log);
+    });
     
   };
 
@@ -133,7 +132,8 @@ function AddLocationForm() {
               <input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
             </label>
             <br/>
-            <Button onClick={handleSubmit} variant="contained" color="primary">Add new location</Button>
+            <button onClick={handleSubmit} variant="contained" color="primary" >Add new location</button>
+
         </form>
     </div>
   );

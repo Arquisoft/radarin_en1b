@@ -6,7 +6,7 @@ import '../css/Notification.css';
 export default class Notification extends Component {
     constructor(props){
         super();
-    };
+    }
 
     handleClick(){
         var div = document.getElementById('notification');
