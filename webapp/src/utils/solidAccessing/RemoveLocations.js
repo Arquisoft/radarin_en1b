@@ -29,7 +29,6 @@ export default async function removeUserLocation(session, location) {
     let locationText = location.name.toString() + '%t' + location.comment.toString() + '%t' + location.lat.toString() + '%t' + location.lng.toString();
 
 
-    console.log(session.fetch);
     const profileDataset = await getSolidDataset(session.info.webId, {
         fetch: session.fetch,
     });

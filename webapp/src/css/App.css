@@ -1,29 +1,28 @@
 
 
-.welcome{
+.welcome {
   text-align: center;
   margin-top: 39vh;
   color: white;
-  text-shadow: black 0px 0px 10px;
   font-size: 22px;
 }
 
-.about-us{
+.about-us {
   text-align: center;
   color: white;
   font-size: 16.6px;
   display: contents;
 }
 
-.margin-top{
+.margin-top {
   margin-top: 2%;
 }
 
-.margin-top-button{
+.margin-top-button {
   margin-top: 3%;
 }
 
-.background{
+.background {
   background-image: url("../static/back.jpg");
   height: 100vh;
   background-position: center;
@@ -31,19 +30,27 @@
   background-size: cover;
 }
 
-.logo-welcome {
+.logo-welcome  {
   height: 120px;
 }
-.select{
-  height:10vh !important;
+
+.select {
+  height: 10vh 
+    !important;
 }
-.select-small{
+
+.select-small {
   margin-top: 3vh;
 }
-.card-home{
+
+.card-home {
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(
+      255, 
+      255, 
+      255
+  );
   border: black;
   border-radius: 10px;
   height: 32vh;
@@ -51,10 +58,14 @@
   margin: auto;
 }
 
-.card-welcome{
+.card-welcome {
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(
+      255, 
+      255, 
+      255
+  );
   border: black;
   border-radius: 10px;
   height: 42vh;
@@ -62,131 +73,162 @@
   margin: auto;
 }
 
-.vl {
-  border-left: 2px groove rgb(226, 226, 226);
+.vl  {
+  border-left: 2px 
+    groove 
+      rgb(
+          226, 
+          226, 
+          226
+        );
   position: absolute;
   flex-grow: 0 ;
 }
 
-.margin-top-bot{
+.margin-top-bot {
   margin-top: auto;
   margin-bottom: auto;
 }
 
-.welcome-container{
+.welcome-container {
   text-align: center;
   margin: auto;
   margin-top: 30vh;
   font-size: 22px;
 }
 
-.margin-top-button{
+.margin-top-button {
   margin-top: 6%;
 }
 
-.adjust{
+.adjust {
   margin-top: 4.5%;
 }
 
-.imagen{
+.imagen {
   width: 250px;
   height:250px;
   border-radius: 10px;
 }
 
-.margin-bot{
+.margin-bot {
   margin-bottom: 2%;
 }
 
-.decoration-none {
+.decoration-none  {
   color: white;
   text-decoration: none; /* no underline */
 }
 
-.container-width{
-  max-width: 100% !important;
+.container-width {
+  max-width: 100% 
+    !important;
 }
 
-.image-radarin{
+.image-radarin {
   width: 95%;
 }
 
-.login-button{
-  font-size: 22px !important;
+.login-button {
+  font-size: 22px 
+    !important;
 }
 
-hr.loginleft {
-  width: 130% !important;
-  margin-top: 1.5rem !important;
-  border: 1px solid black;
+hr.loginleft  {
+  width: 130% 
+    !important;
+  margin-top: 1.5rem 
+    !important;
+  border: 1px 
+    solid 
+      black;
 }
 
-hr.loginright {
-  width: 100% !important;
-  margin-top: 1.5rem !important;
+hr.loginright  {
+  width: 100% 
+    !important;
+  margin-top: 1.5rem 
+    !important;
   position: absolute;
   left: -15%;
-  border: 1px solid black;
+  border: 1px 
+    solid 
+      black;
 }
 
-
-.lg-text{
-  font-size: 29px !important;
+.lg-text {
+  font-size: 29px 
+    !important;
 }
 
-.sm-lg-text{
-  font-size: 22px !important;
+.sm-lg-text {
+  font-size: 22px 
+    !important;
 }
 
-.overflow-visible{
-  overflow: visible !important;
+.overflow-visible {
+  overflow: visible 
+    !important;
 }
-.sm{
+.sm {
   width: 20%;
   padding-top: 2px;
 }
 
-.margin-sides{
-  margin-left: auto !important;
-  margin-right: auto !important;
+.margin-sides {
+  margin-left: auto 
+    !important;
+  margin-right: auto 
+    !important;
 }
 
-.select-provider{
+.select-provider {
   width: 80%;
-  border: 1px solid rgb(121, 121, 121);
+  border: 1px 
+    solid 
+      rgb(
+          121, 
+          121, 
+          121
+        );
   margin-bottom: 2%;
 }
 
-.fixed{
-  display: block !important;
+.fixed {
+  display: block 
+    !important;
 }
 
-.margin-auto{
+.margin-auto {
   margin: auto;
 }
 
-.thanks{
+.thanks {
   position: relative;
   color: white;
   top: -13vh;
 }
-.image-combo{
+.image-combo {
   height: 50px;
 }
 
-.toButton{
-  text-decoration: none !important;
-  background: none !important;
-  border: none !important;
+.toButton {
+  text-decoration: none 
+    !important;
+  background: none 
+    !important;
+  border: none 
+    !important;
   height: 12%;
 }
 
-.margin-side{
+.margin-side {
   margin-right: 20px;
 }
 
-.margin-button{
-  display: block !important;
-  margin: auto !important;
+.margin-button {
+  display: block 
+    !important;
+  margin: auto 
+    !important;
 }
-

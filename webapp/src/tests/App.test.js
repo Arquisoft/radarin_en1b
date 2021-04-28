@@ -1,7 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 // import App from '../views/App';
 import LoginForm from '../views/LoginForm';
-import toBeInTheDocument from '@testing-library/jest-dom';
 import Navbar from '../views/Navbar';
 import App from '../views/App';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
@@ -13,15 +12,15 @@ import { fireEvent } from "@testing-library/react";
 import Login from '../views/Login';
 import Notification from '../components/Notification';
 import React from 'react';
-import { SessionProvider } from '@inrupt/solid-ui-react';
-import { Provider, useDispatch } from 'react-redux';
+import { LoginButton, SessionProvider } from '@inrupt/solid-ui-react';
+import { Provider} from 'react-redux';
 import store from '../utils/locationsRedux/store';
 import ManageFriends from '../views/ManageFriends';
 import Map from '../components/Map';
 import parseLocations from '../components/ParseLocations';
 import ListFriends from '../components/ListFriends';
 import { getOrCreateLocationList } from '../utils/solidAccessing';
-import { Session } from "@inrupt/solid-client-authn-browser"
+import { Session} from "@inrupt/solid-client-authn-browser"
 import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
 import obtainUserLocations from '../utils/solidAccessing/GetUserLocations';
 import removeUserLocation from '../utils/solidAccessing/RemoveLocations';
@@ -148,14 +147,6 @@ test('renders map', async() => {
   
   const linkElement1 = screen.getByText('Radarin Manager is accessing the POD ...');
   expect(linkElement1).toBeInTheDocument();
-  try{
-    await new Promise((r) => setTimeout(r, 5000));
-
-    const lin = screen.getByTestId('map');
-    expect(lin).toBeInTheDocument();
-  }catch{
-
-  }
 
 });
 
@@ -248,25 +239,20 @@ test('parseLocations', async() => {
 
 });
 
-
 test('renders map component', async() => {
   const markers=[{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
   const friendMarkers= [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
   render(Map(43.5228266,-5.6545074,markers,friendMarkers));
   
-  
 });
-
-
 
 test('index', async() => {
   const session = new Session();
   session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"}
   session.fetch = "";
-  const setTrue = await getOrCreateLocationList("https://radarinen1btesting.inrupt.net/public/locations/",true,session.fetch);
+  await getOrCreateLocationList("https://radarinen1btesting.inrupt.net/public/locations/",true,session.fetch);
 
 });
-
 
 test('friends from pod', async() => {
   const session = new Session();
@@ -274,15 +260,15 @@ test('friends from pod', async() => {
   const o = await getFriendsWebIds(session);
 });
 
-
 test('get user locations', async() => {
   const session = new Session();
-  session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"}
+  session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"};
+  
   const friends= [{id: "https://uo271913.inrupt.net/profile/card#me",image: "https://uo271913.inrupt.net/profile/f1.png", name: "Héctor"}]
   try{
     const o = await obtainUserLocations(session, friends);
-  } catch{
-
+  }catch{
+    
   }
 });
 
@@ -297,39 +283,3 @@ test('remove user locations', async() => {
   getFriends(session);
   locationsSlice;
   });
-
-
-
-/* 
-test('renders login', () => {
-  render(<React.StrictMode>
-    <SessionProvider>
-      <BrowserRouter>
-      <Provider store={store}>
-      <Navbar/>
-      <Switch>
-      <Route path='/' exact component={LoginForm}/>
-      <Route path='/welcome' exact component={Welcome}/>
-      <Route path='/map' exact component={MapComponent}/>
-      <Route path='/about-us' exact component={AboutUs}/>
-      <Route path='/login' component={Login}/>
-      <Route path='/friends' exact component={ManageFriends}/>
-    </Switch>
-    </Provider>
-  </BrowserRouter>
-  </SessionProvider>
-  </React.StrictMode>);
-    const home = screen.getByText("Home");
-    expect(home).toBeInTheDocument();
-    fireEvent.click(home);
-
-    const welcome = screen.getByText("Welcome!");
-    expect(welcome).toBeInTheDocument();
-
-    loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
-
-    welcome = screen.getByText("Welcome to Radarin Manager!");
-    expect(welcome).toBeInTheDocument();
-
-});
-*/
