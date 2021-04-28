@@ -1,8 +1,8 @@
-import React, { useEffect} from "react"
+import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getFriends } from "../utils/friendsRedux/friendsSlice";
 import { useSession } from "@inrupt/solid-ui-react/dist";
-import "../css/Friends.css"
+import "../css/Friends.css";
 import loadingScreen from "./LoadingScreen";
 import listFriends from "../components/ListFriends";
 

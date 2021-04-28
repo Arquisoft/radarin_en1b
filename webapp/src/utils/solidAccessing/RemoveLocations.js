@@ -59,7 +59,6 @@ export default async function removeUserLocation(session, location) {
 
         if(text === locationText) {
             let url = asUrl(thing);
-            console.log(url);
             const datasetWRemoval = removeThing(listaLoc, url);
             await saveSolidDatasetAt(indexUrl, datasetWRemoval, {fetch: session.fetch});
         }

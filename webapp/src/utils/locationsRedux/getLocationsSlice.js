@@ -28,7 +28,7 @@ export const locationsSlice = createSlice({
       state.error = action.error.message;
     },
   }
-})
+});
 
 // Action creators are generated for each case reducer function
 export const {deleteLocation} = locationsSlice.actions;
