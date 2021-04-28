@@ -23,7 +23,7 @@
   background:
     linear-gradient(
       90deg,
-       rgba(
+      rgba(
         89,
         0,
         255,
@@ -34,8 +34,8 @@
         127,
         22,
         0.959
-      ) 
-    100%
+      )
+      100%
     );
   display: block ruby;
   padding-bottom: 1vh;
@@ -44,5 +44,5 @@
 .margin-right {
   margin-right:
     1vw
-      !important;
+     !important;
 }
