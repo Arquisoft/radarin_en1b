@@ -1,5 +1,4 @@
 
-
 .welcome {
   text-align: center;
   margin-top: 39vh;
@@ -18,10 +17,6 @@
   margin-top: 2%;
 }
 
-.margin-top-button {
-  margin-top: 3%;
-}
-
 .background {
   background-image: url("../static/back.jpg");
   height: 100vh;
@@ -30,12 +25,12 @@
   background-size: cover;
 }
 
-.logo-welcome  {
+.logo-welcome {
   height: 120px;
 }
 
 .select {
-  height: 10vh 
+  height: 10vh
     !important;
 }
 
@@ -46,11 +41,12 @@
 .card-home {
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: rgb(
-      255, 
-      255, 
-      255
-  );
+  background-color:
+  rgb(
+      255,
+        255,
+          255
+    );
   border: black;
   border-radius: 10px;
   height: 32vh;
@@ -61,11 +57,12 @@
 .card-welcome {
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: rgb(
+  background-color: 
+  rgb(
       255, 
-      255, 
-      255
-  );
+        255, 
+          255
+    );
   border: black;
   border-radius: 10px;
   height: 42vh;
@@ -73,16 +70,16 @@
   margin: auto;
 }
 
-.vl  {
+.vl {
   border-left: 2px 
     groove 
-      rgb(
-          226, 
-          226, 
-          226
-        );
+    rgb(
+        226,
+          226,
+            226
+      );
   position: absolute;
-  flex-grow: 0 ;
+  flex-grow: 0;
 }
 
 .margin-top-bot {
@@ -107,7 +104,7 @@
 
 .imagen {
   width: 250px;
-  height:250px;
+  height: 250px;
   border-radius: 10px;
 }
 
@@ -115,13 +112,13 @@
   margin-bottom: 2%;
 }
 
-.decoration-none  {
+.decoration-none {
   color: white;
   text-decoration: none; /* no underline */
 }
 
 .container-width {
-  max-width: 100% 
+  max-width: 100%
     !important;
 }
 
@@ -130,55 +127,58 @@
 }
 
 .login-button {
-  font-size: 22px 
+  font-size: 22px
     !important;
 }
 
 hr.loginleft  {
-  width: 130% 
+  width: 130%
     !important;
-  margin-top: 1.5rem 
+  margin-top: 1.5rem
     !important;
-  border: 1px 
-    solid 
-      black;
+  border: 
+    1px 
+      solid 
+        black;
 }
 
-hr.loginright  {
-  width: 100% 
+hr.loginright {
+  width: 100%
     !important;
-  margin-top: 1.5rem 
+  margin-top: 1.5rem
     !important;
   position: absolute;
   left: -15%;
-  border: 1px 
-    solid 
-      black;
+  border: 
+    1px 
+      solid 
+        black;
 }
 
 .lg-text {
-  font-size: 29px 
+  font-size: 29px
     !important;
 }
 
 .sm-lg-text {
-  font-size: 22px 
+  font-size: 22px
     !important;
 }
 
 .overflow-visible {
-  overflow: visible 
+  overflow: visible
     !important;
 }
+
 .sm {
   width: 20%;
   padding-top: 2px;
 }
 
 .margin-sides {
-  margin-left: auto 
+  margin-left: auto
     !important;
-  margin-right: auto 
+  margin-right: auto
     !important;
 }
 
@@ -195,7 +195,7 @@ hr.loginright  {
 }
 
 .fixed {
-  display: block 
+  display: block
     !important;
 }
 
@@ -208,16 +208,17 @@ hr.loginright  {
   color: white;
   top: -13vh;
 }
+
 .image-combo {
   height: 50px;
 }
 
 .toButton {
-  text-decoration: none 
+  text-decoration: none
     !important;
-  background: none 
+  background: none
     !important;
-  border: none 
+  border: none
     !important;
   height: 12%;
 }
@@ -227,8 +228,8 @@ hr.loginright  {
 }
 
 .margin-button {
-  display: block 
+  display: block
     !important;
-  margin: auto 
+  margin: auto
     !important;
 }

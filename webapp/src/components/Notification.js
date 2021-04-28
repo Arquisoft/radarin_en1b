@@ -5,7 +5,7 @@ import '../css/Notification.css';
 export default class Notification extends Component {
     constructor(props){
         super();
-    };
+    }
 
     componentDidMount(){
         setTimeout(() => {
@@ -34,5 +34,5 @@ export default class Notification extends Component {
                 </div>
             </div>
         );
-    };
+    }
 }

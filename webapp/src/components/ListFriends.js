@@ -22,5 +22,5 @@ export default function ListFriends(totalFriends){
                             );
                         })}
                     </Col>
-                </Container>
+                </Container>;
 }
