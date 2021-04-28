@@ -47,21 +47,21 @@
 
 .delete {
   background-color:
-  rgb(
+    rgb(
       255,
       0,
       0
-  );
+    );
   width: initial;
 }
 
 .details {
   background-color:
-  rgb(
+    rgb(
       44,
       65,
       184
-  );
+    );
   color: white;
 }
 
@@ -69,16 +69,16 @@
   width: 35vw;
   height: 6.3vh;
   margin-left: auto
-    !important;
+   !important;
   margin-right: auto
-    !important;
+   !important;
   margin-top: 10px;
   background:
-  rgb(
-    255,
-    255,
-    255
-  );
+    rgb(
+      255,
+      255,
+      255
+    );
   color: black;
   border-radius: 20px;
   padding-top: 5px;
