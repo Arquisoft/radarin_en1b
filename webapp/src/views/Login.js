@@ -1,20 +1,20 @@
 
-import React from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import '../css/App.css';
+import React from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import "../css/App.css";
 import {useState} from "react";
-import {LoginButton} from '@inrupt/solid-ui-react';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import solid from '../static/solidcommunity.png'
-import inrupt from '../static/inrupt.png'
+import {LoginButton} from "@inrupt/solid-ui-react";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import solid from "../static/solidcommunity.png";
+import inrupt from "../static/inrupt.png";
 
 export default function Login(){
 
     const [oidcIssuer, setOidcIssuer] = useState("");
 
     const handleChange = (event) => {
-        setOidcIssuer(event.target.value)
+        setOidcIssuer(event.target.value);
     };
 
     const authOptions = {
@@ -49,7 +49,7 @@ export default function Login(){
                             </span></Row>
                         <Row className='margin-sides fixed margin-top select'>
                             <h3>If you dont have a pod you can register for one </h3>
-                            <Button onClick={() => oidcIssuer !== "" ? window.open( oidcIssuer + '/register',"blank"): null}>Register for a SOLID POD</Button>
+                            <Button onClick={() => oidcIssuer !== "" ? window.open( oidcIssuer + "/register","blank"): null}>Register for a SOLID POD</Button>
                         </Row>
                         <Row className='margin-bot select-small'>
                             <Col ><hr className='loginleft'/></Col>
@@ -60,7 +60,7 @@ export default function Login(){
                             <h3>If you already have a Provider</h3>
                             <LoginButton
                             oidcIssuer={oidcIssuer}
-                            redirectUrl={window.location.href.toString().split('login')[0]}
+                            redirectUrl={window.location.href.toString().split("login")[0]}
                             authOptions={authOptions}
                             >
                             <Button className='margin-top'>

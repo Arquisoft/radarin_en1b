@@ -1,12 +1,12 @@
 import { Button } from "react-bootstrap";
 import { deleteLocation } from "../utils/locationsRedux/getLocationsSlice";
 import removeUserLocation from "../utils/solidAccessing/RemoveLocations";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import marker from '../static/markerUser.svg';
-import friendMarker from '../static/markerFriend.png';
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import marker from "../static/markerUser.svg";
+import friendMarker from "../static/markerFriend.png";
 
-export default function Map(latii,longi,markersi,friendMarkersi,sessioni,dispatch){
+export default function map(latii,longi,markersi,friendMarkersi,sessioni,dispatch){
     const lati = latii;
     const long = longi;
     const markers = markersi;
@@ -27,11 +27,11 @@ export default function Map(latii,longi,markersi,friendMarkersi,sessioni,dispatc
         iconSize: [32, 45],
     });
     
-    const getMarkers = () =>{
+    const getMarkers = () => {
         if (markers.length > 0){
             return markers.map((marker,index) => {
                 const markerPosition = [marker.lat, marker.lng];
-                return <Marker data-testid={'marker '+index} position={markerPosition} icon={myIcon}>
+                return <Marker data-testid={"marker "+index} position={markerPosition} icon={myIcon}>
                             <Popup>
                                 <h1>{marker.name}</h1>
                                 <p>{marker.comment}</p>
@@ -44,25 +44,25 @@ export default function Map(latii,longi,markersi,friendMarkersi,sessioni,dispatc
                                     Remove
                                 </Button>
                             </Popup>
-                        </Marker>
-            })
+                        </Marker>;
+            });
         }
-    }
+    };
 
     const getFriendMarkers = () => {
         if (friendMarkers.length > 0){
             return friendMarkers.map((friendMarker,index) => {
                 const markerPosition = [friendMarker.lat, friendMarker.lng];
-                return (<Marker data-testid={'markerFriend '+index} position={markerPosition} icon={iconPerson}>
+                return (<Marker data-testid={"markerFriend "+index} position={markerPosition} icon={iconPerson}>
                     <Popup>
                         <h1>{friendMarker.author} Location:</h1>
                         <h1>{friendMarker.name}</h1>
                         <p>{friendMarker.comment}</p>
                     </Popup>
-                </Marker>)
+                </Marker>);
             });
         }
-    }
+    };
 
     return (
             <div className="map">

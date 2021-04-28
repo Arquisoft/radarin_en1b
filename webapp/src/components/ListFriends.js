@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import userPhoto from '../static/user.svg';
+import userPhoto from "../static/user.svg";
 export default function ListFriends(totalFriends){
     return <Container className="manage-friends">
                     <Col className="group">
@@ -11,7 +11,7 @@ export default function ListFriends(totalFriends){
                                     </div>
                                     <div className='center'>
                                         <div className='title'>
-                                            {friend.name +' @' + friend.id.toString().split('.')[0].substring(8,friend.id.toString().split('.')[0].length)} 
+                                            {friend.name +" @" + friend.id.toString().split(".")[0].substring(8,friend.id.toString().split(".")[0].length)} 
                                         </div>
                                     </div>
 

@@ -61,7 +61,6 @@ function AddLocationForm() {
   const addLocation = async (text) => {
     
     const indexUrl = getSourceUrl(locationList);
-    console.log(indexUrl);
     const listaLoc = await getSolidDataset(indexUrl, { fetch: session.fetch });
 
     let thing = getThing(listaLoc, indexUrl);

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUserLocation} from '../utils/locationsRedux/getLocationsSlice.js';
-import { getFriends } from '../utils/friendsRedux/friendsSlice';
-import { useSession } from '@inrupt/solid-ui-react/dist';
-import '../css/Map.css';
-import Map from '../components/Map';
-import parseLocations from '../components/ParseLocations.js';
-import LoadingScreen from './LoadingScreen';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserLocation} from "../utils/locationsRedux/getLocationsSlice.js";
+import { getFriends } from "../utils/friendsRedux/friendsSlice";
+import { useSession } from "@inrupt/solid-ui-react/dist";
+import "../css/Map.css";
+import map from "../components/Map";
+import parseLocations from "../components/ParseLocations.js";
+import loadingScreen from "./LoadingScreen";
 
 function MapComponent() {
     const [lati, setLati] = useState(0.0);
@@ -35,14 +35,14 @@ function MapComponent() {
     } 
 
     if (statusLocations === "rejected") {
-        return <div>{errorLocations}</div>
+        return <div>{errorLocations}</div>;
     } else if (statusLocations === "fulfilled" && show) {
         locations = parseLocations(totalLocations, session.info.webId);
         markers = locations[0];
         friendMarkers = locations[1];
-        return Map(lati,long,markers,friendMarkers,session,dispatch);
+        return map(lati,long,markers,friendMarkers,session,dispatch);
     }else{
-        return LoadingScreen("waiting-screen");
+        return loadingScreen("waiting-screen");
     }
 }
 export default MapComponent;

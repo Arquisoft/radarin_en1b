@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import getFriendsWebIds from '../solidAccessing/GetFriendsFromPod';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import getFriendsWebIds from "../solidAccessing/GetFriendsFromPod";
 
 export const getFriends = createAsyncThunk("friends/getFriends", async (session) => {
   let friendWebIds = await getFriendsWebIds(session);
@@ -7,7 +7,7 @@ export const getFriends = createAsyncThunk("friends/getFriends", async (session)
 });
 
 export const friendsSlice = createSlice({
-  name: 'friends',
+  name: "friends",
   initialState: {
     status: "idle",
     value: [], //[[amigos del usuario]

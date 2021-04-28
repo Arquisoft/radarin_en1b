@@ -10,24 +10,7 @@ import { getOrCreateLocationList } from "./index.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
-
-export default async function obtainUserLocations(session, friends) {
-    let locations = [];
-
-    let sessionUserLocations = await obtainUserLocation(session, {id: session.info.webId, name: 'You'});
-    locations.push(sessionUserLocations);
-
-    for(const friend of friends) {
-        let friendLocation = await obtainUserLocation(session, friend);
-        locations.push(friendLocation);
-    }
-
-
-    return locations;
-    
-}
-
-async function obtainUserLocation(session, person) { 
+export async function obtainUserLocation(session, person) { 
     /**
      * Con useEffect, le estamos diciendo a react que
      * queremos que el componente haga algo después de
@@ -73,11 +56,11 @@ async function obtainUserLocation(session, person) {
 
     let localizaciones = [];
 
-    things.forEach(thing => {
+    things.forEach((thing) => {
         localizaciones.push(getStringNoLocale(
             thing,
             "http://schema.org/text"
-        ))
+        ));
     });
 
     /**
@@ -88,11 +71,9 @@ async function obtainUserLocation(session, person) {
          */
 
 
-    console.log(localizaciones);
-
     let localizacionesObjetos = [];
     localizaciones.forEach((localizacion) => {
-        let parsedLocation = localizacion.split('%t');
+        let parsedLocation = localizacion.split("%t");
 
         let parsedLocationObj = {
             name: parsedLocation[0],
@@ -102,9 +83,25 @@ async function obtainUserLocation(session, person) {
         };
 
         localizacionesObjetos.push(parsedLocationObj);
-    })
+    });
 
 
     
     return {id: person.id, name: person.name, localizaciones: localizacionesObjetos};
+}
+
+export default async function obtainUserLocations(session, friends) {
+    let locations = [];
+
+    let sessionUserLocations = await obtainUserLocation(session, {id: session.info.webId, name: "You"});
+    locations.push(sessionUserLocations);
+
+    for(const friend of friends) {
+        let friendLocation = await obtainUserLocation(session, friend);
+        locations.push(friendLocation);
+    }
+
+
+    return locations;
+    
 }

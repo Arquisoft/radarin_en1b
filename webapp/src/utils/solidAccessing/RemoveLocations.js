@@ -10,7 +10,7 @@ import {
     saveSolidDatasetAt
 } from "@inrupt/solid-client";
 import Notification from "../../components/Notification.js";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import { getOrCreateLocationList } from "./index.js";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
@@ -25,7 +25,7 @@ export default async function removeUserLocation(session, location) {
      */
     //Obtenemos el dataset
 
-    let locationText = location.name.toString() + '%t' + location.comment.toString() + '%t' + location.lat.toString() + '%t' + location.lng.toString();
+    let locationText = location.name.toString() + "%t" + location.comment.toString() + "%t" + location.lat.toString() + "%t" + location.lng.toString();
 
 
     const profileDataset = await getSolidDataset(session.info.webId, {
@@ -59,14 +59,13 @@ export default async function removeUserLocation(session, location) {
 
         if(text === locationText) {
             let url = asUrl(thing);
-            console.log(url);
             const datasetWRemoval = removeThing(listaLoc, url);
             await saveSolidDatasetAt(indexUrl, datasetWRemoval, {fetch: session.fetch});
         }
     });
 
 
-    ReactDOM.render(<Notification title={'Location: ' + location.name} message='has been successfully removed' icon='map'/>, document.getElementById('notification-map'));
+    ReactDOM.render(<Notification title={"Location: " + location.name} message="has been successfully removed" icon="map"/>, document.getElementById("notification-map"));
     
     
 }
