@@ -1,4 +1,3 @@
-
 .welcome {
   text-align: center;
   margin-top: 39vh;
@@ -31,7 +30,7 @@
 
 .select {
   height: 10vh
-    !important;
+   !important;
 }
 
 .select-small {
@@ -42,11 +41,11 @@
   padding-top: 1%;
   padding-bottom: 1%;
   background-color:
-  rgb(
-      255,
+    rgb(
         255,
-          255
-    );
+        255,
+        255
+      );
   border: black;
   border-radius: 10px;
   height: 32vh;
@@ -57,11 +56,11 @@
 .card-welcome {
   padding-top: 1%;
   padding-bottom: 1%;
-  background-color: 
-  rgb(
+  background-color:
+    rgb(
       255, 
-        255, 
-          255
+      255, 
+      255
     );
   border: black;
   border-radius: 10px;
@@ -71,12 +70,13 @@
 }
 
 .vl {
-  border-left: 2px 
-    groove 
-    rgb(
+  border-left:
+    2px
+      groove
+      rgb(
         226,
-          226,
-            226
+        226,
+        226
       );
   position: absolute;
   flex-grow: 0;
@@ -118,8 +118,9 @@
 }
 
 .container-width {
-  max-width: 100%
-    !important;
+  max-width: 
+    100%
+      !important;
 }
 
 .image-radarin {
@@ -127,47 +128,55 @@
 }
 
 .login-button {
-  font-size: 22px
-    !important;
+  font-size: 
+    22px
+      !important;
 }
 
 hr.loginleft  {
-  width: 130%
-    !important;
-  margin-top: 1.5rem
-    !important;
-  border: 
-    1px 
-      solid 
+  width: 
+    130%
+      !important;
+  margin-top: 
+    1.5rem
+      !important;
+  border:
+    1px
+      solid
         black;
 }
 
 hr.loginright {
-  width: 100%
-    !important;
-  margin-top: 1.5rem
-    !important;
+  width:
+    100%
+      !important;
+  margin-top:
+    1.5rem
+      !important;
   position: absolute;
   left: -15%;
-  border: 
-    1px 
-      solid 
+  border:
+    1px
+      solid
         black;
 }
 
 .lg-text {
-  font-size: 29px
-    !important;
+  font-size:
+    29px
+      !important;
 }
 
 .sm-lg-text {
-  font-size: 22px
-    !important;
+  font-size:
+    22px
+      !important;
 }
 
 .overflow-visible {
-  overflow: visible
-    !important;
+  overflow:
+    visible
+      !important;
 }
 
 .sm {
@@ -176,27 +185,31 @@ hr.loginright {
 }
 
 .margin-sides {
-  margin-left: auto
-    !important;
-  margin-right: auto
-    !important;
+  margin-left:
+    auto
+      !important;
+  margin-right:
+    auto
+      !important;
 }
 
 .select-provider {
   width: 80%;
-  border: 1px 
-    solid 
-      rgb(
-          121, 
-          121, 
+  border:
+    1px
+      solid
+        rgb(
+          121,
+          121,
           121
         );
   margin-bottom: 2%;
 }
 
 .fixed {
-  display: block
-    !important;
+  display:
+    block
+      !important;
 }
 
 .margin-auto {
@@ -214,12 +227,15 @@ hr.loginright {
 }
 
 .toButton {
-  text-decoration: none
-    !important;
-  background: none
-    !important;
-  border: none
-    !important;
+  text-decoration:
+    none
+     !important;
+  background:
+    none
+      !important;
+  border:
+    none
+      !important;
   height: 12%;
 }
 
@@ -228,8 +244,10 @@ hr.loginright {
 }
 
 .margin-button {
-  display: block
-    !important;
-  margin: auto
-    !important;
+  display:
+    block
+      !important;
+  margin:
+    auto
+      !important;
 }
