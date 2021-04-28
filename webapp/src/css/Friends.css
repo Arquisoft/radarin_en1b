@@ -46,11 +46,12 @@
 }
 
 .delete {
-  background-color: rgb(
+  background-color: 
+rgb(
     255,
     0,
     0
-    );
+  );
   width: initial;
 }
 
@@ -66,15 +67,16 @@
 .card {
   width: 35vw;
   height: 6.3vh;
-  margin-left: auto 
+  margin-left: auto
     !important;
-  margin-right: auto 
+  margin-right: auto
     !important;
   margin-top: 10px;
-  background: rgb(
-      255,
-      255,
-      255
+  background: 
+  rgb(
+    255,
+    255,
+    255
   );
   color: black;
   border-radius: 20px;
@@ -90,7 +92,7 @@
   border-radius: 40px;
   margin-left: 15px;
   margin-right: 15px;
-  vertical-align: text-top 
+  vertical-align: text-top
     !important;
 }
 
@@ -122,14 +124,14 @@
   margin-top: 6vh;
 }
 
-@keyframes slide  {
-	from  {
-	  transform: translateY(-100%);
-	  opacity: 0%;
-	}
+@keyframes slide {
+  from {
+	transform: translateY(-100%);
+	opacity: 0%;
+  }
 
-	to  {
-	  transform: translateY(0);
-	  opacity: 100%;
-	}
+  to {
+	transform: translateY(0);
+	opacity: 100%;
+  }
 }
