@@ -22,13 +22,13 @@ export default function Login(){
       };
 
   return(
-        <div className="welcome-container lg-text">
+        <div className="welcome-container">
         <div className='thanks'>
               <h1>Thanks for using Radarin Manager!</h1>
         </div>
             <div className="card-welcome sm">
             <Container fluid="md">
-                        <Row className='margin-sides fixed margin-top select'>
+                        <Row className='fixed margin-top'>
                             <h2>Select a Provider:</h2>
                             <span >
                             <Select
@@ -39,24 +39,24 @@ export default function Login(){
                             data-testid="combo"
                             className='select-provider sm-lg-text'
                             >
-                                <MenuItem value="" className='sm-lg-text'>
+                                <MenuItem value="">
                                     <em>Select a Provider</em>
                                 </MenuItem>
-                                <MenuItem value={"https://inrupt.net"} className='sm-lg-text' data-testid="Inrupt"><img src={inrupt} className='image-combo margin-side' alt='inrupt logo'/> Inrupt</MenuItem>
-                                <MenuItem value={"https://solidcommunity.net"} className='sm-lg-text'><img src={solid} className='image-combo margin-side' alt='solid community logo'/> Solid Community</MenuItem>
+                                <MenuItem value={"https://inrupt.net"} data-testid="Inrupt"><img src={inrupt} className='image-combo' alt='inrupt logo'/> Inrupt</MenuItem>
+                                <MenuItem value={"https://solidcommunity.net"} ><img src={solid} className='image-combo' alt='solid community logo'/> Solid Community</MenuItem>
                             </Select>
                                 
                             </span></Row>
-                        <Row className='margin-sides fixed margin-top select'>
+                        <Row className='fixed margin-top'>
                             <h3>If you dont have a pod you can register for one </h3>
                             <Button onClick={() => oidcIssuer !== "" ? window.open( oidcIssuer + "/register","blank"): null}>Register for a SOLID POD</Button>
                         </Row>
-                        <Row className='margin-bot select-small'>
+                        <Row className='margin-bot'>
                             <Col ><hr className='loginleft'/></Col>
                             <Col className='overflow-visible'>Login </Col>
                             <Col ><hr className='loginright'/></Col>
                         </Row>
-                        <Row className='margin-bot fixed sm-lg-text select-small'>
+                        <Row className='margin-bot fixed'>
                             <h3>If you already have a Provider</h3>
                             <LoginButton
                             oidcIssuer={oidcIssuer}

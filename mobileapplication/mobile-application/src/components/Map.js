@@ -43,7 +43,7 @@ export default class MapComponent extends Component {
         setInterval(() => {
             this.obtainUserLocation();
         }, 30000);
-    };
+    }
 
     obtainUserLocation() {
         if (navigator.geolocation) {
