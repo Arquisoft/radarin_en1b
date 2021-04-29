@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import user from "../static/user.svg";
 import friend from "../static/friend.svg";
-import "../css/Map.css"
+import "../css/Map.css";
 import getFriendsWebIds from "../utils/solidAccessing/GetFriendsFromPod";
 import { addUserOrUpdateLocation, getNearFriends } from "../api/api";
 import ReactDOM from "react-dom";
@@ -66,7 +66,7 @@ export default class MapComponent extends Component {
                 },{ enableHighAccuracy: true }
             );
         }
-    };
+    }
 
     async obtainFriendLocations() {
         

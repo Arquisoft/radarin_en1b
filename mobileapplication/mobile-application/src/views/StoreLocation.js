@@ -1,7 +1,7 @@
 import React from "react";
 import AddLocationForm from "../../components/AddLocationForm";
-import '../css/Map';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "../css/Map";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const StoreLocation = (props) => {
   return (

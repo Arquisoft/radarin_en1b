@@ -18,14 +18,14 @@
 
 .waiting-screen-2 {
   text-align: center;
-  margin-top: 0vh;
+  margin-top: 0.01vh;
   color: black;
   font-size: 18px;
 }
 
-.no{
+.no {
   height: 200px;
-  margin-left: 6%;
+  margin-left: 3%;
 }
 
 .waiting-screen-map {
@@ -64,6 +64,6 @@
     margin-top: 30vh;
     color: white;
     font-size: 18px;
-    text-shadow: 1px 1px 10px #000000;
+    text-shadow: 1px 1px 10px #000;
   }
 }

@@ -3,10 +3,10 @@
   margin-top: 33vh;
   color: white;
   font-size: 22px;
-  text-shadow: 4px 4px 4px #000000;
+  text-shadow: 4px 4px 4px #000;
 }
 
-.logo-resize-welcome{
+.logo-resize-welcome {
   width: 200px;
 }
 
@@ -74,10 +74,10 @@
   margin: auto;
 }
 
-
-.space-provider{
+.space-provider {
   height: 140px;
 }
+
 .vl {
   border-left:
     2px
@@ -110,15 +110,19 @@
 }
 
 .margin-top-log {
-  margin-top: 20% !important;
+  margin-top: 10% !important;
 }
 
-.margin-top-more{
+.margin-top-more {
   margin-top: 4%;
 }
 
 .margin-top-button {
   margin-top: 6%;
+}
+
+.button{
+  background: dodgerblue !important;
 }
 
 .imagen {
@@ -202,7 +206,7 @@ hr.loginright {
   height: 50px;
 }
 
-.marginleft{
+.marginleft {
   margin: 0px 10px;
 }
 
@@ -222,15 +226,14 @@ hr.loginright {
     margin-top: 13vh;
     color: white;
     font-size: 22px;
-    text-shadow: 1px 1px 10px #000000;
+    text-shadow: 1px 1px 10px #000;
   }
   
-
   .about-us {
     text-align: center;
     color: white;
     font-size: 16px;
     display: contents;
+    text-shadow: 1px 1px 10px #000;
   }
-
 }

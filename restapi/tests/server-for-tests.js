@@ -3,37 +3,37 @@ This server file allow to start the restapi using an in-memory database
 This will be handy for testing
 */
 
-const { MongoMemoryServer } = require('mongodb-memory-server');
-const express = require("express")
-const cors = require('cors');
-const mongoose = require("mongoose")
-const api = require("../api") 
+const { MongoMemoryServer } = require("mongodb-memory-server");
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const api = require("../api");
 
 
 
 module.exports.startdb = async () => {
-    mongod = new MongoMemoryServer({ instance: { port: 27017,dbName: 'testdb'}})
+    mongod = new MongoMemoryServer({ instance: { port: 27017,dbName: "testdb"}});
     const mongo_uri =await mongod.getUri();
     
 }
 
 module.exports.startserver = async () => {
-    await mongoose.connect("mongodb://127.0.0.1:27017/testdb?", { useNewUrlParser: true,useUnifiedTopology: true })
-    app = express()
+    await mongoose.connect("mongodb://127.0.0.1:27017/testdb?", { useNewUrlParser: true,useUnifiedTopology: true });
+    app = express();
 
     app.use(cors());
-    app.options('*', cors());
+    app.options("*", cors());
     app.use(express.json())
-    app.use("/api", api)
+    app.use("/api", api);
 
-    server = await app.listen(5000)
-    return app
+    server = await app.listen(5000);
+    return app;
 }
 
 module.exports.closeServer = async () => {
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
-    await server.close()
+    await server.close();
 }
 
 module.exports.closeDB = async () => {

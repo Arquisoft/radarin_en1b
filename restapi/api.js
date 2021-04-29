@@ -1,6 +1,6 @@
-const express = require("express")
-const User = require("./models/users")
-const router = express.Router()
+const express = require("express");
+const User = require("./models/users");
+const router = express.Router();
 
 // Find friends that are near the user (location) in session
 router.post("/users/list", async (req, res) => {
@@ -26,16 +26,16 @@ router.post("/users/list", async (req, res) => {
         lastUpdate: {
             $gte: new Date(date.toISOString()) // Time (15 min)
         }
-    })
-	res.send(users)
-})
+    });
+	res.send(users);
+});
 
 // Add user (webId) or update its location if it already exists
 router.post("/users/add", async (req, res) => {
     let webId = req.body.webId;
     let location = req.body.location;
     //Check if the user is already in the db
-    let user = await User.findOne({ webId: webId })
+    let user = await User.findOne({ webId: webId });
     if (user) {
         user.location = {
             type: "Point",
@@ -43,7 +43,7 @@ router.post("/users/add", async (req, res) => {
         };
         user.lastUpdate = new Date();
         await user.save();
-        res.send(user)
+        res.send(user);
     } else {
         user = new User({
             webId: webId,
@@ -54,7 +54,7 @@ router.post("/users/add", async (req, res) => {
             lastUpdate: new Date()
         });
         await user.save();
-        res.send(user)
+        res.send(user);
     }
 })
 
