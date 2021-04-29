@@ -7,12 +7,13 @@ import MapComponent from "./Map";
 import LoginForm from "./LoginForm";
 import Welcome from "./Welcome";
 import ManageFriends from "./ManageFriends";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./Login";
+import WaitingForLogIn from "./WaitingForLogin";
+
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from "@inrupt/solid-ui-react/dist";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "./Login";
-import waitingForLogIn from "./WaitingForLogin";
 
 function App() {
   // Variable to check session state
@@ -30,9 +31,9 @@ function App() {
         <Route path="/" exact component={(!isLoggedIn)? LoginForm : Welcome}/>
         <Route path="/map" exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
         <Route path="/about-us" exact component={AboutUs}/>
-        <Route path="/login" component={Login}/>
+        <Route path="/login" exact component={Login}/>
         <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
-        <Route path="/wait" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
+        <Route path="/wait" exact component={(!isLoggedIn)? WaitingForLogIn : Welcome}/>
       </Switch>
     </BrowserRouter>
   );
