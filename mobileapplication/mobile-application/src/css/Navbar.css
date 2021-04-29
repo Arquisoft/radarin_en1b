@@ -2,17 +2,17 @@
   background:
     linear-gradient(
       90deg,
-    rgb(
-      236,
-      63,
-      78
-    ), 
-    rgb(
-      110,
-      102,
-      221
-    )
-    100%
+      rgb(
+        236,
+        63,
+        78
+      ),
+      rgb(
+        110,
+        102,
+        221
+      )
+      100%
     );
   height: 80px;
   display: flex;
@@ -49,7 +49,7 @@
 }
 
 .nav-links {
-  color: rgb(
+  color:rgb(
     255,
     255,
     255
@@ -123,8 +123,7 @@
     position: absolute;
     top: 80px;
     right: -100%;
-    opacity: 1;
-    transition: 
+    transition:
       all
       0.5s
       ease;
@@ -147,7 +146,6 @@
     outline: none;
   }
 
-  
   .nav-menu.active {
     background: linear-gradient(
       90deg,
@@ -192,7 +190,7 @@
     text-decoration: none;
   }
 
-  .nav-links:hover  {
+  .nav-links:hover {
     background-color: rgb(
       110,
       102,
@@ -204,7 +202,7 @@
 
   .navbar-logo {
     position: absolute;
-    left: 0vw;
+    left: 0.01vw;
   }
 
   .menu-icon {
@@ -212,10 +210,11 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(
-      -60%,
-      60%
-    );
+    transform:
+      translate(
+        -60%,
+        60%
+      );
     font-size: 1.8rem;
     cursor: pointer;
     margin-top: -6px;
@@ -235,7 +234,8 @@
       auto;
     border-radius: 4px;
     width: 80%;
-    background: rgb(
+    background:
+    rgb(
       12,
       194,
       240

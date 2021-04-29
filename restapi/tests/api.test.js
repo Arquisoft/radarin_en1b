@@ -52,7 +52,7 @@ describe("user ", () => {
         
         expect(response.statusCode).toBe(200);
         expect(response.body.webId).toBe(webId);
-        expect(response.body.location.coordinates).toStrictEqual(location);
+        expect(response.body.location.coordinates).toStrictEqual(newLocation);
     });
 
     /**

@@ -102,7 +102,7 @@ export default class MapComponent extends Component {
             });
         } catch(error) {
             return;
-        };
+        }
     };
 
     retrieveMarkers() {
