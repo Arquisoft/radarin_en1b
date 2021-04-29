@@ -17,7 +17,7 @@ import Welcome from "./Welcome";
 import Login from "./Login";
 import waitingForLogIn from "./WaitingForLogin";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
   // Variables for log in: 
   const {session} = useSession();
 
-  session.onLogin( () => { setIsLoggedIn(true)});
-  session.onLogout( () => { setIsLoggedIn(false)});
+  session.onLogin( () => { setIsLoggedIn(true);});
+  session.onLogout( () => { setIsLoggedIn(false);});
 
   return (
     <SessionProvider>
