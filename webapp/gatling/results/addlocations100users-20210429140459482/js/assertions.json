@@ -1,0 +1,10 @@
+{
+  "simulation": "radarinen1b.AddLocations100Users",
+  "simulationId": "addlocations100users",
+  "start": 1619705099482,
+  "description": "Adding 100 locations at once",
+  "scenarios": ["AddLocations100Users"],
+  "assertions": [
+
+  ]
+}
