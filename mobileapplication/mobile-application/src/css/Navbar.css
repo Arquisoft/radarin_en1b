@@ -49,11 +49,12 @@
 }
 
 .nav-links {
-  color:rgb(
-    255,
-    255,
-    255
-  );
+  color:
+    rgb(
+      255,
+      255,
+      255
+    );
   text-decoration: none;
   padding:
     0.5rem
@@ -61,11 +62,12 @@
 }
 
 .navText {
-  color: rgb(
-    255,
-    255,
-    255
-  );
+  color: 
+    rgb(
+      255,
+      255,
+      255
+    );
   text-decoration: none;
   padding:
     0.5rem
@@ -74,11 +76,12 @@
 }
 
 .nav-links:hover {
-  background-color: rgb(
-    12,
-    194,
-    240
-  );
+  background-color:
+    rgb(
+      12,
+      194,
+      240
+    );
   border-radius: 4px;
   transition:
     all
@@ -104,20 +107,21 @@
   }
 
   .nav-menu {
-    background: linear-gradient(
-      90deg,
-      rgb(
-        221,
-        67,
-        95
-      ), 
-      rgb(
-        110,
-        102,
-        221
-      )
-      100%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        rgb(
+          221,
+          67,
+          95
+        ),
+        rgb(
+          110,
+          102,
+          221
+        )
+        100%
+      );
     display: table-column;
     width: 89vw;
     position: absolute;
@@ -147,22 +151,22 @@
   }
 
   .nav-menu.active {
-    background: linear-gradient(
-      90deg,
-      rgb(
-        221,
-        67,
-        95
-      ),
-      rgb(
-        110,
-        102,
-        221
-      )
-      100%
-    );
+    background: 
+      linear-gradient(
+        90deg,
+        rgb(
+          221,
+          67,
+          95
+        ),
+        rgb(
+          110,
+          102,
+          221
+        )
+        100%
+      );
     right: 0;
-    opacity: 1;
     position: absolute;
     transition:
       all
@@ -175,7 +179,7 @@
     margin-bottom: 0;
     padding-bottom: 0;
     opacity: 100%;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0.1px 0.1px 10px 10px;
   }
 
   .nav-links {
@@ -235,22 +239,22 @@
     border-radius: 4px;
     width: 80%;
     background:
-    rgb(
-      12,
-      194,
-      240
-    );
+      rgb(
+        12,
+        194,
+        240
+      );
     font-size: 1.5rem;
   }
 
   .nav-links-mobile:hover {
     background: #fff;
-    color: rgb(
-      110,
-      102,
-      221
-    );
+    color:
+      rgb(
+        110,
+        102,
+        221
+      );
     transition: 250ms;
   }
-
 }
