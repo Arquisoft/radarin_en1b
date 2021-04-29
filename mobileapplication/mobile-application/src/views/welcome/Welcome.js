@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const Welcome = props => {
+const Welcome = (props) => {
   return (
     <div className="welcome-logged-in">
       <h1>Welcome to Radarin Radar!</h1>

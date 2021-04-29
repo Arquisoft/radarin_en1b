@@ -1,7 +1,7 @@
-import React from 'react';
-import AddLocationForm from '../../components/AddLocationForm';
+import React from "react";
+import AddLocationForm from "../../components/AddLocationForm";
 
-const StoreLocation = props => {
+const StoreLocation = (props) => {
   return (
     <div className="store-location">
       <h1>Store a favourite location</h1>

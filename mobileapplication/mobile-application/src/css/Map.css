@@ -1,12 +1,47 @@
-.map{
-    height: 100%;
-    width: 100%;
-    position: fixed;
+.map {
+  height: 97%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.waiting-screen{
-    text-align: center;
-    padding-top: 20vh;
-    color: white;
-    font-size: 18px;
+.notif {
+  position: absolute;
+}
+
+.waiting-screen {
+  text-align: center;
+  margin-top: 40vh;
+  color: white;
+  font-size: 18px;
+}
+
+.waiting-screen-map {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        89,
+        0,
+        255,
+        0.95
+      ),
+      rgba(
+        255,
+        127,
+        22,
+        0.959
+      )
+      100%
+    );
+  display: block ruby;
+  padding-bottom: 1vh;
+}
+
+.center-button {
+  display: grid;
+  margin: auto;
 }

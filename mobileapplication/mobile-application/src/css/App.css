@@ -1,153 +1,168 @@
-.App {
-  text-align: center;
-}
-
-html, 
-body {
-  margin: 0; 
-  height: 100%; 
-  overflow: hidden
-}
-  
 .welcome {
   text-align: center;
-  margin-top: 10vh;
+  margin-top: 39vh;
   color: white;
-  text-shadow: black 
-    1px 
-      1px 
-        10px;
-  font-size: 16px;
-}
-
-.welcome-logged-in {
-  text-align: center;
-  margin-top: 33vh;
-  color: white;
-  text-shadow: black 
-    1px 
-      1px 
-        10px;
-  font-size: 16px;
+  font-size: 22px;
 }
 
 .about-us {
   text-align: center;
-  margin-top: 5vh;
   color: white;
-  text-shadow: black 
-    1px 
-      1px 
-        10px;
-  font-size: 18px;
+  font-size: 16px;
+  display: contents;
 }
 
-.store-location {
-  text-align: center;
-  margin-top: 15vh;
-  color: white;
-  text-shadow: black 
-    1px 
-      1px 
-        10px;
-  font-size: 19px;
-}
-
-.not-logged-in {
-  text-align: center;
-  margin-top: 20vh;
-  color: white;
-  text-shadow: black 
-    1px 
-      1px 
-        10px;
-  font-size: 22px;
+.margin-top {
+  margin-top: 3%;
 }
 
 .background {
-  background-image: url("../static/background.jpg");
+  background-image: url("../static/back.jpg");
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card-home {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color:
+    rgb(
+      255,
+      255,
+      255
+    );
+  border-radius: 25px;
+  width: 60vw;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference){
-  .App-logo {
-    animation: App-logo-spin 
-      infinite 
-        20s 
-          linear;
-  }
-
-  .float {
-    animation: App-logo-float 
-      infinite 
-        3s 
-          linear;
-    height: 150px;
-    margin-bottom: 5vh;
-  }
-
-  .spin {
-    animation: App-logo-spin 
-      infinite 
-        6s 
-          linear;
-  }
-  
+.card-welcome {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color:
+    rgb(
+      255,
+      255,
+      255
+    );
+  border: black;
+  border-radius: 10px;
+  height: 42vh;
+  width: 70vw;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.vl {
+  border-left:
+    2px
+    groove
+    rgb(
+      226,
+      226,
+      226
+    );
+}
+
+.margin-top-bot {
+  margin: auto;
+}
+
+.div-image-radarin {
+  width: 50%;
+  margin: auto;
+}
+
+.welcome-container {
+  text-align: center;
+  margin: auto;
+  margin-top: 33vh;
+  font-size: 22px;
+}
+
+.margin-top-button {
+  margin-top: 6%;
+}
+
+.imagen {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.margin-bot {
+  margin-bottom: 2%;
+}
+
+.decoration-none {
   color: white;
+  text-decoration: none; /* no underline */
 }
 
-.App-link {
-  color: #61dafb;
+.container-width {
+  max-width: 100%;
 }
 
-#webMap {
-  height: 180px;
+.image-radarin {
+  width: 100%;
 }
 
-.logo-welcome {
-  height: 120px;
+hr.loginleft {
+  width: 130%;
+  margin-top: 1.5rem;
+  border:
+    1px
+    solid
+    black;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(50px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-
+hr.loginright {
+  width: 100%;
+  margin-top: 1.5rem;
+  position: absolute;
+  left: -15%;
+  border:
+    1px
+    solid
+    black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.sm {
+  width: 20%;
+  padding-top: 2px;
+  font-size: 16px;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.select-provider {
+  width: 80%;
+  border:
+    1px
+    solid
+    rgb(
+      121,
+      121,
+      121
+    );
+  margin-bottom: 2%;
+}
 
+.overflow-visible {
+  overflow: visible;
+  font-size: 27px;
+}
+
+.fixed {
+  display: block !important;
+}
+
+.thanks {
+  position: relative;
+  color: white;
+  top: -13vh;
+}
+
+.image-combo {
+  height: 50px;
 }

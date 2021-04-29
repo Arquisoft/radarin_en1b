@@ -35,7 +35,7 @@ function AddLocationForm() {
    * después de actualizar el DOM.
    */
   useEffect(() => {
-    if (!session) return;
+    if (!session) {return;}
     (async () => {
         //Obtenemos el dataset
         const profileDataset = await getSolidDataset(session.info.webId, {
@@ -81,20 +81,9 @@ function AddLocationForm() {
     setLocationList(save);
   };
 
-  const handleChangeName = (event) => {
-    setValue(event.target.value);
-    geolocateUser();
-  };
-
-  const handleChangeDescription = (event) => {
-    setLocalizationDescription(event.target.value);
-    geolocateUser();
-  };
-
-  const handleSubmit = (event) => {
-    obtainUserLocation();
-    alert('New locations added!');
-    event.preventDefault();
+  const resetState = () => {
+    setValue("");
+    setLocalizationDescription("");
   };
 
   const obtainUserLocation = () => {
@@ -103,9 +92,10 @@ function AddLocationForm() {
     resetState();
   };
 
-  const resetState = () => {
-    setValue("");
-    setLocalizationDescription("");
+  const handleSubmit = (event) => {
+    obtainUserLocation();
+    alert("New locations added!");
+    event.preventDefault();
   };
 
   const geolocateUser = () => {
@@ -117,6 +107,16 @@ function AddLocationForm() {
       }
     });
     
+  };
+
+  const handleChangeDescription = (event) => {
+    setLocalizationDescription(event.target.value);
+    geolocateUser();
+  };
+
+  const handleChangeName = (event) => {
+    setValue(event.target.value);
+    geolocateUser();
   };
 
   return (

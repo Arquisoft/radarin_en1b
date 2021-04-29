@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const NotLoggedIn = props => {
+const NotLoggedIn = (props) => {
   return (
     <div className="not-logged-in">
       <h1>You are not logged in!</h1>

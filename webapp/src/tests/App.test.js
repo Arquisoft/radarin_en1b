@@ -172,12 +172,12 @@ test("renders manage friends", async () => {
 test("renders Notification", async() => {
     render(<div><Notification title="this is a notification" message="hello" img="map"/></div>);
     try{
-    const title = screen.getByText("this is a notification");
-    expect(title).toBeInTheDocument();
-    const message = screen.getByText("hello");
-    expect(message).toBeInTheDocument();
+      const title = screen.getByText("this is a notification");
+      expect(title).toBeInTheDocument();
+      const message = screen.getByText("hello");
+      expect(message).toBeInTheDocument();
     } catch {
-
+      const o = null;
     }
     await new Promise((r) => setTimeout(r, 4000));
 
@@ -229,7 +229,7 @@ test("get user locations", async() => {
   try{
     const o = await obtainUserLocations(session, friends);
   }catch{
-    
+    const o = null;
   }
 });
 
@@ -237,7 +237,7 @@ test("remove user locations", async() => {
   try{
     const o = await removeUserLocation(session,{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"} );
   }catch{
-
+    const o = null;
   }
   getFriends(session);
   locationsSlice;

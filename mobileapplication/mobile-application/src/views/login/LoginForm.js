@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {LoginButton} from '@inrupt/solid-ui-react';
-import {Button} from '@material-ui/core';
+import {LoginButton} from "@inrupt/solid-ui-react";
+import {Button} from "@material-ui/core";
 import "../../css/App.css";
 import logo from "../../static/radar.svg";
 

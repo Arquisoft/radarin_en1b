@@ -102,16 +102,16 @@
 }
 
 .container-width {
-  max-width: 100% ;
+  max-width: 100%;
 }
 
 .image-radarin {
-  width: 100%
+  width: 100%;
 }
 
 hr.loginleft {
-  width: 130% ;
-  margin-top: 1.5rem ;
+  width: 130%;
+  margin-top: 1.5rem;
   border:
     1px
     solid
@@ -119,8 +119,8 @@ hr.loginleft {
 }
 
 hr.loginright {
-  width: 100% ;
-  margin-top: 1.5rem ;
+  width: 100%;
+  margin-top: 1.5rem;
   position: absolute;
   left: -15%;
   border:
@@ -148,7 +148,7 @@ hr.loginright {
   margin-bottom: 2%;
 }
 
-.overflow-visible{
+.overflow-visible {
   overflow: visible;
   font-size: 27px;
 }
@@ -166,4 +166,3 @@ hr.loginright {
 .image-combo {
   height: 50px;
 }
-

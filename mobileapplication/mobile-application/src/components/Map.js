@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import user from '../static/user.svg';
-import friend from '../static/friend.svg';
-import '../css/Map.css'
-import getFriendsWebIds from '../utils/solidAccessing/GetFriendsFromPod';
-import { addUserOrUpdateLocation, getNearFriends } from '../api/api';
-import ReactDOM from 'react-dom';
+import React, { Component } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import user from "../static/user.svg";
+import friend from "../static/friend.svg";
+import "../css/Map.css"
+import getFriendsWebIds from "../utils/solidAccessing/GetFriendsFromPod";
+import { addUserOrUpdateLocation, getNearFriends } from "../api/api";
+import ReactDOM from "react-dom";
 import { css } from "@emotion/core";
 import SyncLoader from "react-spinners/SyncLoader";
-import Notification from './Notification';
+import Notification from "./Notification";
 
 const userIcon = new L.Icon({
     iconUrl: user,
@@ -34,7 +34,7 @@ export default class MapComponent extends Component {
             friendsWebIds: [],
             nearFriends: [],
             pastNearFriends: []
-        }
+        };
         this.obtainLocations();
     }
 
@@ -48,18 +48,20 @@ export default class MapComponent extends Component {
     obtainUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                async position => {
+                async (position) => {
                     this.setState({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude
                     });
 
                     let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
-                    if (response.error)
+                    if (response.error){
+                        var error = "error";
+                    }
                         
                     this.obtainFriendLocations();
                 },
-                error => {
+                (error) => {
                 },{ enableHighAccuracy: true }
             );
         }
@@ -68,7 +70,7 @@ export default class MapComponent extends Component {
     async obtainFriendLocations() {
         try {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
-            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map(friend => friend.id));
+            let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map((friend) => friend.id));
 
             for (let near of nearFriends) {
                 for (let friend of friendsWebIds) {
@@ -80,14 +82,14 @@ export default class MapComponent extends Component {
             }
 
             if (nearFriends.length > 0) {
-                let friends = '';
+                let friends = "";
                 for (let near of nearFriends) {
                     if(!this.state.pastNearFriends.includes(near)){
-                        friends += near.webId + ', ';
+                        friends += near.webId + ", ";
                     }
                 }
                 
-                ReactDOM.render(<Notification title={'You have friends nearby: '} message={friends.substring(0, friends.length - 1)} icon='map'/>, document.getElementById('notification-map'));
+                ReactDOM.render(<Notification title={"You have friends nearby: "} message={friends.substring(0, friends.length - 1)} icon="map"/>, document.getElementById("notification-map"));
                 this.setState({pastNearFriends: nearFriends});
             }
 
@@ -119,11 +121,8 @@ export default class MapComponent extends Component {
             const coordinates = [this.state.latitude, this.state.longitude];
             return (<div className="map">
                 <MapContainer center={coordinates} zoom={15} scrollWheelZoom={true} className="map">
-                    <div id='notification-map'></div>
-                    <TileLayer
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
+                    <div id="notification-map"></div>
+                    <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                     {markers.map((marker, i) => {
                         const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
                         return <Marker key = {i} position={markerPosition} icon={(i === markers.length - 1) ? userIcon : friendIcon}> 
@@ -131,7 +130,7 @@ export default class MapComponent extends Component {
                             <h1>{marker.webId}</h1>
                             <p>Updated at {marker.lastUpdate}</p>
                         </Popup>
-                        </Marker> })}
+                        </Marker>; })}
                 </MapContainer>
             </div>);
         } else {
