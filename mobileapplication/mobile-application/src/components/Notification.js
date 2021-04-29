@@ -1,40 +1,26 @@
-import React, {Component}  from 'react';
-import map from '../static/united.svg';
-import info from '../static/info.svg';
-import '../css/Notification.css';
+import React, {Component}  from "react";
+import location from "../static/location-added.png";
+import friend from "../static/united.svg";
+import "../css/Notification.css";
 
 export default class Notification extends Component {
     constructor(props){
         super();
     }
 
-    handleClick(){
-        var div = document.getElementById('notification');
-        if(div !== undefined)
-            div.remove();
-    };
-
-    componentDidMount(){
-        setTimeout(() => {
-            this.handleClick();
-        }, 2500);
-    };
-
     render(){
-        var icon = '';
-        if ( this.props.icon === 'info'){
-            icon = info;
-        }else {
-            icon = map;
+        var img;
+        if (this.props.icon === "location"){
+            img = location;
+        } else{
+            img = friend;
         }
         return (
-            <div id='notification'>
-                <div className={'notification-container'}  >
-                        <div 
-                            className={'notification toast'}
-                        >
+            <div id="notification-for-the-map" className="hide-notification">
+                <div id="notification-container" className="notification-container">
+                        <div className="notification">
                             <div className="notification-image">
-                                <img src={icon} alt="" />
+                                <img src={img} className="margin-img" alt="" />
                             </div>
                             <div>
                                 <p className="notification-title">
@@ -48,5 +34,5 @@ export default class Notification extends Component {
                 </div>
             </div>
         );
-    };
+    }
 }

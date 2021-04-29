@@ -22,13 +22,10 @@ export default function Login(){
       };
 
   return(
-        <div className="welcome-container">
-        <div className='thanks'>
-              <h1>Thanks for using Radarin Manager!</h1>
-        </div>
-            <div className="card-welcome sm">
+        <div className="welcome-container margin-top-log">
+            <div className="card-welcome">
             <Container fluid="md">
-                        <Row className='fixed margin-top'>
+                        <Row className='fixed margin-top space-provider'>
                             <h2>Select a Provider:</h2>
                             <span >
                             <Select
@@ -42,8 +39,8 @@ export default function Login(){
                                 <MenuItem value="">
                                     <em>Select a Provider</em>
                                 </MenuItem>
-                                <MenuItem value={"https://inrupt.net"} data-testid="Inrupt"><img src={inrupt} className='image-combo' alt='inrupt logo'/> Inrupt</MenuItem>
-                                <MenuItem value={"https://solidcommunity.net"} ><img src={solid} className='image-combo' alt='solid community logo'/> Solid Community</MenuItem>
+                                <MenuItem value={"https://inrupt.net"} data-testid="Inrupt" ><img src={inrupt} className='image-combo text-space' alt='inrupt logo '/> Inrupt</MenuItem>
+                                <MenuItem value={"https://solidcommunity.net"} ><img src={solid} className='image-combo text-space' alt='solid community logo' /> Solid Community</MenuItem>
                             </Select>
                                 
                             </span></Row>
@@ -51,19 +48,19 @@ export default function Login(){
                             <h3>If you dont have a pod you can register for one </h3>
                             <Button onClick={() => oidcIssuer !== "" ? window.open( oidcIssuer + "/register","blank"): null}>Register for a SOLID POD</Button>
                         </Row>
-                        <Row className='margin-bot'>
+                        <Row className='margin-top-more '>
                             <Col ><hr className='loginleft'/></Col>
                             <Col className='overflow-visible'>Login </Col>
                             <Col ><hr className='loginright'/></Col>
                         </Row>
-                        <Row className='margin-bot fixed'>
+                        <Row className='margin-top-more fixed'>
                             <h3>If you already have a Provider</h3>
                             <LoginButton
                             oidcIssuer={oidcIssuer}
                             redirectUrl={window.location.href.split("login")[0] + "wait"}
                             authOptions={authOptions}
                             >
-                            <Button className='margin-top'>
+                            <Button className='margin-top margin-bot'>
                                 Log In
                             </Button>
                             </LoginButton>

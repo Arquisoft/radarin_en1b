@@ -1,12 +1,69 @@
-.map{
-    height: 100%;
-    width: 100%;
-    position: fixed;
+.map {
+  height: 97%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.waiting-screen{
+.notif {
+  position: absolute;
+}
+
+.waiting-screen {
+  text-align: center;
+  margin-top: 40vh;
+  color: white;
+  font-size: 18px;
+}
+
+.waiting-screen-2 {
+  text-align: center;
+  margin-top: 0vh;
+  color: black;
+  font-size: 18px;
+}
+
+.no{
+  height: 200px;
+  margin-left: 6%;
+}
+
+.waiting-screen-map {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        89,
+        0,
+        255,
+        0.95
+      ),
+      rgba(
+        255,
+        127,
+        22,
+        0.959
+      )
+      100%
+    );
+  display: block ruby;
+  padding-bottom: 1vh;
+}
+
+.center-button {
+  display: grid;
+  margin: auto;
+}
+
+@media screen and (max-width: 960px) {
+  .waiting-screen {
     text-align: center;
-    padding-top: 20vh;
+    margin-top: 30vh;
     color: white;
     font-size: 18px;
+    text-shadow: 1px 1px 10px #000000;
+  }
 }

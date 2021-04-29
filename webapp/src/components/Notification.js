@@ -9,19 +9,19 @@ export default class Notification extends Component {
 
     componentDidMount(){
         setTimeout(() => {
-            if(document.getElementById("notification-for-the-map") !== null) document.getElementById("notification-for-the-map").remove();
+            if(document.getElementById("notification-for-the-map") !== null){ document.getElementById("notification-for-the-map").remove();}
         }, 3500);
-    };
+    }
 
     render(){
         return (
             <div id="notification-for-the-map" className="hide-notification">
                 <div className="notification-container">
-                        <div className="notification toasts">
+                        <div className="notification">
                             <div className="notification-image">
                                 <img src={map} className="margin-img" alt="" />
                             </div>
-                            <div className="text-adjust">
+                            <div>
                                 <p className="notification-title">
                                     {this.props.title}
                                 </p>

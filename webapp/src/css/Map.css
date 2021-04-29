@@ -5,7 +5,6 @@
   overflow: hidden;
 }
 
-
 .notif {
   position: absolute;
 }
@@ -46,4 +45,3 @@
   display: grid;
   margin: auto;
 }
-
