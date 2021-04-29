@@ -103,7 +103,7 @@ export default class MapComponent extends Component {
         } catch(error) {
             return;
         }
-    };
+    }
 
     retrieveMarkers() {
         let markers = this.state.nearFriends;
@@ -115,7 +115,7 @@ export default class MapComponent extends Component {
             lastUpdate: new Date().toISOString()
         });
         return markers;
-    };
+    }
 
     render() {
         if (this.state.render) {
@@ -140,4 +140,4 @@ export default class MapComponent extends Component {
         }
     };
 
-};
+}

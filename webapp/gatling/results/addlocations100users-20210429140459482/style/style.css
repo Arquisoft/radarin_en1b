@@ -450,7 +450,6 @@ h1 span {
 }
 
 #container_assertions {
-  background: #ff9916;
   padding: 5px 5px 0.01px 5px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -597,8 +596,8 @@ h1 span {
   -moz-box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
   box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
   border-radius: 4px;
-  position:absolute; 
-  color: #ffffff;
+  position: absolute; 
+  color: #fff;
   background: #d16b00;
 }
 

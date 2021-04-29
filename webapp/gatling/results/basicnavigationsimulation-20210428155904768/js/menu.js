@@ -28,7 +28,7 @@ function menuItem(item, level, parent, group) {
     }
 
     if (parent) {
-    	  if (level == 0)
+    	  if (level === 0)
 			      var childOfRoot = "child-of-ROOT ";
 		    else
 			      var childOfRoot = "";
@@ -52,9 +52,9 @@ function menuItemsForGroup(group, level, parent) {
         items += menuItem(group, level - 1, parent, true);
 
     $.each(group.contents, function (contentName, content) {
-        if (content.type == "GROUP")
+        if (content.type === "GROUP")
             items += menuItemsForGroup(content, level + 1, group.pathFormatted);
-        else if (content.type == "REQUEST")
+        else if (content.type === "REQUEST")
             items += menuItem(content, level, group.pathFormatted);
     });
 
@@ -80,7 +80,7 @@ function getLink(link){
  
 function setActiveMenu(){
     $(".nav a").each(function(){
-        if(!$(this).hasClass("expand-button") && $(this).attr("href") == getLink(window.location.pathname)){
+        if(!$(this).hasClass("expand-button") && $(this).attr("href") === getLink(window.location.pathname)){
             $(this).parents("li").addClass("on");
             return false;
         }

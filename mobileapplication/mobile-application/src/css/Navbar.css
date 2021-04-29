@@ -62,7 +62,7 @@
 }
 
 .navText {
-  color: 
+  color:
     rgb(
       255,
       255,
@@ -138,11 +138,12 @@
   }
 
   .navText {
-    color: rgb(
-      255,
-      255,
-      255
-    );
+    color:
+      rgb(
+        255,
+        255,
+        255
+      );
     text-decoration: none;
     padding:
       0.5rem
@@ -151,7 +152,7 @@
   }
 
   .nav-menu.active {
-    background: 
+    background:
       linear-gradient(
         90deg,
         rgb(
@@ -195,11 +196,12 @@
   }
 
   .nav-links:hover {
-    background-color: rgb(
-      110,
-      102,
-      221
-    );
+    background-color:
+      rgb(
+        110,
+        102,
+        221
+      );
     border-radius: 0;
     outline: 0;
   }

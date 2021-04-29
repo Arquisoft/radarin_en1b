@@ -207,7 +207,7 @@ hr.loginright {
 }
 
 .marginleft {
-  margin: 0px 10px;
+  margin: 0.01px 10px;
 }
 
 @media screen and (max-width: 960px) {
