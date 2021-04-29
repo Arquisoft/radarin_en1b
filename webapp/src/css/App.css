@@ -22,6 +22,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .card-home {
@@ -63,8 +64,6 @@
       226,
       226
     );
-  position: absolute;
-  flex-grow: 0;
 }
 
 .margin-top-bot {
