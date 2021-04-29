@@ -450,7 +450,6 @@ h1 span {
 }
 
 #container_assertions {
-  background: #ff9916;
   padding: 5px 5px 0.01px 5px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -545,9 +544,9 @@ h1 span {
 }
 
 .statistics .expand-all-button,
-  .statistics .collapse-all-button {
-    color: white;
-    cursor: pointer;
+.statistics .collapse-all-button {
+  color: white;
+  cursor: pointer;
 }
 
 .statistics-in .expand-button.expand {
@@ -588,21 +587,20 @@ h1 span {
 
 .withTooltip:hover { text-decoration: none; }
 
-.withTooltip
-.tooltipContent {
+.withTooltip .tooltipContent {
   z-index: 10;
   display: none;
   margin-top: -5px;
   padding: 4px;
-  -webkit-box-shadow: 1px 2px 4px 0.01px rgba(47,47,47,0.2);
-  -moz-box-shadow: 1px 2px 4px 0.01px rgba(47,47,47,0.2);
-  box-shadow: 1px 2px 4px 0.01px rgba(47,47,47,0.2);
+  -webkit-box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
+  -moz-box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
+  box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
   border-radius: 4px;
-  position: absolute; 
-  color: #ffffff;
-  background:#d16b00;
+  position: absolute;
+  color: #fff;
+  background: #d16b00;
 }
 
-.withTooltip:hover .tooltipContent{
+.withTooltip:hover .tooltipContent {
   display: inline;
 }

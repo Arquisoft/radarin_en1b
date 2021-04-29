@@ -32,10 +32,10 @@ router.post("/users/list", async (req, res) => {
 
 // Add user (webId) or update its location if it already exists
 router.post("/users/add", async (req, res) => {
-    let webId = req.body.webId;
+    let webID = req.body.webId;
     let location = req.body.location;
     //Check if the user is already in the db
-    let user = await User.findOne({ webId: webId });
+    let user = await User.findOne({ webId: webID });
     if (user) {
         user.location = {
             type: "Point",
@@ -46,7 +46,7 @@ router.post("/users/add", async (req, res) => {
         res.send(user);
     } else {
         user = new User({
-            webId: webId,
+            webId: webID,
             location: {
                 type: "Point",
                 coordinates: location
