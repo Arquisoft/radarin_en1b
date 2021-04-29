@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var unpack = function (array) {
   var findNbSeries = function (array) {

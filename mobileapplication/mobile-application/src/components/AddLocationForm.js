@@ -98,7 +98,6 @@ function AddLocationForm() {
   const handleSubmit = (event) => {
     obtainUserLocation();
     const notificacion = <Notification title={"New Location was added!"} message="" icon="location"/>;
-    console.log(notificacion)
     ReactDOM.render(notificacion, document.getElementById("not"));
     setTimeout(() => {
       ReactDOM.unmountComponentAtNode(document.getElementById("not"));

@@ -9,7 +9,7 @@ import Welcome from "./Welcome";
 import ManageFriends from "./ManageFriends";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login";
-import WaitingForLogIn from "./WaitingForLogin";
+import waitingForLogIn from "./WaitingForLogin";
 
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
@@ -33,7 +33,7 @@ function App() {
         <Route path="/about-us" exact component={AboutUs}/>
         <Route path="/login" exact component={Login}/>
         <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
-        <Route path="/wait" exact component={(!isLoggedIn)? WaitingForLogIn : Welcome}/>
+        <Route path="/wait" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
       </Switch>
     </BrowserRouter>
   );
