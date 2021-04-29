@@ -16,6 +16,18 @@
   font-size: 18px;
 }
 
+.waiting-screen-2 {
+  text-align: center;
+  margin-top: 0vh;
+  color: black;
+  font-size: 18px;
+}
+
+.no{
+  height: 200px;
+  margin-left: 6%;
+}
+
 .waiting-screen-map {
   text-align: center;
   color: white;
@@ -44,4 +56,14 @@
 .center-button {
   display: grid;
   margin: auto;
+}
+
+@media screen and (max-width: 960px) {
+  .waiting-screen {
+    text-align: center;
+    margin-top: 30vh;
+    color: white;
+    font-size: 18px;
+    text-shadow: 1px 1px 10px #000000;
+  }
 }

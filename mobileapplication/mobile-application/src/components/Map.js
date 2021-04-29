@@ -7,9 +7,8 @@ import "../css/Map.css"
 import getFriendsWebIds from "../utils/solidAccessing/GetFriendsFromPod";
 import { addUserOrUpdateLocation, getNearFriends } from "../api/api";
 import ReactDOM from "react-dom";
-import { css } from "@emotion/core";
-import SyncLoader from "react-spinners/SyncLoader";
 import Notification from "./Notification";
+import loadingScreen from "../views/LoadingScreen";
 
 const userIcon = new L.Icon({
     iconUrl: user,
@@ -36,6 +35,7 @@ export default class MapComponent extends Component {
             pastNearFriends: []
         };
         this.obtainLocations();
+        
     }
 
     obtainLocations() {
@@ -46,6 +46,7 @@ export default class MapComponent extends Component {
     }
 
     obtainUserLocation() {
+        
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
@@ -56,7 +57,7 @@ export default class MapComponent extends Component {
 
                     let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
                     if (response.error){
-                        var error = "error";
+                        alert(response);
                     }
                         
                     this.obtainFriendLocations();
@@ -68,6 +69,7 @@ export default class MapComponent extends Component {
     };
 
     async obtainFriendLocations() {
+        
         try {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
             let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map((friend) => friend.id));
@@ -134,15 +136,7 @@ export default class MapComponent extends Component {
                 </MapContainer>
             </div>);
         } else {
-            const override = css`
-            display: block;
-            margin: 0 auto;
-            border-color: red;
-            `;
-            return <div className="waiting-screen">
-                        <h1>Radarin Radar is computing the locations...</h1>
-                        <SyncLoader css={override} size={25} color={"rgb(236, 63, 78)"} />
-                    </div>;
+            return loadingScreen("waiting-screen","We are looking for locations...");
         }
     };
 

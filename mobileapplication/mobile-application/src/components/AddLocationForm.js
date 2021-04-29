@@ -7,11 +7,14 @@ import {
     getUrlAll,
     saveSolidDatasetAt,
     setThing,
-    createThing,
-    asUrl
+    createThing
 } from "@inrupt/solid-client";
 import { useSession } from "@inrupt/solid-ui-react";
 import { getOrCreateLocationList } from "../utils/index.js";
+import { Input } from "@material-ui/core";
+import { Button } from "react-bootstrap";
+import Notification from "./Notification.js";
+import ReactDOM from "react-dom";
 
 const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
@@ -94,7 +97,12 @@ function AddLocationForm() {
 
   const handleSubmit = (event) => {
     obtainUserLocation();
-    alert("New locations added!");
+    const notificacion = <Notification title={"New Location was added!"} message="" icon="location"/>;
+    console.log(notificacion)
+    ReactDOM.render(notificacion, document.getElementById("not"));
+    setTimeout(() => {
+      ReactDOM.unmountComponentAtNode(document.getElementById("not"));
+    }, 6000);
     event.preventDefault();
   };
 
@@ -119,21 +127,28 @@ function AddLocationForm() {
     geolocateUser();
   };
 
-  return (
-    <div id='cont'> 
-        <form onSubmit={handleSubmit}>
-            <label>Name of the location: 
-              <input className='marginleft' type="text" value = {value} onChange={handleChangeName}/> 
-            </label>
-            <br/>
-            <br/>
-            <label>Description of the location:  
-              <input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
-            </label>
-            <br/>
-            <button onClick={handleSubmit} variant="contained" color="primary" >Add new location</button>
-
-        </form>
+  return (<div>
+      <div id='not' className='no'></div>
+      <div id='cont' className='waiting-screen-2 card-welcome-2'> 
+          <form onSubmit={handleSubmit}>
+              <br/>
+              <label>Name of the location: 
+                <br/>
+                <Input className='marginleft' type="text" value = {value} onChange={handleChangeName}/> 
+              </label>
+              <br/>
+              <br/>
+              <br/>
+              <label>Description of the location:
+              <br/>
+                <Input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
+              </label>
+              <br/>
+              <br/>
+              <Button onClick={handleSubmit} variant="contained" color="primary" className='button'>Add new location</Button>
+              
+          </form>
+      </div>
     </div>
   );
 }

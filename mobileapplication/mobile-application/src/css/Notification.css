@@ -4,21 +4,20 @@
   z-index: 999999;
   animation:
     in-out-top
-    6s
+    7s
     ease;
 }
 
 .hide-notification {
   display: flex;
   margin-top: 5px;
-  margin-left: 40vw;
 }
 
 .notification {
   background: #fff;
   padding: 15px;
-  width: 400px;
-  max-height: 100px;
+  width: 372px;
+  max-height: 300px;
   border-radius: 10px;
   box-shadow:
     1px
@@ -42,7 +41,7 @@
 
 .notification-image {
   float: left;
-  margin: 0.1px 15px;
+  margin: 0.1px 0.1px 10px;
 }
 
 .notification-image img {

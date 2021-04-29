@@ -1,5 +1,6 @@
 import React, {Component}  from "react";
-import map from "../static/removeLocation.png";
+import location from "../static/location-added.png";
+import friend from "../static/united.svg";
 import "../css/Notification.css";
 
 export default class Notification extends Component {
@@ -7,19 +8,19 @@ export default class Notification extends Component {
         super();
     }
 
-    componentDidMount(){
-        setTimeout(() => {
-            if(document.getElementById("notification-for-the-map") !== null){ document.getElementById("notification-for-the-map").remove();}
-        }, 3500);
-    }
-
     render(){
+        var img;
+        if (this.props.icon === "location"){
+            img = location;
+        } else{
+            img = friend;
+        }
         return (
             <div id="notification-for-the-map" className="hide-notification">
-                <div className="notification-container">
+                <div id="notification-container" className="notification-container">
                         <div className="notification">
                             <div className="notification-image">
-                                <img src={map} className="margin-img" alt="" />
+                                <img src={img} className="margin-img" alt="" />
                             </div>
                             <div>
                                 <p className="notification-title">
