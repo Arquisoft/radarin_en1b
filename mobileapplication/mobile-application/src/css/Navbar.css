@@ -6,7 +6,7 @@
       236,
       63,
       78
-    ), 
+    ),
     rgb(
       110,
       102,
@@ -49,7 +49,7 @@
 }
 
 .nav-links {
-  color: rgb(
+  color:rgb(
     255,
     255,
     255
@@ -147,7 +147,6 @@
     outline: none;
   }
 
-  
   .nav-menu.active {
     background: linear-gradient(
       90deg,
@@ -235,7 +234,8 @@
       auto;
     border-radius: 4px;
     width: 80%;
-    background: rgb(
+    background:
+    rgb(
       12,
       194,
       240
