@@ -89,15 +89,26 @@ function AddLocationForm() {
     setLocalizationDescription("");
   };
 
-  const obtainUserLocation = () => {
-    geolocateUser();
-    addLocation(value + "%t" + localizationDescription + "%t" + lati + "%t" + long);
-    resetState();
+  const handleSubmit = (event) => {
+    window.navigator.geolocation.getCurrentPosition((position) => {
+      setLati(position.coords.latitude);
+      setLong(position.coords.longitude);
+      
+      addLocation(value + "%t" + localizationDescription + "%t" + position.coords.latitude + "%t" + position.coords.longitude);
+      resetState();
+
+      showNotification(true, event);
+    }, (error) => {
+      showNotification(false, event);
+    },{ enableHighAccuracy: true });
   };
 
-  const handleSubmit = (event) => {
-    obtainUserLocation();
-    const notificacion = <Notification title={"New Location was added!"} message="" icon="location"/>;
+  const showNotification = (added, event) => {
+    let notificacion = <Notification title={"New location could not be added"} message="" icon="locationNotAdded"/>;
+    if (added) {
+      notificacion = <Notification title={"New location was added!"} message="" icon="locationAdded"/>;
+    }
+
     ReactDOM.render(notificacion, document.getElementById("not"));
     setTimeout(() => {
       ReactDOM.unmountComponentAtNode(document.getElementById("not"));
@@ -105,31 +116,18 @@ function AddLocationForm() {
     event.preventDefault();
   };
 
-  const geolocateUser = () => {
-    window.navigator.geolocation.getCurrentPosition((position) => {
-      setLati(position.coords.latitude);
-      setLong(position.coords.longitude);
-      if (lati === 0 || long === 0) {
-          setTimeout(geolocateUser, 1000);
-      }
-    });
-    
-  };
-
   const handleChangeDescription = (event) => {
     setLocalizationDescription(event.target.value);
-    geolocateUser();
   };
 
   const handleChangeName = (event) => {
     setValue(event.target.value);
-    geolocateUser();
   };
 
   return (<div>
       <div id='not' className='no'></div>
       <div id='cont' className='waiting-screen-2 card-welcome-2'> 
-          <form onSubmit={handleSubmit}>
+          <form>
               <br/>
               <label>Name of the location: 
                 <br/>

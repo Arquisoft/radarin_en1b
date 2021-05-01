@@ -10,7 +10,7 @@ export const MenuItems = [
         cName: "fas fa-map white"
     },
     {
-        title:"Store Locations",
+        title:"Store Current Location",
         url: "/store-location",
         cName: "fas fa-database white"
     },

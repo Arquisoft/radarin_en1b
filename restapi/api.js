@@ -34,7 +34,7 @@ router.post("/users/list", async (req, res) => {
 router.post("/users/add", async (req, res) => {
     let webID = req.body.webId;
     let location = req.body.location;
-    //Check if the user is already in the db
+    // Check if the user is already in the db
     let user = await User.findOne({ webId: webID });
     if (user) {
         user.location = {
@@ -51,7 +51,9 @@ router.post("/users/add", async (req, res) => {
                 type: "Point",
                 coordinates: location
             },
-            lastUpdate: new Date()
+            lastUpdate: new Date(),
+            role: "NORMAL",
+            banned: false
         });
         await user.save();
         res.send(user);

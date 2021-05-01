@@ -1,5 +1,6 @@
 import React, {Component}  from "react";
-import location from "../static/location-added.png";
+import locationAdded from "../static/location-added.png";
+import locationNotAdded from "../static/location-not-added.png";
 import friend from "../static/united.svg";
 import "../css/Notification.css";
 
@@ -10,9 +11,11 @@ export default class Notification extends Component {
 
     render(){
         var img;
-        if (this.props.icon === "location"){
-            img = location;
-        } else{
+        if (this.props.icon === "locationAdded")  {
+            img = locationAdded;
+        } else if (this.props.icon === "locationNotAdded") {
+            img = locationNotAdded;
+        } else {
             img = friend;
         }
         return (

@@ -7,6 +7,7 @@ import MapComponent from "./Map";
 import LoginForm from "./LoginForm";
 import Welcome from "./Welcome";
 import ManageFriends from "./ManageFriends";
+import AdministerUsers from "./AdministerUsers";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login";
 import waitingForLogIn from "./WaitingForLogin";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/about-us" exact component={AboutUs}/>
         <Route path="/login" exact component={Login}/>
         <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
+        <Route path="/users" exact component={(isLoggedIn)? AdministerUsers : NotLoggedIn}/>
         <Route path="/wait" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
       </Switch>
     </BrowserRouter>

@@ -35,7 +35,6 @@ export default class MapComponent extends Component {
             pastNearFriends: []
         };
         this.obtainLocations();
-        
     }
 
     obtainLocations() {
@@ -46,7 +45,6 @@ export default class MapComponent extends Component {
     }
 
     obtainUserLocation() {
-        
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
@@ -69,7 +67,6 @@ export default class MapComponent extends Component {
     }
 
     async obtainFriendLocations() {
-        
         try {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
             let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map((friend) => friend.id));
