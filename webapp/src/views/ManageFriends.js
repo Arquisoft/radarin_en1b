@@ -27,7 +27,7 @@ function ManageFriends() {
 
     return (
             <div className='main'>
-                <h1>Manage Friends</h1>
+                <h1>Manage friends</h1>
                 <p id='texto'>Here you are able to see your friends</p>
                 <p>Friend list:</p>
                 {statusFriends !== "fulfilled"? 

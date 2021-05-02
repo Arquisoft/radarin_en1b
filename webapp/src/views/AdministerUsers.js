@@ -27,7 +27,7 @@ function ManageFriends() {
 
     return (
             <div className='main'>
-                <h1>Administer Users</h1>
+                <h1>Administer users</h1>
                 <p id='texto'>Here you can manage the Radarin users</p>
                 <p>User list:</p>
                 {statusFriends !== "fulfilled"? 
