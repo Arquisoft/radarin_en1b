@@ -62,7 +62,7 @@ export default function Login(){
                             <NavLink to="/wait">
                                 <LoginButton
                                 oidcIssuer={oidcIssuer}
-                                redirectUrl={window.location.href.split("login")[0] + "wait"}
+                                redirectUrl={window.location.href.split("login")[0]}
                                 authOptions={authOptions}
                                 >
                                 <Button className='margin-top'>
