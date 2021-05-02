@@ -60,9 +60,9 @@ export default function Login(){
                             redirectUrl={window.location.href.split("login")[0] + "wait"}
                             authOptions={authOptions}
                             >
-                            <Button className='margin-top margin-bot'>
-                                Log In
-                            </Button>
+                                <Button className='margin-top margin-bot'>
+                                    Log In
+                                </Button>
                             </LoginButton>
 
                             </Row>

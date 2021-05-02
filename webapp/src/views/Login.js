@@ -8,6 +8,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import solid from "../static/solidcommunity.png";
 import inrupt from "../static/inrupt.png";
+import { NavLink } from "react-router-dom";
 
 export default function Login(){
 
@@ -58,16 +59,17 @@ export default function Login(){
                         </Row>
                         <Row className='margin-bot fixed'>
                             <h3>If you already have a provider</h3>
-                            <LoginButton
-                            oidcIssuer={oidcIssuer}
-                            redirectUrl={window.location.href.split("login")[0] + "wait"}
-                            authOptions={authOptions}
-                            >
-                            <Button className='margin-top'>
-                                Log In
-                            </Button>
-                            </LoginButton>
-
+                            <NavLink to="/wait">
+                                <LoginButton
+                                oidcIssuer={oidcIssuer}
+                                redirectUrl={window.location.href.split("login")[0]}
+                                authOptions={authOptions}
+                                >
+                                <Button className='margin-top'>
+                                    Log In
+                                </Button>
+                                </LoginButton>
+                            </NavLink>
                             </Row>
                 </Container>
             </div>

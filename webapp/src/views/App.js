@@ -15,6 +15,9 @@ import waitingForLogIn from "./WaitingForLogin";
 // IMPORTS FOR USER SESSION:
 import {useState} from "react";
 import {useSession} from "@inrupt/solid-ui-react/dist";
+import { SessionProvider } from "@inrupt/solid-ui-react";
+import { Provider } from "react-redux";
+import store from "../utils/locationsRedux/store";
 
 function App() {
   // Variable to check session state
@@ -26,18 +29,22 @@ function App() {
   session.onLogin( () => { setIsLoggedIn(true);});
   session.onLogout( () => { setIsLoggedIn(false);});
   return (
-    <BrowserRouter>
-      <Navbar/>
-      <Switch>
-        <Route path="/" exact component={(!isLoggedIn)? LoginForm : Welcome}/>
-        <Route path="/map" exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
-        <Route path="/about-us" exact component={AboutUs}/>
-        <Route path="/login" exact component={Login}/>
-        <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
-        <Route path="/users" exact component={(isLoggedIn)? AdministerUsers : NotLoggedIn}/>
-        <Route path="/wait" exact component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
-      </Switch>
-    </BrowserRouter>
+    <SessionProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Navbar/>
+          <Switch>
+            <Route path="/" exact component={(!isLoggedIn)? LoginForm : Welcome}/>
+            <Route path="/map" exact component={(isLoggedIn)? MapComponent : NotLoggedIn}/>
+            <Route path="/about-us" exact component={AboutUs}/>
+            <Route path="/login" exact component={Login}/>
+            <Route path="/friends" exact component={(isLoggedIn)? ManageFriends : NotLoggedIn}/>
+            <Route path="/users" exact component={(isLoggedIn)? AdministerUsers : NotLoggedIn}/>
+            <Route path="/wait" component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+    </SessionProvider>
   );
   
 }
