@@ -23,12 +23,8 @@ function AddLocationForm() {
   const { session } = useSession();
   const [locationList, setLocationList] = useState();
 
-  const [lati, setLati] = useState(0);
-  const [long, setLong] = useState(0);
   const [value, setValue] = useState("");
   const [localizationDescription, setLocalizationDescription] = useState("");
-
-
 
   /**
    * Con useEffect, le estamos diciendo a react que
@@ -90,10 +86,9 @@ function AddLocationForm() {
   };
 
   const handleSubmit = (event) => {
-    window.navigator.geolocation.getCurrentPosition((position) => {
-      setLati(position.coords.latitude);
-      setLong(position.coords.longitude);
-      
+    event.preventDefault();
+
+    window.navigator.geolocation.getCurrentPosition((position) => {      
       addLocation(value + "%t" + localizationDescription + "%t" + position.coords.latitude + "%t" + position.coords.longitude);
       resetState();
 
@@ -104,16 +99,15 @@ function AddLocationForm() {
   };
 
   const showNotification = (added, event) => {
-    let notificacion = <Notification title={"New location could not be added"} message="" icon="locationNotAdded"/>;
+    let notification = <Notification title={"New location could not be added"} message="" icon="locationNotAdded"/>;
     if (added) {
-      notificacion = <Notification title={"New location was added!"} message="" icon="locationAdded"/>;
+      notification = <Notification title={"New location was added!"} message="" icon="locationAdded"/>;
     }
 
-    ReactDOM.render(notificacion, document.getElementById("not"));
+    ReactDOM.render(notification, document.getElementById("not"));
     setTimeout(() => {
       ReactDOM.unmountComponentAtNode(document.getElementById("not"));
     }, 6000);
-    event.preventDefault();
   };
 
   const handleChangeDescription = (event) => {
@@ -127,23 +121,22 @@ function AddLocationForm() {
   return (<div>
       <div id='not' className='no'></div>
       <div id='cont' className='waiting-screen-2 card-welcome-2'> 
-          <form>
+          <form onSubmit={handleSubmit}>
               <br/>
               <label>Name of the location: 
                 <br/>
-                <Input className='marginleft' type="text" value = {value} onChange={handleChangeName}/> 
+                <Input className='marginleft' type="text" value = {value} onChange={handleChangeName} required/> 
               </label>
               <br/>
               <br/>
               <br/>
               <label>Description of the location:
               <br/>
-                <Input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription}/>
+                <Input className='marginleft' type="text" value = {localizationDescription} onChange={handleChangeDescription} required/>
               </label>
               <br/>
               <br/>
-              <Button onClick={handleSubmit} variant="contained" color="primary" className='button'>Add new location</Button>
-              
+              <Button type="submit" variant="contained" color="primary" className='button'>Add new location</Button>
           </form>
       </div>
     </div>

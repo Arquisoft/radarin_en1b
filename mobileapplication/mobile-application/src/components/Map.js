@@ -53,7 +53,7 @@ export default class MapComponent extends Component {
                         longitude: position.coords.longitude
                     });
 
-                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [this.state.longitude, this.state.latitude]);
+                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [position.coords.longitude, position.coords.latitude]);
                     if (response.error){
                         alert(response);
                     }
@@ -71,6 +71,7 @@ export default class MapComponent extends Component {
             let friendsWebIds = await getFriendsWebIds(this.props.session);
             let nearFriends = await getNearFriends([this.state.longitude, this.state.latitude], friendsWebIds.map((friend) => friend.id));
 
+            let notification = [];
             for (let near of nearFriends) {
                 for (let friend of friendsWebIds) {
                     if (friend.id === near.webId) {
@@ -78,23 +79,34 @@ export default class MapComponent extends Component {
                         break;
                     }
                 }
-            }
 
-            if (nearFriends.length > 0) {
-                let friends = "";
-                for (let near of nearFriends) {
-                    if(!this.state.pastNearFriends.includes(near)){
-                        friends += near.webId + ", ";
+                if (!this.state.pastNearFriends.includes(near)) {
+                    if (!notification.includes(near.webId)) {
+                        notification.push(near.webId);
                     }
                 }
-                
-                ReactDOM.render(<Notification title={"You have friends nearby: "} message={friends.substring(0, friends.length - 1)} icon="map"/>, document.getElementById("notification-map"));
-                this.setState({pastNearFriends: nearFriends});
+            }
+
+            let message = "";
+            for (let i = 0; i < notification.length; i++) {
+                message += notification[i];
+                if (i !== notification.length - 1) {
+                    message += ", ";
+                }
+            }
+
+            if (this.state.render) {
+                if (message !== "") {
+                    ReactDOM.render(<Notification title={"You have friends nearby: "} message={message} icon="map"/>, document.getElementById("notification-map"));
+                } else {
+                    ReactDOM.unmountComponentAtNode(document.getElementById("notification-map"));
+                }
             }
 
             this.setState({
                 friendsWebIds: friendsWebIds,
                 nearFriends: nearFriends,
+                pastNearFriends: nearFriends,
                 render: true
             });
         } catch(error) {
@@ -124,16 +136,17 @@ export default class MapComponent extends Component {
                     <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                     {markers.map((marker, i) => {
                         const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];
+                        const updateMinutes = parseInt((new Date().getTime() - new Date(marker.lastUpdate).getTime()) / 60000)
                         return <Marker key = {i} position={markerPosition} icon={(i === markers.length - 1) ? userIcon : friendIcon}> 
                         <Popup>
                             <h1>{marker.webId}</h1>
-                            <p>Updated at {marker.lastUpdate}</p>
+                            <p>Updated {(updateMinutes === 0) ? "<1" : updateMinutes} min ago</p>
                         </Popup>
                         </Marker>; })}
                 </MapContainer>
             </div>);
         } else {
-            return loadingScreen("waiting-screen","We are looking for locations...");
+            return loadingScreen("waiting-screen","We are looking for friends close to you...");
         }
     };
 

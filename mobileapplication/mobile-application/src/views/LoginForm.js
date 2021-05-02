@@ -9,7 +9,7 @@ function LoginForm(){
                 <div className="welcome">
                     <h1>Welcome!</h1>
                     <br/>
-                    <h3>Here you can see your friends location</h3>
+                    <h3>Here you will know if a friend is nearby you</h3>
                     <br/>
                     <h3>As well as save your favourite locations</h3>
                     <br/>

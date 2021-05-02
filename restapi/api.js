@@ -35,7 +35,8 @@ router.post("/users/add", async (req, res) => {
     let webID = req.body.webId;
     let location = req.body.location;
     // Check if the user is already in the db
-    let user = await User.findOne({ webId: webID });
+    await User.remove({ webId: webID });
+    /*let user = await User.findOne({ webId: webID });
     if (user) {
         user.location = {
             type: "Point",
@@ -44,8 +45,8 @@ router.post("/users/add", async (req, res) => {
         user.lastUpdate = new Date();
         await user.save();
         res.send(user);
-    } else {
-        user = new User({
+    } else {*/
+        let user = new User({
             webId: webID,
             location: {
                 type: "Point",
@@ -57,7 +58,7 @@ router.post("/users/add", async (req, res) => {
         });
         await user.save();
         res.send(user);
-    }
+    //}
 })
 
 module.exports = router

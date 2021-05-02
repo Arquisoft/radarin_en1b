@@ -58,9 +58,13 @@ export default function map(latii,longi,markersi,friendMarkersi,sessioni,dispatc
                 const markerPosition = [friendMarker.lat, friendMarker.lng];
                 return (<Marker data-testid={"markerFriend "+index} position={markerPosition} icon={iconPerson}>
                     <Popup>
-                        <h1>{friendMarker.author} Location:</h1>
                         <h1>{friendMarker.name}</h1>
                         <p>{friendMarker.comment}</p>
+                        <div className='center-button'>
+                            <Button disabled data-testid='button'>
+                                {friendMarker.author}
+                            </Button>
+                        </div>
                     </Popup>
                 </Marker>);
             });

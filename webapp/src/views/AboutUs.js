@@ -12,7 +12,7 @@ export default function AboutUs(){
       <div className='margin-top'>
         <h1>About us</h1>
         <br/>
-        <p>We are the Radarin team, a team composed of 6 undergraduate students of Software Engineers:</p>
+        <p>We are the Radarin team, a team composed of 6 undergraduate students of Software Engineering:</p>
         <Container fluid="md" >
                       <Row className='margin-bot'>
                           <Col ><div><img src={alberto} className='imagen' alt=''/></div><a href="https://github.com/uo266536" target="_blank" rel="noreferrer" className='decoration-none' alt="Image">Alberto Díez Bajo</a></Col>
@@ -25,9 +25,9 @@ export default function AboutUs(){
                           <Col><div><img src={luis} className='imagen' alt=''/></div><a href="https://github.com/luisfesu" target="_blank" rel="noreferrer" className='decoration-none' alt="Image">Luis Antonio Fernández Suárez</a></Col>
                       </Row>
         </Container>
-        <p>Together and with the help of our teacher Pablo González González have designed and developed Radarin.</p>
-        <p>Radarin is an application developed using React, SOLID, Docker and deployed with Heroku.</p>
-        <p>It is an application based on the use of location recording using PODs,where you can see yours and your friends locations</p>
+        <p>Together and with the help of our teacher Pablo González González have designed and developed Radarin</p>
+        <p>Radarin is an application developed using React, SOLID, Docker and deployed with Heroku</p>
+        <p>It is an application based on the use of location recording using PODs, where you can see yours and your friends' locations</p>
         <p>You can read the documentation <a href="https://radarinen1bwebapp.herokuapp.com/docs/" target="_blank" rel="noreferrer">here</a></p>
       </div>
     </div>;

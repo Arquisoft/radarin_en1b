@@ -18,12 +18,13 @@ export async function getOrCreateLocationList(containerUri, isMainUser, fetch) {
     const locationsList = await getSolidDataset(indexUrl, { fetch });
     return locationsList;
   } catch (error) {
-    if (error.statusCode === 404 && isMainUser) {
+    if (error.statusCode === 404) {
+      if (isMainUser) {
       /**
-* saveSolidDatasetAt: takes a URI as first param (which is where our dataset
-* will be saved), the dataset in question as second param (in this case a new, 
-* empty dataset), and the fetch function.
-*/
+       * saveSolidDatasetAt: takes a URI as first param (which is where our dataset
+       * will be saved), the dataset in question as second param (in this case a new, 
+       * empty dataset), and the fetch function.
+       */
       const locationsList = await saveSolidDatasetAt(
         indexUrl,
         /**
@@ -35,6 +36,9 @@ export async function getOrCreateLocationList(containerUri, isMainUser, fetch) {
         }
       );
       return locationsList;
+      } else {
+        throw error;
+      }
     }
   }
 }

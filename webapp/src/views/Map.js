@@ -9,8 +9,8 @@ import parseLocations from "../components/ParseLocations.js";
 import loadingScreen from "./LoadingScreen";
 
 function MapComponent() {
-    const [lati, setLati] = useState(0.0);
-    const [long, setLong] = useState(0.0);
+    const [lati, setLati] = useState(0);
+    const [long, setLong] = useState(0);
     const [show, setShow] = useState(false);
     const { session } = useSession();
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function MapComponent() {
         friendMarkers = locations[1];
         return map(lati,long,markers,friendMarkers,session,dispatch);
     }else{
-        return loadingScreen("waiting-screen","Radarin Manager is searching for locations...");
+        return loadingScreen("waiting-screen","We are searching for favourite locations...");
     }
 }
 export default MapComponent;
