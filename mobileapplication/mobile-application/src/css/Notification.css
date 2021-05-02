@@ -8,6 +8,16 @@
     ease;
 }
 
+.notification-container2 {
+  font-size: 16px;
+  position: absolute;
+  z-index: 999999;
+  animation:
+    in-top
+    7s
+    ease;
+}
+
 .hide-notification {
   display: flex;
   margin-top: 5px;
@@ -80,5 +90,17 @@
   100% {
     transform: translateY(-100%);
     opacity: 0%;
+  }
+}
+
+@keyframes in-top {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0%;
+  }
+
+  30% {
+    transform: translateY(0);
+    opacity: 100%;
   }
 }

@@ -20,7 +20,7 @@ export default class Notification extends Component {
         }
         return (
             <div id="notification-for-the-map" className="hide-notification">
-                <div id="notification-container" className="notification-container">
+                <div id="notification-container" className={this.props.animation}>
                         <div className="notification">
                             <div className="notification-image">
                                 <img src={img} className="margin-img" alt="" />
