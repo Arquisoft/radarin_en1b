@@ -1,4 +1,4 @@
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import LoginForm from "../views/LoginForm";
 import Navbar from "../views/Navbar";
 import App from "../views/App";
