@@ -14,10 +14,6 @@ test("root div", () => {
         require("../index.js");
         expect(ReactDOM.render).toHaveBeenCalledWith(
             <React.StrictMode>
-                <SessionProvider>
-                    <Provider store={store}>
                         <App />
-                    </Provider>
-                </SessionProvider>
             </React.StrictMode>, div);
 });
