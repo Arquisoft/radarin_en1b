@@ -100,7 +100,7 @@ test("renders NotLoggedIn", () => {
   render(<NotLoggedIn />);
   const linkElement = screen.getByText(/You are not logged in!/i);
   expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText(/To be able to view this you need to be logged in!/i);
+  const linkElement2 = screen.getByText(/To be able to view this you need to be logged in/i);
   expect(linkElement2).toBeInTheDocument();
 });
 
@@ -114,7 +114,7 @@ test("renders About us", () => {
   expect(linkElement3).toBeInTheDocument();
   const linkElement4 = screen.getByText(/Javier Carrillo González/i);
   expect(linkElement4).toBeInTheDocument();
-  const linkElement5 = screen.getByText(/Radarin is an application developed using React, SOLID, Docker and deployed with Heroku./i);
+  const linkElement5 = screen.getByText(/Radarin is an application developed using React, SOLID, Docker and deployed with Heroku/i);
   expect(linkElement5).toBeInTheDocument();
 });
 
@@ -130,7 +130,7 @@ test("renders map", async() => {
   
   fireEvent.click(linkElement2);
   
-  const linkElement1 = screen.getByText("Radarin Manager is searching for locations...");
+  const linkElement1 = screen.getByText("We are searching for favourite locations...");
   expect(linkElement1).toBeInTheDocument();
 
 });
@@ -265,6 +265,6 @@ test("renders welcome", () => {
 test("renders waitingForLogin", () => {
   render(waitingForLogIn());
 
-  const welcome = screen.getByText("Waiting for Provider approval...");
+  const welcome = screen.getByText("Waiting for provider approval...");
   expect(welcome).toBeInTheDocument();
 });
