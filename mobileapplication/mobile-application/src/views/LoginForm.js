@@ -7,7 +7,8 @@ function LoginForm(){
         <div className="App">
             <div className=''>
                 <div className="welcome">
-                    <h1>Welcome!</h1>
+                    <h1>Radarin Radar</h1>
+                    <h3>"Redefining Social Networks"</h3>
                     <br/>
                     <h3>Here you can see your friends location</h3>
                     <br/>
