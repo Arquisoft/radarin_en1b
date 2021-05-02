@@ -137,7 +137,19 @@ test("renders map", async() => {
 
 //LOG IN THEN GO TO MAP
 test("renders login", () => {
-  render(<Login />);
+  render(<BrowserRouter>
+          <Navbar/>
+          <Login />
+          <Switch>
+            <Route path="/" exact component={LoginForm}/>
+            <Route path="/map" exact component={MapComponent}/>
+            <Route path="/about-us" exact component={AboutUs}/>
+            <Route path="/login" exact component={Login}/>
+            <Route path="/friends" exact component={ManageFriends}/>
+            <Route path="/wait" component={waitingForLogIn}/>
+          </Switch>
+        </BrowserRouter>
+  );
 
   const comboBox = screen.getByTestId("combo");
   expect(comboBox).toBeInTheDocument();
