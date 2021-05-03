@@ -81,7 +81,7 @@ router.post("/users/banned", async (req, res) => {
 router.get("/users/normal", async (req, res) => {
     const users = await User.find({
        role: "NORMAL"
-    });
+    }).sort("webId");
 	res.send(users);
 });
 
