@@ -239,3 +239,58 @@ Accepted.
 Consequences::
 
 The web application received a major change due to the implementation of Redux, but after finally implementing it, the friends and their locations were stored in the Redux session which allowed us to take such information and export it into the map.
+
+=== Gatling for loading tests
+
+Context::
+
+It was not a requirement to test how the application works when an important amount of people were navigating through the different views of our application, but we wanted to do it.
+
+Decision::
+
+This was done because we wanted to optimize our applications as much as we could, because we were aware that at the starting point it took a lot to do all the tasks, such as charging the map component.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+The web application received a modification and some refactoring, until we got the results expected when 100 users where navigating through all the web and adding locations to their pods at the same time, obtaining really better results than when we started. By the way, this results can be seen in the project, in gatling's directories.
+
+=== Jest for unitary tests
+
+Context::
+
+We used jest for the unitary tests, which is a simple JavaScript testing framework. We wrote a test for each class developed. The first thing was being familiarized with the methods this framwork had, as it was a lot. After some documentation, the process was straightforward, write tests and check the result. However, we ran into some complications. 
+
+Decision::
+
+The first one was how to tell the application our current location, for which we had to research a way to mock the geolocation to send to the app, to place us somewhere in the map. However this did not solve the problem of having to grant the geolocation permissions, which we later found a way of mocking it as well (eventhough it didn't work for us). The second problem was the session, as we were containing the session as an attribute when signing in, when using jest, the session element was "anonymous", which caused a lot of problems as it was used to fetch resources. This was almost resolved by mocking the Session, but fetch as it is a function, could not be mocked.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+We have to be grateful with those tests, because we were able to solve both problems presented in the *decision* point, that most probably is that we would not be able to be aware of them until product presentation.
+
+=== E2E for automated tests
+
+Context::
+
+We used E2E for the automated tests, which simulate the behaviour of a real user, in order to cover all those topics that cannot be covered by integration or unitary tests. 
+E2E stands for End To End because the whole product is tested ensuring the correct application flow.
+
+Decision::
+
+As we explained in the context, this tests had to be done to ensure that everything was working as we expected, that is, as we stated in the flow diagram in topic 6 of this documentation. If this was not a mandatory point in the task, we would have ended implementing them too.
+
+Status::
+
+Accepted.
+
+Consequences::
+
+Again, this tests helped as to discover some bugs that were fixed, until the application flow was strictly the same as the one stated in our previous diagrams.
