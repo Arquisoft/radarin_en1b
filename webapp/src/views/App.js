@@ -10,7 +10,6 @@ import ManageFriends from "./ManageFriends";
 import AdministerUsers from "./AdministerUsers";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login";
-import waitingForLogIn from "./WaitingForLogin";
 import Admin from "./Admin";
 import Banned from "./Banned";
 import { addUserOrUpdateBanned, isAdmin, isBanned } from "../api/api";
@@ -31,23 +30,15 @@ function App() {
   // Variables for log in: 
   const {session} = useSession();
 
-  session.onLogin(async () => {
-    setIsLoggedIn(true);
-    let ban = await isBanned(session.info.webId);
-    setBanned(ban);
-    await addUserOrUpdateBanned(session.info.webId, [0, 0], ban);
-    let adm = await isAdmin(session.info.webId);
-    setAdmin(adm);
-  });
-  session.onLogout(() => {
-    setIsLoggedIn(false);
-  });
+  session.onLogin(async () => {setIsLoggedIn(true); setBanned(await isBanned(session.info.webId)); await addUserOrUpdateBanned(session.info.webId, [0, 0], banned); setAdmin(await isAdmin(session.info.webId));});
+
+  session.onLogout(() => {setIsLoggedIn(false);});
 
   return (
     <SessionProvider>
       <Provider store={store}>
         <BrowserRouter>
-          <Navbar/>
+          <Navbar admin={admin}/>
           <Switch>
             <Route path="/" exact component={(!isLoggedIn)? LoginForm : Welcome}/>
             <Route path="/map" exact component={(!isLoggedIn)? NotLoggedIn : (banned)? Banned : MapComponent}/>
@@ -55,7 +46,6 @@ function App() {
             <Route path="/login" exact component={Login}/>
             <Route path="/friends" exact component={(!isLoggedIn)? NotLoggedIn : (banned)? Banned : ManageFriends}/>
             <Route path="/users" exact component={(!isLoggedIn)? NotLoggedIn : (!admin)? Admin : AdministerUsers}/>
-            <Route path="/wait" component={(!isLoggedIn)? waitingForLogIn : Welcome}/>
           </Switch>
         </BrowserRouter>
       </Provider>

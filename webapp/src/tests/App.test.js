@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import LoginForm from "../views/LoginForm";
 import Navbar from "../views/Navbar";
 import App from "../views/App";
-import { BrowserRouter,Switch,Route } from "react-router-dom";
+import { BrowserRouter,Switch,Route, NavLink } from "react-router-dom";
 import Welcome from "../views/Welcome";
 import MapComponent from "../views/Map";
 import AboutUs from "../views/AboutUs";
@@ -27,6 +27,7 @@ import { getFriends } from "../utils/friendsRedux/friendsSlice";
 import { locationsSlice } from "../utils/locationsRedux/getLocationsSlice";
 import waitingForLogIn from "../views/WaitingForLogin";
 import AdministerUsers from "../views/AdministerUsers";
+import ListUsers from "../components/ListUsers";
 jest.setTimeout(30000);
 
 function loginSolid(credentials) {
@@ -270,19 +271,60 @@ test("renders waitingForLogin", () => {
   expect(welcome).toBeInTheDocument();
 });
 
+test("list users", () => {
+  const map = new Map();
+
+  map.set("https://akaamerican.inrupt.net/profile/card#me",true);
+  map.set("https://luisfesu.inrupt.net/profile/card#me",false);
+  render(ListUsers(map,0,undefined));
+  
+  const name = screen.getByText("akaamerican");
+  expect(name).toBeInTheDocument();
+
+  const unban = screen.getByText("Unban");
+  expect(unban).toBeInTheDocument();
+
+  const name2 = screen.getByText("luisfesu");
+  expect(name2).toBeInTheDocument();
+
+  const ban = screen.getByText("Ban");
+  expect(ban).toBeInTheDocument();
+});
+
 test("renders admin", () => {
-  render(app);
+  render(<BrowserRouter>
+         <Provider store={store}>
+         <ul>
+           <li key = {0}>
+              <NavLink to="/users">
+                  Administer users
+              </NavLink>
+          </li>
+          <li key = {1}>
+              <NavLink to="/home">
+                  Home
+              </NavLink>
+          </li>
+        </ul>
+        <Switch>
+         <Route path="/users" exact component={AdministerUsers}/>
+         <Route path="/" exact component={LoginForm}/>
+       </Switch>
+       </Provider>
+     </BrowserRouter>
+
+      );
 
   const linkElement = screen.getByText(/Home/i);
   expect(linkElement).toBeInTheDocument();
   fireEvent.click(linkElement);
 
-  loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
+  loginSolid({idp:"https://inrupt.net/", username:"asw2021en1b", password: "Arquisoft2021."});
 
   const linkElement2 = screen.getByText("Administer users");
   expect(linkElement2).toBeInTheDocument();
   fireEvent.click(linkElement2);
 
-  const linkElement1 = screen.getByText("Invalid URL: undefined");
+  const linkElement1 = screen.getByText("We are searching for the Radarin users...");
   expect(linkElement1).toBeInTheDocument();
 });

@@ -166,3 +166,8 @@ hr.loginright {
 .image-combo {
   height: 50px;
 }
+
+.margin-top-card{
+  margin-top: 5px;
+  border-radius: 30px !important;
+}

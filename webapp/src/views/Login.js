@@ -59,7 +59,7 @@ export default function Login(){
                         </Row>
                         <Row className='margin-bot fixed'>
                             <h3>If you already have a provider</h3>
-                            <NavLink to="/wait">
+                            <NavLink to="/">
                                 <LoginButton
                                 oidcIssuer={oidcIssuer}
                                 redirectUrl={window.location.href.split("login")[0]}
