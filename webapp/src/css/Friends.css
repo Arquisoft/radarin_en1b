@@ -34,6 +34,13 @@
   top: -15%;
 }
 
+.buttons-friend-card {
+  text-align: center;
+  float: right;
+  width: 40%;
+  position: relative;
+}
+
 .button {
   border-radius: 25px;
   font-size: 18px;

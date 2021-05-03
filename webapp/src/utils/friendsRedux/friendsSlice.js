@@ -1,9 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import getFriendsWebIds from "../solidAccessing/GetFriendsFromPod";
+import { isBanned } from "../../api/api";
 
 export const getFriends = createAsyncThunk("friends/getFriends", async (session) => {
+  let notBanned = [];
   let friendWebIds = await getFriendsWebIds(session);
-  return friendWebIds;
+  for (let friend of friendWebIds) {
+    if (!await isBanned(friend.id)) {
+      notBanned.push(friend);
+    }
+  }
+  return notBanned;
 });
 
 export const friendsSlice = createSlice({

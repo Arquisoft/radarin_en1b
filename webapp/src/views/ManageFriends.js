@@ -6,7 +6,6 @@ import "../css/Friends.css";
 import loadingScreen from "./LoadingScreen";
 import listFriends from "../components/ListFriends";
 
-
 function ManageFriends() {
     const dispatch = useDispatch();
     const { session } = useSession();
@@ -27,13 +26,15 @@ function ManageFriends() {
 
     return (
             <div className='main'>
-                <h1>Manage Friends</h1>
+                <h1>Manage friends</h1>
                 <p id='texto'>Here you are able to see your friends</p>
                 <p>Friend list:</p>
                 {statusFriends !== "fulfilled"? 
                     loadingScreen("margin-top-friends","We are searching for your friends...")
-                : 
+                :totalFriends.length !== 0?
                     listFriends(totalFriends)
+                :
+                    <p>There are no friends</p>
                 }
             </div>);
     
