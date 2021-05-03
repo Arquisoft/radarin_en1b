@@ -39,7 +39,7 @@ export default class MapComponent extends Component {
         this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
-        }, 10000);
+        }, 30000);
     }
 
     obtainUserLocation() {
