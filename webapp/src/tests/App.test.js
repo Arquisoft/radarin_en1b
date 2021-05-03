@@ -28,6 +28,8 @@ import { locationsSlice } from "../utils/locationsRedux/getLocationsSlice";
 import waitingForLogIn from "../views/WaitingForLogin";
 import AdministerUsers from "../views/AdministerUsers";
 import ListUsers from "../components/ListUsers";
+import Admin from "../views/Admin";
+import Banned from "../views/Banned";
 jest.setTimeout(30000);
 
 function loginSolid(credentials) {
@@ -72,8 +74,6 @@ test("renders navbar not logged in", () => {
   const manage = screen.getByText(/Manage Friends/i);
   expect(manage).toBeInTheDocument();
 
-  const administer = screen.getByText(/Administer users/i);
-  expect(administer).toBeInTheDocument();
 });
 
 test("renders NotLoggedIn", () => {
@@ -266,6 +266,20 @@ test("renders waitingForLogin", () => {
 
   const welcome = screen.getByText("Waiting for provider approval...");
   expect(welcome).toBeInTheDocument();
+});
+
+test("renders Admin", () => {
+  render(Admin());
+
+  const sorry = screen.getByText("Sorry, this is an admin view :(");
+  expect(sorry).toBeInTheDocument();
+});
+
+test("renders Banned", () => {
+  render(Banned());
+
+  const sorry = screen.getByText("Sorry, you are banned :(");
+  expect(sorry).toBeInTheDocument();
 });
 
 test("list users", () => {
