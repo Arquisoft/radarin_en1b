@@ -101,13 +101,6 @@ Mapping of Building Blocks to Infrastructure::
 _Mobile phone and Windows devices will be the user's devices that will access the Application, passing through our server, where the application is deployed. Then, some data will be read from our database, and some other will be asked to the user to be shared and processed by the app, but not stored in our registries._
 
 
-=== Infrastructure Level 2
 
-[role="arc42help"]
-****
-Here you can include the internal structure of (some) infrastructure elements from level 1.
-
-Please copy the structure from level 1 for each selected element.
-****
 
 

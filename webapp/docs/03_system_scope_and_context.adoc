@@ -7,7 +7,7 @@ In the business context of Radarin we can distinguish five parts.
 These are:
 
 * Web Main App
-* Main App Database
+* Main Database
 * Mobile App
 * User's POD 
 * User 
@@ -34,8 +34,9 @@ previous diagram.
 |===
 |Role/Name|Description
 | Main Web App | Users access their different localizations and add friends through this app.
-| Mobile App | Users can see their friends on a map and choose to actually share their location with their friends on this version of the app.
-| Main Database | On this database we can store the last location and its timestamp for the different users.
+| Mobile App | Users can see their friends on a map and choose to actually share their location with their friends on this version of the app. They are also able to add their favorite locations
+to a file in their respective PODs.
+| Main Database | On this database we can store the last location and its timestamp for the different users. As our main goal is to build a decentralized App, you can see that minimal information about our users is stored.
 | Users | Users will interact with the mobile or the web app to access to certain functions of the system
 | User pods | User Pods will belong to a certain user, and therefore will store things such like the friends of a user as well or its saved locations. They must be managed by the user itself. Changes on them require special permission from the user.
 |===

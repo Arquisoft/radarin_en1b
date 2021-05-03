@@ -1,8 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { SessionProvider } from "@inrupt/solid-ui-react";
-import { Provider } from "react-redux";
-import store from "../utils/locationsRedux/store";
 import "@testing-library/jest-dom/extend-expect";
 import "../css/index.css";
 import App from "../views/App";

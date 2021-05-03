@@ -31,35 +31,51 @@ There are many notations for describing scenarios, e.g.
 ****
 This section will be in contrast with the last, as we will cover here the dynamic behaviour and how users interact between them.
 
-=== Alice wants to know if his friends are near her.
+=== Alice wants to know if his friends are near her. (First execution)
 
 
 * _Today, Alice is bored at home, but she wants to do something, taking into account COVID-19 restrictions.
     As a consequence of these restrictions, she cannot leave her town, and wants to know if some of his friends are near her._
 * _As you can see in the diagram below, at first Alice has to authenticate and allow sharing his location in order to find his mutuals between a proximity radius.
-    Once this is done, his App (the instance of our App downloaded in her mobile) asks Alice's Pod for the list of her friends, to be shown to Alice in the radar just in case they are near her.
-    Then, Alice's last location is shared to the server where it is going to be stored, and it is a minimum piece of information, as the majority of the data will be in every user's Pod.
-    After this, Alice's Pod returns to Alice's App the information needed of his friends, and the App itself computes the distance to her online friends, and discard those that are offline.
-    Finally, Alice receives the radar, with only those friends that are online._
+    Once this is done, the mobile application will ask Alice of she wants to share her location with her mutuals. In this case, she wants, and as a result, her location will be stored in the database as the last location (in the database only the last location of a user with its timestamp is stored), and the app will query the database to get those friends that are near her (the necessary conditions for a person to be near of other are: having updated the location at least 15 minutes from the request time, and being in a radius of one kilometer). After this, the database will retrieve the users near Alice, showing a notification in the screen, and adding several markers in the map. (This process will be repeated every 10 seconds, even if the user has the web in background)_
 
 [plantuml,"Sequence diagram 1",png]
 ----
 actor Alice
 entity MAApp as "Alice's Mobile App"
 database Pod1 as "Alice's Pod"
-database Server as "Web Server"
+database Server as "Main Database"
 Alice --> MAApp: Authenticates and allows to share her location
 MAApp --> Pod1: Accesses the list of friends
+MAApp --> Server: Sends to the database the list of friends
 MAApp --> Server: Sends the last location
-MAApp <-- Pod1: Retrieves the information needed
-MAApp <-- MAApp: Computes and manages distances to show in radar
+Server <-- Server: Manages distances and times
+MAApp <-- Server: Retrieves locations of the friends
 Alice <-- MAApp: The radar is shown
 ----
+
+=== Alice wants to know if his friends are near her. (Following executions)
+* _In this case, we have the same exact context as in the previous use case, but this time, as Alice has introduced her crendentials previously, some steps will be skipped._
+* _It is the same context. Alice was already authenticated, and allowed to share her location, but this time, the mobile app will send directly her location to the database._
+
+[plantuml,"Sequence diagram 2",png]
+----
+actor Alice
+entity MAApp as "Alice's Mobile App"
+database Pod1 as "Alice's Pod"
+database Server as "Main Database"
+MAApp --> Server: Sends to the database the list of friends
+MAApp --> Server: Sends the last location
+Server <-- Server: Manages distances and times
+MAApp <-- Server: Retrieves locations of the friends
+Alice <-- MAApp: The radar is shown
+----
+
 === Alice wants to know if his friends are near her, but she doesn't have Internet Connection.
 * _In this case, we have the same exact context as in the previous use case, but this time, Alice went for a walk with her dog to the mountain, and at a certain point of the walk, she lost the connection to the Internet._
 * _It is the same context. Alice was already authenticated, and allowed to share her location, but with after some time, the server has not received any recent location (more recent than a given amount of time), and, as a consequence, she is not able to see the radar._
 
-[plantuml,"Sequence diagram 2",png]
+[plantuml,"Sequence diagram 3",png]
 ----
 actor Alice
 entity MAApp as "Alice's Mobile App"
@@ -73,4 +89,20 @@ MAApp <-- MAApp: It is not able to compute what is needed
 Alice <-- MAApp: An alert is shown
 ----
 
+=== Alice wants to save her current location as a favourite one
+* _Alice has just visited one interesting location and she wants to save it in her favourite locations so her friends can see it in the future._
+* _In this context, Alice is already authenticated in the application and she access the AddLocationForm in the mobile application. The application will use the geolocation API to obtain the current location, and if the location is retrived properly, it will be stored in Alice's POD. In any case, the application will inform Alice wether the location has been saved or not_
 
+[plantuml, "Sequence diagram 3", png]
+----
+actor Alice
+entity MAApp as "AddLocationForm"
+participant Geolocation as "Navigator.geolocation"
+database Pod1 as "Alice's Pod"
+
+Alice --> MAApp: Ask to save the current Location
+MAApp --> Geolocation: Ask for the current Location of the device
+MAApp <-- Geolocation: Return location 
+MAApp --> Pod1: store location if returned
+MAApp --> Alice: Notify changes
+----
