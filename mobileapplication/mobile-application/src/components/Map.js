@@ -39,7 +39,7 @@ export default class MapComponent extends Component {
         this.obtainUserLocation();
         setInterval(() => {
             this.obtainUserLocation();
-        }, 30000);
+        }, 10000);
     }
 
     obtainUserLocation() {
@@ -90,7 +90,7 @@ export default class MapComponent extends Component {
 
             if (this.state.render) {
                 if (message !== "") {
-                    ReactDOM.render(<Notification title={"You have friends nearby: "} message={message} icon="map"/>, document.getElementById("notification-map"));
+                    ReactDOM.render(<Notification title={"You have friends nearby: "} message={message} icon="map" type='map' />, document.getElementById("notification-map"));
                 } else {
                     ReactDOM.unmountComponentAtNode(document.getElementById("notification-map"));
                 }
@@ -123,7 +123,7 @@ export default class MapComponent extends Component {
             const coordinates = [this.state.latitude, this.state.longitude];
             return (<div className="map">
                 <MapContainer center={coordinates} zoom={15} scrollWheelZoom={true} className="map">
-                    <div id="notification-map"></div>
+                    <div id="notification-map" className='not'></div>
                     <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                     {markers.map((marker, i) => {
                         const markerPosition = [marker.location.coordinates[1], marker.location.coordinates[0]];

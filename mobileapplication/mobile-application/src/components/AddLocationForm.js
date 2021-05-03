@@ -99,9 +99,9 @@ function AddLocationForm() {
   };
 
   const showNotification = (added, event) => {
-    let notification = <Notification title={"New location could not be added"} message="" icon="locationNotAdded"/>;
+    let notification = <Notification title={"New location could not be added"} message="" icon="locationNotAdded" animation='notification-container'/>;
     if (added) {
-      notification = <Notification title={"New location was added!"} message="" icon="locationAdded"/>;
+      notification = <Notification title={"New location was added!"} message="" icon="locationAdded" animation='notification-container'/>;
     }
 
     ReactDOM.render(notification, document.getElementById("not"));
