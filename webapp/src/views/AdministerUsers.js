@@ -25,7 +25,6 @@ function AdministerUsers() {
                     <p>There are no users</p>
                 }
             </div>);
-
 }
 export default AdministerUsers;
 
