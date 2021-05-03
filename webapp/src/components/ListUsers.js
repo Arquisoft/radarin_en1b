@@ -1,5 +1,4 @@
 import { Col, Container, Row } from "react-bootstrap";
-import userPhoto from "../static/user.svg";
 import { addUserOrUpdateBanned } from "../api/api";
 export default function ListUsers(normalUsers, render, setRender){
     return <Container className="manage-friends">

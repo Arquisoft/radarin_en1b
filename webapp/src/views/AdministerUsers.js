@@ -9,13 +9,16 @@ function AdministerUsers() {
     const [normalUsers, setNormalUsers] = useState(null);
     const [render, setRender] = useState(0);
 
-    useEffect(async () => {
-        let users = await getNormalUsers();
-        let map = new Map();
-        for (let user of users) {
-            map.set(user.webId, user.banned);
+    useEffect(() => {
+        async function fetchUsers() {
+            let users = await getNormalUsers();
+            let map = new Map();
+            for (let user of users) {
+                map.set(user.webId, user.banned);
+            }
+            setNormalUsers(map);
         }
-        setNormalUsers(map);
+        fetchUsers();
     }, [render]);
 
     return (
