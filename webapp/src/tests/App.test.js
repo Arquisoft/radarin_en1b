@@ -56,87 +56,72 @@ const app = ( <React.StrictMode>
 const session = new Session();
 session.info = {isLoggedIn: true ,sessionId: "d7995326-de7b-445d-830b-03c80b7c24b5" ,webId: "https://radarinen1btesting.inrupt.net/profile/card#me"};
 
-test("renders learn react link", () => {
-  render(<BrowserRouter><LoginForm /><Route path="/login" exact component={Login}/></BrowserRouter>);
-  
-  const linkElement = screen.getByText(/Welcome!/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-test("renders navbar logged in", () => {
-  render(app);
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText(/Map/i);
-  expect(linkElement2).toBeInTheDocument();
-  const linkElement3 = screen.getByText(/About us/i);
-  expect(linkElement3).toBeInTheDocument();
-});
-
 test("renders navbar not logged in", () => {
-  render(app);
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText(/Map/i);
-  expect(linkElement2).toBeInTheDocument();
-  const linkElement3 = screen.getByText(/About us/i);
-  expect(linkElement3).toBeInTheDocument();
-});
-
-test("renders app home login", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-  
-});
 
-test("renders app map no login", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-});
+  const home = screen.getByText(/Home/i);
+  expect(home).toBeInTheDocument();
 
+  const map = screen.getByText(/Map/i);
+  expect(map).toBeInTheDocument();
+
+  const about = screen.getByText(/About us/i);
+  expect(about).toBeInTheDocument();
+
+  const manage = screen.getByText(/Manage Friends/i);
+  expect(manage).toBeInTheDocument();
+
+  const administer = screen.getByText(/Administer users/i);
+  expect(administer).toBeInTheDocument();
+});
 
 test("renders NotLoggedIn", () => {
   render(<NotLoggedIn />);
-  const linkElement = screen.getByText(/You are not logged in!/i);
-  expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText(/To be able to view this you need to be logged in/i);
-  expect(linkElement2).toBeInTheDocument();
+
+  const h1 = screen.getByText(/You are not logged in!/i);
+  expect(h1).toBeInTheDocument();
+
+  const h2 = screen.getByText(/To be able to view this you need to be logged in/i);
+  expect(h2).toBeInTheDocument();
 });
 
 test("renders About us", () => {
   render(<AboutUs />);
-  const linkElement = screen.getByText(/About us/i);
-  expect(linkElement).toBeInTheDocument();
-  const linkElement2 = screen.getByText(/Alberto Díez Bajo/i);
-  expect(linkElement2).toBeInTheDocument();
-  const linkElement3 = screen.getByText(/Alexander López Méndez/i);
-  expect(linkElement3).toBeInTheDocument();
-  const linkElement4 = screen.getByText(/Javier Carrillo González/i);
-  expect(linkElement4).toBeInTheDocument();
-  const linkElement5 = screen.getByText(/Radarin is an application developed using React, SOLID, Docker and deployed with Heroku/i);
-  expect(linkElement5).toBeInTheDocument();
+
+  const h1 = screen.getByText(/About us/i);
+  expect(h1).toBeInTheDocument();
+
+  const alberto = screen.getByText(/Alberto Díez Bajo/i);
+  expect(alberto).toBeInTheDocument();
+
+  const alex = screen.getByText(/Alexander López Méndez/i);
+  expect(alex).toBeInTheDocument();
+
+  const javier = screen.getByText(/Javier Carrillo González/i);
+  expect(javier).toBeInTheDocument();
+  
+  const radarin = screen.getByText(/Radarin is an application developed using React, SOLID, Docker and deployed with Heroku/i);
+  expect(radarin).toBeInTheDocument();
 });
 
-//LOG IN THEN GO TO MAP
-test("renders map", async() => {
+test("renders map view", () => {
   render( app );
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
 
+  const home = screen.getByText(/Home/i);
+  expect(home).toBeInTheDocument();
+
+  //Log in
   loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
 
-  const linkElement2 = screen.getByText(/Map/i);
+  const map = screen.getByText(/Map/i);
   
-  fireEvent.click(linkElement2);
+  fireEvent.click(map);
   
-  const linkElement1 = screen.getByText("We are searching for favourite locations...");
-  expect(linkElement1).toBeInTheDocument();
+  const searching = screen.getByText("We are searching for favourite locations...");
+  expect(searching).toBeInTheDocument();
 
 });
 
-//LOG IN THEN GO TO MAP
 test("renders login", () => {
   render(<BrowserRouter>
           <Navbar/>
@@ -154,68 +139,77 @@ test("renders login", () => {
 
   const comboBox = screen.getByTestId("combo");
   expect(comboBox).toBeInTheDocument();
+
   fireEvent.click(comboBox);
 
-  const but = screen.getByText("Register for a SOLID POD");
-  expect(but).toBeInTheDocument();
-  fireEvent.click(but);
+  const button = screen.getByText("Register for a SOLID POD");
+  expect(button).toBeInTheDocument();
+
+  fireEvent.click(button);
   
-  //const inrupt = screen.getAllByText("Inrupt")[0];
-  //fireEvent.click(inrupt);
 });
 
 test("renders manage friends", async () => {
   render(app);
 
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-  fireEvent.click(linkElement);
+  const home = screen.getByText(/Home/i);
+  expect(home).toBeInTheDocument();
+
+  fireEvent.click(home);
 
   loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
 
-  const linkElement2 = screen.getByText("Manage friends");
-  expect(linkElement2).toBeInTheDocument();
-  fireEvent.click(linkElement2);
+  const manage = screen.getByText("Manage friends");
+  expect(manage).toBeInTheDocument();
+  fireEvent.click(manage);
 
-  const linkElement1 = screen.getByText("Invalid URL: undefined");
-  expect(linkElement1).toBeInTheDocument();
+  // Problem with mocking session
+  const error = screen.getByText("Invalid URL: undefined");
+  expect(error).toBeInTheDocument();
   
 });
 
 test("renders Notification", async() => {
-    render(<div><Notification title="this is a notification" message="hello" img="map"/></div>);
-    try{
-      const title = screen.getByText("this is a notification");
-      expect(title).toBeInTheDocument();
-      const message = screen.getByText("hello");
-      expect(message).toBeInTheDocument();
-    } catch {
-      const o = null;
-    }
-    await new Promise((r) => setTimeout(r, 4000));
+  render(<div><Notification title="this is a notification" message="hello" img="map"/></div>);
 
+  const title = screen.getByText("this is a notification");
+  expect(title).toBeInTheDocument();
+
+  const message = screen.getByText("hello");
+  expect(message).toBeInTheDocument();
+    
 });
 
-test("parseLocations", async() => {
-  const locations =[{ id: "https://radarinen1btesting.inrupt.net/profile/card#me", name: "You", localizaciones:[{comment: "City of Benvante",lat: "42.1082000",
-  lng: "-5.6774000",name: "Benavente"}] },{id: "https://uo271913.inrupt.net/profile/card#me", name: "Héctor", localizaciones:[{comment: "City of Benvante",lat: "42.1082000",
-  lng: "-5.6774000",name: "Benavente"}]}];
-  const result=[[{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}], [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}]];
-
+test("parseLocations", () => {
+  const locations =[{ id: "https://radarinen1btesting.inrupt.net/profile/card#me", name: "You", 
+                      localizaciones:[
+                        {comment: "City of Benvante",lat: "42.1082000", lng: "-5.6774000",name: "Benavente"}]},
+                        {id: "https://uo271913.inrupt.net/profile/card#me", name: "Héctor", 
+                          localizaciones:[
+                            {comment: "City of Benvante",lat: "42.1082000", lng: "-5.6774000",name: "Benavente"}]
+                        }
+                    ];
+  
+  const result=[
+    [{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}], 
+    [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}]
+  ];
 
   expect(parseLocations(locations,"https://radarinen1btesting.inrupt.net/profile/card#me")).toStrictEqual(result);
 
 });
 
-test("parseLocations", async() => {
+test("parseLocations", () => {
   const locations =[{ id: "https://akaamerican.inrupt.net/profile/card#me", name: "Alexander", image:"https://akaamerican.inrupt.net/profile/pp.jpg" }];
   
   render(listFriends(locations));
+  
   const title = screen.getByText("Alexander @akaamerican");
   expect(title).toBeInTheDocument();
 
   const button = screen.getByText("See Details");
   expect(button).toBeInTheDocument();
+  
   fireEvent.click(button);
 
 });
@@ -223,13 +217,12 @@ test("parseLocations", async() => {
 test("renders map component", async() => {
   const markers=[{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
   const friendMarkers= [{"author": "Héctor", "comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"}];
-  render(map(43.5228266,-5.6545074,markers,friendMarkers));
   
+  render(map(43.5228266,-5.6545074,markers,friendMarkers));
 });
 
 test("index", async() => {
   await getOrCreateLocationList("https://radarinen1btesting.inrupt.net/public/locations/",true,session.fetch);
-
 });
 
 test("friends from pod", async() => {
@@ -237,22 +230,26 @@ test("friends from pod", async() => {
 });
 
 test("get user locations", async() => {
-  
   const friends= [{id: "https://uo271913.inrupt.net/profile/card#me",image: "https://uo271913.inrupt.net/profile/f1.png", name: "Héctor"}];
+  
+  // errors with session
   try{
     const o = await obtainUserLocations(session, friends);
   }catch{
     const o = null;
   }
+
 });
 
-test("remove user locations", async() => {
+test("remove user locations / get friends / location slice", async() => {
   try{
     const o = await removeUserLocation(session,{"comment": "City of Benvante", "lat": "42.1082000", "lng": "-5.6774000", "name": "Benavente"} );
   }catch{
     const o = null;
   }
+
   getFriends(session);
+
   locationsSlice;
 });
 
@@ -273,16 +270,19 @@ test("renders waitingForLogin", () => {
 test("renders admin", () => {
   render(app);
 
-  const linkElement = screen.getByText(/Home/i);
-  expect(linkElement).toBeInTheDocument();
-  fireEvent.click(linkElement);
+  const home = screen.getByText(/Home/i);
+  expect(home).toBeInTheDocument();
+  
+  fireEvent.click(home);
 
   loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
 
-  const linkElement2 = screen.getByText("Administer users");
-  expect(linkElement2).toBeInTheDocument();
-  fireEvent.click(linkElement2);
+  const administer = screen.getByText("Administer users");
+  expect(administer).toBeInTheDocument();
 
-  const linkElement1 = screen.getByText("Invalid URL: undefined");
-  expect(linkElement1).toBeInTheDocument();
+  fireEvent.click(administer);
+
+  //error with session
+  const error = screen.getByText("Invalid URL: undefined");
+  expect(error).toBeInTheDocument();
 });
