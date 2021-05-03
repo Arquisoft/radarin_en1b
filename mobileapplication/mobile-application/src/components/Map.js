@@ -5,7 +5,7 @@ import user from "../static/user.svg";
 import friend from "../static/friend.svg";
 import "../css/Map.css";
 import getFriendsWebIds from "../utils/solidAccessing/GetFriendsFromPod";
-import { addUserOrUpdateLocation, getNearFriends } from "../api/api";
+import { addUserOrUpdateLocation, getNearFriends, isBanned } from "../api/api";
 import ReactDOM from "react-dom";
 import Notification from "./Notification";
 import loadingScreen from "../views/LoadingScreen";
@@ -28,11 +28,9 @@ export default class MapComponent extends Component {
         super(props);
         this.state = {
             render: false,
-            latitude: 43.4586254,
-            longitude: -5.8418686,
-            friendsWebIds: [],
-            nearFriends: [],
-            pastNearFriends: []
+            latitude: 0,
+            longitude: 0,
+            nearFriends: []
         };
         this.obtainLocations();
     }
@@ -53,10 +51,7 @@ export default class MapComponent extends Component {
                         longitude: position.coords.longitude
                     });
 
-                    let response = await addUserOrUpdateLocation(this.props.session.info.webId, [position.coords.longitude, position.coords.latitude]);
-                    if (response.error){
-                        alert(response);
-                    }
+                    await addUserOrUpdateLocation(this.props.session.info.webId, [position.coords.longitude, position.coords.latitude], await isBanned(this.props.session.info.webId));
                         
                     this.obtainFriendLocations();
                 },
@@ -80,10 +75,8 @@ export default class MapComponent extends Component {
                     }
                 }
 
-                if (!this.state.pastNearFriends.includes(near)) {
-                    if (!notification.includes(near.webId)) {
-                        notification.push(near.webId);
-                    }
+                if (!notification.includes(near.webId)) {
+                    notification.push(near.webId);
                 }
             }
 
@@ -104,9 +97,7 @@ export default class MapComponent extends Component {
             }
 
             this.setState({
-                friendsWebIds: friendsWebIds,
                 nearFriends: nearFriends,
-                pastNearFriends: nearFriends,
                 render: true
             });
         } catch(error) {

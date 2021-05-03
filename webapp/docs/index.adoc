@@ -3,7 +3,7 @@
 //
 // ====================================
 
-= image:LogoASW.png[arc42] Radarin EN 1b
+= image:LogoASW.png[arc42] Radarin EN1B
 // toc-title definition MUST follow document title without blank line!
 :toc: left
 :toc-title: Table of Contents
