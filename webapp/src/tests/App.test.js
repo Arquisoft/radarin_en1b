@@ -26,7 +26,7 @@ import removeUserLocation from "../utils/solidAccessing/RemoveLocations";
 import { getFriends } from "../utils/friendsRedux/friendsSlice";
 import { locationsSlice } from "../utils/locationsRedux/getLocationsSlice";
 import waitingForLogIn from "../views/WaitingForLogin";
-
+import AdministerUsers from "../views/AdministerUsers";
 jest.setTimeout(30000);
 
 function loginSolid(credentials) {
@@ -46,6 +46,7 @@ const app = ( <React.StrictMode>
     <Route path="/about-us" exact component={AboutUs}/>
     <Route path="/login" component={Login}/>
     <Route path="/friends" component={ManageFriends}/>
+    <Route path="/users" exact component={AdministerUsers}/>
   </Switch>
   </Provider>
 </BrowserRouter>
@@ -267,4 +268,21 @@ test("renders waitingForLogin", () => {
 
   const welcome = screen.getByText("Waiting for provider approval...");
   expect(welcome).toBeInTheDocument();
+});
+
+test("renders admin", () => {
+  render(app);
+
+  const linkElement = screen.getByText(/Home/i);
+  expect(linkElement).toBeInTheDocument();
+  fireEvent.click(linkElement);
+
+  loginSolid({idp:"https://inrupt.net/", username:"radarinen1btesting", password: "Elpoddefabio1!"});
+
+  const linkElement2 = screen.getByText("Administer users");
+  expect(linkElement2).toBeInTheDocument();
+  fireEvent.click(linkElement2);
+
+  const linkElement1 = screen.getByText("Invalid URL: undefined");
+  expect(linkElement1).toBeInTheDocument();
 });

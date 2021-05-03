@@ -19,17 +19,17 @@ export default class Notification extends Component {
             img = friend;
         }
         return (
-            <div id="notification-for-the-map" className="hide-notification">
-                <div id="notification-container" className={this.props.animation}>
-                        <div className="notification">
-                            <div className="notification-image">
+            <div id="notification-for-the-map" className={this.props.type=== "map" ? "hide-notification-map": "hide-notification"}>
+                <div id="notification-container" className={this.props.type=== "map" ? "notification-container-map": "notification-container"}>
+                        <div className={this.props.type=== "map" ? "notification-map": "notification"}>
+                            <div className= {this.props.type=== "map" ? "notification-image-map" : "notification-image"}>
                                 <img src={img} className="margin-img" alt="" />
                             </div>
                             <div>
-                                <p className="notification-title">
+                                <p className={this.props.type=== "map" ? "notification-title-map" : "notification-title"}>
                                     {this.props.title}
                                 </p>
-                                <p className="notification-message">
+                                <p className={this.props.type=== "map" ? "notification-message-map" : "notification-message"}>
                                     {this.props.message}
                                 </p>
                             </div>
