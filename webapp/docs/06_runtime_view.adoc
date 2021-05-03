@@ -73,4 +73,20 @@ MAApp <-- MAApp: It is not able to compute what is needed
 Alice <-- MAApp: An alert is shown
 ----
 
+=== Alice wants to save her current location as a favourite one
+* _Alice has just visited one interesting location and she wants to save it in her favourite locations so her friends can see it in the future._
+* _In this context, Alice is already authenticated in the application and she access the AddLocationForm in the mobile application. The application will use the geolocation API to obtain the current location, and if the location is retrived properly, it will be stored in Alice's POD. In any case, the application will inform Alice wether the location has been saved or not_
 
+[plantuml, "Sequence diagram 3", png]
+----
+actor Alice
+entity MAApp as "AddLocationForm"
+participant Geolocation as "Navigator.geolocation"
+database Pod1 as "Alice's Pod"
+
+Alice --> MAApp: Ask to save the current Location
+MAApp --> Geolocation: Ask for the current Location of the device
+MAApp <-- Geolocation: Return location 
+MAApp --> Pod1: store location if returned
+MAApp --> Alice: Notify changes
+----
