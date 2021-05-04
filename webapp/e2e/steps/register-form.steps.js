@@ -27,6 +27,7 @@ defineFeature(feature, (test) => {
       await expect(page).toMatch("Username")
       await expect(page).toMatch("Password")
     });
+  });
 
     test("Login as a new user", ({given,when,then}) => {
     
@@ -48,8 +49,7 @@ defineFeature(feature, (test) => {
           await expect(page).toMatch("Username*")
           await expect(page).toMatch("Password*")
           await expect(page).toMatch("Repeat password*")
+        });
     });
-
-  });
 
 });
