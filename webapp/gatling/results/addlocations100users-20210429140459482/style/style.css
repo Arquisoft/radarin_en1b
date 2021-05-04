@@ -596,7 +596,7 @@ h1 span {
   -moz-box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
   box-shadow: 1px 2px 4px 0.01px rgba(47, 47, 47, 0.2);
   border-radius: 4px;
-  position: absolute; 
+  position: absolute;
   color: #fff;
   background: #d16b00;
 }
