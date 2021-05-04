@@ -7,5 +7,5 @@ Scenario: The user tries to access views where login is needed: Map
 
 Scenario: The user tries to access views where login is needed: Manage Friends
   Given An unregistered user
-  When The user tries to access the map
+  When The user tries to access manage friends
   Then A message should be shown in the screen
