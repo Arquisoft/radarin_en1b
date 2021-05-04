@@ -4,7 +4,7 @@
   z-index: 999999;
   animation:
     in-out-top
-    6s
+    500s
     ease;
 }
 
