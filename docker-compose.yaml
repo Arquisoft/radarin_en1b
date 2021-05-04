@@ -22,6 +22,12 @@ services:
       - "3000:3000"
     depends_on: 
       - restapi
+  mobile:
+    build: ./mobileapplication/mobile-application
+    ports:
+      - "3001:3001"
+    depends_on: 
+      - restapi
   
   prometheus:
     image: prom/prometheus
