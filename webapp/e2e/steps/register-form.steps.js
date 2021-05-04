@@ -10,11 +10,11 @@ defineFeature(feature, (test) => {
   /*
   test("The user is not registered in the site", ({given,when,then}) => {
     /*let email;
-    let username;*/
+    let username;
 
     given("An unregistered user", () => {
       /*email = "newuser@test.com"
-      username = "newuser"*/
+      username = "newuser"
     });
 
     when("I fill the data in the form and press submit", async () => {
@@ -24,12 +24,13 @@ defineFeature(feature, (test) => {
         email: email,
       })
       await expect(page).toClick("button", { text: "Submit" })
-      await expect(page).toMatch("Welcome to ASW")*/
+      await expect(page).toMatch("Welcome to ASW")
     });
 
     then("A welcome message should be shown in the screen", async () => {
     });
-  });*/
+  });
+  */
 
   test("The user tries to access views where login is needed: Map", ({given,when,then}) => {
     
