@@ -1,7 +1,7 @@
 .map {
   height: 97%;
   width: 100%;
-  position: relative;
+  position: fixed;
   overflow: hidden;
 }
 

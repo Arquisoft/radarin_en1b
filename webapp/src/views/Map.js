@@ -30,7 +30,7 @@ function MapComponent() {
         }
     },[statusFriends, statusLocations, dispatch, session]);
 
-    if( !show ){
+    if( !show ){ 
         window.navigator.geolocation.getCurrentPosition((position) => {setLati(position.coords.latitude);setLong(position.coords.longitude); setShow(true);}); 
     } 
 

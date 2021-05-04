@@ -24,4 +24,4 @@ export const MenuItems = [
         url: "/about-us",
         cName: "fas fa-address-card nav-icons"
     }
-];
+]; 

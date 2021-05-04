@@ -4,7 +4,7 @@ export const getUserLocation = createAsyncThunk( "locationsSlice/getLocations", 
     let locations = await obtainUserLocations(session, getState().friends.value);
     return locations;
 });
-
+ 
 export const locationsSlice = createSlice({
   name: "locations",
   initialState: {

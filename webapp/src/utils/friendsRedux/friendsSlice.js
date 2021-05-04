@@ -23,7 +23,7 @@ export const friendsSlice = createSlice({
   extraReducers: {
     [getFriends.pending]: (state, action) => {
       state.status = "pending";
-    },
+    }, 
     [getFriends.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.value = action.payload; 

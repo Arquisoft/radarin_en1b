@@ -8,7 +8,7 @@ export default function parseLocations(totalLocations, webId) {
                 markers.push(location);
             });
             toRet.push(markers);
-        } else {
+        } else { 
             info.localizaciones.forEach((location) => {
                 friendsLocations.push({
                     author: info.name,

@@ -9,7 +9,7 @@ import "../css/App.css";
 
 export default function AboutUs(){
   return <div className="about-us">
-      <div className='margin-top'>
+      <div className='margin-top overflow-auto'>
         <h1>About us</h1>
         <br/>
         <p>We are the Radarin team, a team composed of 6 undergraduate students of Software Engineering:</p>

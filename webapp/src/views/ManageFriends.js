@@ -29,13 +29,7 @@ function ManageFriends() {
                 <h1>Manage friends</h1>
                 <p id='texto'>Here you are able to see your friends</p>
                 <p>Friend list:</p>
-                {statusFriends !== "fulfilled"? 
-                    loadingScreen("margin-top-friends","We are searching for your friends...")
-                :totalFriends.length !== 0?
-                    listFriends(totalFriends)
-                :
-                    <p>There are no friends</p>
-                }
+                {statusFriends !== "fulfilled"? loadingScreen("margin-top-friends","We are searching for your friends...") : totalFriends.length !== 0? listFriends(totalFriends) :<p>There are no friends</p>}
             </div>);
     
 }

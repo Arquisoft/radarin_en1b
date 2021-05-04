@@ -10,7 +10,6 @@ function connect(){
     const mongo_uri = "mongodb+srv://mongouser:AOMlojZpXLlcWLRd@cluster0.gshvq.mongodb.net/test?retryWrites=true&w=majority";
     mongoose.connect(mongo_uri, { useNewUrlParser: true,useUnifiedTopology: true }).then(() => {
         const app = express();
-
         //Monitoring middleware
         const metricsMiddleware = promBundle({includeMethod: true});
         app.use(metricsMiddleware);

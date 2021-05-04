@@ -15,7 +15,7 @@ function LoginForm(){
                                 <div className='margin-top-button'>
                                         <NavLink to="/login"> 
                                             <Button> 
-                                                Log In / Register
+                                                Log In / Register 
                                             </Button>
                                         </NavLink>
                                 </div>
