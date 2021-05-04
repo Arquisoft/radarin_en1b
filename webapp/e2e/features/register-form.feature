@@ -1,11 +1,11 @@
 Feature: Registering a new user
 
-Scenario: The user is not registered in the site
+Scenario: The user tries to access views where login is needed: Map
   Given An unregistered user
-  When I fill the data in the form and press submit
-  Then A welcome message should be shown in the screen
+  When The user tries to access the map
+  Then A message should be shown in the screen
 
-Scenario: The user is already registered in the site
-  Given An already registered user
-  When I fill the data in the form and press submit
-  Then An error message should be shown in the screen
+Scenario: The user tries to access views where login is needed: Manage Friends
+  Given An unregistered user
+  When The user tries to access the map
+  Then A message should be shown in the screen
