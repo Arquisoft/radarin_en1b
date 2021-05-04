@@ -139,6 +139,6 @@ export default class MapComponent extends Component {
         } else {
             return loadingScreen("waiting-screen","We are looking for friends close to you...");
         }
-    };
+    }
 
 }
