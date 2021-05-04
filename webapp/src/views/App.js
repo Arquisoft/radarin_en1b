@@ -20,7 +20,7 @@ import {useSession} from "@inrupt/solid-ui-react/dist";
 import { SessionProvider } from "@inrupt/solid-ui-react";
 import { Provider } from "react-redux";
 import store from "../utils/locationsRedux/store";
-
+ 
 function App() {
   // Variable to check session state
   const [isLoggedIn, setIsLoggedIn] = useState(false);

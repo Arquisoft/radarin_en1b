@@ -23,13 +23,13 @@ export default function Login(){
       };
 
   return(
-        <div className="welcome-container">
+        <div className="login-container">
         <div className='thanks'>
               <h1>Thanks for using Radarin Manager!</h1>
         </div>
-            <div className="card-welcome sm">
+            <div className="card-login sm">
             <Container fluid="md">
-                        <Row className='fixed margin-top'>
+                        <Row className='fixed margin-top prov'>
                             <h2>Select a provider:</h2>
                             <span >
                             <Select

@@ -6,7 +6,7 @@ import L from "leaflet";
 import marker from "../static/markerUser.svg";
 import friendMarker from "../static/markerFriend.png";
 import '../css/Map.css';
-
+ 
 export default function map(latii,longi,markersi,friendMarkersi,sessioni,dispatch){
     const lati = latii;
     const long = longi;

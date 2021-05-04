@@ -4,3 +4,4 @@ export default function Admin(){
       <p>Only the admin user is able to access here</p>
     </div>;
 }
+ 
