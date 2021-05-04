@@ -4,7 +4,7 @@ export default function ListFriends(totalFriends){
     return <Container className="manage-friends">
                     <Col className="group">
                         {totalFriends.map((friend) => {
-                            return(
+                            return(  
                                 <Row className='card'>
                                     <div className='left'>
                                         <img className='image' src={friend.image!== null? friend.image : userPhoto} alt='Profile'/>

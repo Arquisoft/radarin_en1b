@@ -13,7 +13,7 @@ async function getFriendName(friendId, session) {
     const fn = getStringNoLocale(profile, VCARD.fn);
     return fn;
 }
-
+ 
 async function getFriendImage(friendId){
     const what = await fetchDocument(friendId.split("card")[0]);
     const img = what.getStore().toArray()[4].object.value;

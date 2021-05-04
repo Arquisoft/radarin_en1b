@@ -4,7 +4,7 @@ import "../css/App.css";
 import "../css/Friends.css";
 export default function ListUsers(normalUsers, render, setRender){
     return <div className="overflow-visible">
-        <Container className="manage-friends">
+        <Container className="manage-friends"> 
                     <Col className="group">
                         {Array.from(normalUsers.keys()).map((user) => {
                             return(

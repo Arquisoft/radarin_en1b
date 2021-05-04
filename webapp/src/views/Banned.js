@@ -4,3 +4,4 @@ export default function Banned(){
       <p>You have been banned by the app admin</p>
     </div>;
 }
+ 

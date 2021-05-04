@@ -24,7 +24,7 @@ function Navbar(){
                     <li key = {index}>
                         <NavLink to={item.url} className='nav-links' data-testid={item.title}>
                             <i className={item.cName} />
-                            {item.title}
+                            {item.title} 
                         </NavLink>
                     </li>:
                     <li key = {index}>

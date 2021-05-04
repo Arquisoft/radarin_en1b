@@ -7,12 +7,6 @@ export default class Notification extends Component {
         super();
     }
 
-    componentDidMount(){
-        setTimeout(() => {
-            if(document.getElementById("notification-for-the-map") !== null){ document.getElementById("notification-for-the-map").remove();}
-        }, 3500);
-    }
-
     render(){
         return (
             <div id="notification-for-the-map" className="hide-notification">

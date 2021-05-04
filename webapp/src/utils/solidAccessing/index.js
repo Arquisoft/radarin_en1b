@@ -6,7 +6,7 @@ import {
   getSolidDataset,
   saveSolidDatasetAt,
 } from "@inrupt/solid-client";
-
+ 
 export async function getOrCreateLocationList(containerUri, isMainUser, fetch) {
   const indexUrl = `${containerUri}favlocations.ttl`;
   try {

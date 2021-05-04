@@ -8,7 +8,7 @@
 .about-us {
   text-align: center;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   display: contents;
 }
 
@@ -82,14 +82,40 @@
   font-size: 22px;
 }
 
+.login-container {
+  text-align: center;
+  margin: auto;
+  margin-top: 20vh;
+  font-size: 22px;
+}
+
 .margin-top-button {
   margin-top: 6%;
 }
 
 .imagen {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
+}
+
+.card-login {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color:
+    rgb(
+      255,
+      255,
+      255
+    );
+  border: black;
+  border-radius: 10px;
+  width: 70vw;
+  margin: auto;
+}
+
+.prov{
+  height:110px;
 }
 
 .margin-bot {

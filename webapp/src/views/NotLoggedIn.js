@@ -4,3 +4,4 @@ export default function NotLoggedIn(){
       <p>To be able to view this you need to be logged in</p>
     </div>;
 }
+ 
