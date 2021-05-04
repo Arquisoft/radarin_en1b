@@ -3,45 +3,50 @@ const feature = loadFeature("./features/register-form.feature");
 
 defineFeature(feature, (test) => {
   
-  /*beforeEach(async () => {
-    await global.page.goto("http://localhost:3000")
+  beforeEach(async () => {
+    await global.page.goto("http://localhost:3000", {timeout: 60000});
   })
 
-  test("The user is not registered in the site", ({given,when,then}) => {
-    
-    let email;
-    let username;
+  test("Login as an existing user", ({given,when,then}) => {
+        let username;
+        let password;
 
-    given("An unregistered user", () => {
-      email = "newuser@test.com"
-      username = "newuser"
+        given("An registered user", () => {
+        username = "radarinen1btesting"
+        password = "Elpoddefabio1!"
+        });
+
+        when("The user tries to login", async () => {
+            await expect(page).toClick('button', { text: 'Log In / Register' })
+            await expect(page).toClick('button', { text: 'Log In' })
+        });
+
+        then("The user is redirected to a login from the provider", async () => {
+        /*await expect(page).toMatch("Login")
+        await expect(page).toMatch("Username")
+        await expect(page).toMatch("Password")*/
+        });
+    });
+  
+
+    test("Login as a new user", ({given,when,then}) => {
+
+        let username;
+        let password;
+
+        given("An registered user", () => {
+            username = "radarinen1btesting"
+            password = "Elpoddefabio1!"
+        });
+
+        when("The user wants to get a pod", async () => {
+            await expect(page).toClick('button', { text: 'Log In / Register' })
+            await expect(page).toClick('button', { text: 'Register for a SOLID POD' })
+        });
+
+        then("The user is redirected to a register from the provider", async () => {
+            await expect(page).toMatch("Register")
+        });
     });
 
-    when("I fill the data in the form and press submit", async () => {
-      await expect(page).toMatch("Hi, ASW students")
-      await expect(page).toFillForm("form[name="register"]", {
-        username: username,
-        email: email,
-      })
-      await expect(page).toClick("button", { text: "Submit" })
-      await expect(page).toMatch("Welcome to ASW")
-    });
-
-    then("A welcome message should be shown in the screen", async () => {
-    });
-  });
-
-  test("The user is already registered in the site", ({ given, when, then }) => {
-    
-    given("An already registered user", () => {
-    });
-
-    when("I fill the data in the form and press submit", async () => {
-      
-    });
-
-    then("An error message should be shown in the screen", async () => {
-    });
-    
-  });*/
 });

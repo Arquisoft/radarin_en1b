@@ -68,6 +68,6 @@ export default async function removeUserLocation(session, location) {
     ReactDOM.render(<Notification title={"Location: " + location.name} message="has been successfully removed" icon="map"/>, document.getElementById("notification-map"));
     setTimeout(() => {
         ReactDOM.unmountComponentAtNode(document.getElementById("notification-map"));
-      }, 5900);
+      }, 6000);
     
 }

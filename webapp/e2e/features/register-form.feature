@@ -1,11 +1,11 @@
-Feature: Registering a new user
+Feature: Login as user
 
-Scenario: The user is not registered in the site
-  Given An unregistered user
-  When I fill the data in the form and press submit
-  Then A welcome message should be shown in the screen
+Scenario: Login as an existing user
+  Given An registered user
+  When The user tries to login
+  Then The user is redirected to a login from the provider
 
-Scenario: The user is already registered in the site
-  Given An already registered user
-  When I fill the data in the form and press submit
-  Then An error message should be shown in the screen
+Scenario: Login as a new user
+  Given An registered user
+  When The user wants to get a pod
+  Then The user is redirected to a register from the provider
