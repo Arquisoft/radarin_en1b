@@ -9,11 +9,11 @@ defineFeature(feature, (test) => {
 
   test("Login as an existing user", ({given,when,then}) => {
     
-    let email;
+    let username;
     let password;
 
     given("An registered user", () => {
-      email = "radarinen1btesting"
+      username = "radarinen1btesting"
       password = "Elpoddefabio1!"
     });
 
