@@ -1,11 +1,6 @@
-Feature: Registering a new user
+Feature: Login as user
 
-Scenario: The user tries to access views where login is needed: Map
-  Given An unregistered user
-  When The user tries to access the map
-  Then A message should be shown in the screen
-
-Scenario: The user tries to access views where login is needed: Manage Friends
-  Given An unregistered user
-  When The user tries to access manage friends
-  Then A message should be shown in the screen
+Scenario: Login as an existing user
+  Given An registered user
+  When The user tries to login
+  Then A welcome message should be shown
