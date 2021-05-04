@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Login(){
 
-    const [oidcIssuer, setOidcIssuer] = useState("");
+    const [oidcIssuer, setOidcIssuer] = useState("https://inrupt.net");
 
     const handleChange = (event) => {
         setOidcIssuer(event.target.value);

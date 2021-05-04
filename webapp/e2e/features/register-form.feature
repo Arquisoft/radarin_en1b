@@ -1,11 +1,11 @@
-Feature: Registering a new user
+Feature: Login as user
 
-Scenario: The user tries to access views where login is needed: Map
-  Given An unregistered user
-  When The user tries to access the map
-  Then A message should be shown in the screen
+Scenario: Login as an existing user
+  Given An registered user
+  When The user tries to login
+  Then The user is redirected to a login from the provider
 
-Scenario: The user tries to access views where login is needed: Manage Friends
-  Given An unregistered user
-  When The user tries to access manage friends
-  Then A message should be shown in the screen
+Scenario: Login as a new user
+  Given An registered user
+  When The user wants to get a pod
+  Then The user is redirected to a register from the provider
