@@ -1,5 +1,5 @@
 const {defineFeature, loadFeature}=require("jest-cucumber");
-const feature = loadFeature("./features/register-form.feature");
+const feature = loadFeature("./features/navigate-app.feature");
 
 defineFeature(feature, (test) => {
   
