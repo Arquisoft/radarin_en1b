@@ -2,10 +2,6 @@
   font-size: 16px;
   position: relative;
   z-index: 999999;
-  animation:
-    in-out-top
-    500s
-    ease;
 }
 
 .hide-notification {
