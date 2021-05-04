@@ -7,6 +7,25 @@ defineFeature(feature, (test) => {
     await global.page.goto("http://localhost:3000", {timeout: 60000});
   })
 
+  test("The user loads the webpage", ({given,when,then}) => {
+    
+    let email;
+    let username;
+
+    given("An unregistered user", () => {
+      email = "none@none.com"
+      username = "none"
+    });
+
+    when("The user enters the webapp", async () => {
+    });
+
+    then("A message should be shown in the screen", async () => {
+      await expect(page).toMatch("Welcome!")
+      await expect(page).toMatch("Here you will see yours and your friends' favourite locations")
+    });
+  });
+
   test("The user tries to access views where login is needed: Map", ({given,when,then}) => {
     
     let email;

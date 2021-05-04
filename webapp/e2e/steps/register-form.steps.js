@@ -20,17 +20,36 @@ defineFeature(feature, (test) => {
     when("The user tries to login", async () => {
         await expect(page).toClick('button', { text: 'Log In / Register' })
         await expect(page).toClick('button', { text: 'Log In' })
-        await expect(page).toFillForm('form[]', {
-            username: username,
-            password: password,
-          })
-          await expect(page).toClick('button', { text: 'Log In' })
     });
 
-    then("A welcome message should be shown", async () => {
-      await expect(page).toMatch("Welcome to Radarin Manager!")
-      await expect(page).toMatch("You are now logged in")
+    then("The user is redirected to a login from the provider", async () => {
+      await expect(page).toMatch("Login")
+      await expect(page).toMatch("Username")
+      await expect(page).toMatch("Password")
     });
+
+    test("Login as a new user", ({given,when,then}) => {
+    
+        let username;
+        let password;
+    
+        given("An registered user", () => {
+          username = "radarinen1btesting"
+          password = "Elpoddefabio1!"
+        });
+    
+        when("The user wants to get a pod", async () => {
+            await expect(page).toClick('button', { text: 'Log In / Register' })
+            await expect(page).toClick('button', { text: 'Register for a SOLID POD' })
+        });
+    
+        then("The user is redirected to a register from the provider", async () => {
+          await expect(page).toMatch("Register")
+          await expect(page).toMatch("Username*")
+          await expect(page).toMatch("Password*")
+          await expect(page).toMatch("Repeat password*")
+    });
+
   });
 
 });
